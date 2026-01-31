@@ -1,0 +1,9 @@
+---
+const { class: className = "", hover = true } = Astro.props;
+---
+
+<div
+	class={`bg-white rounded-3xl p-8 border border-gray-100 shadow-sm ${hover ? "hover:shadow-xl hover:-translate-y-2 transition-all duration-300" : ""} ${className}`}
+>
+	<slot />
+</div>

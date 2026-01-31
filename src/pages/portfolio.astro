@@ -1,0 +1,42 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import PortfolioComponent from "../components/Portfolio.astro";
+import PageHeader from "../components/PageHeader.astro";
+---
+
+<MainLayout title="Portfolio - Our Work - Globix Tech">
+    <Navbar />
+    <main class="min-h-screen">
+        <PageHeader
+            title="Our Success"
+            spanTitle="Stories"
+            description="Showcasing the transformative digital solutions we've built for businesses across Bangladesh."
+            badge="Client Success"
+            badgeIcon="fa-trophy"
+        />
+
+        <PortfolioComponent />
+
+        <!-- CTA Section -->
+        <section class="py-20 bg-gray-50">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl md:text-5xl font-bold text-[#0c1b3d] mb-6">
+                    Have a Project in Mind?
+                </h2>
+                <p class="text-xl text-gray-600 mb-10 max-w-2xl mx-auto">
+                    Let's discuss how we can help transform your business with
+                    our expertise.
+                </p>
+                <a
+                    href="/contact"
+                    class="bg-blue-600 hover:bg-blue-700 text-white px-10 py-4 rounded-xl font-bold transition-all shadow-lg shadow-blue-600/20 text-lg inline-block"
+                >
+                    Start a Conversation
+                </a>
+            </div>
+        </section>
+    </main>
+    <Footer />
+</MainLayout>

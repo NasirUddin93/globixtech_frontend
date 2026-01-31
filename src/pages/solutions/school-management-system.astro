@@ -1,0 +1,938 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import Navbar from "../../components/Navbar.astro";
+import { Image } from "astro:assets";
+import smsMockup from "../../assets/sms_mockup.png";
+import studentLifecycle from "../../assets/student_lifecycle.png";
+import mobileAppsShowcase from "../../assets/mobile_apps_showcase.png";
+import Footer from "../../components/Footer.astro";
+
+import {
+    pricingPlans,
+    institutionTypes,
+    moduleCategories,
+    stats,
+    coreFeatures,
+    faqs,
+} from "../../data/sms";
+---
+
+<MainLayout title="School Management System - Globix Tech Solutions">
+    <Navbar />
+
+    <main class="min-h-screen bg-white">
+        <!-- Hero Section -->
+        <section
+            class="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden bg-[#0c1b3d]"
+        >
+            <div
+                class="absolute inset-0 bg-gradient-to-br from-[#0c1b3d] via-[#1a2c5a] to-[#0c1b3d]"
+            >
+            </div>
+            <div
+                class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-blue-500/10 to-transparent blur-3xl"
+            >
+            </div>
+
+            <div class="container mx-auto px-6 relative z-10">
+                <div
+                    class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
+                >
+                    <div class="text-left">
+                        <div
+                            class="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 px-4 py-2 rounded-full text-blue-400 text-sm font-semibold mb-6"
+                        >
+                            <i class="fas fa-graduation-cap"></i> Intelligent Education
+                            Platform
+                        </div>
+                        <h1
+                            class="text-4xl md:text-6xl font-extrabold text-white mb-6 leading-[1.1]"
+                        >
+                            Education Management Software for <span
+                                class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400"
+                                >Kindergarten, Schools, and Madrasah</span
+                            >
+                        </h1>
+                        <p
+                            class="text-lg md:text-xl text-gray-300 mb-10 max-w-xl leading-relaxed"
+                        >
+                            Manage attendance, exams, fees, communication,
+                            admissions, and reporting in one place. GlobixTech
+                            gives administrators, teachers, and guardians
+                            dedicated portals to stay organized and up to date.
+                        </p>
+                        <div class="flex flex-wrap gap-4">
+                            <a
+                                href="/#contact"
+                                class="bg-cyan-500 hover:bg-cyan-600 text-white px-8 py-4 rounded-xl font-bold transition-all shadow-lg shadow-cyan-500/20 flex items-center gap-2"
+                            >
+                                Request a Demo <i
+                                    class="fas fa-arrow-right text-sm"></i>
+                            </a>
+                            <a
+                                href="tel:+8801707568468"
+                                class="bg-white/5 hover:bg-white/10 border border-white/20 text-white px-8 py-4 rounded-xl font-bold transition-all flex items-center gap-2"
+                            >
+                                <i class="fas fa-phone-alt"></i> Consultation
+                            </a>
+                        </div>
+                    </div>
+                    <div class="relative mt-10 lg:mt-0">
+                        <div
+                            class="absolute -inset-4 bg-blue-500/20 blur-2xl rounded-full"
+                        >
+                        </div>
+                        <Image
+                            src={smsMockup}
+                            alt="SMS Mockup"
+                            class="relative z-10 w-full max-w-2xl mx-auto drop-shadow-2xl rounded-2xl border border-white/10"
+                        />
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="py-16 bg-white border-b border-gray-100">
+            <div class="container mx-auto px-6">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
+                    <div class="group">
+                        <div
+                            class="text-4xl font-extrabold text-[#0c1b3d] mb-2 group-hover:text-blue-600 transition-colors"
+                        >
+                            36+
+                        </div>
+                        <div
+                            class="text-sm font-bold text-gray-400 uppercase tracking-widest"
+                        >
+                            Industry Modules
+                        </div>
+                    </div>
+                    <div class="group">
+                        <div
+                            class="text-4xl font-extrabold text-[#0c1b3d] mb-2 group-hover:text-blue-600 transition-colors"
+                        >
+                            900+
+                        </div>
+                        <div
+                            class="text-sm font-bold text-gray-400 uppercase tracking-widest"
+                        >
+                            Core Features
+                        </div>
+                    </div>
+                    <div class="group">
+                        <div
+                            class="text-4xl font-extrabold text-[#0c1b3d] mb-2 group-hover:text-blue-600 transition-colors"
+                        >
+                            24/7
+                        </div>
+                        <div
+                            class="text-sm font-bold text-gray-400 uppercase tracking-widest"
+                        >
+                            Expert Support
+                        </div>
+                    </div>
+                    <div class="group">
+                        <div
+                            class="text-4xl font-extrabold text-[#0c1b3d] mb-2 group-hover:text-blue-600 transition-colors"
+                        >
+                            100%
+                        </div>
+                        <div
+                            class="text-sm font-bold text-gray-400 uppercase tracking-widest"
+                        >
+                            Cloud Reliable
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Core Features Grid -->
+        <section class="py-24 bg-gray-50">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2
+                        class="text-3xl md:text-5xl font-bold text-[#0c1b3d] mb-4"
+                    >
+                        Core Education Management Features
+                    </h2>
+                    <p
+                        class="text-gray-600 max-w-2xl mx-auto text-lg leading-relaxed"
+                    >
+                        GlobixTech brings attendance, exams, fees,
+                        communication, admissions, and reporting together so
+                        institutions can run every workflow smoothly.
+                    </p>
+                </div>
+                <div
+                    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+                >
+                    {
+                        [
+                            {
+                                title: "Student Attendance",
+                                desc: "Mark attendance by class or subject. Teachers can do it from a mobile and view daily or monthly records instantly.",
+                                icon: "fa-calendar-check",
+                                color: "text-blue-500",
+                                bg: "bg-blue-100",
+                            },
+                            {
+                                title: "Student Information",
+                                desc: "Each student has a full profile, including class, contact, guardian, fees, and academic records, all stored digitally.",
+                                icon: "fa-user-graduate",
+                                color: "text-purple-500",
+                                bg: "bg-purple-100",
+                            },
+                            {
+                                title: "Admission & Forms",
+                                desc: "New student data, online forms, and class placements are managed from one screen. Filter by status or batch.",
+                                icon: "fa-file-signature",
+                                color: "text-cyan-500",
+                                bg: "bg-cyan-100",
+                            },
+                            {
+                                title: "Academic Activities",
+                                desc: "Manual academic tasks waste time, cause errors, and require extra staff. With GlobixTech, schools can automate routines like exam shifts and seating plans.",
+                                icon: "fa-tasks",
+                                color: "text-orange-500",
+                                bg: "bg-orange-100",
+                            },
+                            {
+                                title: "Online Fee Collection",
+                                desc: "Accept payments by bKash, card, or cash. Auto-generate receipts and track who paid and who didn't.",
+                                icon: "fa-money-bill-wave",
+                                color: "text-green-500",
+                                bg: "bg-green-100",
+                            },
+                            {
+                                title: "Exam & Report Cards",
+                                desc: "Enter marks, auto-calculate GPA, and publish digital report cards. Students and guardians can view online.",
+                                icon: "fa-poll-h",
+                                color: "text-red-500",
+                                bg: "bg-red-100",
+                            },
+                        ].map((f) => (
+                            <div class="bg-white p-10 rounded-3xl border border-gray-100 hover:border-blue-200 hover:shadow-xl transition-all group">
+                                <div
+                                    class={`w-16 h-16 ${f.bg} rounded-2xl flex items-center justify-center ${f.color} text-2xl mb-8 group-hover:scale-110 transition-transform`}
+                                >
+                                    <i class={`fas ${f.icon}`} />
+                                </div>
+                                <h3 class="text-2xl font-bold text-[#0c1b3d] mb-4">
+                                    {f.title}
+                                </h3>
+                                <p class="text-gray-600 leading-relaxed">
+                                    {f.desc}
+                                </p>
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
+        </section>
+
+        <!-- Core Education Management Highlights -->
+        <section class="py-24 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2
+                        class="text-3xl md:text-5xl font-bold text-[#0c1b3d] mb-4"
+                    >
+                        Core Education Management Highlights
+                    </h2>
+                    <p
+                        class="text-gray-600 max-w-2xl mx-auto text-lg leading-relaxed"
+                    >
+                        Industry-leading tools designed to streamline
+                        institutional workflows and keep everyone connected.
+                    </p>
+                </div>
+
+                <!-- Student Lifecycle Management Highlight -->
+                <div
+                    class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-32"
+                >
+                    <div class="order-2 lg:order-1">
+                        <div
+                            class="inline-block bg-blue-100 text-blue-600 px-4 py-1.5 rounded-full text-sm font-bold mb-6 uppercase tracking-wider"
+                        >
+                            Academic Foundation
+                        </div>
+                        <h3
+                            class="text-3xl md:text-4xl font-bold text-[#0c1b3d] mb-6"
+                        >
+                            Student Lifecycle Management
+                        </h3>
+                        <p
+                            class="text-gray-600 mb-8 leading-relaxed text-lg italic border-l-4 border-blue-500 pl-6"
+                        >
+                            "GlobixTech brings attendance, exams, fees,
+                            communication, admissions, and reporting together so
+                            institutions can run every workflow smoothly and
+                            stay fully connected."
+                        </p>
+                        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
+                            {
+                                [
+                                    "Admission (online + offline)",
+                                    "Merit list & lottery",
+                                    "Migration & TC",
+                                    "Promotion / Detention",
+                                    "Alumni management",
+                                ].map((feat) => (
+                                    <li class="flex items-center gap-3 text-gray-700 font-medium">
+                                        <div class="w-8 h-8 bg-blue-50 rounded-lg flex items-center justify-center text-blue-500">
+                                            <i class="fas fa-check" />
+                                        </div>
+                                        {feat}
+                                    </li>
+                                ))
+                            }
+                        </ul>
+                        <div
+                            class="p-6 bg-slate-50 rounded-2xl border border-gray-100"
+                        >
+                            <h4
+                                class="font-bold text-[#0c1b3d] mb-2 flex items-center gap-2"
+                            >
+                                <i class="fas fa-mobile-alt text-blue-500"></i> Smart
+                                Attendance Integration
+                            </h4>
+                            <p class="text-gray-600 text-sm italic">
+                                Mark attendance by class or subject. Teachers
+                                can do it from a mobile and view daily or
+                                monthly records instantly.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="order-1 lg:order-2 relative">
+                        <div
+                            class="absolute -inset-10 bg-blue-100/50 blur-3xl rounded-full"
+                        >
+                        </div>
+                        <div
+                            class="relative bg-white p-4 rounded-[40px] shadow-2xl border border-gray-100 transform hover:rotate-2 transition-transform duration-500"
+                        >
+                            <Image
+                                src={studentLifecycle}
+                                alt="Student Lifecycle Management Illustration"
+                                class="w-full rounded-[32px]"
+                            />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Specialized App Portals -->
+        <section class="py-24 bg-gray-50 overflow-hidden">
+            <div class="container mx-auto px-6">
+                <div
+                    class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center"
+                >
+                    <div>
+                        <h2
+                            class="text-3xl md:text-5xl font-bold text-[#0c1b3d] mb-6"
+                        >
+                            Mobile Apps for Administrators, Teachers, and
+                            Guardians
+                        </h2>
+                        <p class="text-lg text-gray-600 mb-10 leading-relaxed">
+                            GlobixTech's mobile app gives teachers, admins, and
+                            guardians full access to your institution's
+                            operations. Check attendance, view notices, manage
+                            fees, or track academic updates; everything happens
+                            in real-time.
+                        </p>
+
+                        <div class="space-y-6">
+                            <div
+                                class="p-6 bg-blue-50 rounded-2xl border-l-4 border-blue-500"
+                            >
+                                <h4
+                                    class="text-xl font-bold text-[#0c1b3d] mb-2"
+                                >
+                                    Guardian App
+                                </h4>
+                                <p class="text-gray-600">
+                                    Connects schools with parents through a
+                                    smart guardian portal for fee payments,
+                                    attendance, results, and updates.
+                                </p>
+                            </div>
+                            <div
+                                class="p-6 hover:bg-gray-50 rounded-2xl transition-colors"
+                            >
+                                <h4
+                                    class="text-xl font-bold text-[#0c1b3d] mb-2"
+                                >
+                                    Teacher App
+                                </h4>
+                                <p class="text-gray-600">
+                                    Efficient task management, class scheduling,
+                                    and result entry tools for academic staff.
+                                </p>
+                            </div>
+                            <div
+                                class="p-6 hover:bg-gray-50 rounded-2xl transition-colors"
+                            >
+                                <h4
+                                    class="text-xl font-bold text-[#0c1b3d] mb-2"
+                                >
+                                    Admin App
+                                </h4>
+                                <p class="text-gray-600">
+                                    Complete institutional oversight, financial
+                                    reports, and HR management on the go.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative">
+                        <div
+                            class="absolute -inset-10 bg-blue-200/30 blur-3xl rounded-full"
+                        >
+                        </div>
+                        <Image
+                            src={mobileAppsShowcase}
+                            alt="Mobile Apps Showcase"
+                            class="relative z-10 w-full max-w-4xl mx-auto drop-shadow-2xl rounded-2xl"
+                        />
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Institution Targeting Section -->
+        <section class="py-24 bg-white overflow-hidden">
+            <div class="container mx-auto px-6">
+                <div class="flex flex-col lg:flex-row justify-between items-start gap-12 mb-12">
+                    <div class="max-w-2xl">
+                        <h2 class="text-3xl md:text-5xl font-extrabold text-[#0c1b3d] mb-6">
+                            Education Management Software for Any Type of Institution
+                        </h2>
+                        <p class="text-gray-600 text-lg leading-relaxed">
+                            GlobixTech suits schools, kindergartens, madrasah, and multi-branch institutions. It manages daily academic and administrative tasks in one simple workflow and adjusts easily to different education models around the world.
+                        </p>
+                    </div>
+                    
+                    <!-- Tabs Navigation -->
+                    <div class="flex flex-wrap gap-2 bg-blue-50/50 p-2 rounded-2xl border border-blue-100">
+                        {institutionTypes.map((type, idx) => (
+                            <button 
+                                data-tab-id={type.id}
+                                class={`institution-tab px-8 py-4 rounded-xl font-bold text-sm transition-all duration-300 ${idx === 0 ? 'bg-cyan-500 text-white shadow-lg shadow-cyan-500/20' : 'text-gray-500 hover:bg-white hover:text-cyan-600'}`}
+                            >
+                                {type.label}
+                            </button>
+                        ))}
+                    </div>
+                </div>
+
+                <div class="bg-[#f8fafc] rounded-[40px] p-8 md:p-16 border border-gray-100 shadow-sm relative">
+                    {institutionTypes.map((type, idx) => (
+                        <div 
+                            id={`tab-content-${type.id}`} 
+                            class={`institution-content grid grid-cols-1 lg:grid-cols-2 gap-16 items-start transition-all duration-500 ${idx === 0 ? 'opacity-100 relative translate-y-0' : 'opacity-0 absolute inset-0 invisible translate-y-8'}`}
+                        >
+                            <!-- Feature Grid (Left) -->
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 order-2 lg:order-1">
+                                {type.features.map(feat => (
+                                    <div class="bg-white p-6 rounded-[24px] shadow-sm border border-gray-50 flex flex-col items-center text-center group hover:shadow-md transition-all hover:-translate-y-1">
+                                        <div class="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-500 text-xl mb-4 group-hover:bg-blue-500 group-hover:text-white transition-colors">
+                                            <i class={`fas ${feat.icon}`}></i>
+                                        </div>
+                                        <h4 class="text-sm font-bold text-[#0c1b3d] leading-tight">{feat.name}</h4>
+                                    </div>
+                                ))}
+                            </div>
+
+                            <!-- Description (Right) -->
+                            <div class="order-1 lg:order-2">
+                                <h3 class="text-3xl font-bold text-[#0c1b3d] mb-6 flex items-center gap-3">
+                                    <span class="w-12 h-1 bg-cyan-500 rounded-full"></span>
+                                    {type.title}
+                                </h3>
+                                <div class="space-y-6">
+                                    <p class="text-gray-600 leading-relaxed text-lg">
+                                        {type.desc}
+                                    </p>
+                                    <div class="flex flex-wrap gap-4 pt-4">
+                                        <a href="/#contact" class="bg-[#0c1b3d] text-white px-8 py-4 rounded-xl font-bold text-sm hover:bg-blue-900 transition-colors shadow-lg shadow-black/10">Get Started</a>
+                                        <a href="#modules" class="border border-gray-200 text-gray-600 px-8 py-4 rounded-xl font-bold text-sm hover:bg-white hover:border-cyan-500 hover:text-cyan-600 transition-all">Explore Modules</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
+
+        <script>
+            // Tab Switching Logic
+            const tabs = document.querySelectorAll('.institution-tab');
+            const contents = document.querySelectorAll('.institution-content');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const targetId = (tab as HTMLButtonElement).dataset.tabId;
+
+                    // Update Tab Styles
+                    tabs.forEach(t => {
+                        t.classList.remove('bg-cyan-500', 'text-white', 'shadow-lg', 'shadow-cyan-500/20');
+                        t.classList.add('text-gray-500', 'hover:bg-white', 'hover:text-cyan-600');
+                    });
+                    tab.classList.add('bg-cyan-500', 'text-white', 'shadow-lg', 'shadow-cyan-500/20');
+                    tab.classList.remove('text-gray-500', 'hover:bg-white', 'hover:text-cyan-600');
+
+                    // Update Content Visibility
+                    contents.forEach(content => {
+                        if (content.id === `tab-content-${targetId}`) {
+                            content.classList.remove('opacity-0', 'absolute', 'invisible', 'translate-y-8');
+                            content.classList.add('opacity-100', 'relative', 'translate-y-0');
+                        } else {
+                            content.classList.add('opacity-0', 'absolute', 'invisible', 'translate-y-8');
+                            content.classList.remove('opacity-100', 'relative', 'translate-y-0');
+                        }
+                    });
+                });
+            });
+        </script>
+
+        <!-- Why Choose Us Section -->
+        <section class="py-24 bg-[#f8fafc]">
+            <div class="container mx-auto px-6">
+                <div class="max-w-4xl mb-16">
+                    <h2 class="text-3xl md:text-5xl font-extrabold text-[#0c1b3d] mb-6">
+                        Why GlobixTech Is the Smartest Choice for Educational Institutes
+                    </h2>
+                    <p class="text-gray-600 text-lg leading-relaxed">
+                        GlobixTech combines smart education management software, mobile access, and reliable support in one simple system made for schools, colleges, and madrasas. From cloud backup to local training, here's why thousands trust GlobixTech to run their academic operations smoothly.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12">
+                    {[
+                        {
+                            title: "Cloud-Based Platform",
+                            desc: "No installations or backups needed. Access GlobixTech anytime from mobile, tab, or desktop — everything syncs effortlessly.",
+                            icon: "fa-cloud-upload-alt",
+                            color: "text-blue-500",
+                            bg: "bg-blue-50"
+                        },
+                        {
+                            title: "Affordable Solution",
+                            desc: "GlobixTech is designed to reduce the monthly digital operation costs for schools, colleges, and madrasas without compromising quality.",
+                            icon: "fa-hand-holding-usd",
+                            color: "text-green-500",
+                            bg: "bg-green-50"
+                        },
+                        {
+                            title: "Easy to Use",
+                            desc: "Clean dashboard, simple menus, and Bangla-English support. No extensive training required for basic day-to-day use.",
+                            icon: "fa-magic",
+                            color: "text-orange-500",
+                            bg: "bg-orange-50"
+                        },
+                        {
+                            title: "Safe & Secure",
+                            desc: "All user roles are protected with advanced permissions. Only authorized users can access sensitive financial or student data.",
+                            icon: "fa-shield-alt",
+                            color: "text-cyan-500",
+                            bg: "bg-cyan-50"
+                        },
+                        {
+                            title: "Strong Local Support",
+                            desc: "From setup to training, GlobixTech's Bangladesh-based team helps your school stay on track with fast technical assistance.",
+                            icon: "fa-headset",
+                            color: "text-pink-500",
+                            bg: "bg-pink-50"
+                        },
+                        {
+                            title: "Instant Updates",
+                            desc: "Get live updates for attendance, payments, results, or notices — even from home. Everyone stays informed in real-time.",
+                            icon: "fa-bolt",
+                            color: "text-yellow-500",
+                            bg: "bg-yellow-50"
+                        },
+                        {
+                            title: "Verified Data Storage",
+                            desc: "GlobixTech ensures regular data backups and smart storage systems so your institute's academic history stays safe forever.",
+                            icon: "fa-database",
+                            color: "text-indigo-500",
+                            bg: "bg-indigo-50"
+                        },
+                        {
+                            title: "Full Staff Training",
+                            desc: "Teachers and admins get onboarding help, plus video guides and FAQs. Everyone can use GlobixTech effectively from Day 1.",
+                            icon: "fa-chalkboard-teacher",
+                            color: "text-purple-500",
+                            bg: "bg-purple-50"
+                        }
+                    ].map(item => (
+                        <div class="group">
+                            <div class={`w-14 h-14 ${item.bg} ${item.color} rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                                <i class={`fas ${item.icon}`}></i>
+                            </div>
+                            <h4 class="text-xl font-bold text-[#0c1b3d] mb-3">{item.title}</h4>
+                            <p class="text-gray-500 text-sm leading-relaxed">
+                                {item.desc}
+                            </p>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
+
+        <!-- Detailed Modules Breakdown -->
+        <section id="modules" class="py-24 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <span class="text-blue-600 font-bold uppercase tracking-widest text-sm">Full Capability</span>
+                    <h2 class="text-3xl md:text-5xl font-bold text-[#0c1b3d] mt-2">
+                        Enterprise-Grade Modules
+                    </h2>
+                    <p class="text-gray-600 mt-4 max-w-2xl mx-auto">
+                        Our system is divided into 6 specialized categories covering every aspect of educational management.
+                    </p>
+                </div>
+
+                <!-- Module Category Tabs -->
+                <div class="flex flex-wrap justify-center gap-3 mb-16 overflow-x-auto pb-4 scrollbar-hide">
+                    {moduleCategories.map((cat, idx) => (
+                        <button
+                            data-module-tab={idx}
+                            class={`module-tab flex items-center gap-3 px-6 py-3 rounded-full border transition-all duration-300 whitespace-nowrap ${idx === 0 ? 'bg-blue-600 text-white border-blue-600 shadow-lg shadow-blue-500/30' : 'bg-white text-gray-600 border-gray-200 hover:border-blue-300 hover:text-blue-600'}`}
+                        >
+                            <i class={`fas ${cat.icon} ${idx === 0 ? 'text-white' : 'text-blue-500'}`}></i>
+                            <span class="font-bold text-sm tracking-wide">{cat.title}</span>
+                        </button>
+                    ))}
+                </div>
+
+                <!-- Module Content Area -->
+                <div class="relative min-h-[600px]">
+                    {moduleCategories.map((cat, idx) => (
+                        <div 
+                            class={`module-content absolute inset-0 w-full transition-all duration-500 ${idx === 0 ? 'opacity-100 relative z-10 translate-y-0' : 'opacity-0 invisible z-0 translate-y-8'}`}
+                            data-module-content={idx}
+                        >
+                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                                {cat.modules.map((module) => (
+                                    <div class="bg-white p-8 rounded-[2rem] border border-gray-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all group duration-500 h-full flex flex-col">
+                                        <div class="flex justify-between items-center mb-8">
+                                            <div class="w-12 h-12 bg-slate-50 border border-gray-100 rounded-xl flex items-center justify-center text-[#0c1b3d] font-bold">
+                                                {String(module.id).padStart(2, "0")}
+                                            </div>
+                                            <span class="text-[11px] font-extrabold bg-blue-50 text-blue-600 px-3 py-1.5 rounded-full uppercase tracking-widest">
+                                                {module.count}+ Features
+                                            </span>
+                                        </div>
+                                        <h4 class="text-xl font-bold mb-6 text-[#0c1b3d] group-hover:text-blue-600 transition-colors">
+                                            {module.name}
+                                        </h4>
+                                        <ul class="space-y-4 mb-8">
+                                            {module.features.map((feature) => (
+                                                <li class="flex items-start gap-3 text-sm text-gray-600">
+                                                    <i class={`fas fa-check-circle ${cat.title === "CORE ACADEMIC MODULES" ? "text-blue-500" : "text-cyan-500"} mt-1 flex-shrink-0`}></i>
+                                                    <span class="leading-relaxed">{feature}</span>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                        <!-- Removed "Module Details" button to clean up UI as requested features are already visible -->
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
+
+        <script>
+            // Module Tabs Logic
+            const moduleTabs = document.querySelectorAll('.module-tab');
+            const moduleContents = document.querySelectorAll('.module-content');
+
+            if (moduleTabs.length > 0) {
+                moduleTabs.forEach(tab => {
+                    tab.addEventListener('click', () => {
+                        const targetIdx = (tab as HTMLButtonElement).dataset.moduleTab;
+
+                        // Update Tabs
+                        moduleTabs.forEach(t => {
+                            const icon = t.querySelector('i');
+                            
+                            t.classList.remove('bg-blue-600', 'text-white', 'border-blue-600', 'shadow-lg', 'shadow-blue-500/30');
+                            t.classList.add('bg-white', 'text-gray-600', 'border-gray-200', 'hover:border-blue-300', 'hover:text-blue-600');
+                            
+                            if(icon) {
+                                icon.classList.remove('text-white');
+                                icon.classList.add('text-blue-500');
+                            }
+                        });
+
+                        tab.classList.remove('bg-white', 'text-gray-600', 'border-gray-200', 'hover:border-blue-300', 'hover:text-blue-600');
+                        tab.classList.add('bg-blue-600', 'text-white', 'border-blue-600', 'shadow-lg', 'shadow-blue-500/30');
+                        
+                        const activeIcon = tab.querySelector('i');
+                        if(activeIcon) {
+                            activeIcon.classList.remove('text-blue-500');
+                            activeIcon.classList.add('text-white');
+                        }
+
+                        // Update Content
+                        moduleContents.forEach(content => {
+                            if ((content as HTMLElement).dataset.moduleContent === targetIdx) {
+                                content.classList.remove('opacity-0', 'invisible', 'translate-y-8', 'z-0');
+                                content.classList.add('opacity-100', 'relative', 'translate-y-0', 'z-10');
+                            } else {
+                                content.classList.add('opacity-0', 'invisible', 'translate-y-8', 'z-0');
+                                content.classList.remove('opacity-100', 'relative', 'translate-y-0', 'z-10');
+                            }
+                        });
+                    });
+                });
+            }
+        </script>
+
+        <!-- Pricing Plan Section -->
+        <section id="pricing" class="py-24 bg-[#f8fafc]">
+            <div class="container mx-auto px-6 text-center">
+                <h2
+                    class="text-3xl md:text-5xl font-extrabold text-[#0c1b3d] mb-4"
+                >
+                    Pricing Plan
+                </h2>
+                <p class="text-gray-500 max-w-2xl mx-auto mb-12">
+                    Explore our flexible pricing plans tailored to meet the
+                    needs of your educational institution. Choose from various
+                    options designed to provide maximum value and support for
+                    your academic management.
+                </p>
+
+                <!-- Toggle -->
+                <div class="flex items-center justify-center gap-4 mb-16">
+                    <span class="text-sm font-semibold text-gray-500"
+                        >Monthly</span
+                    >
+                    <button
+                        id="billing-toggle"
+                        class="w-14 h-7 bg-cyan-500 rounded-full relative p-1 transition-all"
+                    >
+                        <div
+                            class="w-5 h-5 bg-white rounded-full transition-transform"
+                        >
+                        </div>
+                    </button>
+                    <span class="text-sm font-semibold text-gray-400"
+                        >Yearly</span
+                    >
+                </div>
+
+                <div
+                    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-left"
+                >
+                    {
+                        pricingPlans.map((plan, planIdx) => (
+                            <div
+                                class={`relative bg-white rounded-[32px] p-8 shadow-xl border-2 transition-all hover:shadow-2xl ${plan.recommended ? "border-cyan-500 ring-4 ring-cyan-500/5" : "border-transparent"}`}
+                            >
+                                {plan.recommended && (
+                                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#0c1b3d] text-white px-4 py-1.5 rounded-full text-xs font-bold flex items-center gap-1.5">
+                                        <i class="fas fa-crown text-[10px] text-yellow-400" />{" "}
+                                        Recommended
+                                    </div>
+                                )}
+
+                                <h3 class="text-cyan-600 font-bold mb-6">
+                                    {plan.name}
+                                </h3>
+                                <div class="mb-8">
+                                    <div class="flex items-baseline gap-1">
+                                        <span
+                                            class="text-3xl font-extrabold text-[#0c1b3d]"
+                                            id={`price-${planIdx}`}
+                                        >
+                                            {plan.price ||
+                                                `${plan.monthlyPrice} BDT`}
+                                        </span>
+                                        {plan.monthlyPrice && (
+                                            <span class="text-gray-400 text-sm font-bold">
+                                                /MONTH
+                                            </span>
+                                        )}
+                                    </div>
+                                    {plan.subtitle && (
+                                        <p class="text-gray-400 text-xs font-bold uppercase mt-1 tracking-wider">
+                                            {plan.subtitle}
+                                        </p>
+                                    )}
+                                </div>
+
+                                <div class="flex items-center justify-between mb-8 py-3 border-t border-b border-gray-50">
+                                    <div class="flex items-center gap-2 text-[#0c1b3d] text-[13px] font-bold">
+                                        <i class="fas fa-sync-alt text-cyan-500 text-xs" />
+                                        One Time Charge:{" "}
+                                        <span class="text-cyan-600">
+                                            {plan.oneTimeCharge === "N/A"
+                                                ? "N/A"
+                                                : `${plan.oneTimeCharge}BDT`}
+                                        </span>
+                                    </div>
+                                    <i class="fas fa-info-circle text-cyan-500 text-[11px] cursor-help" />
+                                </div>
+
+                                {plan.ranges ? (
+                                    <div class="mb-8">
+                                        <p class="text-gray-500 text-[13px] mb-4 font-medium">
+                                            Select student range
+                                        </p>
+                                        <div class="space-y-2.5">
+                                            {plan.ranges.map(
+                                                (range, rangeIdx) => (
+                                                    <label class="flex items-center gap-3 p-3 rounded-xl border border-gray-100 bg-gray-50/50 cursor-pointer hover:border-cyan-200 transition-all group has-[:checked]:bg-cyan-50 has-[:checked]:border-cyan-500">
+                                                        <input
+                                                            type="radio"
+                                                            name={`range-${planIdx}`}
+                                                            value={range.price}
+                                                            checked={
+                                                                rangeIdx === 0
+                                                            }
+                                                            data-plan-index={
+                                                                planIdx
+                                                            }
+                                                            class="w-4 h-4 text-cyan-500 border-gray-300 focus:ring-cyan-500 accent-cyan-500"
+                                                        />
+                                                        <span class="text-xs font-bold text-gray-600 group-has-[:checked]:text-cyan-700">
+                                                            {range.range} (৳
+                                                            {range.price})
+                                                        </span>
+                                                    </label>
+                                                ),
+                                            )}
+                                        </div>
+                                    </div>
+                                ) : (
+                                    <div class="mb-8 min-h-[460px]">
+                                        <p class="text-gray-500 text-[13px] mb-4 font-medium">
+                                            Custom facilities
+                                        </p>
+                                        <ul class="space-y-4">
+                                            {plan.facilities.map((facility) => (
+                                                <li class="flex items-center gap-3 text-sm font-bold text-gray-600">
+                                                    <div class="w-5 h-5 bg-cyan-100 rounded-full flex items-center justify-center text-cyan-500 text-[10px]">
+                                                        <i class="fas fa-check" />
+                                                    </div>
+                                                    {facility}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                )}
+
+                                <button
+                                    class={`w-full py-4 rounded-2xl font-extrabold text-sm uppercase tracking-wider transition-all ${plan.recommended ? "bg-gradient-to-r from-cyan-500 to-teal-600 text-white shadow-xl shadow-cyan-500/20 hover:scale-105 hover:shadow-cyan-500/40" : "bg-gray-50 border border-cyan-500 text-cyan-600 hover:bg-cyan-50"}`}
+                                >
+                                    {plan.price === "Custom"
+                                        ? "Request a quote"
+                                        : "Order now"}
+                                </button>
+                            </div>
+                        ))
+                    }
+                </div>
+
+                <div
+                    class="mt-12 text-left text-sm font-bold text-gray-500 space-y-2"
+                >
+                    <p>* 5% VAT will be applicable on all fees and charges</p>
+                    <p>* Each Add-on has a charge</p>
+                </div>
+            </div>
+        </section>
+
+        <script>
+            // Pricing Plan Interaction
+            document
+                .querySelectorAll('input[type="radio"]')
+                .forEach((radio) => {
+                    radio.addEventListener("change", (e) => {
+                        const planIdx = (e.target as HTMLInputElement).dataset
+                            .planIndex;
+                        const price = (e.target as HTMLInputElement).value;
+                        const priceDisplay = document.getElementById(
+                            `price-${planIdx}`,
+                        );
+                        if (priceDisplay) {
+                            priceDisplay.textContent = `${price} BDT`;
+                        }
+                    });
+                });
+
+            // Billing Toggle Animation (Visual Only)
+            const toggle = document.getElementById("billing-toggle");
+            if (toggle) {
+                toggle.addEventListener("click", () => {
+                    const dot = toggle.querySelector("div");
+                    dot?.classList.toggle("translate-x-7");
+                    toggle.classList.toggle("bg-gray-300");
+                    toggle.classList.toggle("bg-cyan-500");
+                });
+            }
+        </script>
+
+        <!-- Final CTA -->
+        <section class="py-24 bg-[#0c1b3d] relative overflow-hidden">
+            <div class="absolute inset-0 bg-blue-500/5"></div>
+            <div class="container mx-auto px-6 text-center relative z-10">
+                <h2 class="text-3xl md:text-5xl font-extrabold text-white mb-8">
+                    Ready to Digitalize Your Institution?
+                </h2>
+                <p
+                    class="text-xl text-gray-400 mb-12 max-w-2xl mx-auto font-light"
+                >
+                    Our experts are ready to provide a custom demonstration
+                    tailored to your school's specific needs. Experience the
+                    future of education management.
+                </p>
+                <div class="flex flex-col md:flex-row justify-center gap-6">
+                    <a
+                        href="/#contact"
+                        class="bg-cyan-500 hover:bg-cyan-600 transition-all text-white px-10 py-5 rounded-2xl font-bold text-lg shadow-xl shadow-cyan-500/20 uppercase tracking-widest"
+                    >
+                        Request a Demo Now
+                    </a>
+                    <a
+                        href="tel:+8801707568468"
+                        class="bg-white/5 border border-white/20 hover:bg-white/10 transition-all text-white px-10 py-5 rounded-2xl font-bold text-lg uppercase tracking-widest"
+                    >
+                        Call for Consultation
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <Footer />
+</MainLayout>
+
+<style>
+    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap");
+
+    :root {
+        font-family: "Poppins", sans-serif;
+    }
+
+    /* Custom smooth scrolling for the whole page */
+    html {
+        scroll-behavior: smooth;
+    }
+
+    /* Additional styles for premium feel */
+    .font-poppins {
+        font-family: "Poppins", sans-serif;
+    }
+</style>

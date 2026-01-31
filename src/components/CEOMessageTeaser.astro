@@ -1,0 +1,79 @@
+---
+// CEO Message Teaser Component for Homepage
+import { Image } from "astro:assets";
+import ceoImage from "../assets/CEO.png";
+---
+
+<section
+    id="ceo-message"
+    class="py-20 bg-gradient-to-br from-blue-50 via-white to-cyan-50"
+>
+    <div class="container mx-auto px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- CEO Photo -->
+                <div class="relative group">
+                    <div
+                        class="absolute -inset-4 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-3xl opacity-20 group-hover:opacity-30 blur-xl transition-opacity"
+                    >
+                    </div>
+                    <Image
+                        src={ceoImage}
+                        alt="Syed Mominul Islam - CEO, GlobixTech"
+                        class="relative rounded-2xl shadow-2xl w-full max-w-md mx-auto border-4 border-white"
+                    />
+                </div>
+
+                <!-- Message Content -->
+                <div class="text-left">
+                    <div
+                        class="inline-block bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-bold mb-6 uppercase tracking-wider"
+                    >
+                        Leadership Message
+                    </div>
+                    <h2
+                        class="text-3xl md:text-4xl font-bold text-[#0c1b3d] mb-6"
+                    >
+                        Message from Our CEO
+                    </h2>
+
+                    <div class="mb-6">
+                        <h3 class="text-2xl font-bold text-gray-800">
+                            Syed Mominul Islam
+                        </h3>
+                        <p class="text-blue-600 font-semibold">
+                            CEO, GlobixTech
+                        </p>
+                    </div>
+
+                    <blockquote class="border-l-4 border-blue-500 pl-6 mb-8">
+                        <p
+                            class="text-xl md:text-2xl text-gray-700 italic leading-relaxed"
+                        >
+                            "At GlobixTech, we believe technology should empower
+                            businesses, not complicate them. Our mission is to
+                            deliver smart, affordable software solutions that
+                            help Bangladesh businesses grow and compete
+                            globally."
+                        </p>
+                    </blockquote>
+
+                    <p class="text-gray-600 mb-8 leading-relaxed">
+                        Since our founding, we've been committed to
+                        understanding the unique challenges faced by local
+                        businesses and creating solutions that truly work. We
+                        don't just build software – we build partnerships.
+                    </p>
+
+                    <a
+                        href="/about"
+                        class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-xl font-bold transition-all shadow-lg shadow-blue-600/20"
+                    >
+                        Read Full Message
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

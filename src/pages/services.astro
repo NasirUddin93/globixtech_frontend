@@ -1,0 +1,128 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import Card from "../components/Card.astro";
+import Button from "../components/Button.astro";
+import PageHeader from "../components/PageHeader.astro";
+
+const services = [
+    {
+        title: "School Management System",
+        description:
+            "Comprehensive ERP for schools, colleges, and madrasas. Manage attendance, exams, fees, and results effortlessly.",
+        icon: "fa-graduation-cap",
+        color: "text-blue-600",
+        link: "/solutions/school-management-system",
+    },
+    {
+        title: "E-Commerce Solutions",
+        description:
+            "Custom online stores with inventory management, payment gateway integration, and mobile apps.",
+        icon: "fa-shopping-cart",
+        color: "text-green-600",
+        link: "/solutions/ecommerce",
+    },
+    {
+        title: "Inventory Management",
+        description:
+            "Track stock, sales, and purchases in real-time. multiple warehouse support and barcode integration.",
+        icon: "fa-boxes",
+        color: "text-orange-600",
+        link: "/solutions/inventory",
+    },
+    {
+        title: "Accounting Software",
+        description:
+            "Double-entry accounting system, financial reports, VAT generation, and expense tracking.",
+        icon: "fa-calculator",
+        color: "text-purple-600",
+        link: "/solutions/accounting",
+    },
+    {
+        title: "Web Application Development",
+        description:
+            "Scalable SaaS platforms, customer portals, and enterprise web solutions using latest technologies.",
+        icon: "fa-code",
+        color: "text-cyan-600",
+        link: "/solutions/web-apps",
+    },
+    {
+        title: "Server & Network Management",
+        description:
+            "Linux server administration, network security, and infrastructure setup for your office.",
+        icon: "fa-server",
+        color: "text-red-600",
+        link: "/solutions/server-management",
+    },
+];
+---
+
+<MainLayout title="Our Services - Globix Tech">
+    <Navbar />
+
+    <div
+        class="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-300"
+    >
+        <PageHeader
+            title="Our"
+            spanTitle="Expertise"
+            description="We provide end-to-end technology solutions to help your business grow."
+            badge="Solutions & Services"
+            badgeIcon="fa-briefcase"
+        />
+
+        <div class="container mx-auto px-6 py-24">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {
+                    services.map((service) => (
+                        <Card class="bg-white dark:bg-gray-800 border-gray-100 dark:border-gray-700 h-full flex flex-col">
+                            <div
+                                class={`w-14 h-14 ${service.color.replace("text", "bg")} bg-opacity-10 rounded-2xl flex items-center justify-center text-2xl mb-6`}
+                            >
+                                <i
+                                    class={`fas ${service.icon} ${service.color}`}
+                                />
+                            </div>
+                            <h3 class="text-2xl font-bold text-[#0c1b3d] dark:text-white mb-4">
+                                {service.title}
+                            </h3>
+                            <p class="text-gray-600 dark:text-gray-300 mb-8 flex-1 leading-relaxed">
+                                {service.description}
+                            </p>
+                            <Button
+                                href={service.link}
+                                variant="outline"
+                                class="w-full !text-blue-600 !border-blue-200 hover:!bg-blue-50 dark:!text-blue-400 dark:!border-blue-800 dark:hover:!bg-gray-700"
+                            >
+                                Learn More <i class="fas fa-arrow-right ml-2" />
+                            </Button>
+                        </Card>
+                    ))
+                }
+            </div>
+
+            <!-- CTA Section -->
+            <div
+                class="mt-20 bg-[#0c1b3d] dark:bg-blue-900 rounded-[2rem] p-12 text-center relative overflow-hidden"
+            >
+                <div class="absolute inset-0 bg-blue-600/20 blur-3xl"></div>
+                <div class="relative z-10">
+                    <h2 class="text-3xl font-bold text-white mb-6">
+                        Need a Custom Solution?
+                    </h2>
+                    <p class="text-blue-200 text-lg mb-8 max-w-2xl mx-auto">
+                        Don't see what you're looking for? We specialize in
+                        custom software development tailored to your unique
+                        business requirements.
+                    </p>
+                    <Button href="/contact" variant="primary">
+                        Contact Us Today
+                    </Button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <Footer />
+</MainLayout>

@@ -1,0 +1,62 @@
+---
+const testimonials = [
+    {
+        name: "Md. Kamal Hossain",
+        role: "Principal, Dhaka International School",
+        content:
+            "GlobixTech's School Management System reduced our administrative workload by 60%. The team understood our needs perfectly and delivered a solution that works seamlessly for our 2,000+ students.",
+    },
+    {
+        name: "Fatima Rahman",
+        role: "CEO, ShopBD E-commerce",
+        content:
+            "Our online sales increased by 45% within 3 months of launching the e-commerce platform built by GlobixTech. Their support team is always responsive and helpful.",
+    },
+    {
+        name: "Ahmed Iqbal",
+        role: "Director, TechFlow Solutions Ltd.",
+        content:
+            "Professional team with excellent technical expertise. They delivered our custom ERP system on time and within budget. Highly recommend for any business in Bangladesh looking for reliable software solutions.",
+    },
+];
+---
+
+<section class="py-20 bg-gradient-to-r from-primary to-secondary text-white">
+    <div class="container mx-auto px-6">
+        <h2 class="text-4xl font-bold text-center mb-4">
+            ⭐ What Our Clients Say
+        </h2>
+        <p class="text-center text-xl mb-16 max-w-3xl mx-auto opacity-90">
+            We pride ourselves on delivering exceptional results and building
+            lasting relationships with our clients.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            {
+                testimonials.map((t) => (
+                    <div class="bg-white bg-opacity-10 p-8 rounded-xl backdrop-blur-sm border border-white/10 hover:bg-opacity-20 transition-all">
+                        <div class="flex mb-6 text-yellow-300">
+                            <i class="fas fa-star" />
+                            <i class="fas fa-star" />
+                            <i class="fas fa-star" />
+                            <i class="fas fa-star" />
+                            <i class="fas fa-star" />
+                        </div>
+                        <p class="text-lg mb-6 leading-relaxed italic">
+                            "{t.content}"
+                        </p>
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-white/20 rounded-full mr-4 flex items-center justify-center font-bold text-white uppercase">
+                                {t.name.charAt(0)}
+                            </div>
+                            <div>
+                                <h4 class="font-bold">{t.name}</h4>
+                                <p class="text-sm opacity-80">{t.role}</p>
+                            </div>
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+    </div>
+</section>

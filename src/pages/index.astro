@@ -1,0 +1,73 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import Navbar from "../components/Navbar.astro";
+import Hero from "../components/Hero.astro";
+import TrustBadges from "../components/TrustBadges.astro";
+import Services from "../components/Services.astro";
+import WhyChooseUs from "../components/WhyChooseUs.astro";
+import About from "../components/About.astro";
+import CEOMessageTeaser from "../components/CEOMessageTeaser.astro";
+import RDWing from "../components/RDWing.astro";
+import Technologies from "../components/Technologies.astro";
+import Portfolio from "../components/Portfolio.astro";
+import Testimonials from "../components/Testimonials.astro";
+import Contact from "../components/Contact.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<MainLayout title="Globix Tech - Smart Software Solutions">
+    <Navbar />
+    <Hero />
+    <TrustBadges />
+    <Services />
+    <WhyChooseUs />
+    <RDWing />
+    <About />
+    <CEOMessageTeaser />
+    <Technologies />
+    <Portfolio />
+    <Testimonials />
+    <Contact />
+    <Footer />
+</MainLayout>
+
+<script>
+    // Update active navigation link on scroll
+    window.addEventListener("scroll", () => {
+        const sections = document.querySelectorAll("section[id]");
+        const navLinks = document.querySelectorAll("nav a");
+
+        let current = "";
+        sections.forEach((section) => {
+            const sectionTop = (section as HTMLElement).offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (window.scrollY >= sectionTop - 150) {
+                current = section.getAttribute("id") || "";
+            }
+        });
+
+        navLinks.forEach((link) => {
+            link.classList.remove("nav-active");
+            if (link.getAttribute("href") === `#${current}`) {
+                link.classList.add("nav-active");
+            }
+        });
+    });
+
+    // Smooth scroll for internal links
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute("href");
+            if (!targetId || targetId === "#") return;
+
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                window.scrollTo({
+                    top: (targetElement as HTMLElement).offsetTop - 80,
+                    behavior: "smooth",
+                });
+            }
+        });
+    });
+</script>

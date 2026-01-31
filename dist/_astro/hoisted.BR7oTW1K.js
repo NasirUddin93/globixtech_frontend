@@ -1,0 +1,1 @@
+const i=document.getElementById("back-to-top");window.addEventListener("scroll",()=>{window.scrollY>300?(i?.classList.remove("opacity-0","invisible"),i?.classList.add("opacity-100","visible")):(i?.classList.add("opacity-0","invisible"),i?.classList.remove("opacity-100","visible"))});i?.addEventListener("click",()=>{window.scrollTo({top:0,behavior:"smooth"})});

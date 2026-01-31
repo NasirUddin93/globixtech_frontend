@@ -1,0 +1,23 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import ContactComponent from "../components/Contact.astro";
+import PageHeader from "../components/PageHeader.astro";
+---
+
+<MainLayout title="Contact Us - Get a Quote - Globix Tech">
+    <Navbar />
+    <main class="min-h-screen">
+        <PageHeader
+            title="Get In"
+            spanTitle="Touch"
+            description="Bridge the gap between your vision and reality. Let's discuss your next project."
+            badge="Contact Us"
+            badgeIcon="fa-paper-plane"
+        />
+
+        <ContactComponent />
+    </main>
+    <Footer />
+</MainLayout>

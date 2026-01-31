@@ -1,0 +1,985 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
+
+const stats = [
+    { label: "Data Projects", value: "100+" },
+    { label: "Insights Generated", value: "10k+" },
+    { label: "Data Accuracy", value: "98%" },
+    { label: "ROI Increase", value: "5x" },
+];
+
+const targetAudiences = [
+    { title: "E-commerce", icon: "fa-shopping-cart" },
+    { title: "Finance & Banking", icon: "fa-university" },
+    { title: "Healthcare", icon: "fa-heartbeat" },
+    { title: "Manufacturing", icon: "fa-industry" },
+    { title: "Retail Chains", icon: "fa-store" },
+    { title: "Startups", icon: "fa-rocket" },
+];
+
+const benefits = [
+    {
+        title: "Data-Driven Decisions",
+        description: "Make informed choices backed by real data",
+        icon: "fa-chart-line",
+        color: "blue",
+    },
+    {
+        title: "Predictive Insights",
+        description: "Forecast trends before they happen",
+        icon: "fa-crystal-ball",
+        color: "purple",
+    },
+    {
+        title: "Visual Analytics",
+        description: "Beautiful dashboards that tell your story",
+        icon: "fa-chart-pie",
+        color: "green",
+    },
+    {
+        title: "Competitive Edge",
+        description: "Stay ahead with data intelligence",
+        icon: "fa-trophy",
+        color: "yellow",
+    },
+];
+
+const services = [
+    {
+        title: "Data Analytics",
+        icon: "fa-chart-bar",
+        items: [
+            "Business Intelligence",
+            "Performance Analytics",
+            "Customer Analytics",
+            "Market Research",
+        ],
+    },
+    {
+        title: "Data Visualization",
+        icon: "fa-chart-pie",
+        items: [
+            "Interactive Dashboards",
+            "Custom Reports",
+            "Real-time Monitoring",
+            "Executive Summaries",
+        ],
+    },
+    {
+        title: "Predictive Analytics",
+        icon: "fa-brain",
+        items: [
+            "Sales Forecasting",
+            "Demand Prediction",
+            "Churn Analysis",
+            "Risk Assessment",
+        ],
+    },
+    {
+        title: "Data Engineering",
+        icon: "fa-database",
+        items: [
+            "Data Pipeline Setup",
+            "ETL Processes",
+            "Data Warehousing",
+            "Cloud Migration",
+        ],
+    },
+];
+
+const useCases = [
+    {
+        id: "business-intelligence",
+        title: "Business Intelligence Dashboards",
+        description:
+            "Transform raw data into actionable insights with interactive dashboards. Track KPIs, monitor performance, and identify trends in real-time. Get a complete view of your business health at a glance with custom visualizations tailored to your needs.",
+        image: "/sms_mockup.png",
+        link: "#",
+    },
+    {
+        id: "customer-analytics",
+        title: "Customer Analytics & Segmentation",
+        description:
+            "Understand your customers deeply with advanced analytics. Segment customers by behavior, preferences, and value. Identify high-value customers, predict churn, and personalize marketing campaigns for maximum ROI.",
+        image: "/sms_mockup.png",
+        link: "#",
+    },
+    {
+        id: "sales-forecasting",
+        title: "Sales & Revenue Forecasting",
+        description:
+            "Predict future sales with machine learning models trained on your historical data. Understand seasonal patterns, identify growth opportunities, and plan inventory accordingly. Make confident decisions with accurate forecasts.",
+        image: "/sms_mockup.png",
+        link: "#",
+    },
+    {
+        id: "market-analysis",
+        title: "Market Research & Analysis",
+        description:
+            "Gain competitive intelligence through comprehensive market analysis. Track industry trends, analyze competitor strategies, identify market gaps, and discover new opportunities. Make strategic decisions backed by data.",
+        image: "/sms_mockup.png",
+        link: "#",
+    },
+    {
+        id: "operational-analytics",
+        title: "Operational Analytics",
+        description:
+            "Optimize operations with data-driven insights. Track efficiency metrics, identify bottlenecks, reduce costs, and improve productivity. Monitor supply chain, inventory, and resource utilization in real-time.",
+        image: "/sms_mockup.png",
+        link: "#",
+    },
+    {
+        id: "financial-analytics",
+        title: "Financial Analytics & Reporting",
+        description:
+            "Comprehensive financial analysis and reporting solutions. Track revenue, expenses, profitability, and cash flow. Generate automated financial reports, budget forecasts, and variance analysis for better financial planning.",
+        image: "/sms_mockup.png",
+        link: "#",
+    },
+];
+
+const processSteps = [
+    { title: "Data Discovery", icon: "fa-search" },
+    { title: "Data Collection", icon: "fa-database" },
+    { title: "Analysis & Modeling", icon: "fa-chart-line" },
+    { title: "Visualization", icon: "fa-chart-pie" },
+    { title: "Insights & Action", icon: "fa-lightbulb" },
+];
+
+const pricingPackages = [
+    {
+        name: "Analytics Starter",
+        price: "25,000–40,000 BDT",
+        bestFor: "Small Business",
+        color: "blue",
+        features: [
+            "Basic Analytics Dashboard",
+            "Up to 3 Data Sources",
+            "Standard Visualizations",
+            "Monthly Reports",
+            "Email Support",
+        ],
+        delivery: "10-15 Days",
+        support: "3 Months Support",
+    },
+    {
+        name: "Analytics Pro",
+        price: "60,000–100,000 BDT",
+        bestFor: "Growing Companies",
+        isPopular: true,
+        color: "green",
+        features: [
+            "Advanced Analytics Platform",
+            "Unlimited Data Sources",
+            "Custom Dashboards",
+            "Predictive Models",
+            "Real-time Updates",
+            "Priority Support",
+        ],
+        delivery: "20-30 Days",
+        support: "6 Months Support",
+    },
+    {
+        name: "Enterprise Analytics",
+        price: "200,000+ BDT",
+        bestFor: "Large Organizations",
+        color: "purple",
+        features: [
+            "Complete Data Science Platform",
+            "AI/ML Integration",
+            "Custom Data Pipelines",
+            "Dedicated Data Scientist",
+            "24/7 Monitoring",
+            "12 Months Support",
+        ],
+        delivery: "45-60 Days",
+        support: "12 Months Support",
+    },
+];
+
+const addOns = [
+    { name: "Data Pipeline Setup", price: "Starting @ 15,000 BDT" },
+    { name: "ML Model Training", price: "Starting @ 25,000 BDT" },
+    { name: "Custom Integration", price: "Ask for Quote" },
+    { name: "Monthly Maintenance", price: "Starting @ 8,000 BDT" },
+];
+
+const tools = [
+    { name: "Python & R", icon: "fa-code" },
+    { name: "Power BI", icon: "fa-chart-bar" },
+    { name: "Tableau", icon: "fa-chart-pie" },
+    { name: "SQL Databases", icon: "fa-database" },
+    { name: "Apache Spark", icon: "fa-fire" },
+    { name: "TensorFlow", icon: "fa-brain" },
+];
+
+const industries = [
+    {
+        industry: "E-commerce",
+        icon: "fa-shopping-cart",
+        solutions: [
+            "Sales Analytics",
+            "Customer Behavior",
+            "Product Performance",
+        ],
+    },
+    {
+        industry: "Finance",
+        icon: "fa-university",
+        solutions: ["Risk Analytics", "Fraud Detection", "Portfolio Analysis"],
+    },
+    {
+        industry: "Healthcare",
+        icon: "fa-heartbeat",
+        solutions: [
+            "Patient Analytics",
+            "Treatment Outcomes",
+            "Resource Optimization",
+        ],
+    },
+    {
+        industry: "Manufacturing",
+        icon: "fa-industry",
+        solutions: ["Production Analytics", "Quality Control", "Supply Chain"],
+    },
+    {
+        industry: "Retail",
+        icon: "fa-store",
+        solutions: [
+            "Inventory Analytics",
+            "Foot Traffic Analysis",
+            "Pricing Optimization",
+        ],
+    },
+    {
+        industry: "Logistics",
+        icon: "fa-truck",
+        solutions: [
+            "Route Optimization",
+            "Delivery Analytics",
+            "Fleet Management",
+        ],
+    },
+];
+
+const testimonials = [
+    {
+        name: "Mahmud Hassan",
+        business: "RetailPro Bangladesh",
+        rating: 5,
+        text: "The analytics dashboard transformed how we make decisions. We can now see which products perform best, when to restock, and which marketing campaigns work. Sales increased 35% in 6 months!",
+        result: "35% Sales Increase",
+        location: "Dhaka",
+    },
+    {
+        name: "Ayesha Siddique",
+        business: "HealthCare Plus",
+        rating: 5,
+        text: "Patient analytics helped us optimize appointment scheduling and reduce wait times by 40%. The predictive models forecast patient volume accurately, allowing better resource planning.",
+        result: "40% Efficiency Gain",
+        location: "Chittagong",
+    },
+    {
+        name: "Farhan Ahmed",
+        business: "BanglaFinance Ltd",
+        rating: 5,
+        text: "Risk analytics and fraud detection saved us millions. The system identifies suspicious transactions in real-time and has reduced fraud by 70%. Best investment we've made!",
+        result: "70% Fraud Reduction",
+        location: "Sylhet",
+    },
+];
+
+const faqs = [
+    {
+        question: "What is Data Science?",
+        answer: "Data Science is the practice of extracting meaningful insights from data using statistics, machine learning, and analytics. It helps businesses understand patterns, predict trends, and make data-driven decisions that improve performance and profitability.",
+    },
+    {
+        question: "What data do you need from us?",
+        answer: "We need access to your business data - sales records, customer information, transaction logs, website analytics, etc. The specific data depends on your goals. We'll guide you through exactly what's needed during our discovery phase and ensure all data is handled securely.",
+    },
+    {
+        question: "How long does it take to see results?",
+        answer: "Initial insights can be delivered within 10-15 days for basic analytics. Comprehensive dashboards take 20-30 days. Advanced predictive models may take 45-60 days. You'll start seeing value from the first week as we deliver incremental results.",
+    },
+    {
+        question: "Do I need technical knowledge?",
+        answer: "No! We design user-friendly dashboards that anyone can use. You'll get training on how to interpret the data and use the tools. Our visualizations are intuitive and designed for business users, not data scientists.",
+    },
+    {
+        question: "Can you work with my existing data?",
+        answer: "Yes! We work with data from any source - Excel files, databases, CRM systems, accounting software, website analytics, social media, and more. We'll integrate everything into a unified analytics platform.",
+    },
+    {
+        question: "What's the difference between Analytics and Data Science?",
+        answer: "Analytics focuses on understanding what happened and why (descriptive). Data Science goes further to predict what will happen and prescribe actions (predictive and prescriptive). We offer both based on your needs and maturity level.",
+    },
+];
+---
+
+<MainLayout title="Data Science Solutions - Globix Tech">
+    <Navbar />
+
+    <main class="min-h-screen bg-slate-50">
+        <!-- Hero Section -->
+        <section
+            class="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden bg-[#0c1b3d]"
+        >
+            <div
+                class="absolute inset-0 bg-gradient-to-br from-[#0c1b3d] via-[#1a2c5a] to-[#0c1b3d]"
+            >
+            </div>
+            <div
+                class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-blue-500/10 to-transparent blur-3xl"
+            >
+            </div>
+
+            <div class="container mx-auto px-6 relative z-10 text-center">
+                <div
+                    class="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 px-4 py-2 rounded-full text-blue-400 text-sm font-semibold mb-6"
+                >
+                    <i class="fas fa-chart-line"></i> Data-Driven Intelligence
+                </div>
+                <h1
+                    class="text-4xl md:text-6xl font-extrabold text-white mb-6 leading-[1.2]"
+                >
+                    Turn Data into <br /><span
+                        class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400"
+                        >Actionable Insights</span
+                    >
+                </h1>
+                <p
+                    class="text-lg md:text-xl text-gray-300 mb-10 max-w-2xl mx-auto leading-relaxed"
+                >
+                    Advanced analytics, predictive modeling, and beautiful
+                    visualizations. Make smarter decisions with data science.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a
+                        href="#contact"
+                        class="bg-blue-600 hover:bg-blue-700 text-white px-10 py-4 rounded-full font-bold transition-all shadow-lg shadow-blue-600/20 text-lg"
+                    >
+                        Get Free Analysis
+                    </a>
+                    <a
+                        href="https://wa.me/8801707568468?text=I%20am%20interested%20in%20Data%20Science%20Solutions"
+                        target="_blank"
+                        class="bg-green-500 hover:bg-green-600 text-white px-10 py-4 rounded-full font-bold transition-all shadow-lg shadow-green-500/20 flex items-center justify-center gap-2 text-lg"
+                    >
+                        <i class="fab fa-whatsapp"></i> WhatsApp Us
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="py-16 bg-white border-b border-gray-100">
+            <div class="container mx-auto px-6">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                    {
+                        stats.map((stat) => (
+                            <div class="group">
+                                <div class="text-4xl font-extrabold text-[#0c1b3d] mb-2 group-hover:text-blue-600 transition-colors">
+                                    {stat.value}
+                                </div>
+                                <div class="text-sm font-bold text-gray-400 uppercase tracking-widest">
+                                    {stat.label}
+                                </div>
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
+        </section>
+
+        <!-- Who Needs Data Science -->
+        <section class="py-16 bg-slate-50 border-y border-gray-100">
+            <div class="container mx-auto px-6">
+                <h2
+                    class="text-2xl md:text-3xl font-bold text-center text-[#0c1b3d] mb-12"
+                >
+                    Who Benefits from Data Science?
+                </h2>
+                <div
+                    class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6"
+                >
+                    {
+                        targetAudiences.map((item) => (
+                            <div class="bg-white p-6 rounded-xl shadow-sm text-center hover:shadow-md transition-shadow">
+                                <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 mx-auto mb-4 text-xl">
+                                    <i class={`fas ${item.icon}`} />
+                                </div>
+                                <h3 class="font-bold text-gray-800 text-sm">
+                                    {item.title}
+                                </h3>
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Benefits -->
+        <section class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl font-bold text-[#0c1b3d] mb-4">
+                        Why Data Science Matters
+                    </h2>
+                    <p class="text-gray-600">
+                        Transform your business with data-driven intelligence
+                    </p>
+                </div>
+                <div
+                    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+                >
+                    {
+                        benefits.map((benefit) => (
+                            <div class="text-center p-6 border border-gray-100 rounded-2xl hover:border-blue-200 transition-colors">
+                                <div
+                                    class={`w-16 h-16 bg-${benefit.color}-50 rounded-2xl flex items-center justify-center text-${benefit.color}-600 text-3xl mx-auto mb-6`}
+                                >
+                                    <i class={`fas ${benefit.icon}`} />
+                                </div>
+                                <h3 class="text-xl font-bold mb-2">
+                                    {benefit.title}
+                                </h3>
+                                <p class="text-gray-500 text-sm">
+                                    {benefit.description}
+                                </p>
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Breakdown -->
+        <section class="py-20 bg-slate-50">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl font-bold text-[#0c1b3d] mb-4">
+                        Our Data Science Services
+                    </h2>
+                    <p class="text-gray-600">
+                        Comprehensive solutions from analytics to engineering
+                    </p>
+                </div>
+                <div
+                    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+                >
+                    {
+                        services.map((category) => (
+                            <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow border border-gray-100">
+                                <div class="flex items-center gap-3 mb-6">
+                                    <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600 text-xl">
+                                        <i class={`fas ${category.icon}`} />
+                                    </div>
+                                    <h3 class="font-bold text-[#0c1b3d] text-lg">
+                                        {category.title}
+                                    </h3>
+                                </div>
+                                <ul class="space-y-3">
+                                    {category.items.map((item) => (
+                                        <li class="flex items-center gap-3 text-gray-600 text-sm font-medium">
+                                            <i class="fas fa-check-circle text-green-500" />{" "}
+                                            {item}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
+        </section>
+
+        <!-- Use Cases / Interactive Modules -->
+        <section class="py-24 bg-white" id="use-cases">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2
+                        class="text-3xl md:text-5xl font-bold text-[#0c1b3d] mb-4"
+                    >
+                        Data Science Solutions That Work
+                    </h2>
+                    <p class="text-gray-600 max-w-3xl mx-auto">
+                        Real-world applications that drive measurable business
+                        results
+                    </p>
+                </div>
+
+                <div
+                    class="bg-white rounded-3xl shadow-xl border border-gray-100 p-8 md:p-12"
+                >
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                        <!-- Sidebar Navigation -->
+                        <div class="lg:col-span-4 flex flex-col gap-3">
+                            {
+                                useCases.map((useCase, index) => (
+                                    <button
+                                        class={`module-btn w-full text-left px-6 py-4 rounded-xl border border-gray-100 font-semibold transition-all duration-300 flex items-center justify-between group
+                    ${index === 0 ? "bg-white border-blue-500 shadow-md text-blue-600 ring-1 ring-blue-500" : "bg-gray-50 text-gray-600 hover:bg-white hover:shadow-md"}`}
+                                        data-id={useCase.id}
+                                    >
+                                        {useCase.title}
+                                        <i
+                                            class={`fas fa-arrow-right transform transition-transform group-hover:translate-x-1 ${index === 0 ? "text-blue-600" : "text-gray-300"}`}
+                                        />
+                                    </button>
+                                ))
+                            }
+                        </div>
+
+                        <!-- Content Area -->
+                        <div class="lg:col-span-8 relative min-h-[400px]">
+                            {
+                                useCases.map((useCase, index) => (
+                                    <div
+                                        id={`content-${useCase.id}`}
+                                        class={`module-content transition-all duration-500 absolute inset-0 
+                    ${index === 0 ? "opacity-100 z-10 translate-y-0" : "opacity-0 -z-10 translate-y-4"}`}
+                                    >
+                                        <div class="flex flex-col h-full justify-center">
+                                            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                                                <div>
+                                                    <h3 class="text-3xl font-bold text-[#0c1b3d] mb-4 border-l-4 border-blue-500 pl-4">
+                                                        {useCase.title}
+                                                    </h3>
+                                                    <p class="text-gray-600 mb-8 leading-relaxed text-lg">
+                                                        {useCase.description}
+                                                    </p>
+                                                    <a
+                                                        href={useCase.link}
+                                                        class="inline-block bg-blue-500 hover:bg-blue-600 text-white px-8 py-3 rounded-full font-bold transition-colors shadow-lg shadow-blue-500/30"
+                                                    >
+                                                        Learn More
+                                                    </a>
+                                                </div>
+                                                <div class="relative group">
+                                                    <div class="absolute -inset-4 bg-blue-500/10 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                                                    <img
+                                                        src={useCase.image}
+                                                        alt={useCase.title}
+                                                        class="rounded-lg shadow-2xl border border-gray-100 relative z-10 transform transition-transform duration-500 hover:scale-[1.02]"
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                ))
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Process -->
+        <section class="py-20 bg-slate-50 border-b border-gray-100">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl font-bold text-[#0c1b3d] mb-4">
+                        Our Data Science Process
+                    </h2>
+                    <p class="text-gray-600">
+                        From raw data to actionable insights in 5 steps
+                    </p>
+                </div>
+
+                <div class="relative">
+                    <div
+                        class="hidden md:block absolute top-1/2 left-0 w-full h-1 bg-gray-100 -translate-y-1/2 z-0"
+                    >
+                    </div>
+
+                    <div
+                        class="grid grid-cols-1 md:grid-cols-5 gap-8 relative z-10"
+                    >
+                        {
+                            processSteps.map((step, index) => (
+                                <div class="group">
+                                    <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm group-hover:shadow-md transition-all text-center relative">
+                                        <div class="w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold absolute -top-5 left-1/2 -translate-x-1/2 border-4 border-white shadow-sm">
+                                            {index + 1}
+                                        </div>
+                                        <div class="mt-6 mb-3 text-blue-600 text-3xl">
+                                            <i class={`fas ${step.icon}`} />
+                                        </div>
+                                        <h3 class="font-bold text-[#0c1b3d] text-sm">
+                                            {step.title}
+                                        </h3>
+                                    </div>
+                                </div>
+                            ))
+                        }
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing -->
+        <section class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl font-bold text-[#0c1b3d] mb-4">
+                        Flexible Pricing for Every Business
+                    </h2>
+                    <p class="text-gray-600">
+                        Choose the package that fits your data needs
+                    </p>
+                </div>
+
+                <div
+                    class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-16"
+                >
+                    {
+                        pricingPackages.map((pkg) => (
+                            <div
+                                class={`relative bg-white rounded-2xl p-8 border-2 transition-transform hover:-translate-y-2 ${pkg.isPopular ? "border-green-500 shadow-xl" : "border-gray-100 shadow-sm"}`}
+                            >
+                                {pkg.isPopular && (
+                                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-green-500 text-white px-4 py-1 rounded-full text-sm font-bold shadow-md">
+                                        Most Popular
+                                    </div>
+                                )}
+                                <div class="text-center mb-8">
+                                    <h3 class="text-2xl font-bold text-gray-800 mb-2">
+                                        {pkg.name}
+                                    </h3>
+                                    <div
+                                        class={`inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-4 bg-${pkg.color}-50 text-${pkg.color}-600`}
+                                    >
+                                        {pkg.bestFor}
+                                    </div>
+                                    <div class="text-3xl font-bold text-[#0c1b3d]">
+                                        {pkg.price}
+                                    </div>
+                                </div>
+
+                                <div class="space-y-4 mb-8">
+                                    <h4 class="font-bold text-gray-700 text-sm uppercase border-b pb-2">
+                                        What's Included
+                                    </h4>
+                                    <ul class="space-y-3">
+                                        {pkg.features.map((feature) => (
+                                            <li class="flex items-start gap-3 text-sm text-gray-600">
+                                                <i class="fas fa-check text-green-500 mt-1" />
+                                                <span>{feature}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+
+                                <div class="bg-gray-50 -mx-8 -mb-8 p-6 rounded-b-2xl border-t border-gray-100">
+                                    <div class="grid grid-cols-2 gap-4 text-center text-sm mb-6">
+                                        <div>
+                                            <div class="text-gray-400 font-semibold text-xs uppercase">
+                                                Delivery
+                                            </div>
+                                            <div class="font-bold text-[#0c1b3d]">
+                                                {pkg.delivery}
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="text-gray-400 font-semibold text-xs uppercase">
+                                                Support
+                                            </div>
+                                            <div class="font-bold text-[#0c1b3d]">
+                                                {pkg.support}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a
+                                        href="#contact"
+                                        class={`block w-full text-center py-3 rounded-xl font-bold transition-all ${pkg.isPopular ? "bg-green-500 text-white hover:bg-green-600 shadow-lg shadow-green-500/20" : "bg-[#0c1b3d] text-white hover:bg-opacity-90"}`}
+                                    >
+                                        Get Started
+                                    </a>
+                                </div>
+                            </div>
+                        ))
+                    }
+                </div>
+
+                <!-- Add-ons -->
+                <div
+                    class="max-w-4xl mx-auto bg-slate-50 rounded-2xl shadow-sm border border-gray-100 p-8"
+                >
+                    <h3
+                        class="text-xl font-bold text-[#0c1b3d] mb-6 text-center"
+                    >
+                        Additional Services
+                    </h3>
+                    <div
+                        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 divide-y sm:divide-y-0 sm:divide-x divide-gray-100"
+                    >
+                        {
+                            addOns.map((addon) => (
+                                <div class="text-center pt-4 sm:pt-0 px-2">
+                                    <h4 class="font-semibold text-gray-700 mb-1">
+                                        {addon.name}
+                                    </h4>
+                                    <p class="text-sm font-bold text-blue-600">
+                                        {addon.price}
+                                    </p>
+                                </div>
+                            ))
+                        }
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tools & Technologies -->
+        <section class="py-16 bg-slate-50">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h3 class="text-2xl font-bold text-[#0c1b3d] mb-2">
+                        Industry-Leading Tools & Technologies
+                    </h3>
+                    <p class="text-gray-600">
+                        We use the best data science tools available
+                    </p>
+                </div>
+                <div
+                    class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 max-w-5xl mx-auto"
+                >
+                    {
+                        tools.map((tool) => (
+                            <div class="bg-white p-6 rounded-xl shadow-sm text-center hover:shadow-md transition-shadow">
+                                <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 mx-auto mb-3 text-xl">
+                                    <i class={`fas ${tool.icon}`} />
+                                </div>
+                                <p class="text-sm font-semibold text-gray-700">
+                                    {tool.name}
+                                </p>
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
+        </section>
+
+        <!-- Industry Solutions -->
+        <section class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl font-bold text-[#0c1b3d] mb-4">
+                        Data Science for Every Industry
+                    </h2>
+                    <p class="text-gray-600">
+                        Tailored analytics solutions for your sector
+                    </p>
+                </div>
+                <div
+                    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+                >
+                    {
+                        industries.map((solution) => (
+                            <div class="bg-slate-50 p-8 rounded-2xl border border-gray-100 hover:border-blue-200 hover:shadow-lg transition-all">
+                                <div class="flex items-center gap-4 mb-6">
+                                    <div class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center text-blue-600 text-2xl">
+                                        <i class={`fas ${solution.icon}`} />
+                                    </div>
+                                    <h3 class="text-xl font-bold text-[#0c1b3d]">
+                                        {solution.industry}
+                                    </h3>
+                                </div>
+                                <ul class="space-y-3">
+                                    {solution.solutions.map((item) => (
+                                        <li class="flex items-center gap-3 text-gray-600 font-medium">
+                                            <i class="fas fa-check-circle text-green-500" />
+                                            {item}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
+        </section>
+
+        <!-- Success Stories -->
+        <section class="py-20 bg-slate-50">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl font-bold text-[#0c1b3d] mb-4">
+                        Real Results from Data Science
+                    </h2>
+                    <p class="text-gray-600">
+                        See how analytics transformed these businesses
+                    </p>
+                </div>
+                <div
+                    class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto"
+                >
+                    {
+                        testimonials.map((study) => (
+                            <div class="bg-white p-8 rounded-2xl border border-gray-100 hover:shadow-lg transition-shadow">
+                                <div class="flex gap-1 mb-4">
+                                    {[...Array(study.rating)].map(() => (
+                                        <i class="fas fa-star text-yellow-400" />
+                                    ))}
+                                </div>
+                                <div class="inline-block bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-xs font-bold mb-4">
+                                    {study.result}
+                                </div>
+                                <p class="text-gray-600 mb-6 leading-relaxed italic">
+                                    "{study.text}"
+                                </p>
+                                <div class="flex items-center gap-3">
+                                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 font-bold">
+                                        {study.name.charAt(0)}
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-[#0c1b3d]">
+                                            {study.name}
+                                        </h4>
+                                        <p class="text-sm text-gray-500">
+                                            {study.business} • {study.location}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl font-bold text-[#0c1b3d] mb-4">
+                        Frequently Asked Questions
+                    </h2>
+                    <p class="text-gray-600">
+                        Everything you need to know about Data Science
+                    </p>
+                </div>
+                <div class="max-w-3xl mx-auto space-y-4">
+                    {
+                        faqs.map((faq) => (
+                            <div class="bg-slate-50 p-6 rounded-xl border border-gray-100 hover:shadow-md transition-shadow">
+                                <h3 class="font-bold text-[#0c1b3d] mb-3 flex items-start gap-3">
+                                    <i class="fas fa-question-circle text-blue-600 mt-1" />
+                                    {faq.question}
+                                </h3>
+                                <p class="text-gray-600 leading-relaxed pl-8">
+                                    {faq.answer}
+                                </p>
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
+        </section>
+
+        <!-- Final CTA -->
+        <section class="py-20 bg-gradient-to-br from-[#0c1b3d] to-blue-900">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">
+                    Ready to Unlock Your Data's Potential?
+                </h2>
+                <p class="text-xl text-gray-300 mb-10 max-w-2xl mx-auto">
+                    Start making data-driven decisions today. Get insights that
+                    drive real business growth.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a
+                        href="/#contact"
+                        class="bg-blue-500 hover:bg-blue-600 text-white px-10 py-4 rounded-full font-bold transition-all shadow-lg shadow-blue-500/20 text-lg"
+                    >
+                        Get Free Data Analysis
+                    </a>
+                    <a
+                        href="tel:+8801707568468"
+                        class="bg-white/10 hover:bg-white/20 border border-white/20 text-white px-10 py-4 rounded-full font-bold transition-all flex items-center justify-center gap-2 text-lg"
+                    >
+                        <i class="fas fa-phone-alt"></i> +880 1707 568468
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <Footer />
+
+    <script>
+        // Module switching functionality
+        document.addEventListener("DOMContentLoaded", () => {
+            const moduleButtons = document.querySelectorAll(".module-btn");
+            const moduleContents = document.querySelectorAll(".module-content");
+
+            moduleButtons.forEach((button) => {
+                button.addEventListener("click", () => {
+                    const targetId = button.getAttribute("data-id");
+
+                    // Update button states
+                    moduleButtons.forEach((btn) => {
+                        btn.classList.remove(
+                            "bg-white",
+                            "border-blue-500",
+                            "shadow-md",
+                            "text-blue-600",
+                            "ring-1",
+                            "ring-blue-500",
+                        );
+                        btn.classList.add("bg-gray-50", "text-gray-600");
+                        const arrow = btn.querySelector("i");
+                        arrow.classList.remove("text-blue-600");
+                        arrow.classList.add("text-gray-300");
+                    });
+
+                    button.classList.remove("bg-gray-50", "text-gray-600");
+                    button.classList.add(
+                        "bg-white",
+                        "border-blue-500",
+                        "shadow-md",
+                        "text-blue-600",
+                        "ring-1",
+                        "ring-blue-500",
+                    );
+                    const activeArrow = button.querySelector("i");
+                    activeArrow.classList.remove("text-gray-300");
+                    activeArrow.classList.add("text-blue-600");
+
+                    // Update content visibility
+                    moduleContents.forEach((content) => {
+                        content.classList.remove(
+                            "opacity-100",
+                            "z-10",
+                            "translate-y-0",
+                        );
+                        content.classList.add(
+                            "opacity-0",
+                            "-z-10",
+                            "translate-y-4",
+                        );
+                    });
+
+                    const targetContent = document.getElementById(
+                        `content-${targetId}`,
+                    );
+                    if (targetContent) {
+                        targetContent.classList.remove(
+                            "opacity-0",
+                            "-z-10",
+                            "translate-y-4",
+                        );
+                        targetContent.classList.add(
+                            "opacity-100",
+                            "z-10",
+                            "translate-y-0",
+                        );
+                    }
+                });
+            });
+        });
+    </script>
+</MainLayout>

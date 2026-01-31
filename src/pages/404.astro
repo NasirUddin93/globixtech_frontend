@@ -1,0 +1,32 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<MainLayout title="Page Not Found - Globix Tech">
+    <Navbar />
+    <div class="min-h-screen bg-gray-50 flex items-center justify-center p-6">
+        <div class="text-center max-w-lg">
+            <div
+                class="text-[150px] font-extrabold text-[#0c1b3d] leading-none mb-4 animate-pulse"
+            >
+                404
+            </div>
+            <h1 class="text-3xl font-bold text-gray-800 mb-4">
+                Oops! This page has gone missing.
+            </h1>
+            <p class="text-gray-500 mb-8 text-lg">
+                We couldn't assign a route to the URL you requested. It might
+                have been moved or doesn't exist.
+            </p>
+            <a
+                href="/"
+                class="inline-block bg-blue-600 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-blue-700 hover:shadow-lg transition-all transform hover:-translate-y-1"
+            >
+                <i class="fas fa-home mr-2"></i> Back to Home
+            </a>
+        </div>
+    </div>
+    <Footer />
+</MainLayout>

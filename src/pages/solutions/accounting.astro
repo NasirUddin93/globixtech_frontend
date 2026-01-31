@@ -1,0 +1,519 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
+import { Image } from "astro:assets";
+import smsMockup from "../../assets/sms_mockup.png";
+
+import {
+    pricingPlans,
+    businessTypes,
+    moduleCategories,
+    stats,
+    coreFeatures,
+    faqs,
+} from "../../data/accounting";
+
+/* Data extracted to src/data/accounting.ts */
+---
+
+<MainLayout title="Accounting Software - Globix Tech Solutions">
+    <Navbar />
+
+    <main class="min-h-screen bg-white">
+        <!-- Hero Section -->
+        <section
+            class="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden bg-[#0c1b3d]"
+        >
+            <div
+                class="absolute inset-0 bg-gradient-to-br from-[#0c1b3d] via-[#1a2c5a] to-[#0c1b3d]"
+            >
+            </div>
+            <div
+                class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-green-500/10 to-transparent blur-3xl"
+            >
+            </div>
+
+            <div class="container mx-auto px-6 relative z-10">
+                <div
+                    class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
+                >
+                    <div class="text-left">
+                        <div
+                            class="inline-flex items-center gap-2 bg-green-500/10 border border-green-500/20 px-4 py-2 rounded-full text-green-400 text-sm font-semibold mb-6"
+                        >
+                            <i class="fas fa-calculator"></i> Complete Accounting
+                            Solution
+                        </div>
+                        <h1
+                            class="text-4xl md:text-6xl font-extrabold text-white mb-6 leading-[1.1]"
+                        >
+                            Accounting Software for <span
+                                class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-400"
+                                >Bangladesh Businesses</span
+                            >
+                        </h1>
+                        <p
+                            class="text-lg md:text-xl text-gray-300 mb-10 max-w-xl leading-relaxed"
+                        >
+                            Manage invoices, expenses, inventory, payroll, and
+                            financial reports in one powerful platform. GST/VAT
+                            ready and Bangladesh tax compliant.
+                        </p>
+                        <div class="flex flex-wrap gap-4">
+                            <a
+                                href="/#contact"
+                                class="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-xl font-bold transition-all shadow-lg shadow-green-500/20 flex items-center gap-2"
+                            >
+                                Start Free Trial <i
+                                    class="fas fa-arrow-right text-sm"></i>
+                            </a>
+                            <a
+                                href="tel:+8801707568468"
+                                class="bg-white/5 hover:bg-white/10 border border-white/20 text-white px-8 py-4 rounded-xl font-bold transition-all flex items-center gap-2"
+                            >
+                                <i class="fas fa-phone-alt"></i> Call Us
+                            </a>
+                        </div>
+                    </div>
+                    <div class="relative mt-10 lg:mt-0">
+                        <div
+                            class="absolute -inset-4 bg-green-500/20 blur-2xl rounded-full"
+                        >
+                        </div>
+                        <Image
+                            src={smsMockup}
+                            alt="Accounting Software"
+                            class="relative z-10 w-full max-w-2xl mx-auto drop-shadow-2xl rounded-2xl border border-white/10"
+                        />
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="py-16 bg-white border-b border-gray-100">
+            <div class="container mx-auto px-6">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
+                    {
+                        stats.map((stat) => (
+                            <div class="group">
+                                <div class="text-4xl font-extrabold text-[#0c1b3d] mb-2 group-hover:text-green-600 transition-colors">
+                                    {stat.value}
+                                </div>
+                                <div class="text-sm font-bold text-gray-400 uppercase tracking-widest">
+                                    {stat.label}
+                                </div>
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
+        </section>
+
+        <!-- Core Features Grid -->
+        <section class="py-24 bg-gray-50">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2
+                        class="text-3xl md:text-5xl font-bold text-[#0c1b3d] mb-4"
+                    >
+                        Everything You Need to Manage Finances
+                    </h2>
+                    <p
+                        class="text-gray-600 max-w-2xl mx-auto text-lg leading-relaxed"
+                    >
+                        From invoicing to tax reports, our accounting software
+                        handles all your financial needs in one place.
+                    </p>
+                </div>
+                <div
+                    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+                >
+                    {
+                        coreFeatures.map((f) => (
+                            <div class="bg-white p-10 rounded-3xl border border-gray-100 hover:border-green-200 hover:shadow-xl transition-all group">
+                                <div
+                                    class={`w-16 h-16 ${f.bg} rounded-2xl flex items-center justify-center ${f.color} text-2xl mb-8 group-hover:scale-110 transition-transform`}
+                                >
+                                    <i class={`fas ${f.icon}`} />
+                                </div>
+                                <h3 class="text-2xl font-bold text-[#0c1b3d] mb-4">
+                                    {f.title}
+                                </h3>
+                                <p class="text-gray-600 leading-relaxed">
+                                    {f.desc}
+                                </p>
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
+        </section>
+
+        <!-- Business Types Section -->
+        <section class="py-24 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2
+                        class="text-3xl md:text-5xl font-bold text-[#0c1b3d] mb-4"
+                    >
+                        Accounting Software for Every Business Type
+                    </h2>
+                    <p
+                        class="text-gray-600 max-w-2xl mx-auto text-lg leading-relaxed"
+                    >
+                        Tailored solutions for different industries and business
+                        models.
+                    </p>
+                </div>
+
+                <!-- Business Type Tabs -->
+                <div class="max-w-6xl mx-auto">
+                    <div
+                        class="flex flex-wrap justify-center gap-4 mb-12"
+                        id="business-tabs"
+                    >
+                        {
+                            businessTypes.map((type, index) => (
+                                <button
+                                    class={`business-tab px-6 py-3 rounded-xl font-bold transition-all ${index === 0 ? "bg-green-500 text-white shadow-lg" : "bg-gray-100 text-gray-600 hover:bg-gray-200"}`}
+                                    data-id={type.id}
+                                >
+                                    {type.label}
+                                </button>
+                            ))
+                        }
+                    </div>
+
+                    <!-- Business Type Content -->
+                    <div class="relative min-h-[500px]">
+                        {
+                            businessTypes.map((type, index) => (
+                                <div
+                                    id={`business-${type.id}`}
+                                    class={`business-content transition-all duration-500 ${index === 0 ? "opacity-100 relative" : "opacity-0 absolute inset-0 pointer-events-none"}`}
+                                >
+                                    <div class="bg-gray-50 rounded-3xl p-8 md:p-12 border border-gray-100">
+                                        <h3 class="text-3xl font-bold text-[#0c1b3d] mb-6">
+                                            {type.title}
+                                        </h3>
+                                        <p class="text-gray-600 mb-10 leading-relaxed text-lg">
+                                            {type.desc}
+                                        </p>
+                                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                            {type.features.map((feature) => (
+                                                <div class="flex items-center gap-3 bg-white p-4 rounded-xl border border-gray-100">
+                                                    <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center text-green-600">
+                                                        <i
+                                                            class={`fas ${feature.icon}`}
+                                                        />
+                                                    </div>
+                                                    <span class="font-semibold text-gray-700">
+                                                        {feature.name}
+                                                    </span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </div>
+                            ))
+                        }
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section class="py-24 bg-gray-50">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2
+                        class="text-3xl md:text-5xl font-bold text-[#0c1b3d] mb-4"
+                    >
+                        Transparent Pricing Plans
+                    </h2>
+                    <p
+                        class="text-gray-600 max-w-2xl mx-auto text-lg leading-relaxed"
+                    >
+                        Choose the plan that fits your business size. All plans
+                        include core accounting features.
+                    </p>
+                </div>
+
+                <div class="max-w-7xl mx-auto">
+                    <div
+                        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+                    >
+                        {
+                            pricingPlans.map((plan) => (
+                                <div
+                                    class={`bg-white rounded-2xl p-8 border-2 transition-all hover:-translate-y-2 ${plan.recommended ? "border-green-500 shadow-xl relative" : "border-gray-100 shadow-sm"}`}
+                                >
+                                    {plan.recommended && (
+                                        <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-green-500 text-white px-4 py-1 rounded-full text-sm font-bold">
+                                            Recommended
+                                        </div>
+                                    )}
+
+                                    <h3 class="text-2xl font-bold text-[#0c1b3d] mb-2">
+                                        {plan.name}
+                                    </h3>
+
+                                    {plan.price === "Custom" ? (
+                                        <>
+                                            <div class="text-3xl font-bold text-green-600 mb-2">
+                                                {plan.price}
+                                            </div>
+                                            <p class="text-sm text-gray-500 mb-6">
+                                                {plan.subtitle}
+                                            </p>
+                                            <ul class="space-y-3 mb-8">
+                                                {plan.facilities.map((item) => (
+                                                    <li class="flex items-start gap-2 text-sm text-gray-600">
+                                                        <i class="fas fa-check text-green-500 mt-1" />
+                                                        <span>{item}</span>
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <div class="mb-6">
+                                                <div class="text-sm text-gray-500 mb-1">
+                                                    Starting from
+                                                </div>
+                                                <div class="text-3xl font-bold text-green-600">
+                                                    ৳{plan.monthlyPrice}
+                                                    <span class="text-lg text-gray-500">
+                                                        /month
+                                                    </span>
+                                                </div>
+                                                <div class="text-sm text-gray-500 mt-2">
+                                                    One-time: ৳
+                                                    {plan.oneTimeCharge}
+                                                </div>
+                                            </div>
+
+                                            <div class="space-y-2 mb-8">
+                                                <h4 class="font-bold text-sm text-gray-700 uppercase border-b pb-2">
+                                                    Pricing by Users
+                                                </h4>
+                                                {plan.ranges?.map((range) => (
+                                                    <div class="flex justify-between text-sm">
+                                                        <span class="text-gray-600">
+                                                            {range.range}
+                                                        </span>
+                                                        <span class="font-bold text-[#0c1b3d]">
+                                                            ৳{range.price}/mo
+                                                        </span>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </>
+                                    )}
+
+                                    <a
+                                        href="/#contact"
+                                        class={`block w-full text-center py-3 rounded-xl font-bold transition-all ${plan.recommended ? "bg-green-500 text-white hover:bg-green-600" : "bg-gray-100 text-gray-700 hover:bg-gray-200"}`}
+                                    >
+                                        Get Started
+                                    </a>
+                                </div>
+                            ))
+                        }
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Detailed Modules Breakdown -->
+        <section class="py-24 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2
+                        class="text-3xl md:text-5xl font-bold text-[#0c1b3d] mb-4"
+                    >
+                        Complete Accounting Modules
+                    </h2>
+                    <p
+                        class="text-gray-600 max-w-3xl mx-auto text-lg leading-relaxed"
+                    >
+                        Over 300+ features across 23 modules to handle every
+                        aspect of your business accounting.
+                    </p>
+                </div>
+
+                <div class="space-y-12 max-w-7xl mx-auto">
+                    {
+                        moduleCategories.map((category) => (
+                            <div class="bg-gray-50 rounded-3xl p-8 md:p-12 border border-gray-100">
+                                <div class="flex items-center gap-4 mb-8">
+                                    <div
+                                        class={`w-16 h-16 ${category.bg} rounded-2xl flex items-center justify-center ${category.color} text-2xl`}
+                                    >
+                                        <i class={`fas ${category.icon}`} />
+                                    </div>
+                                    <h3 class="text-3xl font-bold text-[#0c1b3d]">
+                                        {category.title}
+                                    </h3>
+                                </div>
+
+                                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                    {category.modules.map((module) => (
+                                        <div class="bg-white p-6 rounded-2xl border border-gray-100 hover:shadow-lg transition-all">
+                                            <div class="flex items-start justify-between mb-4">
+                                                <h4 class="font-bold text-[#0c1b3d] text-lg flex-1">
+                                                    {module.name}
+                                                </h4>
+                                                <span class="bg-green-100 text-green-600 px-2 py-1 rounded-full text-xs font-bold">
+                                                    {module.count}+
+                                                </span>
+                                            </div>
+                                            <ul class="space-y-2">
+                                                {module.features.map(
+                                                    (feature) => (
+                                                        <li class="flex items-start gap-2 text-sm text-gray-600">
+                                                            <i class="fas fa-check-circle text-green-500 mt-0.5" />
+                                                            <span>
+                                                                {feature}
+                                                            </span>
+                                                        </li>
+                                                    ),
+                                                )}
+                                            </ul>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="py-24 bg-gray-50">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2
+                        class="text-3xl md:text-5xl font-bold text-[#0c1b3d] mb-4"
+                    >
+                        Frequently Asked Questions
+                    </h2>
+                    <p class="text-gray-600 max-w-2xl mx-auto">
+                        Everything you need to know about our accounting
+                        software
+                    </p>
+                </div>
+                <div class="max-w-3xl mx-auto space-y-4">
+                    {
+                        faqs.map((faq) => (
+                            <div class="bg-white p-6 rounded-xl border border-gray-100 hover:shadow-md transition-shadow">
+                                <h3 class="font-bold text-[#0c1b3d] mb-3 flex items-start gap-3">
+                                    <i class="fas fa-question-circle text-green-600 mt-1" />
+                                    {faq.question}
+                                </h3>
+                                <p class="text-gray-600 leading-relaxed pl-8">
+                                    {faq.answer}
+                                </p>
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
+        </section>
+
+        <!-- Final CTA -->
+        <section class="py-20 bg-gradient-to-br from-[#0c1b3d] to-green-900">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">
+                    Ready to Simplify Your Accounting?
+                </h2>
+                <p class="text-xl text-gray-300 mb-10 max-w-2xl mx-auto">
+                    Join hundreds of businesses managing their finances with our
+                    powerful accounting software.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a
+                        href="/#contact"
+                        class="bg-green-500 hover:bg-green-600 text-white px-10 py-4 rounded-full font-bold transition-all shadow-lg shadow-green-500/20 text-lg"
+                    >
+                        Start Free Trial
+                    </a>
+                    <a
+                        href="tel:+8801707568468"
+                        class="bg-white/10 hover:bg-white/20 border border-white/20 text-white px-10 py-4 rounded-full font-bold transition-all flex items-center justify-center gap-2 text-lg"
+                    >
+                        <i class="fas fa-phone-alt"></i> +880 1707 568468
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <Footer />
+
+    <script>
+        // Business type tabs switching
+        document.addEventListener("DOMContentLoaded", () => {
+            const tabs = document.querySelectorAll(".business-tab");
+            const contents = document.querySelectorAll(".business-content");
+
+            tabs.forEach((tab) => {
+                tab.addEventListener("click", () => {
+                    const targetId = tab.getAttribute("data-id");
+
+                    // Update tab states
+                    tabs.forEach((t) => {
+                        t.classList.remove(
+                            "bg-green-500",
+                            "text-white",
+                            "shadow-lg",
+                        );
+                        t.classList.add(
+                            "bg-gray-100",
+                            "text-gray-600",
+                            "hover:bg-gray-200",
+                        );
+                    });
+
+                    tab.classList.remove(
+                        "bg-gray-100",
+                        "text-gray-600",
+                        "hover:bg-gray-200",
+                    );
+                    tab.classList.add(
+                        "bg-green-500",
+                        "text-white",
+                        "shadow-lg",
+                    );
+
+                    // Update content visibility
+                    contents.forEach((content) => {
+                        content.classList.remove("opacity-100", "relative");
+                        content.classList.add(
+                            "opacity-0",
+                            "absolute",
+                            "inset-0",
+                            "pointer-events-none",
+                        );
+                    });
+
+                    const targetContent = document.getElementById(
+                        `business-${targetId}`,
+                    );
+                    if (targetContent) {
+                        targetContent.classList.remove(
+                            "opacity-0",
+                            "absolute",
+                            "inset-0",
+                            "pointer-events-none",
+                        );
+                        targetContent.classList.add("opacity-100", "relative");
+                    }
+                });
+            });
+        });
+    </script>
+</MainLayout>

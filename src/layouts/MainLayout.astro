@@ -1,0 +1,48 @@
+---
+import "../styles/global.css";
+import SEO from "../components/SEO.astro";
+
+import BackToTop from "../components/BackToTop.astro";
+import ChatWidget from "../components/ChatWidget.astro";
+
+const { title = "Globix Tech - Software Solutions" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<SEO title={title} />
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+		/>
+		<script is:inline>
+			// Theme Checking Logic (Run immediately)
+			const theme = (() => {
+				if (
+					typeof localStorage !== "undefined" &&
+					localStorage.getItem("theme")
+				) {
+					return localStorage.getItem("theme");
+				}
+				if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+					return "dark";
+				}
+				return "light";
+			})();
+
+			if (theme === "dark") {
+				document.documentElement.classList.add("dark");
+			} else {
+				document.documentElement.classList.remove("dark");
+			}
+		</script>
+	</head>
+	<body
+		class="font-poppins bg-light text-dark dark:bg-[#0f172a] dark:text-white transition-colors duration-300"
+	>
+		<slot />
+		<BackToTop />
+		<ChatWidget />
+	</body>
+</html>

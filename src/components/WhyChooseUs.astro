@@ -1,0 +1,27 @@
+---
+---
+<section class="py-20 bg-gradient-to-r from-primary to-secondary text-white">
+    <div class="container mx-auto px-6">
+        <h2 class="text-4xl font-bold text-center mb-4">💡 Why Choose Globix Tech?</h2>
+        <p class="text-center text-xl mb-16 max-w-3xl mx-auto opacity-90">Your Trusted Technology Partner for Digital Transformation</p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+                { title: "Experienced Team", desc: "Our skilled developers have years of experience in education software, e-commerce, and WordPress solutions." },
+                { title: "Custom Solutions", desc: "We tailor every solution to match your specific business needs, ensuring maximum efficiency and ROI." },
+                { title: "Modern Architecture", desc: "We build with clean, scalable architecture that grows with your business and adapts to future needs." },
+                { title: "Affordable Pricing", desc: "High-quality solutions at competitive prices with transparent costing and no hidden fees." },
+                { title: "On-Time Delivery", desc: "We respect deadlines and ensure your project is completed on time with regular progress updates." },
+                { title: "Long-Term Support", desc: "We provide ongoing maintenance and support to ensure your systems remain secure and up-to-date." }
+            ].map(item => (
+                <div class="bg-white bg-opacity-10 p-6 rounded-xl backdrop-blur-sm border border-white border-opacity-10">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-check-circle text-2xl mr-4 text-accent"></i>
+                        <h3 class="text-xl font-bold">{item.title}</h3>
+                    </div>
+                    <p class="opacity-90">{item.desc}</p>
+                </div>
+            ))}
+        </div>
+    </div>
+</section>

@@ -1,0 +1,76 @@
+---
+import { Image } from "astro:assets";
+import heroBg from "../assets/hero-bg.jpg";
+---
+
+<section
+    id="home"
+    class="relative text-white pt-24 pb-20 md:pt-48 md:pb-40 overflow-hidden"
+>
+    <!-- Background Image -->
+    <div class="absolute inset-0 z-0">
+        <Image
+            src={heroBg}
+            alt="Digital Technology Background"
+            class="w-full h-full object-cover opacity-20 dark:opacity-10"
+            quality="mid"
+            format="webp"
+        />
+        <div
+            class="absolute inset-0 bg-gradient-to-b from-[#1a1a2e]/90 to-[#1a1a2e]/80 dark:from-[#0f172a]/95 dark:to-[#0f172a]/90 mix-blend-multiply"
+        >
+        </div>
+    </div>
+
+    <div class="container mx-auto px-6 text-center relative z-10">
+        <div
+            class="inline-block bg-blue-500 bg-opacity-20 backdrop-blur-sm border border-blue-400/30 px-4 py-1.5 rounded-full text-blue-100 text-[10px] md:text-sm font-semibold mb-6 animate-pulse"
+        >
+            Leading Software Innovation
+        </div>
+        <h1
+            class="text-3xl md:text-7xl font-bold mb-6 md:mb-8 leading-[1.2] md:leading-tight max-w-5xl mx-auto tracking-tight px-2"
+        >
+            Affordable Software Solutions That Help Bangladesh Businesses Grow
+        </h1>
+        <p
+            class="text-base md:text-2xl mb-8 md:mb-12 max-w-4xl mx-auto text-blue-50 leading-relaxed font-light px-4"
+        >
+            From School Management Systems to E-commerce Platforms - We Build
+            Custom Software That Works. <br class="hidden md:block" />
+            Trusted by 80+ Businesses Across Bangladesh.
+        </p>
+        <div class="flex flex-col md:flex-row justify-center gap-6">
+            <a
+                href="#contact"
+                class="bg-primary text-white px-10 py-5 rounded-xl font-bold text-lg hover:shadow-2xl hover:scale-105 transition-all transform duration-300"
+            >
+                Discuss Your Project <i class="fas fa-arrow-right ml-2 text-sm"
+                ></i>
+            </a>
+            <a
+                href="#rd-wing"
+                class="bg-transparent border-2 border-white/30 text-white px-10 py-5 rounded-xl font-bold text-lg hover:bg-white hover:text-dark hover:border-white transition-all transform duration-300"
+            >
+                Explore R&D Wing
+            </a>
+        </div>
+
+        <div
+            class="mt-20 flex justify-center items-center gap-8 md:gap-16 opacity-60 grayscale hover:grayscale-0 transition-all duration-1000"
+        >
+            <div class="flex items-center gap-2">
+                <i class="fas fa-shield-alt text-2xl"></i>
+                <span class="font-bold">Security</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <i class="fas fa-brain text-2xl"></i>
+                <span class="font-bold">AI Driven</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <i class="fas fa-microchip text-2xl"></i>
+                <span class="font-bold">Advanced Tech</span>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,79 @@
+---
+const projects = [
+    {
+        icon: "fa-graduation-cap",
+        gradient: "from-blue-400 to-purple-500",
+        title: "School Management System",
+        desc: "Complete SMS for a leading Dhaka school managing 2,000+ students. Features include attendance tracking, exam management, online fee payment, and parent portal. Reduced admin workload by 60%.",
+        tags: ["React", "Laravel", "MySQL"],
+        metric: "2,000+ Students Managed",
+    },
+    {
+        icon: "fa-shopping-bag",
+        gradient: "from-green-400 to-blue-500",
+        title: "Multi-Vendor E-commerce Platform",
+        desc: "Full-featured marketplace with 50+ vendors, bKash/Nagad integration, inventory management, and seller dashboard. Processed ৳2 crore+ in transactions within first 6 months.",
+        tags: ["Laravel", "Vue.js", "MySQL"],
+        metric: "৳2 Cr+ Transactions",
+    },
+    {
+        icon: "fa-hospital",
+        gradient: "from-purple-400 to-pink-500",
+        title: "Hospital Management System",
+        desc: "Comprehensive HMS for a 100-bed hospital including patient records, appointment scheduling, billing, pharmacy management, and doctor portal. Improved patient processing time by 40%.",
+        tags: ["React", "Node.js", "MongoDB"],
+        metric: "100+ Beds Managed",
+    },
+];
+---
+
+<section id="portfolio" class="py-20 bg-white">
+    <div class="container mx-auto px-6">
+        <h2
+            class="text-4xl font-bold text-center mb-4 text-dark border-b-4 border-primary w-fit mx-auto pb-2"
+        >
+            📂 Our Recent Projects
+        </h2>
+        <p
+            class="text-gray-600 text-center text-lg mt-4 mb-16 max-w-3xl mx-auto"
+        >
+            Each project is designed with performance, security, and user
+            experience in mind.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            {
+                projects.map((project) => (
+                    <div class="bg-light rounded-xl overflow-hidden shadow-lg border border-gray-100 hover:shadow-2xl transition-all group">
+                        <div
+                            class={`h-48 bg-gradient-to-r ${project.gradient} flex items-center justify-center transition-transform group-hover:scale-105 duration-500`}
+                        >
+                            <i
+                                class={`${project.iconType || "fas"} ${project.icon} text-6xl text-white`}
+                            />
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold mb-3 text-dark">
+                                {project.title}
+                            </h3>
+                            <p class="text-gray-600 mb-4">{project.desc}</p>
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                {project.tags.map((tag) => (
+                                    <span class="bg-white text-primary border border-primary/20 px-3 py-1 rounded-full text-xs font-semibold">
+                                        {tag}
+                                    </span>
+                                ))}
+                            </div>
+                            <a
+                                href="#"
+                                class="text-primary font-bold hover:text-secondary transition-colors inline-flex items-center gap-2"
+                            >
+                                View Details <span>&rarr;</span>
+                            </a>
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+    </div>
+</section>

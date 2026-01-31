@@ -1,0 +1,441 @@
+---
+import { Image } from "astro:assets";
+import logo from "../assets/logo.png";
+import ThemeToggle from "./ThemeToggle.astro";
+---
+
+<header class="w-full z-50">
+    <!-- Top Bar -->
+    <div
+        class="hidden lg:block bg-dark text-white py-2.5 border-b border-white/5 relative z-50"
+    >
+        <div
+            class="container mx-auto px-6 flex justify-between items-center text-xs"
+        >
+            <div class="flex items-center space-x-6">
+                <a
+                    href="mailto:info@globix.tech"
+                    class="hover:text-primary transition flex items-center gap-2 font-medium"
+                >
+                    <i class="fas fa-envelope text-primary"></i> info@globix.tech
+                </a>
+                <a
+                    href="tel:+8801707568468"
+                    class="hover:text-primary transition flex items-center gap-2 font-medium"
+                >
+                    <i class="fas fa-phone-alt text-primary"></i> +880 1707-568468
+                </a>
+                <span class="flex items-center gap-2 text-gray-400 font-medium">
+                    <i class="fas fa-map-marker-alt text-primary"></i> Uttara, Dhaka,
+                    Bangladesh
+                </span>
+            </div>
+            <div class="flex items-center space-x-5">
+                <div class="flex items-center gap-4">
+                    <ThemeToggle />
+                </div>
+                <div
+                    class="flex items-center space-x-3 border-r border-white/10 pr-5"
+                >
+                    <a
+                        href="https://www.facebook.com/globixtech/"
+                        target="_blank"
+                        rel="noopener
+noreferrer"
+                        class="hover:text-primary transition text-gray-300"
+                        ><i class="fab
+fa-facebook-f text-sm"></i></a
+                    >
+                    <a
+                        href="#"
+                        class="hover:text-primary
+transition text-gray-300"
+                        ><i class="fab fa-twitter text-sm"></i></a
+                    >
+                    <a
+                        href="#"
+                        class="hover:text-primary transition text-gray-300"
+                        ><i class="fab
+fa-linkedin-in text-sm"></i></a
+                    >
+                    <a
+                        href="#"
+                        class="hover:text-primary
+transition text-gray-300"
+                        ><i class="fab fa-instagram text-sm"></i></a
+                    >
+                </div>
+                <div class="flex items-center gap-2">
+                    <i class="fas fa-globe text-[10px]
+text-primary"></i>
+                    <span
+                        class="font-bold tracking-widest uppercase text-[10px]
+text-gray-300"
+                        >Global Support</span
+                    >
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Main
+Navigation -->
+<nav
+    class="w-full bg-white/95 backdrop-blur-md shadow-lg z-50
+transition-all duration-300 sticky top-0"
+    id="main-nav"
+>
+    <div class="container
+mx-auto px-6 py-4 flex justify-between items-center">
+        <div class="flex
+items-center">
+            <a href="/" class="flex items-center">
+                <Image src={logo} alt="GlobixTech Logo" class="h-12 w-auto" />
+            </a>
+        </div>
+        <div class="hidden
+lg:flex space-x-6 items-center">
+            <a
+                href="/"
+                class="text-gray-700
+hover:text-primary transition font-medium text-sm whitespace-nowrap"
+                >Home</a
+            >
+            <!-- Software Development Dropdown -->
+            <div class="relative group">
+                <button
+                    class="flex items-center text-gray-700 hover:text-primary transition font-medium
+text-sm focus:outline-none whitespace-nowrap"
+                >
+                    Software Development <i
+                        class="fas fa-chevron-down ml-1 text-[10px] group-hover:rotate-180
+transition-transform"
+                    ></i>
+                </button>
+                <div
+                    class="absolute left-0 mt-2 w-64
+bg-white border border-gray-100 shadow-xl rounded-xl opacity-0 invisible
+group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50
+py-4"
+                >
+                    <a
+                        href="/solutions/school-management-system"
+                        class="block px-6 py-2
+text-sm text-gray-700 hover:bg-blue-50 hover:text-primary transition"
+                        >Education (SMS)</a
+                    >
+                    <a
+                        href="/solutions/ecommerce"
+                        class="block px-6 py-2 text-sm
+text-gray-700 hover:bg-blue-50 hover:text-primary transition"
+                        >E-commerce</a
+                    >
+                    <a
+                        href="/solutions/inventory"
+                        class="block px-6 py-2 text-sm text-gray-700
+hover:bg-blue-50 hover:text-primary transition"
+                        >Inventory</a
+                    >
+                    <a
+                        href="/solutions/accounting"
+                        class="block px-6 py-2 text-sm text-gray-700
+hover:bg-blue-50 hover:text-primary transition"
+                        >Accounts</a
+                    >
+                    <a
+                        href="/solutions/web-apps"
+                        class="block px-6 py-2 text-sm text-gray-700
+hover:bg-blue-50 hover:text-primary transition"
+                        >Web Apps</a
+                    >
+                </div>
+            </div>
+            <!-- AI & Data Intelligence Dropdown -->
+            <div class="relative group">
+                <button
+                    class="flex items-center text-gray-700 hover:text-primary transition font-medium
+text-sm focus:outline-none whitespace-nowrap"
+                >
+                    AI & Data Intelligence <i
+                        class="fas fa-chevron-down ml-1 text-[10px] group-hover:rotate-180
+transition-transform"
+                    ></i>
+                </button>
+                <div
+                    class="absolute left-0 mt-2 w-64
+bg-white border border-gray-100 shadow-xl rounded-xl opacity-0 invisible
+group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50
+py-4"
+                >
+                    <a
+                        href="/solutions/chatbots"
+                        class="block px-6 py-2 text-sm
+text-gray-700 hover:bg-blue-50 hover:text-primary transition"
+                        >Chatbots</a
+                    >
+                    <a
+                        href="/solutions/business-ai"
+                        class="block px-6 py-2 text-sm text-gray-700
+hover:bg-blue-50 hover:text-primary transition"
+                        >Business AI</a
+                    >
+                    <a
+                        href="/solutions/data-science"
+                        class="block px-6 py-2 text-sm text-gray-700
+hover:bg-blue-50 hover:text-primary transition"
+                        >Data Science</a
+                    >
+                </div>
+            </div>
+            <!-- Infrastructure & Security Dropdown -->
+            <div class="relative group">
+                <button
+                    class="flex items-center text-gray-700 hover:text-primary transition font-medium
+text-sm focus:outline-none whitespace-nowrap"
+                >
+                    Infrastructure & Security <i
+                        class="fas fa-chevron-down ml-1 text-[10px] group-hover:rotate-180
+transition-transform"
+                    ></i>
+                </button>
+                <div
+                    class="absolute left-0 mt-2 w-64
+bg-white border border-gray-100 shadow-xl rounded-xl opacity-0 invisible
+group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50
+py-4"
+                >
+                    <a
+                        href="/solutions/server-management"
+                        class="block px-6 py-2 text-sm
+text-gray-700 hover:bg-blue-50 hover:text-primary transition"
+                        >Server Mgmt</a
+                    >
+                    <a
+                        href="/solutions/network"
+                        class="block px-6 py-2 text-sm text-gray-700
+hover:bg-blue-50 hover:text-primary transition"
+                        >Network</a
+                    >
+                    <a
+                        href="/solutions/security"
+                        class="block px-6 py-2 text-sm text-gray-700
+hover:bg-blue-50 hover:text-primary transition"
+                        >Security</a
+                    >
+                </div>
+            </div>
+            <a
+                href="/rd-wing"
+                class="text-gray-700 hover:text-primary transition font-medium
+text-sm whitespace-nowrap"
+                >R&D Wing</a
+            >
+            <a
+                href="/portfolio"
+                class="text-gray-700 hover:text-primary transition font-medium text-sm
+whitespace-nowrap"
+                >Portfolio</a
+            >
+            <a
+                href="/about"
+                class="text-gray-700
+hover:text-primary transition font-medium text-sm whitespace-nowrap"
+                >About Us</a
+            >
+            <a
+                href="/blog"
+                class="text-gray-700 hover:text-primary transition
+font-medium text-sm whitespace-nowrap"
+                >Blog</a
+            >
+            <a
+                href="/contact"
+                class="text-gray-700 hover:text-primary transition font-medium text-sm
+whitespace-nowrap"
+                >Contact</a
+            >
+        </div>
+        <div class="hidden xl:block">
+            <a
+                href="/contact"
+                class="bg-primary text-white px-5 py-2 rounded-lg font-bold
+hover:bg-blue-600 transition shadow-lg shadow-blue-200 text-sm
+whitespace-nowrap"
+                >Get a Quote</a
+            >
+        </div>
+        <button id="menu-btn" class="lg:hidden text-gray-700">
+            <i class="fas fa-bars text-2xl"></i>
+        </button>
+    </div>
+    <!-- Mobile Menu -->
+    <div
+        id="mobile-menu"
+        class="hidden lg:hidden
+bg-white border-t border-gray-100 max-h-[85vh] overflow-y-auto"
+    >
+        <div class="flex flex-col px-6 py-8 space-y-4">
+            <a
+                href="/"
+                class="text-base
+font-bold text-dark hover:text-primary transition"
+                >Home</a
+            >
+            <!-- Mobile
+Software Development -->
+            <div class="space-y-2">
+                <button
+                    class="flex
+items-center justify-between w-full text-base font-bold text-dark
+hover:text-primary transition"
+                    onclick="this.nextElementSibling.classList.toggle('hidden')"
+                >
+                    Software Development <i class="fas fa-chevron-down text-xs"
+                    ></i>
+                </button>
+                <div class="hidden pl-4 space-y-2 border-l-2 border-gray-50">
+                    <a
+                        href="/solutions/school-management-system"
+                        class="block text-sm text-gray-600
+hover:text-primary transition"
+                        >Education (SMS)</a
+                    >
+                    <a
+                        href="/solutions/ecommerce"
+                        class="block text-sm text-gray-600
+hover:text-primary transition"
+                        >E-commerce</a
+                    >
+                    <a
+                        href="/solutions/inventory"
+                        class="block text-sm text-gray-600 hover:text-primary transition"
+                        >Inventory</a
+                    >
+                    <a
+                        href="/solutions/accounting"
+                        class="block text-sm text-gray-600
+hover:text-primary transition"
+                        >Accounts</a
+                    >
+                    <a
+                        href="/solutions/web-apps"
+                        class="block text-sm text-gray-600 hover:text-primary transition"
+                        >Web Apps</a
+                    >
+                </div>
+            </div>
+            <!-- Mobile AI & Data Intelligence -->
+            <div class="space-y-2">
+                <button
+                    class="flex items-center justify-between w-full text-base font-bold
+text-dark hover:text-primary transition"
+                    onclick="this.nextElementSibling.classList.toggle('hidden')"
+                >
+                    AI & Data Intelligence <i
+                        class="fas fa-chevron-down text-xs"></i>
+                </button>
+                <div class="hidden pl-4 space-y-2 border-l-2 border-gray-50">
+                    <a
+                        href="/solutions/chatbots"
+                        class="block text-sm text-gray-600 hover:text-primary
+transition"
+                        >Chatbots</a
+                    >
+                    <a
+                        href="/solutions/business-ai"
+                        class="block text-sm
+text-gray-600 hover:text-primary transition"
+                        >Business AI</a
+                    >
+                    <a
+                        href="/solutions/data-science"
+                        class="block text-sm text-gray-600
+hover:text-primary transition"
+                        >Data Science</a
+                    >
+                </div>
+            </div>
+            <!-- Mobile
+Infrastructure & Security -->
+            <div class="space-y-2">
+                <button
+                    class="flex
+items-center justify-between w-full text-base font-bold text-dark
+hover:text-primary transition"
+                    onclick="this.nextElementSibling.classList.toggle('hidden')"
+                >
+                    Infrastructure & Security <i
+                        class="fas fa-chevron-down text-xs"></i>
+                </button>
+                <div class="hidden pl-4 space-y-2 border-l-2 border-gray-50">
+                    <a
+                        href="/solutions/server-management"
+                        class="block text-sm text-gray-600
+hover:text-primary transition"
+                        >Server Mgmt</a
+                    >
+                    <a
+                        href="/solutions/network"
+                        class="block text-sm text-gray-600 hover:text-primary transition"
+                        >Network</a
+                    >
+                    <a
+                        href="/solutions/security"
+                        class="block text-sm text-gray-600
+hover:text-primary transition"
+                        >Security</a
+                    >
+                </div>
+            </div>
+            <a
+                href="/rd-wing"
+                class="text-base font-bold text-dark hover:text-primary transition"
+                >R&D Wing</a
+            >
+            <a
+                href="/portfolio"
+                class="text-base font-bold text-dark hover:text-primary
+transition"
+                >Portfolio</a
+            >
+            <a
+                href="/about"
+                class="text-base font-bold
+text-dark hover:text-primary transition"
+                >About Us</a
+            >
+            <a
+                href="/blog"
+                class="text-base font-bold text-dark hover:text-primary transition"
+                >Blog</a
+            >
+            <a
+                href="/contact"
+                class="text-base font-bold text-dark hover:text-primary
+transition"
+                >Contact</a
+            >
+            <a
+                href="/contact"
+                class="bg-primary text-white
+text-center py-3 rounded-xl font-bold text-base shadow-lg active:scale-95
+transition-transform uppercase tracking-wider"
+            >
+                Get a Quote
+            </a>
+        </div>
+    </div>
+</nav>
+
+<script>
+    const menuBtn = document.getElementById("menu-btn");
+    const mobileMenu = document.getElementById("mobile-menu");
+    menuBtn?.addEventListener("click", () => {
+        mobileMenu?.classList.toggle("hidden");
+    });
+    mobileMenu?.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+            mobileMenu.classList.add("hidden");
+        });
+    });
+</script>

@@ -1,0 +1,31 @@
+---
+const techs = [
+    { icon: "fa-react", color: "text-blue-400", name: "React", type: "fab" },
+    { icon: "fa-node-js", color: "text-green-600", name: "Node.js", type: "fab" },
+    { icon: "fa-php", color: "text-purple-600", name: "PHP", type: "fab" },
+    { icon: "fa-laravel", color: "text-red-500", name: "Laravel", type: "fab" },
+    { icon: "fa-wordpress", color: "text-blue-700", name: "WordPress", type: "fab" },
+    { icon: "fa-database", color: "text-blue-600", name: "MySQL", type: "fas" },
+    { icon: "fa-js-square", color: "text-yellow-500", name: "JavaScript", type: "fab" },
+    { icon: "fa-vuejs", color: "text-green-500", name: "Vue.js", type: "fab" },
+    { icon: "fa-python", color: "text-blue-500", name: "Python", type: "fab" },
+    { icon: "fa-git-alt", color: "text-orange-600", name: "Git", type: "fab" },
+    { icon: "fa-bolt", color: "text-yellow-500", name: "REST API", type: "fas" },
+    { icon: "fa-docker", color: "text-blue-600", name: "Docker", type: "fab" }
+];
+---
+<section id="technologies" class="py-20 bg-light">
+    <div class="container mx-auto px-6">
+        <h2 class="text-4xl font-bold text-center mb-4">🛠 Technologies We Use</h2>
+        <p class="text-gray-600 text-center text-lg mb-16 max-w-3xl mx-auto">We leverage modern technologies and frameworks to build robust, scalable, and high-performance applications.</p>
+        
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
+            {techs.map(tech => (
+                <div class="bg-white p-6 rounded-xl shadow-md text-center hover:shadow-lg transition-all transform hover:-translate-y-1">
+                    <i class={`${tech.type} ${tech.icon} text-5xl ${tech.color} mb-4`}></i>
+                    <h3 class="font-bold text-gray-700">{tech.name}</h3>
+                </div>
+            ))}
+        </div>
+    </div>
+</section>

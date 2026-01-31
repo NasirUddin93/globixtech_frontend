@@ -1,0 +1,42 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import RDWing from "../components/RDWing.astro";
+import PageHeader from "../components/PageHeader.astro";
+---
+
+<MainLayout title="R&D Wing - Industrial Research - Globix Tech">
+    <Navbar />
+    <main class="min-h-screen border-b border-gray-100">
+        <PageHeader
+            title="Research &"
+            spanTitle="Development"
+            description="Bridging the gap between theory and industry through rigorous technical research and innovative experimentation."
+            badge="Innovation Lab"
+            badgeIcon="fa-flask"
+        />
+
+        <RDWing />
+
+        <!-- CTA Section -->
+        <section class="py-20 bg-white">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl md:text-5xl font-bold text-[#0c1b3d] mb-6">
+                    Interested in Collaboration?
+                </h2>
+                <p class="text-xl text-gray-600 mb-10 max-w-2xl mx-auto">
+                    We're always looking for innovative projects and research
+                    partnerships. Let's explore the possibilities.
+                </p>
+                <a
+                    href="/contact"
+                    class="bg-blue-600 hover:bg-blue-700 text-white px-10 py-4 rounded-xl font-bold transition-all shadow-lg shadow-blue-600/20 text-lg inline-block"
+                >
+                    Get in Touch
+                </a>
+            </div>
+        </section>
+    </main>
+    <Footer />
+</MainLayout>

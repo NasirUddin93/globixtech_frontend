@@ -1,0 +1,146 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
+import PageHeader from "../../components/PageHeader.astro";
+
+const posts = await Astro.glob("./posts/*.md");
+// Sort by date desc
+posts.sort(
+    (a, b) =>
+        new Date(b.frontmatter.publishDate).valueOf() -
+        new Date(a.frontmatter.publishDate).valueOf(),
+);
+---
+
+<MainLayout title="Blog & Insights - Globix Tech">
+    <Navbar />
+    <div class="bg-gray-50 min-h-screen">
+        <PageHeader
+            title="Insights &"
+            spanTitle="Updates"
+            description="Latest news, technology trends, and guides from the GlobixTech team."
+            badge="Our Blog"
+            badgeIcon="fa-newspaper"
+        >
+            <!-- Search Box Inside Header -->
+            <div class="max-w-xl mx-auto relative group">
+                <input
+                    type="search"
+                    id="blog-search"
+                    placeholder="Search articles..."
+                    class="w-full px-6 py-4 rounded-full bg-white/10 border border-white/20 text-white placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all pl-12 backdrop-blur-sm"
+                />
+                <i
+                    class="fas fa-search absolute left-5 top-1/2 -translate-y-1/2 text-white/50 group-focus-within:text-white transition-colors"
+                ></i>
+            </div>
+        </PageHeader>
+
+        <div class="container mx-auto px-6 py-24">
+            <div
+                id="posts-grid"
+                class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            >
+                {
+                    posts.map((post) => (
+                        <a
+                            href={post.url}
+                            class="group blog-post-item"
+                            data-title={post.frontmatter.title}
+                            data-category={post.frontmatter.category}
+                        >
+                            <article class="bg-gray-50 rounded-[2rem] overflow-hidden border border-gray-100 transition-all hover:shadow-xl hover:-translate-y-2 h-full flex flex-col">
+                                <div class="relative h-60 overflow-hidden">
+                                    <div class="absolute inset-0 bg-blue-900/10 group-hover:bg-transparent transition-colors z-10" />
+                                    <img
+                                        src={
+                                            post.frontmatter.image ||
+                                            "https://placehold.co/600x400/e2e8f0/1e293b?text=Blog+Post"
+                                        }
+                                        alt={post.frontmatter.title}
+                                        class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                                    />
+                                    <div class="absolute top-4 left-4 z-20">
+                                        <span class="bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-[#0c1b3d] shadow-sm">
+                                            {post.frontmatter.category ||
+                                                "Technology"}
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="p-8 flex flex-col flex-1">
+                                    <div class="flex items-center gap-4 text-xs font-bold text-gray-500 mb-4">
+                                        <span class="flex items-center gap-1">
+                                            <i class="far fa-calendar" />
+                                            {post.frontmatter.publishDate}
+                                        </span>
+                                        <span>&bull;</span>
+                                        <span class="text-blue-600">
+                                            {post.frontmatter.readTime ||
+                                                "5 min read"}
+                                        </span>
+                                    </div>
+                                    <h2 class="text-2xl font-bold text-[#0c1b3d] mb-4 group-hover:text-blue-600 transition-colors line-clamp-2">
+                                        {post.frontmatter.title}
+                                    </h2>
+                                    <p class="text-gray-600 mb-6 line-clamp-3">
+                                        {post.frontmatter.description}
+                                    </p>
+                                    <div class="mt-auto flex items-center text-blue-600 font-bold text-sm">
+                                        Read Article{" "}
+                                        <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform" />
+                                    </div>
+                                </div>
+                            </article>
+                        </a>
+                    ))
+                }
+            </div>
+
+            {
+                posts.length === 0 && (
+                    <div class="text-center py-20 bg-gray-50 rounded-3xl border border-dashed border-gray-300">
+                        <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4 text-gray-400 text-2xl">
+                            <i class="far fa-newspaper" />
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-700">
+                            No posts found
+                        </h3>
+                        <p class="text-gray-500 mt-2">
+                            Check back soon for new updates!
+                        </p>
+                    </div>
+                )
+            }
+        </div>
+
+        <!-- CTA Section -->
+        <section class="py-20 bg-white">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl md:text-5xl font-bold text-[#0c1b3d] mb-6">
+                    Stay Updated with GlobixTech
+                </h2>
+                <p class="text-xl text-gray-600 mb-10 max-w-2xl mx-auto">
+                    Follow us for more insights and world-class technology
+                    solutions.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a
+                        href="/contact"
+                        class="bg-blue-600 hover:bg-blue-700 text-white px-10 py-4 rounded-xl font-bold transition-all shadow-lg shadow-blue-600/20 text-lg"
+                    >
+                        Work with Us
+                    </a>
+                    <a
+                        href="https://www.facebook.com/globixtech/"
+                        target="_blank"
+                        class="bg-gray-100 hover:bg-gray-200 text-gray-700 px-10 py-4 rounded-xl font-bold transition-all flex items-center justify-center gap-2 text-lg"
+                    >
+                        <i class="fab fa-facebook"></i> Follow on Facebook
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+    <Footer />
+</MainLayout>

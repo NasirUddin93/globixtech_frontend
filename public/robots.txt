@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://globixtech.com/sitemap-index.xml

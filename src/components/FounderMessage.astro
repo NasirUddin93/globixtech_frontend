@@ -1,0 +1,189 @@
+---
+// Founder Message Component for About Page
+import { Image } from "astro:assets";
+import founderImage from "../assets/Founder.png";
+---
+
+<section class="py-24 bg-[#f8fafc] relative overflow-hidden">
+    <!-- Decorative Background Orbs -->
+    <div
+        class="absolute -top-24 -left-24 w-96 h-96 bg-cyan-100 rounded-full blur-3xl opacity-50"
+    >
+    </div>
+    <div
+        class="absolute -bottom-24 -right-24 w-96 h-96 bg-blue-100 rounded-full blur-3xl opacity-50"
+    >
+    </div>
+
+    <div class="container mx-auto px-6 relative z-10">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-16">
+                <div
+                    class="inline-block bg-cyan-100 text-cyan-600 px-4 py-2 rounded-full text-sm font-bold mb-4 uppercase tracking-wider"
+                >
+                    From Our Founder
+                </div>
+                <h2 class="text-3xl md:text-5xl font-bold text-[#0c1b3d] mb-4">
+                    Message from Our Founder
+                </h2>
+            </div>
+
+            <div
+                class="bg-white rounded-[2.5rem] p-8 md:p-16 border border-gray-100 shadow-2xl relative"
+            >
+                <div
+                    class="absolute top-0 right-10 w-32 h-1 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full"
+                >
+                </div>
+
+                <!-- Founder Photo and Info -->
+                <div
+                    class="flex flex-col md:flex-row items-center gap-10 mb-12"
+                >
+                    <div class="relative">
+                        <div
+                            class="absolute -inset-4 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full opacity-10 blur-xl"
+                        >
+                        </div>
+                        <Image
+                            src={founderImage}
+                            alt="Nasir Uddin"
+                            class="relative w-44 h-44 rounded-full object-cover border-4 border-white shadow-2xl"
+                        />
+                    </div>
+                    <div class="text-center md:text-left">
+                        <h3 class="text-4xl font-bold text-[#0c1b3d] mb-3">
+                            Nasir Uddin
+                        </h3>
+                        <p class="text-2xl text-cyan-600 font-bold mb-3">
+                            Founder & Managing Director
+                        </p>
+                        <div
+                            class="flex items-center justify-center md:justify-start gap-2 text-gray-500 font-medium"
+                        >
+                            <i class="fas fa-building text-cyan-500"></i>
+                            GlobixTech Solutions
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Content Area -->
+                <div class="max-w-4xl">
+                    <!-- Opening Quote -->
+                    <blockquote class="relative mb-12">
+                        <i
+                            class="fas fa-quote-left absolute -top-6 -left-8 text-6xl text-cyan-500/10"
+                        ></i>
+                        <p
+                            class="text-2xl md:text-3xl text-gray-700 italic leading-relaxed font-serif relative z-10"
+                        >
+                            "Every great company starts with a simple idea: to
+                            solve a real problem. GlobixTech was born from my
+                            passion to make technology accessible and affordable
+                            for every business in Bangladesh."
+                        </p>
+                    </blockquote>
+
+                    <!-- Message Content -->
+                    <div
+                        class="space-y-6 text-gray-600 leading-relaxed text-lg mb-12 text-justify"
+                    >
+                        <p>
+                            When I founded GlobixTech in 2020, I had a clear
+                            vision: to bridge the technology gap for businesses
+                            across Bangladesh. Having witnessed firsthand the
+                            challenges that local businesses face in adopting
+                            modern software solutions, I knew there was a better
+                            way.
+                        </p>
+
+                        <p>
+                            Too often, businesses were forced to choose between
+                            expensive international solutions that didn't fit
+                            their needs, or settling for inadequate
+                            alternatives. I believed that Bangladeshi businesses
+                            deserved world-class technology that understood
+                            their unique requirements and budget constraints.
+                        </p>
+
+                        <p>
+                            Starting from a small office with just a handful of
+                            passionate developers, we've grown into a trusted
+                            technology partner for hundreds of businesses. But
+                            our core mission remains unchanged: to deliver
+                            innovative, affordable, and reliable software
+                            solutions that truly make a difference.
+                        </p>
+
+                        <p>
+                            What drives me every day is seeing our clients
+                            succeed. When a school streamlines their operations
+                            with our SMS, when an e-commerce business grows with
+                            our platform, or when a company transforms their
+                            workflow with our custom solutions – that's when I
+                            know we're fulfilling our purpose.
+                        </p>
+
+                        <p>
+                            We've built GlobixTech on three fundamental
+                            principles: understanding our clients' needs deeply,
+                            delivering exceptional quality consistently, and
+                            maintaining integrity in every interaction. These
+                            aren't just words on a wall – they're the foundation
+                            of every decision we make.
+                        </p>
+
+                        <p>
+                            As we continue to grow and evolve, I'm incredibly
+                            proud of the team we've assembled and the culture
+                            we've created. Every member of GlobixTech shares the
+                            same passion for excellence and commitment to our
+                            clients' success.
+                        </p>
+
+                        <p class="font-bold text-[#0c1b3d] text-xl">
+                            Thank you for being part of our journey. Together,
+                            we're not just building software – we're building
+                            the digital future of Bangladesh, one solution at a
+                            time.
+                        </p>
+                    </div>
+
+                    <!-- Signature -->
+                    <div class="pt-10 border-t border-gray-100">
+                        <div
+                            class="flex flex-col md:flex-row justify-between items-center gap-6"
+                        >
+                            <div class="text-center md:text-left">
+                                <p
+                                    class="text-2xl font-black text-[#0c1b3d] mb-1"
+                                >
+                                    Nasir Uddin
+                                </p>
+                                <p
+                                    class="text-cyan-600 font-bold tracking-wide uppercase text-sm"
+                                >
+                                    Founder & Managing Director
+                                </p>
+                            </div>
+                            <div class="flex gap-4">
+                                <a
+                                    href="#"
+                                    class="w-12 h-12 bg-slate-50 rounded-full flex items-center justify-center text-[#0a66c2] hover:bg-cyan-500 hover:text-white transition-all shadow-sm"
+                                >
+                                    <i class="fab fa-linkedin-in text-xl"></i>
+                                </a>
+                                <a
+                                    href="mailto:nasir@globix.tech"
+                                    class="w-12 h-12 bg-slate-50 rounded-full flex items-center justify-center text-cyan-600 hover:bg-cyan-500 hover:text-white transition-all shadow-sm"
+                                >
+                                    <i class="fas fa-envelope text-xl"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,55 @@
+---
+interface Props {
+    title: string;
+    spanTitle?: string;
+    description: string;
+    badge?: string;
+    badgeIcon?: string;
+}
+
+const { title, spanTitle, description, badge, badgeIcon } = Astro.props;
+---
+
+<section
+    class="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden bg-[#0c1b3d]"
+>
+    <div
+        class="absolute inset-0 bg-gradient-to-br from-[#0c1b3d] via-[#1a2c5a] to-[#0c1b3d]"
+    >
+    </div>
+    <div
+        class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-blue-500/10 to-transparent blur-3xl"
+    >
+    </div>
+
+    <div class="container mx-auto px-6 relative z-10 text-center">
+        {
+            badge && (
+                <div class="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 px-4 py-2 rounded-full text-blue-400 text-sm font-semibold mb-6">
+                    {badgeIcon && <i class={`fas ${badgeIcon}`} />}
+                    {badge}
+                </div>
+            )
+        }
+        <h1
+            class="text-4xl md:text-6xl font-extrabold text-white mb-6 leading-[1.2]"
+        >
+            {title}
+            {
+                spanTitle && (
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">
+                        {spanTitle}
+                    </span>
+                )
+            }
+        </h1>
+        <p
+            class="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed"
+        >
+            {description}
+        </p>
+        <div class="mt-10">
+            <slot />
+        </div>
+    </div>
+</section>

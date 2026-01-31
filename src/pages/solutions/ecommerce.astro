@@ -1,0 +1,1422 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
+
+const modules = [
+    {
+        id: "dashboard",
+        title: "Dynamic Dashboard",
+        description:
+            "Get a bird's-eye view of your entire business. The dynamic dashboard provides real-time analytics on sales, orders, and customer activity, helping you make data-driven decisions instantly.",
+        image: "/sms_mockup.png", // Using placeholder, user can replace
+        link: "#",
+    },
+    {
+        id: "pos",
+        title: "E-commerce POS System",
+        description:
+            "Unify your online and offline sales with our integrated POS system. Manage inventory, process transactions, and sync customer data seamlessly across all your physical and digital storefronts.",
+        image: "/sms_mockup.png",
+        link: "#",
+    },
+    {
+        id: "order",
+        title: "Order Management System",
+        description:
+            "Streamline your order processing from checkout to delivery. Automate status updates, track shipments, and manage returns efficiently to ensure high customer satisfaction.",
+        image: "/sms_mockup.png",
+        link: "#",
+    },
+    {
+        id: "product",
+        title: "Product Management System",
+        description:
+            "Easily organize your catalog with advanced product management tools. Handle variants, categories, inventory levels, and bulk updates with an intuitive interface designed for growth.",
+        image: "/sms_mockup.png",
+        link: "#",
+    },
+    {
+        id: "photo",
+        title: "Attractive Photo Management",
+        description:
+            "Showcase your products in the best light. Our photo management system allows for high-quality image uploads, galleries, and optimization to ensure fast loading and stunning visuals.",
+        image: "/sms_mockup.png",
+        link: "#",
+    },
+    {
+        id: "customer",
+        title: "Customers Management System",
+        description:
+            "Build lasting relationships with a dedicated CRM module. Track customer history, preferences, and engagement to deliver personalized experiences and reliable support.",
+        image: "/sms_mockup.png",
+        link: "#",
+    },
+    {
+        id: "supplier",
+        title: "Suppliers Management System",
+        description:
+            "Manage your supply chain effectively. Keep track of supplier details, purchase orders, and lead times to ensure you never run out of stock and maintain healthy vendor relationships.",
+        image: "/sms_mockup.png",
+        link: "#",
+    },
+];
+
+const stats = [
+    { label: "Active Stores", value: "500+" },
+    { label: "Daily Orders", value: "10k+" },
+    { label: "Uptime Guarantee", value: "99.9%" },
+    { label: "Happy Clients", value: "100%" },
+];
+
+const featuresByCategory = [
+    {
+        title: "Store Features",
+        icon: "fa-store",
+        items: [
+            "Product management",
+            "Category & brand",
+            "Stock management",
+            "Discount & coupon",
+        ],
+    },
+    {
+        title: "Order & Payment",
+        icon: "fa-credit-card",
+        items: ["Cash on Delivery", "bKash / Nagad / Rocket", "Order tracking"],
+    },
+    {
+        title: "Delivery Integration",
+        icon: "fa-truck",
+        items: ["Pathao", "Steadfast", "RedX", "Manual courier"],
+    },
+    {
+        title: "Marketing & SEO",
+        icon: "fa-bullhorn",
+        items: [
+            "Facebook Pixel",
+            "Google Analytics",
+            "SEO ready",
+            "SMS notification",
+        ],
+    },
+];
+
+const pricingPackages = [
+    {
+        name: "Basic",
+        price: "15,000–20,000 BDT",
+        bestFor: "Facebook Sellers",
+        color: "blue",
+        features: [
+            "Responsive E-commerce Website",
+            "Unlimited Products & Categories",
+            "Basic Order Management",
+            "Manual Payment Integration",
+        ],
+        delivery: "7-10 Days",
+        support: "1 Month Free Support",
+    },
+    {
+        name: "Standard",
+        price: "30,000–40,000 BDT",
+        bestFor: "Small Business",
+        isPopular: true,
+        color: "green",
+        features: [
+            "Everything in Basic",
+            "Payment Gateway (bKash/Nagad)",
+            "Courier API Integration",
+            "Facebook Pixel & Google Analytics",
+            "Dynamic Dashboard",
+            "Stock Management",
+        ],
+        delivery: "15-20 Days",
+        support: "3 Months Free Support",
+    },
+    {
+        name: "Premium",
+        price: "60,000+ BDT",
+        bestFor: "Brand / Enterprise",
+        color: "purple",
+        features: [
+            "Everything in Standard",
+            "Mobile App (Android)",
+            "Advanced Reporting & Analytics",
+            "Multi-Vendor / Multi-Store Capable",
+            "Dedicated Server Setup",
+            "Priority Support",
+        ],
+        delivery: "30+ Days",
+        support: "6 Months Free Support",
+    },
+];
+
+const addOns = [
+    { name: "SMS Integration", price: "Starting @ 2000 BDT" },
+    { name: "Mobile App (Android/iOS)", price: "Ask for Quote" },
+    { name: "Advanced Hosting", price: "Ask for Quote" },
+    { name: "Domain Registration", price: "At Actual Cost" },
+];
+
+const processSteps = [
+    { title: "Requirement Discussion", icon: "fa-comments" },
+    { title: "Design Approval", icon: "fa-pencil-ruler" },
+    { title: "Development", icon: "fa-code" },
+    { title: "Payment Integration", icon: "fa-credit-card" },
+    { title: "Training & Handover", icon: "fa-handshake" },
+];
+
+const faqs = [
+    {
+        question: "How long does it take to build the website?",
+        answer: "For our Basic package, we can get you up and running in 7-10 days. Standard packages take about 15-20 days, while Premium or custom solutions may take 30+ days depending on complexity.",
+    },
+    {
+        question: "Do you provide hosting and domain?",
+        answer: "Yes, we provide high-speed cloud hosting with all our packages. Domain registration is charged effectively at cost.",
+    },
+    {
+        question: "Can I add products myself?",
+        answer: "Absolutely! You get a powerful, easy-to-use Admin Panel where you can add unlimited products, categories, and manage stock without any coding knowledge.",
+    },
+    {
+        question: "Do you support bKash, Nagad, and Rocket?",
+        answer: "Yes, we integrate automated payment gateways for all major Bangladeshi methods including bKash, Nagad, Rocket, and bank cards.",
+    },
+    {
+        question: "Is there any monthly cost?",
+        answer: "No, there are no hidden monthly fees for the software itself. You only pay for your annual hosting and domain renewal after the first year.",
+    },
+];
+
+const testimonials = [
+    {
+        name: "Rakib Hassan",
+        business: "Fashion House BD",
+        rating: 5,
+        text: "GlobixTech transformed our business! We went from Facebook-only selling to a professional store with bKash integration. Sales increased 3x in just 2 months.",
+        location: "Dhaka",
+    },
+    {
+        name: "Fatima Akter",
+        business: "Organic Food Store",
+        rating: 5,
+        text: "Best decision ever! The admin panel is so easy to use. I can add products myself and manage everything. Customer support is excellent and always available.",
+        location: "Chittagong",
+    },
+    {
+        name: "Kamal Uddin",
+        business: "Electronics Hub",
+        rating: 5,
+        text: "Professional team, affordable pricing, and delivered on time. The courier integration saved us hours of manual work. Highly recommended for any Bangladeshi business!",
+        location: "Sylhet",
+    },
+];
+
+const portfolio = [
+    {
+        name: "Fashion Trends BD",
+        category: "Fashion & Apparel",
+        description:
+            "Complete e-commerce solution with 500+ products, bKash/Nagad integration, and Pathao courier API.",
+        features: [
+            "Product Variants",
+            "Size Charts",
+            "Wishlist",
+            "Order Tracking",
+        ],
+        url: "#",
+    },
+    {
+        name: "Organic Bazaar",
+        category: "Food & Grocery",
+        description:
+            "Fresh food delivery platform with real-time inventory management and multi-vendor support.",
+        features: [
+            "Multi-vendor",
+            "Delivery Zones",
+            "Fresh Guarantee",
+            "Subscription",
+        ],
+        url: "#",
+    },
+    {
+        name: "Tech Galaxy",
+        category: "Electronics",
+        description:
+            "Electronics store with EMI options, warranty management, and detailed product specifications.",
+        features: [
+            "EMI Calculator",
+            "Warranty Tracking",
+            "Compare Products",
+            "Reviews",
+        ],
+        url: "#",
+    },
+];
+---
+
+<MainLayout title="eCommerce Solution - Globix Tech">
+    <Navbar />
+
+    <main class="min-h-screen bg-slate-50">
+        <!-- Hero Section -->
+        <section
+            class="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden bg-[#0c1b3d]"
+        >
+            <div
+                class="absolute inset-0 bg-gradient-to-br from-[#0c1b3d] via-[#1a2c5a] to-[#0c1b3d]"
+            >
+            </div>
+            <div
+                class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-blue-500/10 to-transparent blur-3xl"
+            >
+            </div>
+
+            <div class="container mx-auto px-6 relative z-10 text-center">
+                <div
+                    class="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 px-4 py-2 rounded-full text-blue-400 text-sm font-semibold mb-6"
+                >
+                    <i class="fas fa-check-circle"></i> #1 eCommerce Solution in Bangladesh
+                </div>
+                <h1
+                    class="text-4xl md:text-6xl font-extrabold text-white mb-6 leading-[1.2]"
+                >
+                    Professional E-commerce Website <br /> for <span
+                        class="text-blue-400">Bangladeshi Businesses</span
+                    >
+                </h1>
+                <p
+                    class="text-lg md:text-xl text-gray-300 mb-10 max-w-2xl mx-auto leading-relaxed"
+                >
+                    Start selling online with payment, delivery & Facebook
+                    integration. Everything you need to grow your business.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a
+                        href="#contact"
+                        class="bg-blue-600 hover:bg-blue-700 text-white px-10 py-4 rounded-full font-bold transition-all shadow-lg shadow-blue-600/20 text-lg"
+                    >
+                        Get Free Demo
+                    </a>
+                    <a
+                        href="https://wa.me/8801707568468?text=I%20am%20interested%20in%20eCommerce%20Solution"
+                        target="_blank"
+                        class="bg-green-500 hover:bg-green-600 text-white px-10 py-4 rounded-full font-bold transition-all shadow-lg shadow-green-500/20 flex items-center justify-center gap-2 text-lg"
+                    >
+                        <i class="fab fa-whatsapp"></i> Call / WhatsApp
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Who This Is For -->
+        <section class="py-16 bg-slate-50 border-y border-gray-100">
+            <div class="container mx-auto px-6">
+                <h2
+                    class="text-2xl md:text-3xl font-bold text-center text-[#0c1b3d] mb-12"
+                >
+                    Who is this for?
+                </h2>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    {
+                        [
+                            { title: "Small Business", icon: "fa-store" },
+                            { title: "Facebook Seller", icon: "fa-facebook" },
+                            { title: "Wholesale Business", icon: "fa-boxes" },
+                            { title: "Startup", icon: "fa-rocket" },
+                        ].map((item) => (
+                            <div class="bg-white p-6 rounded-xl shadow-sm text-center hover:shadow-md transition-shadow">
+                                <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 mx-auto mb-4 text-xl">
+                                    <i class={`fas ${item.icon}`} />
+                                </div>
+                                <h3 class="font-bold text-gray-800">
+                                    {item.title}
+                                </h3>
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Benefits -->
+        <section class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl font-bold text-[#0c1b3d] mb-4">
+                        Everything You Need
+                    </h2>
+                    <p class="text-gray-600">
+                        Powerful features to manage your business smoothly
+                    </p>
+                </div>
+                <div
+                    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+                >
+                    <div
+                        class="text-center p-6 border border-gray-100 rounded-2xl hover:border-blue-200 transition-colors"
+                    >
+                        <div
+                            class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-600 text-3xl mx-auto mb-6"
+                        >
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Mobile Friendly</h3>
+                        <p class="text-gray-500 text-sm">
+                            Responsive design that looks great on any device.
+                        </p>
+                    </div>
+                    <div
+                        class="text-center p-6 border border-gray-100 rounded-2xl hover:border-pink-200 transition-colors"
+                    >
+                        <div
+                            class="w-16 h-16 bg-pink-50 rounded-2xl flex items-center justify-center text-pink-500 text-3xl mx-auto mb-6"
+                        >
+                            <i class="fas fa-wallet"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">bKash / Nagad</h3>
+                        <p class="text-gray-500 text-sm">
+                            Integrated automated payment gateway support.
+                        </p>
+                    </div>
+                    <div
+                        class="text-center p-6 border border-gray-100 rounded-2xl hover:border-green-200 transition-colors"
+                    >
+                        <div
+                            class="w-16 h-16 bg-green-50 rounded-2xl flex items-center justify-center text-green-500 text-3xl mx-auto mb-6"
+                        >
+                            <i class="fas fa-truck"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">
+                            Courier Integration
+                        </h3>
+                        <p class="text-gray-500 text-sm">
+                            Automated delivery management with courier APIs.
+                        </p>
+                    </div>
+                    <div
+                        class="text-center p-6 border border-gray-100 rounded-2xl hover:border-purple-200 transition-colors"
+                    >
+                        <div
+                            class="w-16 h-16 bg-purple-50 rounded-2xl flex items-center justify-center text-purple-500 text-3xl mx-auto mb-6"
+                        >
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Admin Panel</h3>
+                        <p class="text-gray-500 text-sm">
+                            Easy to use dashboard to control everything.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- E-commerce Features Section -->
+        <section class="py-20 bg-slate-50">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl font-bold text-[#0c1b3d] mb-4">
+                        Powerful E-commerce Features
+                    </h2>
+                    <p class="text-gray-600">
+                        Everything you need to run a successful online store
+                    </p>
+                </div>
+                <div
+                    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+                >
+                    {
+                        featuresByCategory.map((category) => (
+                            <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow border border-gray-100">
+                                <div class="flex items-center gap-3 mb-6">
+                                    <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600 text-xl">
+                                        <i class={`fas ${category.icon}`} />
+                                    </div>
+                                    <h3 class="font-bold text-[#0c1b3d] text-lg">
+                                        {category.title}
+                                    </h3>
+                                </div>
+                                <ul class="space-y-3">
+                                    {category.items.map((item) => (
+                                        <li class="flex items-center gap-3 text-gray-600 text-sm font-medium">
+                                            <i class="fas fa-check-circle text-green-500" />{" "}
+                                            {item}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
+        </section>
+
+        <!-- Process / How It Works Section -->
+        <section class="py-20 bg-white border-b border-gray-100">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl font-bold text-[#0c1b3d] mb-4">
+                        How It Works
+                    </h2>
+                    <p class="text-gray-600">
+                        Our simple 5-step process to get your store online
+                    </p>
+                </div>
+
+                <div class="relative">
+                    <!-- Connecting Line (Desktop) -->
+                    <div
+                        class="hidden md:block absolute top-1/2 left-0 w-full h-1 bg-gray-100 -translate-y-1/2 z-0"
+                    >
+                    </div>
+
+                    <div
+                        class="grid grid-cols-1 md:grid-cols-5 gap-8 relative z-10"
+                    >
+                        {
+                            processSteps.map((step, index) => (
+                                <div class="group">
+                                    <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm group-hover:shadow-md transition-all text-center relative">
+                                        <div class="w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold absolute -top-5 left-1/2 -translate-x-1/2 border-4 border-white shadow-sm">
+                                            {index + 1}
+                                        </div>
+                                        <div class="mt-6 mb-3 text-blue-600 text-3xl">
+                                            <i class={`fas ${step.icon}`} />
+                                        </div>
+                                        <h3 class="font-bold text-[#0c1b3d] text-sm">
+                                            {step.title}
+                                        </h3>
+                                    </div>
+                                </div>
+                            ))
+                        }
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Packages Preview -->
+        <section class="py-20 bg-slate-50">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl font-bold text-[#0c1b3d] mb-4">
+                        Transparent Pricing Packages
+                    </h2>
+                    <p class="text-gray-600">
+                        Choose the plan that fits your business stage. No hidden
+                        costs.
+                    </p>
+                </div>
+
+                <div
+                    class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-16"
+                >
+                    {
+                        pricingPackages.map((pkg) => (
+                            <div
+                                class={`relative bg-white rounded-2xl p-8 border-2 transition-transform hover:-translate-y-2 ${pkg.isPopular ? "border-green-500 shadow-xl" : "border-gray-100 shadow-sm"}`}
+                            >
+                                {pkg.isPopular && (
+                                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-green-500 text-white px-4 py-1 rounded-full text-sm font-bold shadow-md">
+                                        Most Popular
+                                    </div>
+                                )}
+                                <div class="text-center mb-8">
+                                    <h3
+                                        class={`text-2xl font-bold text-gray-800 mb-2`}
+                                    >
+                                        {pkg.name}
+                                    </h3>
+                                    <div
+                                        class={`inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-4 bg-${pkg.color}-50 text-${pkg.color}-600`}
+                                    >
+                                        {pkg.bestFor}
+                                    </div>
+                                    <div class="text-3xl font-bold text-[#0c1b3d]">
+                                        {pkg.price}
+                                    </div>
+                                </div>
+
+                                <div class="space-y-4 mb-8">
+                                    <h4 class="font-bold text-gray-700 text-sm uppercase border-b pb-2">
+                                        What's Included
+                                    </h4>
+                                    <ul class="space-y-3">
+                                        {pkg.features.map((feature) => (
+                                            <li class="flex items-start gap-3 text-sm text-gray-600">
+                                                <i class="fas fa-check text-green-500 mt-1" />
+                                                <span>{feature}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+
+                                <div class="bg-gray-50 -mx-8 -mb-8 p-6 rounded-b-2xl border-t border-gray-100">
+                                    <div class="grid grid-cols-2 gap-4 text-center text-sm mb-6">
+                                        <div>
+                                            <div class="text-gray-400 font-semibold text-xs uppercase">
+                                                Delivery
+                                            </div>
+                                            <div class="font-bold text-[#0c1b3d]">
+                                                {pkg.delivery}
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="text-gray-400 font-semibold text-xs uppercase">
+                                                Support
+                                            </div>
+                                            <div class="font-bold text-[#0c1b3d]">
+                                                {pkg.support}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a
+                                        href="#contact"
+                                        class={`block w-full text-center py-3 rounded-xl font-bold transition-all ${pkg.isPopular ? "bg-green-500 text-white hover:bg-green-600 shadow-lg shadow-green-500/20" : "bg-[#0c1b3d] text-white hover:bg-opacity-90"}`}
+                                    >
+                                        Get Started
+                                    </a>
+                                </div>
+                            </div>
+                        ))
+                    }
+                </div>
+
+                <!-- Add-ons -->
+                <div
+                    class="max-w-4xl mx-auto bg-white rounded-2xl shadow-sm border border-gray-100 p-8"
+                >
+                    <h3
+                        class="text-xl font-bold text-[#0c1b3d] mb-6 text-center"
+                    >
+                        Available Add-ons
+                    </h3>
+                    <div
+                        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 divide-y sm:divide-y-0 sm:divide-x divide-gray-100"
+                    >
+                        {
+                            addOns.map((addon) => (
+                                <div class="text-center pt-4 sm:pt-0 px-2">
+                                    <h4 class="font-semibold text-gray-700 mb-1">
+                                        {addon.name}
+                                    </h4>
+                                    <p class="text-sm font-bold text-blue-600">
+                                        {addon.price}
+                                    </p>
+                                </div>
+                            ))
+                        }
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Trust Badges Section -->
+        <section class="py-16 bg-white border-y border-gray-100">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h3 class="text-2xl font-bold text-[#0c1b3d] mb-2">
+                        Trusted Payment & Delivery Partners
+                    </h3>
+                    <p class="text-gray-600">
+                        We integrate with Bangladesh's leading payment and
+                        courier services
+                    </p>
+                </div>
+
+                <div
+                    class="grid grid-cols-2 md:grid-cols-6 gap-8 items-center max-w-5xl mx-auto"
+                >
+                    <div class="flex flex-col items-center gap-2 group">
+                        <div
+                            class="w-20 h-20 bg-pink-50 rounded-xl flex items-center justify-center group-hover:bg-pink-100 transition-all"
+                        >
+                            <i class="fas fa-wallet text-3xl text-pink-500"></i>
+                        </div>
+                        <p class="text-sm font-bold text-gray-700">bKash</p>
+                    </div>
+                    <div class="flex flex-col items-center gap-2 group">
+                        <div
+                            class="w-20 h-20 bg-orange-50 rounded-xl flex items-center justify-center group-hover:bg-orange-100 transition-all"
+                        >
+                            <i
+                                class="fas fa-mobile-alt text-3xl text-orange-500"
+                            ></i>
+                        </div>
+                        <p class="text-sm font-bold text-gray-700">Nagad</p>
+                    </div>
+                    <div class="flex flex-col items-center gap-2 group">
+                        <div
+                            class="w-20 h-20 bg-purple-50 rounded-xl flex items-center justify-center group-hover:bg-purple-100 transition-all"
+                        >
+                            <i class="fas fa-rocket text-3xl text-purple-500"
+                            ></i>
+                        </div>
+                        <p class="text-sm font-bold text-gray-700">Rocket</p>
+                    </div>
+                    <div class="flex flex-col items-center gap-2 group">
+                        <div
+                            class="w-20 h-20 bg-blue-50 rounded-xl flex items-center justify-center group-hover:bg-blue-100 transition-all"
+                        >
+                            <i class="fas fa-credit-card text-3xl text-blue-500"
+                            ></i>
+                        </div>
+                        <p class="text-sm font-bold text-gray-700">Cards</p>
+                    </div>
+                    <div class="flex flex-col items-center gap-2 group">
+                        <div
+                            class="w-20 h-20 bg-green-50 rounded-xl flex items-center justify-center group-hover:bg-green-100 transition-all"
+                        >
+                            <i class="fas fa-truck text-3xl text-green-500"></i>
+                        </div>
+                        <p class="text-sm font-bold text-gray-700">Pathao</p>
+                    </div>
+                    <div class="flex flex-col items-center gap-2 group">
+                        <div
+                            class="w-20 h-20 bg-red-50 rounded-xl flex items-center justify-center group-hover:bg-red-100 transition-all"
+                        >
+                            <i
+                                class="fas fa-shipping-fast text-3xl text-red-500"
+                            ></i>
+                        </div>
+                        <p class="text-sm font-bold text-gray-700">Steadfast</p>
+                    </div>
+                </div>
+
+                <div
+                    class="flex flex-wrap justify-center gap-6 mt-12 pt-8 border-t border-gray-100"
+                >
+                    <div class="flex items-center gap-2 text-gray-600">
+                        <i class="fas fa-shield-alt text-green-500 text-xl"></i>
+                        <span class="font-semibold">SSL Secured</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-gray-600">
+                        <i class="fas fa-headset text-blue-500 text-xl"></i>
+                        <span class="font-semibold">24/7 Support</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-gray-600">
+                        <i class="fas fa-undo text-purple-500 text-xl"></i>
+                        <span class="font-semibold">Money Back Guarantee</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-gray-600">
+                        <i class="fas fa-certificate text-yellow-500 text-xl"
+                        ></i>
+                        <span class="font-semibold">Licensed & Registered</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Modules Section (Interactive) -->
+        <section class="py-24 bg-white" id="modules">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2
+                        class="text-3xl md:text-5xl font-bold text-[#0c1b3d] mb-4"
+                    >
+                        Main Modules of Isshue- eCommerce <br /> Shopping Cart Software
+                    </h2>
+                    <p class="text-gray-600 max-w-3xl mx-auto">
+                        Isshue multi-store eCommerce shopping cart software is
+                        full of some expeditious powerful features to operate
+                        your business hassle-free and smoothly.
+                    </p>
+                </div>
+
+                <div
+                    class="bg-white rounded-3xl shadow-xl border border-gray-100 p-8 md:p-12"
+                >
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                        <!-- Sidebar Navigation -->
+                        <div class="lg:col-span-4 flex flex-col gap-3">
+                            {
+                                modules.map((module, index) => (
+                                    <button
+                                        class={`module-btn w-full text-left px-6 py-4 rounded-xl border border-gray-100 font-semibold transition-all duration-300 flex items-center justify-between group
+                    ${index === 0 ? "bg-white border-green-500 shadow-md text-green-600 ring-1 ring-green-500" : "bg-gray-50 text-gray-600 hover:bg-white hover:shadow-md"}`}
+                                        data-id={module.id}
+                                    >
+                                        {module.title}
+                                        <i
+                                            class={`fas fa-arrow-right transform transition-transform group-hover:translate-x-1 ${index === 0 ? "text-green-600" : "text-gray-300"}`}
+                                        />
+                                    </button>
+                                ))
+                            }
+                        </div>
+
+                        <!-- Content Area -->
+                        <div class="lg:col-span-8 relative min-h-[400px]">
+                            {
+                                modules.map((module, index) => (
+                                    <div
+                                        id={`content-${module.id}`}
+                                        class={`module-content transition-all duration-500 absolute inset-0 
+                    ${index === 0 ? "opacity-100 z-10 translate-y-0" : "opacity-0 -z-10 translate-y-4"}`}
+                                    >
+                                        <div class="flex flex-col h-full justify-center">
+                                            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                                                <div>
+                                                    <h3 class="text-3xl font-bold text-[#0c1b3d] mb-4 border-l-4 border-green-500 pl-4">
+                                                        {module.title}
+                                                    </h3>
+                                                    <p class="text-gray-600 mb-8 leading-relaxed text-lg">
+                                                        {module.description}
+                                                    </p>
+                                                    <a
+                                                        href={module.link}
+                                                        class="inline-block bg-green-500 hover:bg-green-600 text-white px-8 py-3 rounded-full font-bold transition-colors shadow-lg shadow-green-500/30"
+                                                    >
+                                                        See Demo
+                                                    </a>
+                                                </div>
+                                                <div class="relative group">
+                                                    <div class="absolute -inset-4 bg-green-500/10 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                                                    <img
+                                                        src={module.image}
+                                                        alt={module.title}
+                                                        class="rounded-lg shadow-2xl border border-gray-100 relative z-10 transform transition-transform duration-500 hover:scale-[1.02]"
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                ))
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Section -->
+        <section class="py-20 bg-slate-50">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <div
+                        class="inline-flex items-center gap-2 bg-purple-100 text-purple-600 px-4 py-1.5 rounded-full text-sm font-bold mb-4"
+                    >
+                        <i class="fas fa-briefcase"></i> Our Work
+                    </div>
+                    <h2 class="text-3xl font-bold text-[#0c1b3d] mb-4">
+                        Success Stories & Live Projects
+                    </h2>
+                    <p class="text-gray-600">
+                        Real e-commerce stores we've built for Bangladeshi
+                        businesses
+                    </p>
+                </div>
+
+                <div
+                    class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto"
+                >
+                    {
+                        portfolio.map((project) => (
+                            <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-xl transition-all group">
+                                <div class="h-48 bg-gradient-to-br from-blue-500 to-purple-600 relative overflow-hidden">
+                                    <div class="absolute inset-0 bg-[url('/grid.svg')] opacity-10" />
+                                    <div class="absolute inset-0 flex items-center justify-center">
+                                        <div class="text-center text-white">
+                                            <i class="fas fa-shopping-cart text-5xl mb-3 opacity-50" />
+                                            <p class="text-sm font-semibold opacity-75">
+                                                {project.category}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="p-6">
+                                    <h3 class="text-xl font-bold text-[#0c1b3d] mb-2">
+                                        {project.name}
+                                    </h3>
+                                    <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                                        {project.description}
+                                    </p>
+                                    <div class="flex flex-wrap gap-2 mb-4">
+                                        {project.features.map((feature) => (
+                                            <span class="bg-blue-50 text-blue-600 text-xs px-3 py-1 rounded-full font-semibold">
+                                                {feature}
+                                            </span>
+                                        ))}
+                                    </div>
+                                    <a
+                                        href={project.url}
+                                        class="inline-flex items-center gap-2 text-blue-600 font-bold text-sm hover:gap-3 transition-all"
+                                    >
+                                        View Case Study{" "}
+                                        <i class="fas fa-arrow-right" />
+                                    </a>
+                                </div>
+                            </div>
+                        ))
+                    }
+                </div>
+
+                <div class="text-center mt-12">
+                    <p class="text-gray-600 mb-4">
+                        Want to see your business here?
+                    </p>
+                    <a
+                        href="#contact"
+                        class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full font-bold transition-all shadow-lg shadow-blue-600/20"
+                    >
+                        Start Your Project
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose Us (Trust) -->
+        <section class="py-24 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl font-bold text-[#0c1b3d] mb-4">
+                        Why Choose Us?
+                    </h2>
+                    <p class="text-gray-600">
+                        We understand the local market needs better than anyone
+                        else.
+                    </p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                    <div class="text-center group">
+                        <div
+                            class="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center text-blue-600 text-2xl mx-auto mb-6 group-hover:bg-blue-600 group-hover:text-white transition-all"
+                        >
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2">Local Support</h3>
+                        <p class="text-sm text-gray-500">
+                            Dedicated support team available in Bangladesh time.
+                        </p>
+                    </div>
+                    <div class="text-center group">
+                        <div
+                            class="w-16 h-16 bg-green-50 rounded-full flex items-center justify-center text-green-600 text-2xl mx-auto mb-6 group-hover:bg-green-600 group-hover:text-white transition-all"
+                        >
+                            <i class="fas fa-language"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2">Bangla Friendly</h3>
+                        <p class="text-sm text-gray-500">
+                            Full Bangla language support for admin and users.
+                        </p>
+                    </div>
+                    <div class="text-center group">
+                        <div
+                            class="w-16 h-16 bg-purple-50 rounded-full flex items-center justify-center text-purple-600 text-2xl mx-auto mb-6 group-hover:bg-purple-600 group-hover:text-white transition-all"
+                        >
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2">Fast Delivery</h3>
+                        <p class="text-sm text-gray-500">
+                            Get your store up and running in record time.
+                        </p>
+                    </div>
+                    <div class="text-center group">
+                        <div
+                            class="w-16 h-16 bg-orange-50 rounded-full flex items-center justify-center text-orange-600 text-2xl mx-auto mb-6 group-hover:bg-orange-600 group-hover:text-white transition-all"
+                        >
+                            <i class="fas fa-tags"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2">Affordable Price</h3>
+                        <p class="text-sm text-gray-500">
+                            Best competitive pricing in the market.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="py-20 bg-slate-50">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <div
+                        class="inline-flex items-center gap-2 bg-green-100 text-green-600 px-4 py-1.5 rounded-full text-sm font-bold mb-4"
+                    >
+                        <i class="fas fa-star"></i> Customer Success Stories
+                    </div>
+                    <h2 class="text-3xl font-bold text-[#0c1b3d] mb-4">
+                        What Our Clients Say
+                    </h2>
+                    <p class="text-gray-600">
+                        Real feedback from real businesses across Bangladesh
+                    </p>
+                </div>
+
+                <div
+                    class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto"
+                >
+                    {
+                        testimonials.map((testimonial) => (
+                            <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-lg transition-all">
+                                <div class="flex items-center gap-1 mb-4">
+                                    {[...Array(testimonial.rating)].map(() => (
+                                        <i class="fas fa-star text-yellow-400" />
+                                    ))}
+                                </div>
+                                <p class="text-gray-600 mb-6 leading-relaxed italic">
+                                    "{testimonial.text}"
+                                </p>
+                                <div class="flex items-center gap-3 pt-4 border-t border-gray-100">
+                                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 font-bold text-lg">
+                                        {testimonial.name.charAt(0)}
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-[#0c1b3d]">
+                                            {testimonial.name}
+                                        </h4>
+                                        <p class="text-sm text-gray-500">
+                                            {testimonial.business}
+                                        </p>
+                                        <p class="text-xs text-gray-400 flex items-center gap-1">
+                                            <i class="fas fa-map-marker-alt" />{" "}
+                                            {testimonial.location}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
+        </section>
+
+        <!-- About Us Section -->
+        <section class="py-24 bg-white relative overflow-hidden">
+            <div
+                class="absolute top-0 right-0 w-1/2 h-full bg-blue-50 rounded-l-[100px] -z-0 opacity-50"
+            >
+            </div>
+
+            <div class="container mx-auto px-6 relative z-10">
+                <div
+                    class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center"
+                >
+                    <div>
+                        <div
+                            class="inline-flex items-center gap-2 bg-blue-100 text-blue-600 px-4 py-1.5 rounded-full text-sm font-bold mb-6"
+                        >
+                            <i class="fas fa-heart"></i> Made with Love in Bangladesh
+                        </div>
+                        <h2
+                            class="text-3xl md:text-5xl font-bold text-[#0c1b3d] mb-6 leading-tight"
+                        >
+                            We Are GlobixTech <br />
+                            <span class="text-blue-600"
+                                >Your Local Tech Partner</span
+                            >
+                        </h2>
+                        <p class="text-gray-600 text-lg mb-6 leading-relaxed">
+                            We are a team of passionate developers based in
+                            Dhaka, dedicated to empowering small and medium
+                            businesses with world-class technology. We
+                            understand the unique challenges of the local market
+                            because we live here too.
+                        </p>
+                        <p class="text-gray-600 text-lg mb-8 leading-relaxed">
+                            Our mission is simple: to make e-commerce
+                            accessible, affordable, and easy for every
+                            Bangladeshi entrepreneur. We are not just a software
+                            company; we are real people committed to seeing your
+                            business grow.
+                        </p>
+
+                        <div class="flex items-center gap-8">
+                            <div>
+                                <h4
+                                    class="text-4xl font-bold text-[#0c1b3d] mb-1"
+                                >
+                                    5+
+                                </h4>
+                                <p class="text-gray-500 text-sm">
+                                    Years Experience
+                                </p>
+                            </div>
+                            <div class="w-px h-12 bg-gray-200"></div>
+                            <div>
+                                <h4
+                                    class="text-4xl font-bold text-[#0c1b3d] mb-1"
+                                >
+                                    100+
+                                </h4>
+                                <p class="text-gray-500 text-sm">
+                                    Happy Clients
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="relative">
+                        <div
+                            class="absolute -inset-4 bg-blue-600/10 rounded-[40px] rotate-3"
+                        >
+                        </div>
+                        <div
+                            class="bg-gray-200 rounded-[30px] overflow-hidden shadow-2xl relative aspect-[4/3] flex items-center justify-center group"
+                        >
+                            <!-- Placeholder for Real Image -->
+                            <div
+                                class="absolute inset-0 bg-gradient-to-tr from-blue-900/40 to-transparent z-10"
+                            >
+                            </div>
+                            <i class="fas fa-users text-6xl text-gray-400 z-0"
+                            ></i>
+                            <div class="absolute bottom-6 left-6 right-6 z-20">
+                                <div
+                                    class="bg-white/90 backdrop-blur-sm p-4 rounded-xl border border-white/20 shadow-lg"
+                                >
+                                    <p
+                                        class="font-bold text-[#0c1b3d] flex items-center gap-2"
+                                    >
+                                        <i
+                                            class="fas fa-map-marker-alt text-red-500"
+                                        ></i> Based in Dhaka, Bangladesh
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="py-20 bg-slate-50">
+            <div class="container mx-auto px-6 max-w-4xl">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl font-bold text-[#0c1b3d] mb-4">
+                        Frequently Asked Questions
+                    </h2>
+                    <p class="text-gray-600">
+                        Common questions about our e-commerce solution
+                    </p>
+                </div>
+
+                <div class="space-y-4">
+                    {
+                        faqs.map((faq, index) => (
+                            <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+                                <button class="faq-btn w-full px-6 py-4 text-left flex items-center justify-between font-bold text-[#0c1b3d] hover:bg-gray-50 transition-colors focus:outline-none">
+                                    <span>{faq.question}</span>
+                                    <span class="bg-blue-50 text-blue-600 w-8 h-8 flex items-center justify-center rounded-full text-sm font-bold transition-transform transform duration-300">
+                                        <i class="fas fa-plus" />
+                                    </span>
+                                </button>
+                                <div class="faq-content h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                                    <div class="px-6 pb-6 text-gray-600 leading-relaxed border-t border-gray-100 pt-4">
+                                        {faq.answer}
+                                    </div>
+                                </div>
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section
+            class="py-24 bg-[#0c1b3d] relative overflow-hidden"
+            id="contact"
+        >
+            <div class="absolute inset-0 bg-[url('/grid.svg')] opacity-10">
+            </div>
+
+            <div class="container mx-auto px-6 relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                    <!-- Contact Info -->
+                    <div>
+                        <h2
+                            class="text-3xl md:text-4xl font-bold text-white mb-6"
+                        >
+                            Start Your E-commerce <br />
+                            <span class="text-blue-400">Business Today</span>
+                        </h2>
+                        <p class="text-gray-300 text-lg mb-10 leading-relaxed">
+                            Ready to launch? Get in touch with us for a free
+                            consultation. We are available on WhatsApp, Phone,
+                            and Email.
+                        </p>
+
+                        <div class="space-y-6 mb-12">
+                            <a
+                                href="tel:+8801707568468"
+                                class="flex items-center gap-4 group"
+                            >
+                                <div
+                                    class="w-12 h-12 bg-blue-500/10 rounded-full flex items-center justify-center text-blue-400 group-hover:bg-blue-500 group-hover:text-white transition-all"
+                                >
+                                    <i class="fas fa-phone-alt"></i>
+                                </div>
+                                <div>
+                                    <p class="text-gray-400 text-sm">
+                                        Call Us Anytime
+                                    </p>
+                                    <h4
+                                        class="text-xl font-bold text-white group-hover:text-blue-400 transition-colors"
+                                    >
+                                        +880 1707-568468
+                                    </h4>
+                                </div>
+                            </a>
+
+                            <a
+                                href="mailto:sales@globixtech.com"
+                                class="flex items-center gap-4 group"
+                            >
+                                <div
+                                    class="w-12 h-12 bg-blue-500/10 rounded-full flex items-center justify-center text-blue-400 group-hover:bg-blue-500 group-hover:text-white transition-all"
+                                >
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <p class="text-gray-400 text-sm">
+                                        Send Email
+                                    </p>
+                                    <h4
+                                        class="text-xl font-bold text-white group-hover:text-blue-400 transition-colors"
+                                    >
+                                        sales@globixtech.com
+                                    </h4>
+                                </div>
+                            </a>
+
+                            <div class="flex items-center gap-4">
+                                <div
+                                    class="w-12 h-12 bg-blue-500/10 rounded-full flex items-center justify-center text-blue-400"
+                                >
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div>
+                                    <p class="text-gray-400 text-sm">
+                                        Visit Our Office
+                                    </p>
+                                    <h4 class="text-xl font-bold text-white">
+                                        House #123, Road #4, Dhanmondi
+                                    </h4>
+                                    <p class="text-gray-400 text-sm">
+                                        Dhaka-1205, Bangladesh
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center gap-4">
+                                <div
+                                    class="w-12 h-12 bg-blue-500/10 rounded-full flex items-center justify-center text-blue-400"
+                                >
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div>
+                                    <p class="text-gray-400 text-sm">
+                                        Business Hours
+                                    </p>
+                                    <h4 class="text-xl font-bold text-white">
+                                        Saturday - Thursday: 10 AM - 8 PM
+                                    </h4>
+                                    <p class="text-gray-400 text-sm">
+                                        Friday: Closed
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <a
+                            href="https://wa.me/8801707568468?text=I%20am%20interested%20in%20eCommerce%20Solution"
+                            target="_blank"
+                            class="inline-flex items-center justify-center gap-3 bg-[#25D366] hover:bg-[#20bd5a] text-white px-8 py-4 rounded-full font-bold text-lg shadow-lg shadow-green-500/20 transition-all transform hover:-translate-y-1 w-full md:w-auto animate-pulse"
+                        >
+                            <i class="fab fa-whatsapp text-2xl"></i>
+                            Chat on WhatsApp
+                        </a>
+                    </div>
+
+                    <!-- Contact Form -->
+                    <div
+                        class="bg-white p-8 rounded-3xl shadow-2xl border border-gray-100"
+                    >
+                        <h3 class="text-2xl font-bold text-[#0c1b3d] mb-6">
+                            Request a Callback
+                        </h3>
+                        <form class="space-y-4">
+                            <div>
+                                <label
+                                    class="block text-sm font-semibold text-gray-700 mb-1"
+                                    >Your Name</label
+                                >
+                                <input
+                                    type="text"
+                                    class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all"
+                                    placeholder="John Doe"
+                                />
+                            </div>
+                            <div>
+                                <label
+                                    class="block text-sm font-semibold text-gray-700 mb-1"
+                                    >Phone Number <span class="text-red-500"
+                                        >*</span
+                                    ></label
+                                >
+                                <input
+                                    type="tel"
+                                    required
+                                    class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all"
+                                    placeholder="+880 1XXX-XXXXXX"
+                                />
+                            </div>
+                            <div>
+                                <label
+                                    class="block text-sm font-semibold text-gray-700 mb-1"
+                                    >Business Name (Optional)</label
+                                >
+                                <input
+                                    type="text"
+                                    class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all"
+                                    placeholder="My Awesome Store"
+                                />
+                            </div>
+                            <div>
+                                <label
+                                    class="block text-sm font-semibold text-gray-700 mb-1"
+                                    >Message</label
+                                >
+                                <textarea
+                                    rows="3"
+                                    class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all"
+                                    placeholder="Tell us about your business..."
+                                ></textarea>
+                            </div>
+                            <button
+                                type="submit"
+                                class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-xl shadow-lg shadow-blue-600/20 transition-all flex items-center justify-center gap-2"
+                            >
+                                Send Message <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <Footer />
+
+    <script>
+        // Tab Switching Logic
+        const buttons = document.querySelectorAll(".module-btn");
+        const contents = document.querySelectorAll(".module-content");
+
+        buttons.forEach((btn) => {
+            btn.addEventListener("click", () => {
+                const targetId = btn.getAttribute("data-id");
+
+                // Update Buttons
+                buttons.forEach((b) => {
+                    b.classList.remove(
+                        "bg-white",
+                        "border-green-500",
+                        "shadow-md",
+                        "text-green-600",
+                        "ring-1",
+                        "ring-green-500",
+                    );
+                    b.classList.add("bg-gray-50", "text-gray-600");
+                    const arrow = b.querySelector(".fa-arrow-right");
+                    if (arrow) {
+                        arrow.classList.remove("text-green-600");
+                        arrow.classList.add("text-gray-300");
+                    }
+                });
+
+                btn.classList.remove("bg-gray-50", "text-gray-600");
+                btn.classList.add(
+                    "bg-white",
+                    "border-green-500",
+                    "shadow-md",
+                    "text-green-600",
+                    "ring-1",
+                    "ring-green-500",
+                );
+                const arrow = btn.querySelector(".fa-arrow-right");
+                if (arrow) {
+                    arrow.classList.remove("text-gray-300");
+                    arrow.classList.add("text-green-600");
+                }
+
+                // Update Content
+                contents.forEach((content) => {
+                    content.classList.remove(
+                        "opacity-100",
+                        "z-10",
+                        "translate-y-0",
+                    );
+                    content.classList.add(
+                        "opacity-0",
+                        "-z-10",
+                        "translate-y-4",
+                    );
+                });
+
+                const activeContent = document.getElementById(
+                    `content-${targetId}`,
+                );
+                if (activeContent) {
+                    activeContent.classList.remove(
+                        "opacity-0",
+                        "-z-10",
+                        "translate-y-4",
+                    );
+                    activeContent.classList.add(
+                        "opacity-100",
+                        "z-10",
+                        "translate-y-0",
+                    );
+                }
+            });
+        });
+
+        // FAQ Accordion Logic
+        const faqButtons = document.querySelectorAll(".faq-btn");
+
+        faqButtons.forEach((btn) => {
+            btn.addEventListener("click", () => {
+                const content = btn.nextElementSibling;
+                const icon = btn.querySelector("i");
+                const toggleIcon = btn.querySelector(
+                    "span.bg-blue-50, span.bg-blue-600",
+                );
+
+                if (
+                    !content ||
+                    !icon ||
+                    !toggleIcon ||
+                    !(content instanceof HTMLElement) ||
+                    !(toggleIcon instanceof HTMLElement)
+                )
+                    return;
+
+                // Check if currently expanded
+                const isExpanded = content.classList.contains("expanded");
+
+                if (isExpanded) {
+                    // Collapse
+                    content.style.height = "0px";
+                    content.classList.remove("expanded");
+                    icon.classList.remove("fa-minus");
+                    icon.classList.add("fa-plus");
+                    toggleIcon.classList.remove("bg-blue-600", "text-white");
+                    toggleIcon.classList.add("bg-blue-50", "text-blue-600");
+                } else {
+                    // Expand
+                    content.style.height = content.scrollHeight + "px";
+                    content.classList.add("expanded");
+                    icon.classList.remove("fa-plus");
+                    icon.classList.add("fa-minus");
+                    toggleIcon.classList.remove("bg-blue-50", "text-blue-600");
+                    toggleIcon.classList.add("bg-blue-600", "text-white");
+                }
+            });
+        });
+    </script>
+</MainLayout>

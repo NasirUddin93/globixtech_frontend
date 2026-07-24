@@ -1,25 +1,40 @@
 ---
 const categories = [
     {
-        id: "intelligent-software",
-        title: "Intelligent Software Solutions",
-        icon: "fa-rocket",
+        id: "core-products",
+        title: "Core Products",
+        icon: "fa-star",
         color: "text-blue-600",
         services: [
             {
-                name: "Education Software",
-                desc: "Comprehensive LMS and student management ecosystems tailored for modern institutions.",
-                icon: "fa-graduation-cap"
+                name: "POS System",
+                desc: "Lightning-fast checkout with multi-payment support, barcode scanning, and real-time inventory sync. Perfect for retail, restaurants, and pharmacies.",
+                icon: "fa-cash-register",
+                link: "/solutions/pos-system"
+            },
+            {
+                name: "Inventory Management",
+                desc: "Track stock in real-time across multiple locations. Automated reordering, barcode support, and comprehensive reporting.",
+                icon: "fa-boxes",
+                link: "/solutions/inventory"
             },
             {
                 name: "E-commerce Solutions",
                 desc: "Scalable multi-vendor marketplaces and custom retail platforms designed for high conversion.",
-                icon: "fa-shopping-cart"
+                icon: "fa-shopping-cart",
+                link: "/solutions/ecommerce"
             },
             {
-                name: "Web Application Services",
-                desc: "Bespoke web apps built on robust frameworks (React, Laravel, Python) to automate complex business workflows.",
-                icon: "fa-code"
+                name: "Education Software",
+                desc: "Comprehensive LMS and student management ecosystems tailored for modern institutions.",
+                icon: "fa-graduation-cap",
+                link: "/solutions/school-management-system"
+            },
+            {
+                name: "ERP System",
+                desc: "Unified platform for finance, HR, inventory, and sales. Eliminate data silos and make smarter business decisions.",
+                icon: "fa-th-large",
+                link: "/solutions/erp-system"
             }
         ]
     },
@@ -30,11 +45,6 @@ const categories = [
         color: "text-purple-600",
         services: [
             {
-                name: "AI Chatbots",
-                desc: "Natural Language Processing (NLP) driven bots that automate customer support and engagement 24/7.",
-                icon: "fa-comment-dots"
-            },
-            {
                 name: "AI Business Assistants",
                 desc: "Smart virtual assistants integrated into your ERP/CRM to analyze trends and suggest business actions.",
                 icon: "fa-robot"
@@ -43,6 +53,11 @@ const categories = [
                 name: "Data Science Solutions",
                 desc: "Turning raw data into actionable insights through predictive analytics, visualization, and machine learning models.",
                 icon: "fa-chart-network"
+            },
+            {
+                name: "Web Application Services",
+                desc: "Bespoke web apps built on robust frameworks (React, Laravel, Python) to automate complex business workflows.",
+                icon: "fa-code"
             }
         ]
     },
@@ -97,8 +112,8 @@ const categories = [
                             </div>
                             <h4 class="text-xl font-bold mb-4 text-dark group-hover:text-primary transition-colors">{service.name}</h4>
                             <p class="text-slate-600 leading-relaxed text-sm md:text-base mb-6">{service.desc}</p>
-                            {service.name === "Education Software" && (
-                                <a href="/solutions/school-management-system" class="text-primary font-bold text-sm hover:underline flex items-center gap-1">
+                            {service.link && (
+                                <a href={service.link} class="text-primary font-bold text-sm hover:underline flex items-center gap-1">
                                     Learn More & View Modules <i class="fas fa-arrow-right text-[10px]"></i>
                                 </a>
                             )}

@@ -1,47 +1,27 @@
 ---
-// Trust Badges Component - Add after Hero section
+const badges = [
+    { icon: "fa-award", value: "5+", label: "Years of Excellence", color: "text-blue-600", bg: "bg-blue-100" },
+    { icon: "fa-users", value: "80+", label: "Happy Clients", color: "text-green-600", bg: "bg-green-100" },
+    { icon: "fa-map-marker-alt", value: "100%", label: "Bangladesh Based", color: "text-purple-600", bg: "bg-purple-100" },
+    { icon: "fa-shield-alt", value: "Secure", label: "& Reliable", color: "text-orange-600", bg: "bg-orange-100" },
+];
 ---
 
-<section class="py-12 bg-white border-b border-gray-100">
+<section class="py-12 bg-white border-b border-gray-100 relative">
+    <!-- Subtle gradient accent -->
+    <div class="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-500 via-purple-500 to-green-500"></div>
     <div class="container mx-auto px-6">
         <div class="max-w-6xl mx-auto">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-                <div class="flex flex-col items-center">
-                    <div
-                        class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 text-2xl mb-3"
-                    >
-                        <i class="fas fa-award"></i>
+                {badges.map((badge) => (
+                    <div class="flex flex-col items-center group cursor-default">
+                        <div class={`w-16 h-16 ${badge.bg} rounded-full flex items-center justify-center ${badge.color} text-2xl mb-3 group-hover:scale-110 transition-transform duration-300`}>
+                            <i class={`fas ${badge.icon}`}></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-1 group-hover:text-primary transition-colors">{badge.value}</h3>
+                        <p class="text-gray-600 text-sm">{badge.label}</p>
                     </div>
-                    <h3 class="text-2xl font-bold text-gray-800 mb-1">5+</h3>
-                    <p class="text-gray-600 text-sm">Years of Excellence</p>
-                </div>
-                <div class="flex flex-col items-center">
-                    <div
-                        class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center text-green-600 text-2xl mb-3"
-                    >
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-gray-800 mb-1">80+</h3>
-                    <p class="text-gray-600 text-sm">Happy Clients</p>
-                </div>
-                <div class="flex flex-col items-center">
-                    <div
-                        class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center text-purple-600 text-2xl mb-3"
-                    >
-                        <i class="fas fa-map-marker-alt"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-gray-800 mb-1">100%</h3>
-                    <p class="text-gray-600 text-sm">Bangladesh Based</p>
-                </div>
-                <div class="flex flex-col items-center">
-                    <div
-                        class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center text-orange-600 text-2xl mb-3"
-                    >
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-gray-800 mb-1">Secure</h3>
-                    <p class="text-gray-600 text-sm">& Reliable</p>
-                </div>
+                ))}
             </div>
         </div>
     </div>

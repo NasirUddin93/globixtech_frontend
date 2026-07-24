@@ -1,0 +1,93 @@
+---
+const products = [
+    {
+        name: "POS System",
+        desc: "Lightning-fast checkout with multi-payment support and real-time inventory sync.",
+        icon: "fa-cash-register",
+        gradient: "from-green-500 to-emerald-600",
+        shadow: "shadow-green-500/20",
+        link: "/solutions/pos-system",
+        badge: "Popular",
+        badgeColor: "bg-green-100 text-green-600",
+    },
+    {
+        name: "Inventory Management",
+        desc: "Track stock across multiple locations with barcode support and automated reordering.",
+        icon: "fa-boxes",
+        gradient: "from-blue-500 to-blue-700",
+        shadow: "shadow-blue-500/20",
+        link: "/solutions/inventory",
+        badge: null,
+        badgeColor: "",
+    },
+    {
+        name: "E-commerce Solutions",
+        desc: "Multi-vendor marketplaces with bKash/Nagad integration and delivery APIs.",
+        icon: "fa-shopping-cart",
+        gradient: "from-purple-500 to-purple-700",
+        shadow: "shadow-purple-500/20",
+        link: "/solutions/ecommerce",
+        badge: null,
+        badgeColor: "",
+    },
+    {
+        name: "School Management",
+        desc: "Complete education platform with attendance, exams, fees, and parent portal.",
+        icon: "fa-graduation-cap",
+        gradient: "from-cyan-500 to-blue-600",
+        shadow: "shadow-cyan-500/20",
+        link: "/solutions/school-management-system",
+        badge: null,
+        badgeColor: "",
+    },
+    {
+        name: "ERP System",
+        desc: "Unified platform for finance, HR, inventory, and sales operations.",
+        icon: "fa-th-large",
+        gradient: "from-indigo-500 to-indigo-700",
+        shadow: "shadow-indigo-500/20",
+        link: "/solutions/erp-system",
+        badge: "New",
+        badgeColor: "bg-indigo-100 text-indigo-600",
+    },
+];
+---
+
+<section class="py-24 bg-gradient-to-b from-slate-50 to-white">
+    <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+            <span class="text-primary font-bold uppercase tracking-widest text-sm">Our Products</span>
+            <h2 class="text-4xl md:text-5xl font-bold mt-3 mb-6">Software Built for Your Business</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto text-lg">Explore our flagship products designed to solve real business challenges across Bangladesh.</p>
+            <div class="w-24 h-1 bg-primary mx-auto rounded-full mt-6"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 max-w-7xl mx-auto">
+            {products.map((product) => (
+                <a href={product.link} class="group relative bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-gray-100">
+                    <!-- Gradient Header -->
+                    <div class={`h-32 bg-gradient-to-br ${product.gradient} flex items-center justify-center relative overflow-hidden`}>
+                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300"></div>
+                        <i class={`fas ${product.icon} text-5xl text-white/90 group-hover:scale-110 transition-transform duration-300`}></i>
+                        <!-- Decorative circles -->
+                        <div class="absolute -top-6 -right-6 w-20 h-20 bg-white/10 rounded-full"></div>
+                        <div class="absolute -bottom-4 -left-4 w-16 h-16 bg-white/10 rounded-full"></div>
+                    </div>
+                    <!-- Content -->
+                    <div class="p-6">
+                        {product.badge && (
+                            <span class={`inline-block ${product.badgeColor} text-xs font-bold px-2 py-1 rounded-full mb-3`}>
+                                {product.badge}
+                            </span>
+                        )}
+                        <h3 class="text-lg font-bold text-dark mb-2 group-hover:text-primary transition-colors">{product.name}</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-4">{product.desc}</p>
+                        <span class="text-primary font-bold text-sm flex items-center gap-1 group-hover:gap-2 transition-all">
+                            View Details <i class="fas fa-arrow-right text-[10px]"></i>
+                        </span>
+                    </div>
+                </a>
+            ))}
+        </div>
+    </div>
+</section>

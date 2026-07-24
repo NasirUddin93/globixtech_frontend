@@ -1,0 +1,80 @@
+---
+import TestMainLayout from "../layouts/TestMainLayout.astro";
+import Navbar from "../components/test-landing/Navbar.astro";
+import Hero from "../components/test-landing/Hero.astro";
+import TrustBadges from "../components/test-landing/TrustBadges.astro";
+import ProductVideoShowcase from "../components/test-landing/ProductVideoShowcase.astro";
+import FeaturedProducts from "../components/test-landing/FeaturedProducts.astro";
+import Services from "../components/test-landing/Services.astro";
+import RDWing from "../components/test-landing/RDWing.astro";
+import WhyChooseUs from "../components/test-landing/WhyChooseUs.astro";
+import WorkflowVideoSection from "../components/test-landing/WorkflowVideoSection.astro";
+import About from "../components/test-landing/About.astro";
+import CEOMessageTeaser from "../components/test-landing/CEOMessageTeaser.astro";
+import Technologies from "../components/test-landing/Technologies.astro";
+import Portfolio from "../components/test-landing/Portfolio.astro";
+import Testimonials from "../components/test-landing/Testimonials.astro";
+import Contact from "../components/test-landing/Contact.astro";
+import Footer from "../components/test-landing/Footer.astro";
+import WhatsAppButton from "../components/test-landing/WhatsAppButton.astro";
+---
+
+<TestMainLayout title="Globix Tech — Extreme Beyond Premium Software Solutions (Test Landing)">
+    <Navbar />
+    <Hero />
+    <TrustBadges />
+    <ProductVideoShowcase />
+    <FeaturedProducts />
+    <Services />
+    <RDWing />
+    <WhyChooseUs />
+    <WorkflowVideoSection />
+    <About />
+    <CEOMessageTeaser />
+    <Technologies />
+    <Portfolio />
+    <Testimonials />
+    <Contact />
+    <Footer />
+    <WhatsAppButton />
+</TestMainLayout>
+
+<script>
+    // Update active navigation link on scroll
+    window.addEventListener("scroll", () => {
+        const sections = document.querySelectorAll("section[id]");
+        const navLinks = document.querySelectorAll("nav a");
+
+        let current = "";
+        sections.forEach((section) => {
+            const sectionTop = (section as HTMLElement).offsetTop;
+            if (window.scrollY >= sectionTop - 150) {
+                current = section.getAttribute("id") || "";
+            }
+        });
+
+        navLinks.forEach((link) => {
+            link.classList.remove("text-[#0071e3]");
+            if (link.getAttribute("href") === `#${current}`) {
+                link.classList.add("text-[#0071e3]");
+            }
+        });
+    });
+
+    // Smooth scroll for internal links
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute("href");
+            if (!targetId || targetId === "#") return;
+
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                window.scrollTo({
+                    top: (targetElement as HTMLElement).offsetTop - 80,
+                    behavior: "smooth",
+                });
+            }
+        });
+    });
+</script>

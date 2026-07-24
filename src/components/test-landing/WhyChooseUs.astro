@@ -1,0 +1,39 @@
+---
+const reasons = [
+    { num: "01", icon: "fa-users-cog", title: "Experienced Local Team", desc: "Our skilled developers in Uttara, Dhaka have years of experience building high-performance POS, inventory, e-commerce, and ERP platforms." },
+    { num: "02", icon: "fa-wand-magic-sparkles", title: "Custom Architecture", desc: "We tailor every software module to match your exact business workflow in Bangladesh, ensuring maximum efficiency." },
+    { num: "03", icon: "fa-layer-group", title: "Modern High-Speed Stack", desc: "Built on clean, ultra-scalable frameworks that grow effortlessly with your business as you expand." },
+    { num: "04", icon: "fa-tag", title: "Transparent Pricing", desc: "High-quality enterprise engineering at competitive prices with transparent costing and zero hidden fees." },
+    { num: "05", icon: "fa-clock", title: "On-Time Delivery", desc: "We respect tight deadlines and ensure your system goes live on time with regular milestones." },
+    { num: "06", icon: "fa-headset", title: "24/7 Dedicated Support", desc: "Ongoing maintenance, security patches, and instant local customer care to keep your operations running 100% smooth." },
+];
+---
+
+<section id="why-choose-us" class="py-24 bg-[#fbfbfd]">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <span class="text-xs font-bold uppercase tracking-widest text-[#0071e3]">Engineering Distinction</span>
+            <h2 class="text-3xl md:text-5xl font-extrabold text-[#1d1d1f] tracking-tight mt-3 mb-4">
+                Why Bangladesh Enterprises Choose Globix Tech
+            </h2>
+            <p class="text-[#86868b] text-base md:text-lg">
+                Your trusted technology partner dedicated to reliability, security, and digital power.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {reasons.map((item) => (
+                <div class="group bg-white/70 backdrop-blur-2xl border border-white/80 rounded-[2rem] p-8 shadow-[0_10px_30px_rgba(0,0,0,0.02)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.05)] hover:-translate-y-1.5 transition-all duration-300">
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="w-12 h-12 rounded-2xl bg-blue-50 text-[#0071e3] flex items-center justify-center text-xl font-bold">
+                            <i class={`fas ${item.icon}`}></i>
+                        </div>
+                        <span class="text-2xl font-black text-gray-200 group-hover:text-[#0071e3]/30 transition-colors">{item.num}</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-[#1d1d1f] mb-3 group-hover:text-[#0071e3] transition-colors">{item.title}</h3>
+                    <p class="text-[#86868b] text-sm leading-relaxed">{item.desc}</p>
+                </div>
+            ))}
+        </div>
+    </div>
+</section>

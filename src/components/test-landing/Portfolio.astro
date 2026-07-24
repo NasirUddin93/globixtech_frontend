@@ -1,0 +1,67 @@
+---
+const projects = [
+    {
+        icon: "fa-graduation-cap",
+        color: "from-blue-500 to-indigo-600",
+        title: "School Management System",
+        desc: "Complete SMS for a leading Dhaka school managing 2,000+ students with attendance, fee payment, and parent portals.",
+        tags: ["React", "Laravel", "PostgreSQL"],
+        metric: "2,000+ Students Managed",
+    },
+    {
+        icon: "fa-shopping-bag",
+        color: "from-emerald-500 to-teal-600",
+        title: "Multi-Vendor E-commerce Suite",
+        desc: "Full-featured marketplace with 50+ vendors, bKash/Nagad integration, real-time inventory, and seller analytics.",
+        tags: ["Laravel", "Vue.js", "MySQL"],
+        metric: "৳2 Cr+ Transactions",
+    },
+    {
+        icon: "fa-hospital",
+        color: "from-purple-500 to-pink-600",
+        title: "Hospital & Pharmacy ERP",
+        desc: "Comprehensive HMS for a 100-bed hospital including EHR records, appointment scheduling, billing, and pharmacy sync.",
+        tags: ["React", "Node.js", "MongoDB"],
+        metric: "100+ Beds Managed",
+    },
+];
+---
+
+<section id="portfolio" class="py-24 bg-[#fbfbfd]">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <span class="text-xs font-bold uppercase tracking-widest text-[#0071e3]">Engineering Track Record</span>
+            <h2 class="text-3xl md:text-5xl font-extrabold text-[#1d1d1f] tracking-tight mt-3 mb-4">
+                Selected Enterprise Deployments
+            </h2>
+            <p class="text-[#86868b] text-base">
+                Each solution is engineered with extreme performance, bank-grade security, and weightless UX.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {projects.map((p) => (
+                <div class="group bg-white/70 backdrop-blur-2xl border border-white/80 rounded-[2.5rem] p-8 shadow-[0_10px_30px_rgba(0,0,0,0.02)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.05)] hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class={`w-14 h-14 rounded-2xl bg-gradient-to-br ${p.color} text-white flex items-center justify-center text-2xl mb-6 shadow-md`}>
+                            <i class={`fas ${p.icon}`}></i>
+                        </div>
+                        <span class="text-[11px] font-bold uppercase tracking-wider text-[#0071e3] bg-blue-50 px-3 py-1 rounded-full border border-blue-100 mb-3 inline-block">{p.metric}</span>
+                        <h3 class="text-2xl font-bold text-[#1d1d1f] mb-3 group-hover:text-[#0071e3] transition-colors">{p.title}</h3>
+                        <p class="text-[#86868b] text-sm leading-relaxed mb-6">{p.desc}</p>
+                    </div>
+
+                    <div>
+                        <div class="flex flex-wrap gap-2 pt-4 border-t border-gray-100 mb-4">
+                            {p.tags.map((tag) => (
+                                <span class="bg-[#f5f5f7] text-[#1d1d1f] px-3 py-1 rounded-full text-xs font-semibold">
+                                    {tag}
+                                </span>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            ))}
+        </div>
+    </div>
+</section>

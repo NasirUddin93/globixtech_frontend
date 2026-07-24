@@ -1,0 +1,74 @@
+---
+import VideoBackground from "./VideoBackground.astro";
+
+const steps = [
+    {
+        num: "01",
+        icon: "fa-comments",
+        title: "Discover",
+        desc: "We listen to your business needs, analyze challenges, and define the perfect solution roadmap.",
+        color: "text-blue-600",
+        bg: "bg-blue-100",
+        border: "border-blue-200",
+    },
+    {
+        num: "02",
+        icon: "fa-pencil-ruler",
+        title: "Design",
+        desc: "Our team creates intuitive UI/UX designs and detailed wireframes tailored to your workflow.",
+        color: "text-purple-600",
+        bg: "bg-purple-100",
+        border: "border-purple-200",
+    },
+    {
+        num: "03",
+        icon: "fa-code",
+        title: "Develop",
+        desc: "We build your software using modern technologies with regular demos and transparent progress.",
+        color: "text-green-600",
+        bg: "bg-green-100",
+        border: "border-green-200",
+    },
+    {
+        num: "04",
+        icon: "fa-rocket",
+        title: "Deploy",
+        desc: "We launch, train your team, and provide ongoing support to ensure long-term success.",
+        color: "text-orange-600",
+        bg: "bg-orange-100",
+        border: "border-orange-200",
+    },
+];
+---
+
+<section class="py-24 relative overflow-hidden">
+    <!-- Video Background Loop -->
+    <VideoBackground mp4="/videos/test-hero.mp4" overlay="light" />
+
+    <div class="container mx-auto px-6 relative z-10">
+        <div class="text-center mb-16">
+            <span class="text-primary font-bold uppercase tracking-widest text-sm">Our Process</span>
+            <h2 class="text-4xl md:text-5xl font-bold mt-3 mb-6">How We Work</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto text-lg">A proven 4-step process that turns your ideas into powerful software solutions.</p>
+            <div class="w-24 h-1 bg-primary mx-auto rounded-full mt-6"></div>
+        </div>
+
+        <div class="max-w-6xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative">
+                <!-- Connecting Line (Desktop) -->
+                <div class="hidden lg:block absolute top-16 left-[12.5%] right-[12.5%] h-0.5 bg-gradient-to-r from-blue-200 via-purple-200 via-green-200 to-orange-200"></div>
+
+                {steps.map((step, idx) => (
+                    <div class="relative group text-center glass-panel p-6">
+                        <div class={`w-16 h-16 ${step.bg} rounded-2xl flex items-center justify-center ${step.color} text-2xl mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 border-2 ${step.border} relative z-10 bg-white`}>
+                            <i class={`fas ${step.icon}`}></i>
+                        </div>
+                        <div class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Step {step.num}</div>
+                        <h3 class="text-xl font-bold text-dark mb-3">{step.title}</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">{step.desc}</p>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </div>
+</section>

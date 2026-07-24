@@ -1,0 +1,48 @@
+---
+export interface Props {
+    title?: string;
+    description?: string;
+    image?: string;
+    type?: string;
+}
+
+const {
+    title = "Globix Tech - Smart Software Solutions",
+    description = "Globix Tech provides POS systems, inventory management, e-commerce solutions, school management software, and ERP systems for Bangladesh businesses.",
+    image = "/logo.png", // Default image (ensure this exists in public for now, or use absolute URL in production)
+    type = "website",
+} = Astro.props;
+
+const siteURL = Astro.site ? Astro.site.href : "https://globixtech.com"; // Fallback URL
+const canonicalURL = new URL(Astro.url.pathname, siteURL);
+// Ensure image is absolute URL for social cards
+const socialImageURL = new URL(image, siteURL).href;
+---
+
+<!-- Global Metadata -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="icon" type="image/png" href="/favicon.png" />
+<meta name="generator" content={Astro.generator} />
+
+<!-- Canonical URL -->
+<link rel="canonical" href={canonicalURL} />
+
+<!-- Primary Meta Tags -->
+<title>{title}</title>
+<meta name="title" content={title} />
+<meta name="description" content={description} />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content={type} />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={socialImageURL} />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={canonicalURL} />
+<meta property="twitter:title" content={title} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={socialImageURL} />

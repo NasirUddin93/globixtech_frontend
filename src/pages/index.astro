@@ -1,41 +1,41 @@
 ---
-import MainLayout from "../layouts/MainLayout.astro";
-import Navbar from "../components/Navbar.astro";
-import Hero from "../components/Hero.astro";
-import TrustBadges from "../components/TrustBadges.astro";
-import FeaturedProducts from "../components/FeaturedProducts.astro";
-import Services from "../components/Services.astro";
-import HowItWorks from "../components/HowItWorks.astro";
-import WhyChooseUs from "../components/WhyChooseUs.astro";
-import About from "../components/About.astro";
-import CEOMessageTeaser from "../components/CEOMessageTeaser.astro";
-import RDWing from "../components/RDWing.astro";
-import Technologies from "../components/Technologies.astro";
-import Portfolio from "../components/Portfolio.astro";
-import Testimonials from "../components/Testimonials.astro";
-import Contact from "../components/Contact.astro";
-import Footer from "../components/Footer.astro";
-import WhatsAppButton from "../components/WhatsAppButton.astro";
+import TestMainLayout from "../layouts/TestMainLayout.astro";
+import Hero from "../components/landing/Hero.astro";
+import TrustBadges from "../components/landing/TrustBadges.astro";
+import ProductVideoShowcase from "../components/landing/ProductVideoShowcase.astro";
+import FeaturedProducts from "../components/landing/FeaturedProducts.astro";
+import Services from "../components/landing/Services.astro";
+import RDWing from "../components/landing/RDWing.astro";
+import WhyChooseUs from "../components/landing/WhyChooseUs.astro";
+import WorkflowVideoSection from "../components/landing/WorkflowVideoSection.astro";
+import About from "../components/landing/About.astro";
+import CEOMessageTeaser from "../components/landing/CEOMessageTeaser.astro";
+import Technologies from "../components/landing/Technologies.astro";
+import Portfolio from "../components/landing/Portfolio.astro";
+import Testimonials from "../components/landing/Testimonials.astro";
+import Contact from "../components/landing/Contact.astro";
+import Footer from "../components/landing/Footer.astro";
+import WhatsAppButton from "../components/landing/WhatsAppButton.astro";
 ---
 
-<MainLayout title="Globix Tech - Smart Software Solutions">
-    <Navbar />
+<TestMainLayout title="Globix Tech — Smart Software Solutions">
     <Hero />
     <TrustBadges />
+    <ProductVideoShowcase />
     <FeaturedProducts />
     <Services />
-    <HowItWorks />
+    <RDWing />
     <WhyChooseUs />
+    <WorkflowVideoSection />
     <About />
     <CEOMessageTeaser />
-    <RDWing />
     <Technologies />
     <Portfolio />
     <Testimonials />
     <Contact />
     <Footer />
     <WhatsAppButton />
-</MainLayout>
+</TestMainLayout>
 
 <script>
     // Update active navigation link on scroll
@@ -46,16 +46,15 @@ import WhatsAppButton from "../components/WhatsAppButton.astro";
         let current = "";
         sections.forEach((section) => {
             const sectionTop = (section as HTMLElement).offsetTop;
-            const sectionHeight = section.clientHeight;
             if (window.scrollY >= sectionTop - 150) {
                 current = section.getAttribute("id") || "";
             }
         });
 
         navLinks.forEach((link) => {
-            link.classList.remove("nav-active");
+            link.classList.remove("text-[#0071e3]");
             if (link.getAttribute("href") === `#${current}`) {
-                link.classList.add("nav-active");
+                link.classList.add("text-[#0071e3]");
             }
         });
     });

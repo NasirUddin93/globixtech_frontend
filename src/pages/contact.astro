@@ -1,23 +1,273 @@
 ---
-import MainLayout from "../layouts/MainLayout.astro";
+import TestMainLayout from "../layouts/TestMainLayout.astro";
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
-import ContactComponent from "../components/Contact.astro";
-import PageHeader from "../components/PageHeader.astro";
+import VideoBackground from "../components/landing/VideoBackground.astro";
+
+const contactDetails = [
+    {
+        icon: "fa-map-marker-alt",
+        title: "Our Dhaka Office",
+        desc: "House-30, Road-11, Sector-10, Uttara, Dhaka, Bangladesh",
+        color: "text-[#0071e3]",
+        bg: "bg-blue-50"
+    },
+    {
+        icon: "fa-phone-alt",
+        title: "Phone / WhatsApp",
+        desc: "+880 1707-568468",
+        color: "text-emerald-600",
+        bg: "bg-emerald-50",
+        link: "tel:+8801707568468"
+    },
+    {
+        icon: "fa-envelope",
+        title: "Email Address",
+        desc: "info@globix.tech",
+        color: "text-purple-600",
+        bg: "bg-purple-50",
+        link: "mailto:info@globix.tech"
+    },
+    {
+        icon: "fa-clock",
+        title: "Working Hours",
+        desc: "Sunday - Thursday: 9:00 AM - 6:00 PM",
+        color: "text-amber-600",
+        bg: "bg-amber-50"
+    }
+];
+
+const socialLinks = [
+    { icon: "fa-facebook-f", url: "https://www.facebook.com/globixtech/", color: "hover:text-blue-600" },
+    { icon: "fa-whatsapp", url: "https://wa.me/8801707568468", color: "hover:text-emerald-600" },
+    { icon: "fa-envelope", url: "mailto:info@globix.tech", color: "hover:text-red-500" }
+];
 ---
 
-<MainLayout title="Contact Us - Get a Quote - Globix Tech">
+<TestMainLayout title="Contact Us — Book a Free Demo | Globix Tech">
     <Navbar />
-    <main class="min-h-screen">
-        <PageHeader
-            title="Get In"
-            spanTitle="Touch"
-            description="Bridge the gap between your vision and reality. Let's discuss your next project."
-            badge="Contact Us"
-            badgeIcon="fa-paper-plane"
-        />
 
-        <ContactComponent />
+    <main class="min-h-screen bg-[#f5f5f7]">
+        <!-- Hero Header Section with Ambient Video Background -->
+        <section class="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden">
+            <VideoBackground mp4="/videos/generated_video_july_24.mp4" overlay="light" />
+
+            <div class="max-w-7xl mx-auto px-6 relative z-10 text-center max-w-3xl mx-auto">
+                <span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#0071e3] bg-blue-50/90 backdrop-blur-md px-4 py-1.5 rounded-full border border-blue-100 shadow-xs mb-6">
+                    <i class="fas fa-paper-plane text-xs"></i> Contact & Support
+                </span>
+                <h1 class="text-4xl md:text-6xl font-extrabold text-[#1d1d1f] tracking-tight leading-[1.15] mb-6">
+                    Let's Build Something <br class="hidden sm:block"/>
+                    <span class="bg-gradient-to-r from-[#0071e3] via-indigo-600 to-purple-600 bg-clip-text text-transparent">Great Together.</span>
+                </h1>
+                <p class="text-[#1d1d1f] text-base md:text-xl font-medium leading-relaxed max-w-2xl mx-auto">
+                    Talk to our software engineers in Uttara, Dhaka to schedule a live system demo or discuss your custom enterprise requirements.
+                </p>
+            </div>
+        </section>
+
+        <!-- Main Contact Grid & Form Section -->
+        <section class="py-20 bg-white/40 backdrop-blur-md">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                    
+                    <!-- Left Info Column -->
+                    <div class="lg:col-span-5 space-y-6">
+                        <div class="bg-white/80 backdrop-blur-2xl rounded-[2.5rem] p-8 md:p-10 border border-white shadow-[0_10px_30px_rgba(0,0,0,0.02)] space-y-8">
+                            <div>
+                                <span class="text-xs font-bold uppercase tracking-widest text-indigo-600 bg-indigo-50 px-3.5 py-1 rounded-full border border-indigo-100">Get In Touch</span>
+                                <h3 class="text-2xl font-extrabold text-[#1d1d1f] mt-3">Direct Contact Details</h3>
+                            </div>
+
+                            <div class="space-y-6">
+                                {contactDetails.map((detail) => (
+                                    <div class="flex items-start gap-4">
+                                        <div class={`w-12 h-12 rounded-2xl ${detail.bg} ${detail.color} flex items-center justify-center text-xl flex-shrink-0 mt-0.5`}>
+                                            <i class={`fas ${detail.icon}`}></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-bold text-sm text-[#1d1d1f] mb-0.5">{detail.title}</h4>
+                                            {detail.link ? (
+                                                <a href={detail.link} class="text-xs text-[#86868b] hover:text-[#0071e3] transition-colors leading-relaxed block font-medium">
+                                                    {detail.desc}
+                                                </a>
+                                            ) : (
+                                                <p class="text-xs text-[#86868b] leading-relaxed">{detail.desc}</p>
+                                            )}
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+
+                            <div class="pt-6 border-t border-gray-100">
+                                <h4 class="text-xs font-bold uppercase tracking-wider text-[#1d1d1f] mb-4">Connect With Us</h4>
+                                <div class="flex gap-3">
+                                    {socialLinks.map((social) => (
+                                        <a
+                                            href={social.url}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            class={`w-10 h-10 rounded-2xl bg-[#f5f5f7] border border-gray-100 flex items-center justify-center text-[#1d1d1f] ${social.color} transition-all text-sm shadow-xs`}
+                                        >
+                                            <i class={`fab ${social.icon}`}></i>
+                                        </a>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Interactive Form Column -->
+                    <div class="lg:col-span-7">
+                        <div class="bg-white/80 backdrop-blur-2xl rounded-[2.5rem] p-8 md:p-12 border border-white shadow-[0_20px_60px_rgba(0,0,0,0.03)] text-left">
+                            <div class="mb-8">
+                                <span class="text-xs font-bold uppercase tracking-widest text-[#0071e3]">Live System Demo</span>
+                                <h3 class="text-2xl md:text-3xl font-extrabold text-[#1d1d1f] tracking-tight mt-1">
+                                    Request a Free Consultation
+                                </h3>
+                                <p class="text-[#86868b] text-xs md:text-sm mt-1">Fill out the brief form below and our engineering team will contact you within 2 hours.</p>
+                            </div>
+
+                            <form id="contact-form" class="space-y-6">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div>
+                                        <label for="name" class="block text-xs font-bold text-[#1d1d1f] uppercase tracking-wider mb-2">Full Name</label>
+                                        <input
+                                            type="text"
+                                            id="name"
+                                            name="name"
+                                            required
+                                            placeholder="Your Name"
+                                            class="w-full px-5 py-4 rounded-2xl bg-[#f5f5f7]/80 border border-transparent focus:border-[#0071e3] focus:bg-white outline-none transition-all text-sm font-medium"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label for="phone" class="block text-xs font-bold text-[#1d1d1f] uppercase tracking-wider mb-2">Phone Number</label>
+                                        <input
+                                            type="tel"
+                                            id="phone"
+                                            name="phone"
+                                            placeholder="+880 1XXX-XXXXXX"
+                                            class="w-full px-5 py-4 rounded-2xl bg-[#f5f5f7]/80 border border-transparent focus:border-[#0071e3] focus:bg-white outline-none transition-all text-sm font-medium"
+                                        />
+                                    </div>
+                                </div>
+
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div>
+                                        <label for="email" class="block text-xs font-bold text-[#1d1d1f] uppercase tracking-wider mb-2">Email Address</label>
+                                        <input
+                                            type="email"
+                                            id="email"
+                                            name="email"
+                                            required
+                                            placeholder="name@company.com"
+                                            class="w-full px-5 py-4 rounded-2xl bg-[#f5f5f7]/80 border border-transparent focus:border-[#0071e3] focus:bg-white outline-none transition-all text-sm font-medium"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label for="service" class="block text-xs font-bold text-[#1d1d1f] uppercase tracking-wider mb-2">Software Solution</label>
+                                        <select
+                                            id="service"
+                                            name="service"
+                                            class="w-full px-5 py-4 rounded-2xl bg-[#f5f5f7]/80 border border-transparent focus:border-[#0071e3] focus:bg-white outline-none transition-all text-sm font-medium cursor-pointer"
+                                        >
+                                            <option value="">Select a solution</option>
+                                            <option value="pos">POS System</option>
+                                            <option value="inventory">Inventory Management</option>
+                                            <option value="erp">ERP System</option>
+                                            <option value="education">School Management System</option>
+                                            <option value="ecommerce">E-commerce Solutions</option>
+                                            <option value="web-apps">Web Applications</option>
+                                            <option value="mobile-apps">Mobile Apps</option>
+                                            <option value="custom">Custom Software Solution</option>
+                                            <option value="server">Server Management</option>
+                                            <option value="security">Security & Pentesting</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label for="message" class="block text-xs font-bold text-[#1d1d1f] uppercase tracking-wider mb-2">Project Brief</label>
+                                    <textarea
+                                        id="message"
+                                        name="message"
+                                        rows="4"
+                                        required
+                                        placeholder="Tell us about your business goals and software requirements..."
+                                        class="w-full px-5 py-4 rounded-2xl bg-[#f5f5f7]/80 border border-transparent focus:border-[#0071e3] focus:bg-white outline-none transition-all text-sm font-medium resize-none"
+                                    ></textarea>
+                                </div>
+
+                                <button type="submit" id="submit-btn" class="w-full bg-[#0071e3] hover:bg-[#0077ed] text-white font-bold py-6 rounded-2xl shadow-xl shadow-blue-500/20 hover:scale-[1.01] active:scale-95 transition-all text-base flex items-center justify-center gap-2">
+                                    <span>Submit Request</span>
+                                    <i class="fas fa-paper-plane text-xs"></i>
+                                </button>
+                                <p id="form-message" class="mt-4 text-center font-bold text-xs hidden"></p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
+
     <Footer />
-</MainLayout>
+</TestMainLayout>
+
+<script>
+    const contactForm = document.getElementById("contact-form") as HTMLFormElement;
+    const formMessage = document.getElementById("form-message");
+    const submitBtn = document.getElementById("submit-btn");
+    const btnText = submitBtn?.querySelector("span");
+    const btnIcon = submitBtn?.querySelector("i");
+
+    contactForm?.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        if (submitBtn) {
+            (submitBtn as HTMLButtonElement).disabled = true;
+            if (btnText) btnText.textContent = "Sending Request...";
+            if (btnIcon) btnIcon.className = "fas fa-spinner fa-spin text-xs";
+        }
+
+        const formData = new FormData(contactForm);
+
+        try {
+            const response = await fetch("/api/contact", {
+                method: "POST",
+                body: formData,
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+                if (formMessage) {
+                    formMessage.textContent = data.message;
+                    formMessage.classList.remove("hidden", "text-red-500");
+                    formMessage.classList.add("text-emerald-600");
+                }
+                contactForm.reset();
+            } else {
+                throw new Error(data.message || "Submission failed");
+            }
+        } catch (error: any) {
+            if (formMessage) {
+                formMessage.textContent = error.message;
+                formMessage.classList.remove("hidden", "text-emerald-600");
+                formMessage.classList.add("text-red-500");
+            }
+        } finally {
+            setTimeout(() => {
+                if (submitBtn) {
+                    (submitBtn as HTMLButtonElement).disabled = false;
+                    if (btnText) btnText.textContent = "Submit Request";
+                    if (btnIcon) btnIcon.className = "fas fa-paper-plane text-xs";
+                }
+                if (formMessage) {
+                    formMessage.classList.add("hidden");
+                }
+            }, 5000);
+        }
+    });
+</script>

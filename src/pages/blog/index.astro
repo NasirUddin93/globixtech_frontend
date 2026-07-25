@@ -1,8 +1,8 @@
 ---
-import MainLayout from "../../layouts/MainLayout.astro";
+import TestMainLayout from "../../layouts/TestMainLayout.astro";
 import Navbar from "../../components/Navbar.astro";
 import Footer from "../../components/Footer.astro";
-import PageHeader from "../../components/PageHeader.astro";
+import VideoBackground from "../../components/landing/VideoBackground.astro";
 
 const posts = await Astro.glob("./posts/*.md");
 // Sort by date desc
@@ -13,134 +13,134 @@ posts.sort(
 );
 ---
 
-<MainLayout title="Blog & Insights - Globix Tech">
+<TestMainLayout title="Blog & Insights | Globix Tech">
     <Navbar />
-    <div class="bg-gray-50 min-h-screen">
-        <PageHeader
-            title="Insights &"
-            spanTitle="Updates"
-            description="Latest news, technology trends, and guides from the GlobixTech team."
-            badge="Our Blog"
-            badgeIcon="fa-newspaper"
-        >
-            <!-- Search Box Inside Header -->
-            <div class="max-w-xl mx-auto relative group">
-                <input
-                    type="search"
-                    id="blog-search"
-                    placeholder="Search articles..."
-                    class="w-full px-6 py-4 rounded-full bg-white/10 border border-white/20 text-white placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all pl-12 backdrop-blur-sm"
-                />
-                <i
-                    class="fas fa-search absolute left-5 top-1/2 -translate-y-1/2 text-white/50 group-focus-within:text-white transition-colors"
-                ></i>
-            </div>
-        </PageHeader>
 
-        <div class="container mx-auto px-6 py-24">
-            <div
-                id="posts-grid"
-                class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-            >
-                {
-                    posts.map((post) => (
-                        <a
-                            href={post.url}
-                            class="group blog-post-item"
-                            data-title={post.frontmatter.title}
-                            data-category={post.frontmatter.category}
-                        >
-                            <article class="bg-gray-50 rounded-[2rem] overflow-hidden border border-gray-100 transition-all hover:shadow-xl hover:-translate-y-2 h-full flex flex-col">
-                                <div class="relative h-60 overflow-hidden">
-                                    <div class="absolute inset-0 bg-blue-900/10 group-hover:bg-transparent transition-colors z-10" />
-                                    <img
-                                        src={
-                                            post.frontmatter.image ||
-                                            "https://placehold.co/600x400/e2e8f0/1e293b?text=Blog+Post"
-                                        }
-                                        alt={post.frontmatter.title}
-                                        class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
-                                    />
-                                    <div class="absolute top-4 left-4 z-20">
-                                        <span class="bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-[#0c1b3d] shadow-sm">
-                                            {post.frontmatter.category ||
-                                                "Technology"}
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="p-8 flex flex-col flex-1">
-                                    <div class="flex items-center gap-4 text-xs font-bold text-gray-500 mb-4">
-                                        <span class="flex items-center gap-1">
-                                            <i class="far fa-calendar" />
-                                            {post.frontmatter.publishDate}
-                                        </span>
-                                        <span>&bull;</span>
-                                        <span class="text-blue-600">
-                                            {post.frontmatter.readTime ||
-                                                "5 min read"}
-                                        </span>
-                                    </div>
-                                    <h2 class="text-2xl font-bold text-[#0c1b3d] mb-4 group-hover:text-blue-600 transition-colors line-clamp-2">
-                                        {post.frontmatter.title}
-                                    </h2>
-                                    <p class="text-gray-600 mb-6 line-clamp-3">
-                                        {post.frontmatter.description}
-                                    </p>
-                                    <div class="mt-auto flex items-center text-blue-600 font-bold text-sm">
-                                        Read Article{" "}
-                                        <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform" />
-                                    </div>
-                                </div>
-                            </article>
-                        </a>
-                    ))
-                }
-            </div>
+    <main class="min-h-screen bg-[#f5f5f7]">
+        <!-- Hero Header Section with Ambient Video Background -->
+        <section class="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden">
+            <VideoBackground mp4="/videos/generate_a_white_background_wi.mp4" overlay="light" />
 
-            {
-                posts.length === 0 && (
-                    <div class="text-center py-20 bg-gray-50 rounded-3xl border border-dashed border-gray-300">
-                        <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4 text-gray-400 text-2xl">
-                            <i class="far fa-newspaper" />
-                        </div>
-                        <h3 class="text-xl font-bold text-gray-700">
-                            No posts found
-                        </h3>
-                        <p class="text-gray-500 mt-2">
-                            Check back soon for new updates!
-                        </p>
-                    </div>
-                )
-            }
-        </div>
-
-        <!-- CTA Section -->
-        <section class="py-20 bg-white">
-            <div class="container mx-auto px-6 text-center">
-                <h2 class="text-3xl md:text-5xl font-bold text-[#0c1b3d] mb-6">
-                    Stay Updated with GlobixTech
-                </h2>
-                <p class="text-xl text-gray-600 mb-10 max-w-2xl mx-auto">
-                    Follow us for more insights and world-class technology
-                    solutions.
+            <div class="max-w-7xl mx-auto px-6 relative z-10 text-center max-w-3xl mx-auto">
+                <span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#0071e3] bg-blue-50/90 backdrop-blur-md px-4 py-1.5 rounded-full border border-blue-100 shadow-xs mb-6">
+                    <i class="fas fa-newspaper text-xs"></i> Insights & Updates
+                </span>
+                <h1 class="text-4xl md:text-6xl font-extrabold text-[#1d1d1f] tracking-tight leading-[1.15] mb-6">
+                    Technology Trends & <br class="hidden sm:block"/>
+                    <span class="bg-gradient-to-r from-[#0071e3] via-indigo-600 to-purple-600 bg-clip-text text-transparent">Engineering Guides.</span>
+                </h1>
+                <p class="text-[#1d1d1f] text-base md:text-xl font-medium leading-relaxed max-w-2xl mx-auto mb-10">
+                    Latest news, system architecture guides, POS strategies, and enterprise ERP insights from the Globix Tech engineering team.
                 </p>
-                <div class="flex flex-col sm:flex-row justify-center gap-4">
-                    <a
-                        href="/contact"
-                        class="bg-blue-600 hover:bg-blue-700 text-white px-10 py-4 rounded-xl font-bold transition-all shadow-lg shadow-blue-600/20 text-lg"
-                    >
-                        Work with Us
-                    </a>
-                    <a
-                        href="https://www.facebook.com/globixtech/"
-                        target="_blank"
-                        class="bg-gray-100 hover:bg-gray-200 text-gray-700 px-10 py-4 rounded-xl font-bold transition-all flex items-center justify-center gap-2 text-lg"
-                    >
-                        <i class="fab fa-facebook"></i> Follow on Facebook
-                    </a>
+
+                <!-- Search Box Inside Header -->
+                <div class="max-w-xl mx-auto relative group">
+                    <input
+                        type="search"
+                        id="blog-search"
+                        placeholder="Search articles & engineering guides..."
+                        class="w-full px-6 py-4 rounded-2xl bg-white/80 backdrop-blur-2xl border border-white text-[#1d1d1f] placeholder:text-[#86868b] focus:outline-none focus:ring-2 focus:ring-[#0071e3] focus:bg-white shadow-[0_8px_30px_rgba(0,0,0,0.04)] transition-all pl-12 font-medium text-sm"
+                    />
+                    <i class="fas fa-search absolute left-5 top-1/2 -translate-y-1/2 text-[#86868b] group-focus-within:text-[#0071e3] transition-colors"></i>
                 </div>
             </div>
         </section>
-    </div>
+
+        <!-- Blog Posts Grid -->
+        <section class="py-20 bg-white/40 backdrop-blur-md">
+            <div class="max-w-7xl mx-auto px-6">
+                <div
+                    id="posts-grid"
+                    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+                >
+                    {
+                        posts.map((post) => (
+                            <a
+                                href={post.url}
+                                class="group blog-post-item"
+                                data-title={post.frontmatter.title}
+                                data-category={post.frontmatter.category}
+                            >
+                                <article class="bg-white/80 backdrop-blur-2xl rounded-[2.5rem] p-6 border border-white shadow-[0_10px_30px_rgba(0,0,0,0.02)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.06)] hover:-translate-y-1.5 transition-all duration-300 h-full flex flex-col justify-between">
+                                    <div>
+                                        <div class="relative h-56 rounded-2xl overflow-hidden mb-6 bg-gray-100">
+                                            <img
+                                                src={
+post.frontmatter.image ||
+                                                         "https://placehold.co/600x400/e2e8f0/1e293b?text=Blog+Post"
+                                                 }
+                                                alt={post.frontmatter.title}
+                                                class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+                                            />
+                                            <div class="absolute top-4 left-4 z-20">
+                                                <span class="bg-white/90 backdrop-blur-md px-3.5 py-1 rounded-full text-[11px] font-bold text-[#1d1d1f] shadow-xs">
+                                                    {post.frontmatter.category || "Technology"}
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        <div class="flex items-center gap-3 text-xs font-bold text-[#86868b] mb-3">
+                                            <span class="flex items-center gap-1.5">
+                                                <i class="far fa-calendar text-[#0071e3]"></i>
+                                                {post.frontmatter.publishDate}
+                                            </span>
+                                            <span>&bull;</span>
+                                            <span class="text-[#0071e3]">
+                                                {post.frontmatter.readTime || "5 min read"}
+                                            </span>
+                                        </div>
+
+                                        <h2 class="text-xl font-extrabold text-[#1d1d1f] mb-3 group-hover:text-[#0071e3] transition-colors leading-snug line-clamp-2">
+                                            {post.frontmatter.title}
+                                        </h2>
+                                        <p class="text-[#86868b] text-sm leading-relaxed line-clamp-3 mb-6">
+                                            {post.frontmatter.description}
+                                        </p>
+                                    </div>
+
+                                    <div class="pt-4 border-t border-gray-100/80 flex items-center text-[#0071e3] font-bold text-xs group-hover:translate-x-1 transition-transform">
+                                        Read Full Article <i class="fas fa-chevron-right ml-1.5 text-[10px]"></i>
+                                    </div>
+                                </article>
+                            </a>
+                        ))
+                    }
+                </div>
+
+                {
+                    posts.length === 0 && (
+                        <div class="text-center py-20 bg-white/80 backdrop-blur-2xl rounded-[2.5rem] border border-white max-w-2xl mx-auto shadow-xs">
+                            <div class="w-14 h-14 bg-blue-50 text-[#0071e3] rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl">
+                                <i class="far fa-newspaper"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-[#1d1d1f]">No articles found</h3>
+                            <p class="text-[#86868b] text-sm mt-2">Check back soon for new tech insights & updates!</p>
+                        </div>
+                    )
+                }
+            </div>
+        </section>
+    </main>
+
     <Footer />
-</MainLayout>
+</TestMainLayout>
+
+<script>
+    const searchInput = document.getElementById('blog-search') as HTMLInputElement;
+    const postItems = document.querySelectorAll('.blog-post-item');
+
+    if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+            const query = (e.target as HTMLInputElement).value.toLowerCase();
+            postItems.forEach((item) => {
+                const title = item.getAttribute('data-title')?.toLowerCase() || '';
+                const category = item.getAttribute('data-category')?.toLowerCase() || '';
+                if (title.includes(query) || category.includes(query)) {
+                    (item as HTMLElement).style.display = 'block';
+                } else {
+                    (item as HTMLElement).style.display = 'none';
+                }
+            });
+        });
+    }
+</script>

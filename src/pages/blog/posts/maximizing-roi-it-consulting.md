@@ -4,7 +4,7 @@ title: "Maximizing ROI: Why Your Business Needs Strategic IT Consulting"
 publishDate: "2024-05-29"
 description: "Professional IT advice isn't just an expense; it's a strategic investment. Discover how the right technology roadmap can drive your business growth."
 author: "Globix Consulting Team"
-image: "https://images.unsplash.com/photo-1454165833767-1316b34460d9?q=80&w=1000&auto=format&fit=crop"
+image: "/images/ROI.jpg"
 category: "Consulting"
 readTime: "4 min read"
 ---

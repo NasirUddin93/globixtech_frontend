@@ -3,210 +3,70 @@ import { Image } from "astro:assets";
 import logo from "../assets/logo.png";
 ---
 
-<section class="py-20 bg-light">
-    <div class="container mx-auto px-6 text-center">
-        <div
-            class="max-w-3xl mx-auto bg-gradient-to-r from-primary to-secondary p-1 rounded-2xl shadow-xl transform hover:scale-[1.01] transition-all duration-500"
-        >
-            <div class="bg-white p-12 rounded-2xl">
-                <h2 class="text-4xl font-bold mb-6 text-dark tracking-tight">
-                    🤝 Let's Build Something Great Together
-                </h2>
-                <p class="text-gray-600 text-lg mb-10 leading-relaxed">
-                    Have an idea or project in mind? We are ready to turn your
-                    vision into reality with smart technology solutions.
+<!-- Footer Main Links -->
+<footer class="bg-[#f5f5f7] border-t border-gray-200/60 pt-16 pb-12 text-left">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+            <div class="space-y-4">
+                <Image src={logo} alt="GlobixTech Logo" class="h-8 w-auto" />
+                <p class="text-xs text-[#86868b] leading-relaxed">
+                    Globix Tech provides high-performance POS, Inventory, and ERP systems for businesses across Bangladesh.
                 </p>
-                <a
-                    href="#contact"
-                    class="inline-block bg-gradient-to-r from-primary to-secondary text-white px-10 py-5 rounded-xl font-bold text-lg hover:shadow-2xl hover:scale-105 transition-all transform duration-300 tracking-wide uppercase"
-                    >Get Started Today</a
-                >
-            </div>
-        </div>
-    </div>
-</section>
-
-<footer class="bg-dark text-white pt-20 pb-12">
-    <div class="container mx-auto px-6">
-        <div
-            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12"
-        >
-            <div class="col-span-1 lg:col-span-1">
-                <div class="flex items-center mb-6">
-                    <Image
-                        src={logo}
-                        alt="GlobixTech Logo"
-                        class="h-12 w-auto"
-                    />
-                </div>
-                <p class="text-gray-400 mb-6 leading-relaxed">
-                    Smart Software Solutions for Modern Businesses. We empower
-                    your future with innovative technology.
-                </p>
-                <div class="flex space-x-4">
+                <div class="flex space-x-3 pt-2">
                     <a
                         href="https://www.facebook.com/globixtech/"
                         target="_blank"
                         rel="noopener noreferrer"
-                        class="w-10 h-10 bg-white/5 hover:bg-primary hover:text-white transition-all rounded-lg flex items-center justify-center border border-white/10 group text-white/70"
-                        ><i class="fab fa-facebook-f group-hover:scale-110"
-                        ></i></a
-                    >
+                        class="w-8 h-8 rounded-full bg-white border border-gray-200 flex items-center justify-center text-[#1d1d1f] hover:text-[#0071e3] hover:border-blue-200 transition-all text-xs"
+                    ><i class="fab fa-facebook-f"></i></a>
                     <a
                         href="https://wa.me/8801707568468"
                         target="_blank"
                         rel="noopener noreferrer"
-                        class="w-10 h-10 bg-white/5 hover:bg-green-500 hover:text-white transition-all rounded-lg flex items-center justify-center border border-white/10 group text-white/70"
-                        ><i class="fab fa-whatsapp group-hover:scale-110"></i></a
-                    >
+                        class="w-8 h-8 rounded-full bg-white border border-gray-200 flex items-center justify-center text-[#1d1d1f] hover:text-emerald-600 hover:border-emerald-200 transition-all text-xs"
+                    ><i class="fab fa-whatsapp"></i></a>
                     <a
                         href="mailto:info@globix.tech"
-                        class="w-10 h-10 bg-white/5 hover:bg-red-500 hover:text-white transition-all rounded-lg flex items-center justify-center border border-white/10 group text-white/70"
-                        ><i class="fas fa-envelope group-hover:scale-110"></i></a
-                    >
+                        class="w-8 h-8 rounded-full bg-white border border-gray-200 flex items-center justify-center text-[#1d1d1f] hover:text-red-500 hover:border-red-200 transition-all text-xs"
+                    ><i class="fas fa-envelope"></i></a>
                 </div>
             </div>
 
             <div>
-                <h4
-                    class="font-bold text-xl mb-6 text-white border-b border-primary/30 pb-2 w-fit"
-                >
-                    Our Services
-                </h4>
-                <ul class="space-y-4">
-                    <li>
-                        <a
-                            href="/solutions/pos-system"
-                            class="text-gray-400 hover:text-primary transition-all flex items-center gap-2 font-medium"
-                            ><i class="fas fa-chevron-right text-[10px]"></i> POS
-                            System</a
-                        >
-                    </li>
-                    <li>
-                        <a
-                            href="/solutions/inventory"
-                            class="text-gray-400 hover:text-primary transition-all flex items-center gap-2 font-medium"
-                            ><i class="fas fa-chevron-right text-[10px]"></i> Inventory
-                            Management</a
-                        >
-                    </li>
-                    <li>
-                        <a
-                            href="/solutions/ecommerce"
-                            class="text-gray-400 hover:text-primary transition-all flex items-center gap-2 font-medium"
-                            ><i class="fas fa-chevron-right text-[10px]"></i> E-commerce
-                            Solutions</a
-                        >
-                    </li>
-                    <li>
-                        <a
-                            href="/solutions/school-management-system"
-                            class="text-gray-400 hover:text-primary transition-all flex items-center gap-2 font-medium"
-                            ><i class="fas fa-chevron-right text-[10px]"></i> School
-                            Management</a
-                        >
-                    </li>
-                    <li>
-                        <a
-                            href="/solutions/erp-system"
-                            class="text-gray-400 hover:text-primary transition-all flex items-center gap-2 font-medium"
-                            ><i class="fas fa-chevron-right text-[10px]"></i> ERP
-                            System</a
-                        >
-                    </li>
+                <h4 class="text-xs font-bold uppercase tracking-wider text-[#1d1d1f] mb-4">Solutions</h4>
+                <ul class="space-y-2.5 text-xs text-[#86868b]">
+                    <li><a href="/solutions/pos-system" class="hover:text-[#0071e3] transition-colors">POS System</a></li>
+                    <li><a href="/solutions/inventory" class="hover:text-[#0071e3] transition-colors">Inventory Suite</a></li>
+                    <li><a href="/solutions/erp-system" class="hover:text-[#0071e3] transition-colors">ERP System</a></li>
+                    <li><a href="/solutions/school-management-system" class="hover:text-[#0071e3] transition-colors">School Management</a></li>
+                    <li><a href="/solutions/ecommerce" class="hover:text-[#0071e3] transition-colors">E-commerce Solutions</a></li>
                 </ul>
             </div>
 
             <div>
-                <h4
-                    class="font-bold text-xl mb-6 text-white border-b border-primary/30 pb-2 w-fit"
-                >
-                    Quick Links
-                </h4>
-                <ul class="space-y-4">
-                    <li>
-                        <a
-                            href="#home"
-                            class="text-gray-400 hover:text-primary transition-all flex items-center gap-2 font-medium"
-                            ><i class="fas fa-chevron-right text-[10px]"></i> Home</a
-                        >
-                    </li>
-                    <li>
-                        <a
-                            href="#about"
-                            class="text-gray-400 hover:text-primary transition-all flex items-center gap-2 font-medium"
-                            ><i class="fas fa-chevron-right text-[10px]"></i> About
-                            Us</a
-                        >
-                    </li>
-                    <li>
-                        <a
-                            href="#portfolio"
-                            class="text-gray-400 hover:text-primary transition-all flex items-center gap-2 font-medium"
-                            ><i class="fas fa-chevron-right text-[10px]"></i> Portfolio</a
-                        >
-                    </li>
-                    <li>
-                        <a
-                            href="/blog"
-                            class="text-gray-400 hover:text-primary transition-all flex items-center gap-2 font-medium"
-                            ><i class="fas fa-chevron-right text-[10px]"></i> Blog</a
-                        >
-                    </li>
-                    <li>
-                        <a
-                            href="#contact"
-                            class="text-gray-400 hover:text-primary transition-all flex items-center gap-2 font-medium"
-                            ><i class="fas fa-chevron-right text-[10px]"></i> Contact</a
-                        >
-                    </li>
+                <h4 class="text-xs font-bold uppercase tracking-wider text-[#1d1d1f] mb-4">Company</h4>
+                <ul class="space-y-2.5 text-xs text-[#86868b]">
+                    <li><a href="/about" class="hover:text-[#0071e3] transition-colors">About Us</a></li>
+                    <li><a href="/rd-wing" class="hover:text-[#0071e3] transition-colors">R&D Lab</a></li>
+                    <li><a href="/portfolio" class="hover:text-[#0071e3] transition-colors">Portfolio</a></li>
+                    <li><a href="/blog" class="hover:text-[#0071e3] transition-colors">Blog</a></li>
+                    <li><a href="/contact" class="hover:text-[#0071e3] transition-colors">Contact</a></li>
                 </ul>
             </div>
 
             <div>
-                <h4
-                    class="font-bold text-xl mb-6 text-white border-b border-primary/30 pb-2 w-fit"
-                >
-                    Quick Contact
-                </h4>
-                <ul class="space-y-4">
-                    <li>
-                        <a
-                            href="tel:+8801707568468"
-                            class="text-gray-400 hover:text-primary transition-all flex items-center gap-2 font-medium"
-                            ><i class="fas fa-phone-alt text-primary"></i> +880 1707-568468</a
-                        >
-                    </li>
-                    <li>
-                        <a
-                            href="mailto:info@globix.tech"
-                            class="text-gray-400 hover:text-primary transition-all flex items-center gap-2 font-medium"
-                            ><i class="fas fa-envelope text-primary"></i> info@globix.tech</a
-                        >
-                    </li>
-                    <li>
-                        <span class="text-gray-400 flex items-center gap-2 font-medium"
-                            ><i class="fas fa-map-marker-alt text-primary"></i> Uttara, Dhaka, Bangladesh</span
-                        >
-                    </li>
-                    <li>
-                        <span class="text-gray-400 flex items-center gap-2 font-medium"
-                            ><i class="fas fa-clock text-primary"></i> Sun-Thu: 9AM - 6PM</span
-                        >
-                    </li>
-                </ul>
+                <h4 class="text-xs font-bold uppercase tracking-wider text-[#1d1d1f] mb-4">Dhaka HQ</h4>
+                <p class="text-xs text-[#86868b] leading-relaxed space-y-1">
+                    <span>Uttara, Dhaka, Bangladesh</span><br/>
+                    <span>Phone: +880 1707-568468</span><br/>
+                    <span>Email: info@globix.tech</span>
+                </p>
             </div>
         </div>
 
-        <div
-            class="border-t border-gray-800 mt-16 pt-8 text-center text-gray-500 text-sm"
-        >
-            <p>
-                © {new Date().getFullYear()} Globix Tech. All Rights Reserved.
-            </p>
-            <p class="mt-2 opacity-80 uppercase tracking-widest text-[10px]">
-                Powered by Astro & Tailwind CSS
-            </p>
+        <div class="pt-8 border-t border-gray-200/60 flex flex-col sm:flex-row items-center justify-between text-[11px] text-[#86868b]">
+            <p>© {new Date().getFullYear()} Globix Tech Ltd. All rights reserved.</p>
+            <p class="mt-2 sm:mt-0 font-medium">Apple-Inspired Glassmorphic Aesthetic</p>
         </div>
     </div>
 </footer>

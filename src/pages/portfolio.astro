@@ -1,42 +1,200 @@
 ---
-import MainLayout from "../layouts/MainLayout.astro";
+import TestMainLayout from "../layouts/TestMainLayout.astro";
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
-import PortfolioComponent from "../components/Portfolio.astro";
-import PageHeader from "../components/PageHeader.astro";
+import VideoBackground from "../components/landing/VideoBackground.astro";
+
+// Per-technology brand colors for tags
+const techColors: Record<string, string> = {
+  "React":         "bg-cyan-50 text-cyan-700 border-cyan-200",
+  "Laravel":       "bg-red-50 text-red-600 border-red-200",
+  "PostgreSQL":    "bg-blue-50 text-blue-700 border-blue-200",
+  "Vue.js":        "bg-emerald-50 text-emerald-700 border-emerald-200",
+  "MySQL":         "bg-orange-50 text-orange-600 border-orange-200",
+  "Node.js":       "bg-green-50 text-green-700 border-green-200",
+  "MongoDB":       "bg-lime-50 text-lime-700 border-lime-200",
+  "Electron":      "bg-sky-50 text-sky-700 border-sky-200",
+  "SQLite / MySQL":"bg-amber-50 text-amber-700 border-amber-200",
+  "Tailwind CSS":  "bg-teal-50 text-teal-700 border-teal-200",
+  "Python":        "bg-yellow-50 text-yellow-700 border-yellow-200",
+  "FastAPI":       "bg-teal-50 text-teal-600 border-teal-200",
+  "OpenAI LLMs":   "bg-violet-50 text-violet-700 border-violet-200",
+  "TypeScript":    "bg-blue-50 text-blue-600 border-blue-200",
+  "Next.js":       "bg-gray-100 text-gray-800 border-gray-300",
+  "Docker":        "bg-sky-50 text-sky-600 border-sky-200",
+};
+
+const fallbackColors = [
+  "bg-pink-50 text-pink-700 border-pink-200",
+  "bg-purple-50 text-purple-700 border-purple-200",
+  "bg-indigo-50 text-indigo-700 border-indigo-200",
+];
+
+function tagColor(tag: string, idx: number): string {
+  return techColors[tag] ?? fallbackColors[idx % fallbackColors.length];
+}
+
+const projects = [
+    {
+        icon: "fa-graduation-cap",
+        color: "from-blue-500 to-indigo-600",
+        title: "School Management System (SMS)",
+        desc: "Complete digital SMS for a leading Dhaka educational institution managing 2,000+ students. Features include attendance tracking, exam management, online bKash fee collection, and parent portals.",
+        tags: ["React", "Laravel", "PostgreSQL"],
+        metric: "2,000+ Students Managed",
+        bg: "bg-blue-50",
+        textColor: "text-[#0071e3]"
+    },
+    {
+        icon: "fa-shopping-bag",
+        color: "from-emerald-500 to-teal-600",
+        title: "Multi-Vendor E-commerce Suite",
+        desc: "Full-featured online marketplace powering 50+ active vendors with real-time payment gateway integration (bKash, Nagad), multi-warehouse inventory, and instant seller payouts.",
+        tags: ["Laravel", "Vue.js", "MySQL"],
+        metric: "৳2 Cr+ Transactions Processed",
+        bg: "bg-emerald-50",
+        textColor: "text-emerald-600"
+    },
+    {
+        icon: "fa-hospital",
+        color: "from-purple-500 to-pink-600",
+        title: "Hospital & Pharmacy Management ERP",
+        desc: "Comprehensive HMS for a 100-bed hospital including Electronic Health Records (EHR), automated appointment booking, pharmacy inventory sync, and digital billing.",
+        tags: ["React", "Node.js", "MongoDB"],
+        metric: "100+ Beds Managed",
+        bg: "bg-purple-50",
+        textColor: "text-purple-600"
+    },
+    {
+        icon: "fa-cash-register",
+        color: "from-amber-500 to-orange-600",
+        title: "Intelligent Retail POS System",
+        desc: "Offline-first barcode point-of-sale platform deployed across 50+ retail chains in Dhaka with automated receipt printing, sales analytics, and daily profit auditing.",
+        tags: ["Electron", "React", "SQLite / MySQL"],
+        metric: "500+ Active POS Terminals",
+        bg: "bg-amber-50",
+        textColor: "text-amber-600"
+    },
+    {
+        icon: "fa-th-large",
+        color: "from-indigo-500 to-cyan-600",
+        title: "Enterprise ERP System",
+        desc: "End-to-end corporate ERP uniting human resources, payroll accounting, inventory management, supply chain tracking, and real-time executive financial dashboards.",
+        tags: ["Laravel", "PostgreSQL", "Tailwind CSS"],
+        metric: "99.99% Uptime SLA",
+        bg: "bg-indigo-50",
+        textColor: "text-indigo-600"
+    },
+    {
+        icon: "fa-robot",
+        color: "from-violet-500 to-purple-700",
+        title: "Business AI & Analytics Assistant",
+        desc: "Custom LLM-powered business intelligence agent integrated into client ERPs to query sales history, forecast quarterly inventory needs, and draft customer reports.",
+        tags: ["Python", "FastAPI", "OpenAI LLMs", "React"],
+        metric: "100k+ Automated Insights",
+        bg: "bg-violet-50",
+        textColor: "text-violet-600"
+    }
+];
 ---
 
-<MainLayout title="Portfolio - Our Work - Globix Tech">
+<TestMainLayout title="Portfolio & Deployments — Our Work | Globix Tech">
     <Navbar />
-    <main class="min-h-screen">
-        <PageHeader
-            title="Our Success"
-            spanTitle="Stories"
-            description="Showcasing the transformative digital solutions we've built for businesses across Bangladesh."
-            badge="Client Success"
-            badgeIcon="fa-trophy"
-        />
 
-        <PortfolioComponent />
+    <main class="min-h-screen bg-[#f5f5f7]">
+        <!-- Hero Header Section with Ambient Video Background -->
+        <section class="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden">
+            <VideoBackground mp4="/videos/generate_a_white_background_wi.mp4" overlay="light" />
+
+            <div class="max-w-7xl mx-auto px-6 relative z-10 text-center max-w-3xl mx-auto">
+                <span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#0071e3] bg-blue-50/90 backdrop-blur-md px-4 py-1.5 rounded-full border border-blue-100 shadow-xs mb-6">
+                    <i class="fas fa-trophy text-xs"></i> Client Success Track Record
+                </span>
+                <h1 class="text-4xl md:text-6xl font-extrabold text-[#1d1d1f] tracking-tight leading-[1.15] mb-6">
+                    Selected Enterprise <br class="hidden sm:block"/>
+                    <span class="bg-gradient-to-r from-[#0071e3] via-indigo-600 to-purple-600 bg-clip-text text-transparent">Deployments.</span>
+                </h1>
+                <p class="text-[#1d1d1f] text-base md:text-xl font-medium leading-relaxed max-w-2xl mx-auto">
+                    Showcasing the high-performance digital software solutions, intelligent POS engines, and enterprise ERP platforms engineered for businesses across Bangladesh.
+                </p>
+            </div>
+        </section>
+
+        <!-- Portfolio Cards Grid Section -->
+        <section class="py-20 bg-white/40 backdrop-blur-md">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center max-w-2xl mx-auto mb-16">
+                    <span class="text-xs font-bold uppercase tracking-widest text-[#0071e3] bg-blue-50 px-4 py-1.5 rounded-full border border-blue-100">Engineering Excellence</span>
+                    <h2 class="text-3xl md:text-5xl font-extrabold text-[#1d1d1f] tracking-tight mt-4 mb-4">
+                        Proven Production Systems
+                    </h2>
+                    <p class="text-[#86868b] text-base md:text-lg">
+                        Each system is engineered with extreme reliability, bank-grade security, and weightless UX.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {projects.map((p) => (
+                        <div class="group bg-white/80 backdrop-blur-2xl border border-white rounded-[2.5rem] p-8 shadow-[0_10px_30px_rgba(0,0,0,0.02)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.06)] hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between h-full">
+                            <div>
+                                <div class={`w-14 h-14 rounded-2xl bg-gradient-to-br ${p.color} text-white flex items-center justify-center text-2xl mb-6 shadow-md`}>
+                                    <i class={`fas ${p.icon}`}></i>
+                                </div>
+                                <span class={`text-[11px] font-bold uppercase tracking-wider ${p.textColor} ${p.bg} px-3.5 py-1 rounded-full border border-blue-100 mb-4 inline-block shadow-xs`}>
+                                    {p.metric}
+                                </span>
+                                <h3 class="text-xl font-extrabold text-[#1d1d1f] mb-3 group-hover:text-[#0071e3] transition-colors leading-snug">
+                                    {p.title}
+                                </h3>
+                                <p class="text-[#86868b] text-sm leading-relaxed mb-6">
+                                    {p.desc}
+                                </p>
+                            </div>
+
+                            <div>
+                                <div class="flex flex-wrap gap-2 pt-4 border-t border-gray-100">
+                                    {p.tags.map((tag, i) => (
+                                        <span class={`${tagColor(tag, i)} border px-3 py-1 rounded-full text-xs font-bold`}>
+                                            {tag}
+                                        </span>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
 
         <!-- CTA Section -->
-        <section class="py-20 bg-gray-50">
-            <div class="container mx-auto px-6 text-center">
-                <h2 class="text-3xl md:text-5xl font-bold text-[#0c1b3d] mb-6">
-                    Have a Project in Mind?
+        <section class="py-24 bg-white text-center relative overflow-hidden">
+            <VideoBackground mp4="/videos/generated_video_july_24.mp4" overlay="light" />
+
+            <div class="max-w-4xl mx-auto px-6 relative z-10">
+                <span class="text-xs font-bold uppercase tracking-widest text-[#0071e3] bg-blue-50 px-4 py-1.5 rounded-full border border-blue-100">Have A Project In Mind?</span>
+                <h2 class="text-3xl md:text-5xl font-extrabold text-[#1d1d1f] tracking-tight mt-4 mb-6">
+                    Ready to Build Your Custom Software Solution?
                 </h2>
-                <p class="text-xl text-gray-600 mb-10 max-w-2xl mx-auto">
-                    Let's discuss how we can help transform your business with
-                    our expertise.
+                <p class="text-[#86868b] text-base md:text-lg mb-10 max-w-2xl mx-auto">
+                    Let's discuss how our engineering team in Uttara, Dhaka can build a tailored platform for your business operations.
                 </p>
-                <a
-                    href="/contact"
-                    class="bg-blue-600 hover:bg-blue-700 text-white px-10 py-4 rounded-xl font-bold transition-all shadow-lg shadow-blue-600/20 text-lg inline-block"
-                >
-                    Start a Conversation
-                </a>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a
+                        href="/contact"
+                        class="bg-[#0071e3] hover:bg-[#0077ed] text-white font-bold px-9 py-4 rounded-2xl shadow-xl shadow-blue-500/20 hover:scale-[1.02] active:scale-95 transition-all text-base"
+                    >
+                        Schedule Free Consultation &rarr;
+                    </a>
+                    <a
+                        href="tel:+8801707568468"
+                        class="bg-[#f5f5f7] hover:bg-gray-200 text-[#1d1d1f] font-bold px-8 py-4 rounded-2xl transition-all text-base flex items-center gap-2"
+                    >
+                        <i class="fas fa-phone-alt text-[#0071e3]"></i> Call +880 1707-568468
+                    </a>
+                </div>
             </div>
         </section>
     </main>
+
     <Footer />
-</MainLayout>
+</TestMainLayout>

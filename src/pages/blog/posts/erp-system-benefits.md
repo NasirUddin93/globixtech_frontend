@@ -4,7 +4,7 @@ description: "Learn how an ERP system can streamline your finance, HR, inventory
 publishDate: "2025-01-25"
 readTime: "6 min read"
 category: "ERP Systems"
-image: "https://placehold.co/800x400/6366f1/ffffff?text=ERP+System+Benefits"
+image: "/images/erp-solution-intro.png"
 ---
 
 # Why Your Growing Business Needs an ERP System

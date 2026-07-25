@@ -52,3 +52,14 @@ body {
   color: #3a86ff;
   font-weight: 600;
 }
+
+@keyframes slowGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-slow-gradient {
+  background-size: 200% 200% !important;
+  animation: slowGradient 12s ease-in-out infinite !important;
+}

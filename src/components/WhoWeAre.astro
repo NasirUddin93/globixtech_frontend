@@ -2,66 +2,47 @@
 
 ---
 
-<section class="py-20 bg-white">
-    <div class="container mx-auto px-6">
+<section class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
         <div class="flex flex-col md:flex-row items-center gap-12">
             <!-- Text Content -->
             <div class="md:w-1/2">
-                <div
-                    class="inline-block bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-bold mb-6 uppercase tracking-wider"
-                >
+                <div class="inline-block bg-blue-50 text-[#0071e3] border border-blue-100 px-4 py-1.5 rounded-full text-xs font-bold mb-6 uppercase tracking-wider shadow-xs">
                     Who We Are
                 </div>
-                <h2
-                    class="text-3xl md:text-5xl font-bold text-[#0c1b3d] mb-6 leading-tight"
-                >
-                    Innovating for a <span class="text-blue-600"
-                        >Digital Future</span
-                    >
+                <h2 class="text-3xl md:text-5xl font-extrabold text-[#1d1d1f] mb-6 leading-tight tracking-tight">
+                    Innovating for a <span class="bg-gradient-to-r from-[#0071e3] to-indigo-600 bg-clip-text text-transparent">Digital Future</span>
                 </h2>
-                <p class="text-gray-600 text-lg leading-relaxed mb-6">
-                    GlobixTech is a dynamic technology solutions provider
-                    established in 2020 with a clearly defined vision: to
-                    empower businesses through innovation and digital
-                    transformation. We specialize in delivering comprehensive IT
-                    services tailored to meet the unique challenges of modern
-                    enterprises.
+                <p class="text-[#86868b] text-base md:text-lg leading-relaxed mb-6">
+                    GlobixTech is a dynamic technology solutions provider established in 2020 with a clearly defined vision: to empower businesses through innovation and digital transformation. We specialize in delivering comprehensive IT services tailored to meet the unique challenges of modern enterprises.
                 </p>
-                <p class="text-gray-600 text-lg leading-relaxed mb-8">
-                    We combine creativity, technical expertise, and deep
-                    industry knowledge to build impactful solutions. Whether you
-                    are a startup looking to establish a strong online presence
-                    or a large organization seeking to optimize operations, we
-                    are here to help you succeed.
+                <p class="text-[#86868b] text-base md:text-lg leading-relaxed mb-8">
+                    We combine creativity, technical expertise, and deep industry knowledge to build impactful solutions. Whether you are a startup looking to establish a strong online presence or a large organization seeking to optimize operations, we are here to help you succeed.
                 </p>
 
                 <div class="grid grid-cols-2 gap-6">
                     <div class="flex items-start gap-4">
-                        <div
-                            class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600 flex-shrink-0"
-                        >
+                        <div class="w-12 h-12 bg-blue-50 rounded-2xl flex items-center justify-center text-[#0071e3] flex-shrink-0">
                             <i class="fas fa-check-circle text-xl"></i>
                         </div>
                         <div>
-                            <h4 class="font-bold text-[#0c1b3d] mb-1">
+                            <h4 class="font-bold text-[#1d1d1f] mb-1">
                                 Client-Centric
                             </h4>
-                            <p class="text-sm text-gray-500">
+                            <p class="text-xs text-[#86868b]">
                                 Your success is our priority.
                             </p>
                         </div>
                     </div>
                     <div class="flex items-start gap-4">
-                        <div
-                            class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600 flex-shrink-0"
-                        >
+                        <div class="w-12 h-12 bg-emerald-50 rounded-2xl flex items-center justify-center text-emerald-600 flex-shrink-0">
                             <i class="fas fa-rocket text-xl"></i>
                         </div>
                         <div>
-                            <h4 class="font-bold text-[#0c1b3d] mb-1">
+                            <h4 class="font-bold text-[#1d1d1f] mb-1">
                                 Results-Driven
                             </h4>
-                            <p class="text-sm text-gray-500">
+                            <p class="text-xs text-[#86868b]">
                                 Focused on measurable growth.
                             </p>
                         </div>
@@ -69,39 +50,32 @@
                 </div>
             </div>
 
-            <!-- Image/Visual -->
-            <div class="md:w-1/2 relative">
-                <div
-                    class="relative rounded-3xl overflow-hidden shadow-2xl border-8 border-white"
-                >
-                    <div class="absolute inset-0 bg-blue-600/10 z-10"></div>
-                    <!-- Using a placeholder pattern if no specific image is available, or a gradient -->
-                    <div
-                        class="bg-gradient-to-br from-[#0c1b3d] to-blue-900 h-[400px] flex items-center justify-center relative overflow-hidden"
-                    >
-                        <div
-                            class="absolute inset-0 opacity-20"
-                            style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 30px 30px;"
+            <!-- Video Visual Card -->
+            <div class="md:w-1/2 relative w-full">
+                <div class="relative rounded-[2.5rem] p-3 bg-white/80 backdrop-blur-2xl border border-white shadow-[0_20px_70px_rgba(0,0,0,0.06)] overflow-hidden">
+                    <div class="relative rounded-3xl overflow-hidden aspect-video bg-black shadow-inner group">
+                        <video
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                            autoplay
+                            loop
+                            muted
+                            playsinline
                         >
-                        </div>
-                        <div class="text-center z-20 p-8">
-                            <i class="fas fa-code text-6xl text-white/20 mb-4"
-                            ></i>
-                            <h3 class="text-2xl text-white font-bold">
+                            <source src="/videos/people_working_with_Innovating.mp4" type="video/mp4" />
+                        </video>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                        <div class="absolute bottom-6 left-6 right-6 p-4 rounded-2xl bg-white/80 backdrop-blur-2xl border border-white text-left text-xs text-[#1d1d1f] font-bold shadow-xl flex items-center justify-between">
+                            <span class="flex items-center gap-2">
+                                <span class="w-2.5 h-2.5 rounded-full bg-[#0071e3] animate-pulse"></span>
                                 Bridging Technology & Business
-                            </h3>
+                            </span>
+                            <span class="text-[#86868b] font-mono text-[11px]">Established 2020</span>
                         </div>
                     </div>
                 </div>
-                <!-- Decorative elements -->
-                <div
-                    class="absolute -bottom-6 -right-6 w-24 h-24 bg-blue-600 rounded-full opacity-20 blur-xl"
-                >
-                </div>
-                <div
-                    class="absolute -top-6 -left-6 w-32 h-32 bg-cyan-400 rounded-full opacity-20 blur-xl"
-                >
-                </div>
+                <!-- Decorative ambient glow -->
+                <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-blue-500 rounded-full opacity-15 blur-2xl -z-10"></div>
+                <div class="absolute -top-6 -left-6 w-32 h-32 bg-indigo-500 rounded-full opacity-15 blur-2xl -z-10"></div>
             </div>
         </div>
     </div>

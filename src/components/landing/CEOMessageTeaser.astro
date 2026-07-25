@@ -1,0 +1,51 @@
+---
+import { Image } from "astro:assets";
+import ceoImage from "../../assets/CEO.png";
+---
+
+<section id="ceo-message" class="py-24 bg-[#fbfbfd]">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="bg-white/70 backdrop-blur-2xl border border-white/80 rounded-[2.5rem] p-8 md:p-14 shadow-[0_20px_60px_rgba(0,0,0,0.03)]">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- CEO Photo -->
+                <div class="lg:col-span-5 relative group">
+                    <div class="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
+                        <Image
+                            src={ceoImage}
+                            alt="Syed Mominul Islam - CEO, GlobixTech"
+                            class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
+                        />
+                    </div>
+                </div>
+
+                <!-- Message Content -->
+                <div class="lg:col-span-7 text-left space-y-6">
+                    <span class="text-xs font-bold uppercase tracking-widest text-[#0071e3] bg-blue-50 px-4 py-1.5 rounded-full border border-blue-100">Leadership Vision</span>
+                    
+                    <h2 class="text-3xl md:text-5xl font-extrabold text-[#1d1d1f] tracking-tight">
+                        Message from Our CEO
+                    </h2>
+
+                    <div>
+                        <h3 class="text-2xl font-bold text-[#1d1d1f]">Syed Mominul Islam</h3>
+                        <p class="text-[#0071e3] font-semibold text-sm">CEO & Founder, GlobixTech</p>
+                    </div>
+
+                    <blockquote class="p-6 rounded-2xl bg-[#f5f5f7] border-l-4 border-[#0071e3]">
+                        <p class="text-lg md:text-xl text-[#1d1d1f] italic font-medium leading-relaxed">
+                            "At GlobixTech, we believe technology should empower businesses, not complicate them. Our mission is to deliver smart, affordable, and world-class software solutions that help Bangladesh businesses grow and compete globally."
+                        </p>
+                    </blockquote>
+
+                    <p class="text-[#86868b] leading-relaxed text-sm md:text-base">
+                        Since our founding in Uttara, Dhaka, we've been committed to understanding the real-world operational challenges of local SMEs and enterprises. We don't just build software — we build lasting technology partnerships.
+                    </p>
+
+                    <a href="/about" class="inline-flex items-center gap-2 bg-[#0071e3] hover:bg-[#0077ed] text-white font-semibold text-sm px-7 py-3.5 rounded-full shadow-md hover:scale-105 transition-all">
+                        Read Full Story <i class="fas fa-arrow-right text-xs"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

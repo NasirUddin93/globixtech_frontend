@@ -1,50 +1,43 @@
 ---
-import MainLayout from "./MainLayout.astro";
+import TestMainLayout from "./TestMainLayout.astro";
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
 
 const { title, description, publishDate, author, image } = Astro.props;
 ---
 
-<MainLayout title={title}>
+<TestMainLayout title={`${title} | Globix Tech Blog`}>
     <Navbar />
-    <div class="py-24 bg-gray-50 min-h-screen">
-        <div class="container mx-auto px-6 max-w-4xl">
+    <main class="pt-32 pb-24 bg-[#f5f5f7] min-h-screen">
+        <div class="max-w-4xl mx-auto px-6">
             <!-- Article Header -->
             <div class="mb-12 text-center">
-                <div
-                    class="flex items-center justify-center gap-4 text-sm text-gray-500 mb-6"
-                >
-                    <span
-                        class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full font-medium"
-                        >Blog</span
-                    >
+                <div class="flex items-center justify-center gap-3 text-xs font-bold text-[#86868b] mb-4">
+                    <span class="bg-blue-50 text-[#0071e3] px-3.5 py-1 rounded-full border border-blue-100 uppercase tracking-widest text-[10px]">
+                        Engineering Article
+                    </span>
                     <span>&bull;</span>
-                    <time>{publishDate}</time>
+                    <time class="flex items-center gap-1"><i class="far fa-calendar text-[#0071e3]"></i> {publishDate}</time>
                 </div>
-                <h1
-                    class="text-3xl md:text-5xl font-extrabold text-[#0c1b3d] mb-6 leading-tight"
-                >
+                <h1 class="text-3xl md:text-5xl font-extrabold text-[#1d1d1f] mb-6 leading-tight tracking-tight">
                     {title}
                 </h1>
                 {
                     description && (
-                        <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+                        <p class="text-lg md:text-xl text-[#86868b] mb-8 max-w-2xl mx-auto leading-relaxed font-medium">
                             {description}
                         </p>
                     )
                 }
                 <div class="flex items-center justify-center gap-3">
-                    <div
-                        class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center text-gray-500"
-                    >
+                    <div class="w-10 h-10 bg-blue-50 text-[#0071e3] rounded-full flex items-center justify-center font-bold text-sm">
                         <i class="fas fa-user"></i>
                     </div>
                     <div class="text-left">
-                        <p class="font-bold text-[#0c1b3d] text-sm">
+                        <p class="font-bold text-[#1d1d1f] text-sm">
                             {author || "GlobixTech Team"}
                         </p>
-                        <p class="text-xs text-gray-500">Editor</p>
+                        <p class="text-xs text-[#86868b]">Software Engineer & Editor</p>
                     </div>
                 </div>
             </div>
@@ -52,20 +45,18 @@ const { title, description, publishDate, author, image } = Astro.props;
             <!-- Featured Image -->
             {
                 image && (
-                    <div class="rounded-3xl overflow-hidden shadow-2xl mb-12 border border-gray-100">
+                    <div class="rounded-[2.5rem] overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.04)] mb-12 border border-white">
                         <img
                             src={image}
                             alt={title}
-                            class="w-full h-auto object-cover"
+                            class="w-full h-auto object-cover max-h-[480px]"
                         />
                     </div>
                 )
             }
 
             <!-- Content -->
-            <article
-                class="prose prose-lg prose-blue mx-auto bg-white p-8 md:p-12 rounded-3xl shadow-sm border border-gray-100"
-            >
+            <article class="prose prose-lg prose-blue mx-auto bg-white/80 backdrop-blur-2xl p-8 md:p-14 rounded-[2.5rem] shadow-[0_10px_30px_rgba(0,0,0,0.02)] border border-white text-[#1d1d1f]">
                 <slot />
             </article>
 
@@ -73,12 +64,13 @@ const { title, description, publishDate, author, image } = Astro.props;
             <div class="mt-12 text-center">
                 <a
                     href="/blog"
-                    class="inline-flex items-center gap-2 text-gray-600 hover:text-blue-600 font-bold transition-colors"
+                    class="inline-flex items-center gap-2 text-[#0071e3] hover:text-[#0077ed] font-bold transition-all text-sm bg-white/80 backdrop-blur-md px-6 py-3 rounded-full border border-white shadow-xs"
                 >
-                    <i class="fas fa-arrow-left"></i> Back to Blog
+                    <i class="fas fa-arrow-left text-xs"></i> Back to All Articles
                 </a>
             </div>
         </div>
-    </div>
+    </main>
+
     <Footer />
-</MainLayout>
+</TestMainLayout>

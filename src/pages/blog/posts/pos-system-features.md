@@ -4,7 +4,7 @@ description: "Discover the essential features that make a POS system invaluable 
 publishDate: "2025-01-20"
 readTime: "5 min read"
 category: "POS Systems"
-image: "https://placehold.co/800x400/22c55e/ffffff?text=POS+System+Features"
+image: "/images/Benefits-of-using-modern-POS-systems.png"
 ---
 
 # Top 5 Features Every Business Needs in a POS System

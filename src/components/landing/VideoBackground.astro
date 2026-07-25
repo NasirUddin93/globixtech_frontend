@@ -1,0 +1,88 @@
+---
+interface Props {
+  mp4?: string;
+  webm?: string;
+  poster?: string;
+  overlay?: "light" | "dark" | "none";
+  class?: string;
+  width?: string;
+  height?: string;
+}
+
+const {
+  mp4 = "/videos/test-hero.mp4",
+  webm,
+  poster,
+  overlay = "light",
+  class: className = "",
+  width = "100%",
+  height = "100%",
+} = Astro.props;
+
+const uniqueId = `vbg-${Math.random().toString(36).slice(2, 8)}`;
+---
+
+<div 
+  class={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 overflow-hidden z-0 pointer-events-none rounded-3xl ${className}`}
+  style={`width: ${width}; height: ${height}; -webkit-mask-image: radial-gradient(ellipse 75% 75% at 50% 50%, black 30%, transparent 95%); mask-image: radial-gradient(ellipse 75% 75% at 50% 50%, black 30%, transparent 95%);`}
+>
+  <!-- Video Element: JS controls the seamless loop to skip baked-in fade-out -->
+  <video
+    id={uniqueId}
+    autoplay
+    muted
+    playsinline
+    preload="auto"
+    poster={poster}
+    class="w-full h-full object-cover"
+  >
+    {webm && <source src={webm} type="video/webm" />}
+    {mp4 && <source src={mp4} type="video/mp4" />}
+  </video>
+  
+  {overlay === "light" && (
+    <div class="absolute inset-0 bg-white/55"></div>
+  )}
+  
+  {overlay !== "none" && (
+    <>
+      <div class="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-white via-white/80 to-transparent"></div>
+      <div class="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-white via-white/80 to-transparent"></div>
+      <div class="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-white via-white/80 to-transparent"></div>
+      <div class="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-white via-white/80 to-transparent"></div>
+    </>
+  )}
+  
+  {overlay === "dark" && (
+    <div class="absolute inset-0 bg-gradient-to-b from-[#0f172a]/30 via-[#0f172a]/50 to-[#0f172a]/80"></div>
+  )}
+
+</div>
+
+<!-- is:inline ensures this runs per-instance, not deduplicated across components -->
+<script is:inline define:vars={{ uniqueId }}>
+(function () {
+  const SKIP_TAIL = 1.5; // seconds to cut from the end (baked-in fade-out)
+
+  function attachLoop(video) {
+    video.addEventListener('timeupdate', function onTimeUpdate() {
+      if (video.duration && video.currentTime >= video.duration - SKIP_TAIL) {
+        video.currentTime = 0;
+      }
+    });
+  }
+
+  const video = document.getElementById(uniqueId);
+  if (!video) return;
+
+  if (video.readyState >= 1) {
+    // Metadata already loaded — attach immediately
+    attachLoop(video);
+  } else {
+    // Wait for metadata then attach
+    video.addEventListener('loadedmetadata', function () {
+      attachLoop(video);
+    }, { once: true });
+  }
+})();
+</script>

@@ -1,0 +1,51 @@
+---
+// WhatsApp floating button
+---
+
+<a
+    href="https://wa.me/8801707568468"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="fixed bottom-6 right-6 z-50 group glass-panel p-1.5 rounded-full"
+    aria-label="Chat on WhatsApp"
+>
+    <div class="relative">
+        <!-- Pulse rings -->
+        <div class="absolute inset-0 bg-green-500 rounded-full animate-ping opacity-20"></div>
+        <div class="absolute inset-0 bg-green-500 rounded-full animate-pulse opacity-10"></div>
+        <!-- Button -->
+        <div class="relative w-14 h-14 bg-green-500 hover:bg-green-600 rounded-full flex items-center justify-center shadow-lg shadow-green-500/30 transition-all duration-300 group-hover:scale-110 group-hover:shadow-xl group-hover:shadow-green-500/40">
+            <i class="fab fa-whatsapp text-white text-2xl"></i>
+        </div>
+        <!-- Tooltip -->
+        <div class="absolute bottom-full right-0 mb-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+            <div class="bg-dark text-white text-sm font-semibold px-4 py-2 rounded-lg whitespace-nowrap shadow-lg">
+                Chat with us!
+                <div class="absolute top-full right-5 w-2 h-2 bg-dark transform rotate-45 -mt-1"></div>
+            </div>
+        </div>
+    </div>
+</a>
+
+<style>
+    @keyframes ping {
+        75%, 100% {
+            transform: scale(2);
+            opacity: 0;
+        }
+    }
+    .animate-ping {
+        animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+    }
+    @keyframes pulse {
+        0%, 100% {
+            opacity: 0.1;
+        }
+        50% {
+            opacity: 0.2;
+        }
+    }
+    .animate-pulse {
+        animation: pulse 2s ease-in-out infinite;
+    }
+</style>

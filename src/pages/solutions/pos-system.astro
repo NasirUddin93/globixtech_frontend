@@ -1,9 +1,9 @@
 ---
+// Location: frontend/src/pages/solutions/pos-system.astro
+
 import MainLayout from "../../layouts/MainLayout.astro";
 import Navbar from "../../components/Navbar.astro";
 import Footer from "../../components/Footer.astro";
-import { Image } from "astro:assets";
-import smsMockup from "../../assets/sms_mockup.png";
 
 import {
     pricingPlans,
@@ -12,134 +12,147 @@ import {
     stats,
     coreFeatures,
     faqs,
+    posVideos,
 } from "../../data/pos";
 ---
 
 <MainLayout title="POS System - Globix Tech Solutions">
     <Navbar />
 
-    <main class="min-h-screen bg-white">
-        <!-- Hero Section -->
-        <section
-            class="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden bg-[#0c1b3d]"
-        >
-            <div
-                class="absolute inset-0 bg-gradient-to-br from-[#0c1b3d] via-[#1a2c5a] to-[#0c1b3d]"
-            >
-            </div>
-            <div
-                class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-green-500/10 to-transparent blur-3xl"
-            >
-            </div>
+    <main class="min-h-screen bg-[#F5F5F7] text-[#1D1D1F] selection:bg-emerald-500 selection:text-white font-sans antialiased overflow-hidden">
+        
+        <!-- Apple-like Floating Ambient Background Gradients -->
+        <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+            <div class="absolute -top-40 -right-40 w-[600px] h-[600px] bg-emerald-200/40 rounded-full blur-[140px]"></div>
+            <div class="absolute top-1/3 -left-40 w-[500px] h-[500px] bg-blue-200/30 rounded-full blur-[140px]"></div>
+            <div class="absolute bottom-1/4 right-10 w-[550px] h-[550px] bg-teal-100/50 rounded-full blur-[160px]"></div>
+        </div>
 
-            <div class="container mx-auto px-6 relative z-10">
-                <div
-                    class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
-                >
-                    <div class="text-left">
-                        <div
-                            class="inline-flex items-center gap-2 bg-green-500/10 border border-green-500/20 px-4 py-2 rounded-full text-green-400 text-sm font-semibold mb-6"
-                        >
-                            <i class="fas fa-cash-register"></i> Fast & Reliable
-                            POS
-                        </div>
-                        <h1
-                            class="text-4xl md:text-6xl font-extrabold text-white mb-6 leading-[1.1]"
-                        >
-                            Point of Sale System for <span
-                                class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-400"
-                                >Retail & Restaurants</span
-                            >
-                        </h1>
-                        <p
-                            class="text-lg md:text-xl text-gray-300 mb-10 max-w-xl leading-relaxed"
-                        >
-                            Lightning-fast checkout, multi-payment support, and
-                            real-time inventory sync. Perfect for retail stores,
-                            restaurants, supermarkets, and pharmacies.
-                        </p>
-                        <div class="flex flex-wrap gap-4">
-                            <a
-                                href="/#contact"
-                                class="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-xl font-bold transition-all shadow-lg shadow-green-500/20 flex items-center gap-2"
-                            >
-                                Get Free Demo <i
-                                    class="fas fa-arrow-right text-sm"></i>
-                            </a>
-                            <a
-                                href="tel:+8801707568468"
-                                class="bg-white/5 hover:bg-white/10 border border-white/20 text-white px-8 py-4 rounded-xl font-bold transition-all flex items-center gap-2"
-                            >
-                                <i class="fas fa-phone-alt"></i> Call Us
-                            </a>
-                        </div>
-                    </div>
-                    <div class="relative mt-10 lg:mt-0">
-                        <div
-                            class="absolute -inset-4 bg-green-500/20 blur-2xl rounded-full"
-                        >
-                        </div>
-                        <Image
-                            src={smsMockup}
-                            alt="POS Software"
-                            class="relative z-10 w-full max-w-2xl mx-auto drop-shadow-2xl rounded-2xl border border-white/10"
-                        />
+        <!-- ================= HERO SECTION ================= -->
+        <section class="relative pt-32 pb-20 md:pt-44 md:pb-28 z-10 bg-gradient-to-r from-emerald-50/80 via-teal-50/60 to-blue-50/50" animate-slow-gradient">
+            <!-- Bottom Faded Soft Transition Layer -->
+            <div class="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-b from-transparent via-[#FBFBFD]/60 to-[#FBFBFD] pointer-events-none z-10"></div>
+
+            <div class="container mx-auto px-6 max-w-7xl">
+                <!-- Apple Pill Tag -->
+                <div class="flex justify-center mb-8">
+                    <div class="inline-flex items-center gap-2.5 bg-white/70 backdrop-blur-xl border border-black/5 shadow-[0_2px_12px_rgba(0,0,0,0.04)] px-5 py-2 rounded-full text-xs font-semibold text-slate-700 tracking-wide uppercase">
+                        <span class="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                        Next-Gen Checkout Engine
                     </div>
                 </div>
-            </div>
-        </section>
 
-        <!-- Stats Section -->
-        <section class="py-16 bg-white border-b border-gray-100">
-            <div class="container mx-auto px-6">
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
-                    {
-                        stats.map((stat) => (
-                            <div class="group">
-                                <div class="text-4xl font-extrabold text-[#0c1b3d] mb-2 group-hover:text-green-600 transition-colors">
-                                    {stat.value}
+                <!-- Hero Title & Subtitle -->
+                <div class="text-center max-w-4xl mx-auto mb-12">
+                    <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-[#1D1D1F] leading-[1.08] mb-6">
+                        Point of Sale System for <br class="hidden sm:inline" />
+                        <span class="bg-gradient-to-r from-emerald-600 via-teal-600 to-blue-600 bg-clip-text text-transparent">
+                            Retail & Restaurants
+                        </span>
+                    </h1>
+                    <p class="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto font-normal leading-relaxed">
+                        Lightning-fast checkout, multi-payment support, and real-time inventory sync. Purpose-built for retail stores, restaurants, supermarkets, and pharmacies.
+                    </p>
+
+                    <!-- CTAs -->
+                    <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
+                        <a
+                            href="/#contact"
+                            class="bg-[#1D1D1F] hover:bg-black text-white px-8 py-4 rounded-full font-medium transition-all duration-300 shadow-lg shadow-black/10 hover:scale-[1.02] active:scale-[0.98] flex items-center gap-3 text-sm"
+                        >
+                            Get Free Demo
+                            <i class="fas fa-arrow-right text-xs"></i>
+                        </a>
+                        <a
+                            href="tel:+8801707568468"
+                            class="bg-white/80 hover:bg-white text-[#1D1D1F] border border-black/10 backdrop-blur-md px-8 py-4 rounded-full font-medium transition-all duration-300 shadow-sm hover:shadow-md active:scale-[0.98] flex items-center gap-2.5 text-sm"
+                        >
+                            <i class="fas fa-phone-alt text-emerald-600 text-xs"></i> Call Us Directly
+                        </a>
+                    </div>
+                </div>
+
+                <!-- ANIMATION VIDEO #1: HERO MAIN VIDEO SHOWCASE -->
+                <div class="relative max-w-5xl mx-auto mt-14">
+                    <div class="relative rounded-3xl p-3 bg-white/60 backdrop-blur-2xl border border-white/80 shadow-[0_30px_70px_rgba(0,0,0,0.08)]">
+                        <div class="relative rounded-2xl overflow-hidden aspect-video bg-slate-900 group">
+                            <video 
+                                autoplay 
+                                loop 
+                                muted 
+                                playsinline 
+                                poster={posVideos.hero.poster}
+                                class="w-full h-full object-cover transition-scale duration-700 group-hover:scale-[1.01]"
+                            >
+                                <source src={posVideos.hero.src} type="video/mp4" />
+                            </video>
+                            
+                            <!-- Sleek Video Overlay Badge -->
+                            <div class="absolute bottom-6 left-6 right-6 flex flex-col md:flex-row md:items-center justify-between gap-4 p-6 rounded-2xl bg-white/70 backdrop-blur-xl border border-white/60 shadow-lg">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-10 h-10 rounded-full bg-emerald-500/10 flex items-center justify-center text-emerald-600">
+                                        <i class="fas fa-bolt"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-slate-900 text-sm">{posVideos.hero.title}</h4>
+                                        <p class="text-xs text-slate-600">{posVideos.hero.desc}</p>
+                                    </div>
                                 </div>
-                                <div class="text-sm font-bold text-gray-400 uppercase tracking-widest">
-                                    {stat.label}
-                                </div>
+                                <span class="self-start md:self-auto text-[11px] font-semibold tracking-wider text-emerald-700 uppercase bg-emerald-100/80 px-3 py-1 rounded-full border border-emerald-200">
+                                    Live Terminal
+                                </span>
                             </div>
-                        ))
-                    }
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Core Features Grid -->
-        <section class="py-24 bg-gray-50">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-16">
-                    <h2
-                        class="text-3xl md:text-5xl font-bold text-[#0c1b3d] mb-4"
-                    >
-                        Powerful POS Features
+        <!-- ================= STATS SECTION ================= -->
+        <section class="py-12 z-10 relative">
+            <div class="container mx-auto px-6 max-w-6xl">
+                <div class="bg-white/60 backdrop-blur-xl border border-white/80 rounded-3xl p-8 md:p-10 shadow-[0_10px_30px_rgba(0,0,0,0.03)]">
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-slate-200/60">
+                        {
+                            stats.map((stat, idx) => (
+                                <div class={`pt-4 md:pt-0 ${idx !== 0 ? 'md:pl-6' : ''}`}>
+                                    <div class="text-3xl md:text-4xl font-extrabold text-[#1D1D1F] tracking-tight mb-1">
+                                        {stat.value}
+                                    </div>
+                                    <div class="text-xs font-semibold text-slate-500 uppercase tracking-widest">
+                                        {stat.label}
+                                    </div>
+                                </div>
+                            ))
+                        }
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= CORE FEATURES BENTO GRID ================= -->
+        <section class="py-24 z-10 relative">
+            <div class="container mx-auto px-6 max-w-7xl">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-3xl md:text-5xl font-bold tracking-tight text-[#1D1D1F] mb-4">
+                        Engineered for Unmatched Efficiency
                     </h2>
-                    <p
-                        class="text-gray-600 max-w-2xl mx-auto text-lg leading-relaxed"
-                    >
-                        Everything you need to run a fast, efficient point of
-                        sale.
+                    <p class="text-slate-600 text-base md:text-lg">
+                        Everything you need to run a high-speed, reliable point of sale operation.
                     </p>
                 </div>
-                <div
-                    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-                >
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {
                         coreFeatures.map((f) => (
-                            <div class="bg-white p-10 rounded-3xl border border-gray-100 hover:border-green-200 hover:shadow-xl transition-all group">
-                                <div
-                                    class={`w-16 h-16 ${f.bg} rounded-2xl flex items-center justify-center ${f.color} text-2xl mb-8 group-hover:scale-110 transition-transform`}
-                                >
+                            <div class="group bg-white/70 backdrop-blur-xl border border-white/90 p-8 rounded-3xl shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_15px_35px_rgba(0,0,0,0.06)] hover:bg-white/90 transition-all duration-300">
+                                <div class={`w-14 h-14 ${f.bg} rounded-2xl flex items-center justify-center ${f.color} text-xl mb-6 group-hover:scale-105 transition-transform`}>
                                     <i class={`fas ${f.icon}`} />
                                 </div>
-                                <h3 class="text-2xl font-bold text-[#0c1b3d] mb-4">
+                                <h3 class="text-xl font-bold text-[#1D1D1F] mb-3">
                                     {f.title}
                                 </h3>
-                                <p class="text-gray-600 leading-relaxed">
+                                <p class="text-slate-600 text-sm leading-relaxed">
                                     {f.desc}
                                 </p>
                             </div>
@@ -149,65 +162,95 @@ import {
             </div>
         </section>
 
-        <!-- Business Types Section -->
-        <section class="py-24 bg-white">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-16">
-                    <h2
-                        class="text-3xl md:text-5xl font-bold text-[#0c1b3d] mb-4"
-                    >
-                        POS Solutions for Every Business
+        <!-- ================= ANIMATION VIDEO #2 & BUSINESS TYPES SECTION ================= -->
+        <section class="py-24 z-10 relative">
+            <div class="container mx-auto px-6 max-w-7xl">
+                <!-- Video Banner Bar -->
+                <div class="mb-20 bg-white/60 backdrop-blur-xl border border-white/80 rounded-3xl p-8 md:p-12 shadow-[0_20px_50px_rgba(0,0,0,0.04)]">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                        <div class="lg:col-span-5">
+                            <span class="text-xs font-semibold tracking-wider text-emerald-600 uppercase bg-emerald-50 px-3.5 py-1.5 rounded-full border border-emerald-200/60 inline-block mb-4">
+                                Interactive Workflows
+                            </span>
+                            <h3 class="text-2xl md:text-4xl font-bold text-[#1D1D1F] mb-4 leading-tight">
+                                {posVideos.businessWorkflow.title}
+                            </h3>
+                            <p class="text-slate-600 text-sm md:text-base mb-6 leading-relaxed">
+                                {posVideos.businessWorkflow.desc}
+                            </p>
+                            <div class="flex items-center gap-3 text-xs font-medium text-slate-500">
+                                <span class="w-2 h-2 rounded-full bg-emerald-500"></span> Multi-industry standard ready
+                            </div>
+                        </div>
+
+                        <!-- Video Player Container -->
+                        <div class="lg:col-span-7">
+                            <div class="relative rounded-2xl overflow-hidden aspect-video shadow-md border border-black/5 bg-slate-900">
+                                <video 
+                                    autoplay 
+                                    loop 
+                                    muted 
+                                    playsinline 
+                                    poster={posVideos.businessWorkflow.poster}
+                                    class="w-full h-full object-cover"
+                                >
+                                    <source src={posVideos.businessWorkflow.src} type="video/mp4" />
+                                </video>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Business Types Selector -->
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <h2 class="text-3xl md:text-5xl font-bold tracking-tight text-[#1D1D1F] mb-4">
+                        Tailored for Your Industry
                     </h2>
-                    <p
-                        class="text-gray-600 max-w-2xl mx-auto text-lg leading-relaxed"
-                    >
-                        Specialized features for different industries and
-                        business models.
+                    <p class="text-slate-600 text-base md:text-lg">
+                        Specialized checkout logic designed for distinct business models.
                     </p>
                 </div>
 
-                <!-- Business Type Tabs -->
+                <!-- Apple Glass Tab Switcher -->
                 <div class="max-w-6xl mx-auto">
-                    <div
-                        class="flex flex-wrap justify-center gap-4 mb-12"
-                        id="business-tabs"
-                    >
-                        {
-                            businessTypes.map((type, index) => (
-                                <button
-                                    class={`business-tab px-6 py-3 rounded-xl font-bold transition-all ${index === 0 ? "bg-green-500 text-white shadow-lg" : "bg-gray-100 text-gray-600 hover:bg-gray-200"}`}
-                                    data-id={type.id}
-                                >
-                                    {type.label}
-                                </button>
-                            ))
-                        }
+                    <div class="flex justify-center mb-12">
+                        <div class="inline-flex p-1.5 bg-slate-200/50 backdrop-blur-2xl rounded-2xl border border-white/60 shadow-inner flex-wrap justify-center gap-1" id="business-tabs">
+                            {
+                                businessTypes.map((type, index) => (
+                                    <button
+                                        class={`business-tab px-6 py-3 rounded-xl text-xs md:text-sm font-medium transition-all duration-300 ${index === 0 ? "bg-white text-[#1D1D1F] shadow-sm font-semibold" : "text-slate-600 hover:text-slate-900"}`}
+                                        data-id={type.id}
+                                    >
+                                        {type.label}
+                                    </button>
+                                ))
+                            }
+                        </div>
                     </div>
 
-                    <!-- Business Type Content -->
-                    <div class="relative min-h-[500px]">
+                    <!-- Business Tab Content Cards -->
+                    <div class="relative min-h-[420px]">
                         {
                             businessTypes.map((type, index) => (
                                 <div
                                     id={`business-${type.id}`}
                                     class={`business-content transition-all duration-500 ${index === 0 ? "opacity-100 relative" : "opacity-0 absolute inset-0 pointer-events-none"}`}
                                 >
-                                    <div class="bg-gray-50 rounded-3xl p-8 md:p-12 border border-gray-100">
-                                        <h3 class="text-3xl font-bold text-[#0c1b3d] mb-6">
+                                    <div class="bg-white/80 backdrop-blur-2xl rounded-3xl p-8 md:p-12 border border-white shadow-[0_10px_40px_rgba(0,0,0,0.04)]">
+                                        <h3 class="text-2xl md:text-3xl font-bold text-[#1D1D1F] mb-4">
                                             {type.title}
                                         </h3>
-                                        <p class="text-gray-600 mb-10 leading-relaxed text-lg">
+                                        <p class="text-slate-600 mb-8 text-base leading-relaxed max-w-4xl">
                                             {type.desc}
                                         </p>
-                                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                                             {type.features.map((feature) => (
-                                                <div class="flex items-center gap-3 bg-white p-4 rounded-xl border border-gray-100">
-                                                    <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center text-green-600">
-                                                        <i
-                                                            class={`fas ${feature.icon}`}
-                                                        />
+                                                <div class="flex items-center gap-3.5 bg-slate-50/80 p-4 rounded-2xl border border-black/5 hover:bg-white hover:shadow-sm transition-all">
+                                                    <div class="w-10 h-10 bg-emerald-500/10 rounded-xl flex items-center justify-center text-emerald-600 text-sm">
+                                                        <i class={`fas ${feature.icon}`} />
                                                     </div>
-                                                    <span class="font-semibold text-gray-700">
+                                                    <span class="font-medium text-slate-800 text-sm">
                                                         {feature.name}
                                                     </span>
                                                 </div>
@@ -222,163 +265,90 @@ import {
             </div>
         </section>
 
-        <!-- Pricing Section -->
-        <section class="py-24 bg-gray-50">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-16">
-                    <h2
-                        class="text-3xl md:text-5xl font-bold text-[#0c1b3d] mb-4"
-                    >
-                        Flexible Pricing Plans
-                    </h2>
-                    <p
-                        class="text-gray-600 max-w-2xl mx-auto text-lg leading-relaxed"
-                    >
-                        Choose the plan based on your terminal count. Scale as
-                        you grow.
-                    </p>
-                </div>
-
-                <div class="max-w-7xl mx-auto">
-                    <div
-                        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
-                    >
-                        {
-                            pricingPlans.map((plan) => (
-                                <div
-                                    class={`bg-white rounded-2xl p-8 border-2 transition-all hover:-translate-y-2 ${plan.recommended ? "border-green-500 shadow-xl relative" : "border-gray-100 shadow-sm"}`}
+        <!-- ================= ANIMATION VIDEO #3 & COMPLETE MODULES BREAKDOWN ================= -->
+        <section class="py-24 z-10 relative">
+            <div class="container mx-auto px-6 max-w-7xl">
+                <!-- Video Feature Highlight -->
+                <div class="mb-20 bg-gradient-to-r from-emerald-950 via-slate-900 to-slate-950 rounded-3xl p-8 md:p-12 text-white shadow-2xl relative overflow-hidden">
+                    <div class="absolute -right-20 -top-20 w-80 h-80 bg-emerald-500/20 rounded-full blur-3xl"></div>
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+                        <div class="lg:col-span-7 order-2 lg:order-1">
+                            <div class="rounded-2xl overflow-hidden aspect-video border border-white/10 shadow-2xl bg-black">
+                                <video 
+                                    autoplay 
+                                    loop 
+                                    muted 
+                                    playsinline 
+                                    poster={posVideos.inventoryEngine.poster}
+                                    class="w-full h-full object-cover"
                                 >
-                                    {plan.recommended && (
-                                        <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-green-500 text-white px-4 py-1 rounded-full text-sm font-bold">
-                                            Recommended
-                                        </div>
-                                    )}
+                                    <source src={posVideos.inventoryEngine.src} type="video/mp4" />
+                                </video>
+                            </div>
+                        </div>
 
-                                    <h3 class="text-2xl font-bold text-[#0c1b3d] mb-2">
-                                        {plan.name}
-                                    </h3>
-
-                                    {plan.price === "Custom" ? (
-                                        <>
-                                            <div class="text-3xl font-bold text-green-600 mb-2">
-                                                {plan.price}
-                                            </div>
-                                            <p class="text-sm text-gray-500 mb-6">
-                                                {plan.subtitle}
-                                            </p>
-                                            <ul class="space-y-3 mb-8">
-                                                {plan.facilities.map((item) => (
-                                                    <li class="flex items-start gap-2 text-sm text-gray-600">
-                                                        <i class="fas fa-check text-green-500 mt-1" />
-                                                        <span>{item}</span>
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        </>
-                                    ) : (
-                                        <>
-                                            <div class="mb-6">
-                                                <div class="text-sm text-gray-500 mb-1">
-                                                    Starting from
-                                                </div>
-                                                <div class="text-3xl font-bold text-green-600">
-                                                    ৳{plan.monthlyPrice}
-                                                    <span class="text-lg text-gray-500">
-                                                        /month
-                                                    </span>
-                                                </div>
-                                                <div class="text-sm text-gray-500 mt-2">
-                                                    One-time: ৳
-                                                    {plan.oneTimeCharge}
-                                                </div>
-                                            </div>
-
-                                            <div class="space-y-2 mb-8">
-                                                <h4 class="font-bold text-sm text-gray-700 uppercase border-b pb-2">
-                                                    Pricing by Terminals
-                                                </h4>
-                                                {plan.ranges?.map((range) => (
-                                                    <div class="flex justify-between text-sm">
-                                                        <span class="text-gray-600">
-                                                            {range.range}
-                                                        </span>
-                                                        <span class="font-bold text-[#0c1b3d]">
-                                                            ৳{range.price}/mo
-                                                        </span>
-                                                    </div>
-                                                ))}
-                                            </div>
-                                        </>
-                                    )}
-
-                                    <a
-                                        href="/#contact"
-                                        class={`block w-full text-center py-3 rounded-xl font-bold transition-all ${plan.recommended ? "bg-green-500 text-white hover:bg-green-600" : "bg-gray-100 text-gray-700 hover:bg-gray-200"}`}
-                                    >
-                                        Get Started
-                                    </a>
-                                </div>
-                            ))
-                        }
+                        <div class="lg:col-span-5 order-1 lg:order-2">
+                            <span class="text-xs font-semibold tracking-wider text-emerald-400 uppercase bg-emerald-950/80 px-3.5 py-1.5 rounded-full border border-emerald-800/80 inline-block mb-4">
+                                Core Engine Architecture
+                            </span>
+                            <h3 class="text-2xl md:text-4xl font-bold mb-4 leading-tight text-white">
+                                {posVideos.inventoryEngine.title}
+                            </h3>
+                            <p class="text-slate-300 text-sm md:text-base leading-relaxed mb-6">
+                                {posVideos.inventoryEngine.desc}
+                            </p>
+                            <ul class="space-y-2.5 text-xs text-slate-300">
+                                <li class="flex items-center gap-2">
+                                    <i class="fas fa-check-circle text-emerald-400"></i> Zero delay stock deductions
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <i class="fas fa-check-circle text-emerald-400"></i> Automatic barcode verification
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
 
-        <!-- Detailed Modules Breakdown -->
-        <section class="py-24 bg-white">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-16">
-                    <h2
-                        class="text-3xl md:text-5xl font-bold text-[#0c1b3d] mb-4"
-                    >
-                        Complete POS Modules
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-3xl md:text-5xl font-bold tracking-tight text-[#1D1D1F] mb-4">
+                        300+ Features Across 18 Modules
                     </h2>
-                    <p
-                        class="text-gray-600 max-w-3xl mx-auto text-lg leading-relaxed"
-                    >
-                        Over 300+ features across 18 modules to handle every
-                        aspect of point of sale operations.
+                    <p class="text-slate-600 text-base md:text-lg">
+                        An end-to-end operational suite designed to cover every touchpoint.
                     </p>
                 </div>
 
-                <div class="space-y-12 max-w-7xl mx-auto">
+                <div class="space-y-12">
                     {
                         moduleCategories.map((category) => (
-                            <div class="bg-gray-50 rounded-3xl p-8 md:p-12 border border-gray-100">
-                                <div class="flex items-center gap-4 mb-8">
-                                    <div
-                                        class={`w-16 h-16 ${category.bg} rounded-2xl flex items-center justify-center ${category.color} text-2xl`}
-                                    >
+                            <div class="bg-white/70 backdrop-blur-2xl rounded-3xl p-8 md:p-10 border border-white/90 shadow-[0_10px_30px_rgba(0,0,0,0.03)]">
+                                <div class="flex items-center gap-4 mb-8 border-b border-slate-200/60 pb-6">
+                                    <div class={`w-12 h-12 ${category.bg} rounded-2xl flex items-center justify-center ${category.color} text-xl`}>
                                         <i class={`fas ${category.icon}`} />
                                     </div>
-                                    <h3 class="text-3xl font-bold text-[#0c1b3d]">
+                                    <h3 class="text-xl md:text-2xl font-bold text-[#1D1D1F] tracking-tight">
                                         {category.title}
                                     </h3>
                                 </div>
 
-                                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                                     {category.modules.map((module) => (
-                                        <div class="bg-white p-6 rounded-2xl border border-gray-100 hover:shadow-lg transition-all">
-                                            <div class="flex items-start justify-between mb-4">
-                                                <h4 class="font-bold text-[#0c1b3d] text-lg flex-1">
+                                        <div class="bg-white/80 p-6 rounded-2xl border border-black/5 hover:border-emerald-500/30 hover:shadow-md transition-all">
+                                            <div class="flex items-start justify-between mb-3">
+                                                <h4 class="font-bold text-[#1D1D1F] text-base">
                                                     {module.name}
                                                 </h4>
-                                                <span class="bg-green-100 text-green-600 px-2 py-1 rounded-full text-xs font-bold">
+                                                <span class="bg-emerald-50 text-emerald-700 border border-emerald-200 px-2 py-0.5 rounded-full text-[11px] font-bold">
                                                     {module.count}+
                                                 </span>
                                             </div>
                                             <ul class="space-y-2">
-                                                {module.features.map(
-                                                    (feature) => (
-                                                        <li class="flex items-start gap-2 text-sm text-gray-600">
-                                                            <i class="fas fa-check-circle text-green-500 mt-0.5" />
-                                                            <span>
-                                                                {feature}
-                                                            </span>
-                                                        </li>
-                                                    ),
-                                                )}
+                                                {module.features.map((feature) => (
+                                                    <li class="flex items-start gap-2 text-xs text-slate-600">
+                                                        <i class="fas fa-check text-emerald-500 mt-0.5 text-[10px]" />
+                                                        <span>{feature}</span>
+                                                    </li>
+                                                ))}
                                             </ul>
                                         </div>
                                     ))}
@@ -390,28 +360,130 @@ import {
             </div>
         </section>
 
-        <!-- FAQ Section -->
-        <section class="py-24 bg-gray-50">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-16">
-                    <h2
-                        class="text-3xl md:text-5xl font-bold text-[#0c1b3d] mb-4"
-                    >
-                        Frequently Asked Questions
+        <!-- ================= PRICING SECTION ================= -->
+        <section class="py-24 z-10 relative">
+            <div class="container mx-auto px-6 max-w-7xl">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-3xl md:text-5xl font-bold tracking-tight text-[#1D1D1F] mb-4">
+                        Transparent, Scalable Pricing
                     </h2>
-                    <p class="text-gray-600 max-w-2xl mx-auto">
-                        Everything you need to know about our POS system
+                    <p class="text-slate-600 text-base md:text-lg">
+                        Select a plan tailored to your terminal count. No hidden fees.
                     </p>
                 </div>
-                <div class="max-w-3xl mx-auto space-y-4">
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    {
+                        pricingPlans.map((plan) => (
+                            <div
+                                class={`bg-white/80 backdrop-blur-2xl rounded-3xl p-8 border transition-all duration-300 flex flex-col justify-between ${
+                                    plan.recommended 
+                                        ? "border-emerald-500 shadow-[0_20px_40px_rgba(16,185,129,0.12)] relative scale-[1.02]" 
+                                        : "border-white/80 shadow-[0_10px_30px_rgba(0,0,0,0.03)] hover:shadow-lg"
+                                }`}
+                            >
+                                <div>
+                                    {plan.recommended && (
+                                        <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-emerald-500 text-white px-4 py-1 rounded-full text-xs font-semibold tracking-wider uppercase shadow-md">
+                                            Most Popular
+                                        </div>
+                                    )}
+
+                                    <h3 class="text-xl font-bold text-[#1D1D1F] mb-4">
+                                        {plan.name}
+                                    </h3>
+
+                                    {plan.price === "Custom" ? (
+                                        <>
+                                            <div class="text-3xl font-extrabold text-emerald-600 mb-1">
+                                                {plan.price}
+                                            </div>
+                                            <p class="text-xs font-semibold text-slate-400 mb-6 uppercase tracking-wider">
+                                                {plan.subtitle}
+                                            </p>
+                                            <ul class="space-y-3 mb-8 border-t border-slate-100 pt-6">
+                                                {plan.facilities.map((item) => (
+                                                    <li class="flex items-start gap-2 text-xs text-slate-600">
+                                                        <i class="fas fa-check text-emerald-500 mt-0.5" />
+                                                        <span>{item}</span>
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <div class="mb-6 border-b border-slate-100 pb-6">
+                                                <div class="text-xs text-slate-500 mb-1">
+                                                    Starting from
+                                                </div>
+                                                <div class="text-3xl font-extrabold text-emerald-600">
+                                                    ৳{plan.monthlyPrice}
+                                                    <span class="text-xs text-slate-500 font-normal">
+                                                        /month
+                                                    </span>
+                                                </div>
+                                                <div class="text-xs text-slate-500 mt-2">
+                                                    One-time setup: ৳{plan.oneTimeCharge}
+                                                </div>
+                                            </div>
+
+                                            <div class="space-y-2.5 mb-8">
+                                                <h4 class="font-bold text-xs text-slate-400 uppercase tracking-wider mb-3">
+                                                    Terminals Pricing
+                                                </h4>
+                                                {plan.ranges?.map((range) => (
+                                                    <div class="flex justify-between text-xs py-1 border-b border-slate-50">
+                                                        <span class="text-slate-600">
+                                                            {range.range}
+                                                        </span>
+                                                        <span class="font-semibold text-[#1D1D1F]">
+                                                            ৳{range.price}/mo
+                                                        </span>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </>
+                                    )}
+                                </div>
+
+                                <a
+                                    href="/#contact"
+                                    class={`block w-full text-center py-3.5 rounded-2xl font-medium text-xs transition-all duration-300 ${
+                                        plan.recommended 
+                                            ? "bg-emerald-600 hover:bg-emerald-700 text-white shadow-md" 
+                                            : "bg-slate-100 hover:bg-slate-200 text-[#1D1D1F]"
+                                    }`}
+                                >
+                                    Choose Plan
+                                </a>
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= FAQ SECTION ================= -->
+        <section class="py-24 z-10 relative">
+            <div class="container mx-auto px-6 max-w-4xl">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-3xl md:text-5xl font-bold tracking-tight text-[#1D1D1F] mb-4">
+                        Frequently Asked Questions
+                    </h2>
+                    <p class="text-slate-600 text-base md:text-lg">
+                        Clear answers to common questions about deployment and hardware support.
+                    </p>
+                </div>
+
+                <div class="space-y-4">
                     {
                         faqs.map((faq) => (
-                            <div class="bg-white p-6 rounded-xl border border-gray-100 hover:shadow-md transition-shadow">
-                                <h3 class="font-bold text-[#0c1b3d] mb-3 flex items-start gap-3">
-                                    <i class="fas fa-question-circle text-green-600 mt-1" />
+                            <div class="bg-white/70 backdrop-blur-xl p-6 rounded-2xl border border-white/90 shadow-[0_4px_20px_rgba(0,0,0,0.02)]">
+                                <h3 class="font-bold text-[#1D1D1F] text-base mb-2 flex items-center gap-3">
+                                    <i class="fas fa-question-circle text-emerald-600 text-sm" />
                                     {faq.question}
                                 </h3>
-                                <p class="text-gray-600 leading-relaxed pl-8">
+                                <p class="text-slate-600 text-sm leading-relaxed pl-7">
                                     {faq.answer}
                                 </p>
                             </div>
@@ -421,29 +493,54 @@ import {
             </div>
         </section>
 
-        <!-- Final CTA -->
-        <section class="py-20 bg-gradient-to-br from-[#0c1b3d] to-green-900">
-            <div class="container mx-auto px-6 text-center">
-                <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">
-                    Ready to Speed Up Your Checkout?
-                </h2>
-                <p class="text-xl text-gray-300 mb-10 max-w-2xl mx-auto">
-                    Start processing sales faster. Reduce queue times, accept
-                    every payment method, and grow your business.
-                </p>
-                <div class="flex flex-col sm:flex-row justify-center gap-4">
-                    <a
-                        href="/#contact"
-                        class="bg-green-500 hover:bg-green-600 text-white px-10 py-4 rounded-full font-bold transition-all shadow-lg shadow-green-500/20 text-lg"
-                    >
-                        Start Free Demo
-                    </a>
-                    <a
-                        href="tel:+8801707568468"
-                        class="bg-white/10 hover:bg-white/20 border border-white/20 text-white px-10 py-4 rounded-full font-bold transition-all flex items-center justify-center gap-2 text-lg"
-                    >
-                        <i class="fas fa-phone-alt"></i> +880 1707 568468
-                    </a>
+        <!-- ================= ANIMATION VIDEO #4 & FINAL CTA ================= -->
+        <section class="py-20 z-10 relative">
+            <div class="container mx-auto px-6 max-w-6xl">
+                <div class="bg-white/80 backdrop-blur-2xl rounded-3xl p-8 md:p-14 border border-white shadow-[0_30px_80px_rgba(0,0,0,0.06)] overflow-hidden relative">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+                        <div class="lg:col-span-6">
+                            <span class="text-xs font-semibold tracking-wider text-emerald-600 uppercase bg-emerald-50 px-3.5 py-1.5 rounded-full border border-emerald-200 inline-block mb-4">
+                                Real-Time Analytics
+                            </span>
+                            <h2 class="text-3xl md:text-5xl font-bold tracking-tight text-[#1D1D1F] mb-6 leading-tight">
+                                Ready to Speed Up Your Checkout?
+                            </h2>
+                            <p class="text-slate-600 text-base mb-8 leading-relaxed">
+                                {posVideos.analyticsShowcase.desc} Join 500+ businesses running on Globix POS.
+                            </p>
+                            
+                            <div class="flex flex-col sm:flex-row gap-4">
+                                <a
+                                    href="/#contact"
+                                    class="bg-[#1D1D1F] hover:bg-black text-white px-8 py-4 rounded-full font-medium transition-all shadow-lg hover:scale-[1.02] text-center text-sm"
+                                >
+                                    Start Free Demo
+                                </a>
+                                <a
+                                    href="tel:+8801707568468"
+                                    class="bg-white border border-black/10 hover:bg-slate-50 text-[#1D1D1F] px-8 py-4 rounded-full font-medium transition-all text-center flex items-center justify-center gap-2 text-sm"
+                                >
+                                    <i class="fas fa-phone-alt text-emerald-600"></i> +880 1707 568468
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Video Player Showcase -->
+                        <div class="lg:col-span-6">
+                            <div class="relative rounded-2xl overflow-hidden aspect-video shadow-md border border-black/5 bg-slate-900">
+                                <video 
+                                    autoplay 
+                                    loop 
+                                    muted 
+                                    playsinline 
+                                    poster={posVideos.analyticsShowcase.poster}
+                                    class="w-full h-full object-cover"
+                                >
+                                    <source src={posVideos.analyticsShowcase.src} type="video/mp4" />
+                                </video>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -452,7 +549,7 @@ import {
     <Footer />
 
     <script>
-        // Business type tabs switching
+        // Business type tabs switching logic
         document.addEventListener("DOMContentLoaded", () => {
             const tabs = document.querySelectorAll(".business-tab");
             const contents = document.querySelectorAll(".business-content");
@@ -463,23 +560,22 @@ import {
 
                     tabs.forEach((t) => {
                         t.classList.remove(
-                            "bg-green-500",
-                            "text-white",
-                            "shadow-lg",
+                            "bg-white",
+                            "text-[#1D1D1F]",
+                            "shadow-sm",
+                            "font-semibold",
                         );
                         t.classList.add(
-                            "bg-gray-100",
-                            "text-gray-600",
-                            "hover:bg-gray-200",
+                            "text-slate-600",
+                            "hover:text-slate-900",
                         );
                     });
 
                     tab.classList.remove(
-                        "bg-gray-100",
-                        "text-gray-600",
-                        "hover:bg-gray-200",
+                        "text-slate-600",
+                        "hover:text-slate-900",
                     );
-                    tab.classList.add("bg-green-500", "text-white", "shadow-lg");
+                    tab.classList.add("bg-white", "text-[#1D1D1F]", "shadow-sm", "font-semibold");
 
                     contents.forEach((content) => {
                         content.classList.remove("opacity-100", "relative");

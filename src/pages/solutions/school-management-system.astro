@@ -1,4 +1,6 @@
 ---
+// Location: frontend/src/pages/solutions/school-management-system.astro
+
 import MainLayout from "../../layouts/MainLayout.astro";
 import Navbar from "../../components/Navbar.astro";
 import { Image } from "astro:assets";
@@ -20,127 +22,135 @@ import {
 <MainLayout title="School Management System - Globix Tech Solutions">
     <Navbar />
 
-    <main class="min-h-screen bg-white">
-        <!-- Hero Section -->
-        <section
-            class="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden bg-[#0c1b3d]"
-        >
-            <div
-                class="absolute inset-0 bg-gradient-to-br from-[#0c1b3d] via-[#1a2c5a] to-[#0c1b3d]"
-            >
-            </div>
-            <div
-                class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-blue-500/10 to-transparent blur-3xl"
-            >
-            </div>
+    <main class="min-h-screen bg-[#fafafa] text-slate-900 font-sans selection:bg-cyan-500 selection:text-white">
+        
+        <!-- Ambient Background Light Effects -->
+        <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+            <div class="absolute -top-[20%] -left-[10%] w-[50%] h-[50%] bg-gradient-to-br from-blue-200/40 via-cyan-100/30 to-transparent blur-[140px] rounded-full"></div>
+            <div class="absolute top-[30%] -right-[15%] w-[55%] h-[55%] bg-gradient-to-tl from-indigo-100/40 via-purple-100/20 to-transparent blur-[160px] rounded-full"></div>
+            <div class="absolute bottom-[10%] left-[20%] w-[45%] h-[45%] bg-gradient-to-tr from-sky-100/40 via-teal-100/20 to-transparent blur-[140px] rounded-full"></div>
+        </div>
 
-            <div class="container mx-auto px-6 relative z-10">
-                <div
-                    class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
-                >
-                    <div class="text-left">
-                        <div
-                            class="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 px-4 py-2 rounded-full text-blue-400 text-sm font-semibold mb-6"
-                        >
-                            <i class="fas fa-graduation-cap"></i> Intelligent Education
-                            Platform
-                        </div>
-                        <h1
-                            class="text-4xl md:text-6xl font-extrabold text-white mb-6 leading-[1.1]"
-                        >
-                            Education Management Software for <span
-                                class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400"
-                                >Kindergarten, Schools, and Madrasah</span
-                            >
-                        </h1>
-                        <p
-                            class="text-lg md:text-xl text-gray-300 mb-10 max-w-xl leading-relaxed"
-                        >
-                            Manage attendance, exams, fees, communication,
-                            admissions, and reporting in one place. GlobixTech
-                            gives administrators, teachers, and guardians
-                            dedicated portals to stay organized and up to date.
-                        </p>
-                        <div class="flex flex-wrap gap-4">
-                            <a
-                                href="/#contact"
-                                class="bg-cyan-500 hover:bg-cyan-600 text-white px-8 py-4 rounded-xl font-bold transition-all shadow-lg shadow-cyan-500/20 flex items-center gap-2"
-                            >
-                                Request a Demo <i
-                                    class="fas fa-arrow-right text-sm"></i>
-                            </a>
-                            <a
-                                href="tel:+8801707568468"
-                                class="bg-white/5 hover:bg-white/10 border border-white/20 text-white px-8 py-4 rounded-xl font-bold transition-all flex items-center gap-2"
-                            >
-                                <i class="fas fa-phone-alt"></i> Consultation
-                            </a>
-                        </div>
+        <!-- Hero Section (Apple Ultra-Light Glass Aesthetic) -->
+        <section class="relative pt-36 pb-24 md:pt-48 md:pb-36 overflow-hidden z-10 bg-gradient-to-r from-blue-50/80 via-cyan-50/60 to-indigo-50/50" animate-slow-gradient">
+            <!-- Bottom Faded Soft Transition Layer -->
+            <div class="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-b from-transparent via-[#FBFBFD]/60 to-[#FBFBFD] pointer-events-none z-10"></div>
+
+            <div class="container mx-auto px-6 relative">
+                <div class="max-w-4xl mx-auto text-center mb-16">
+                    
+                    <!-- Glass Badge -->
+                    <div class="inline-flex items-center gap-2.5 bg-white/80 backdrop-blur-xl border border-white/90 px-5 py-2.5 rounded-full text-blue-600 text-xs md:text-sm font-semibold shadow-[0_4px_20px_rgba(0,0,0,0.03)] mb-8 transition-transform hover:scale-105">
+                        <span class="flex h-2 w-2 rounded-full bg-cyan-500 animate-pulse"></span>
+                        <i class="fas fa-graduation-cap text-blue-500"></i>
+                        <span>Intelligent Education Platform</span>
                     </div>
-                    <div class="relative mt-10 lg:mt-0">
-                        <div
-                            class="absolute -inset-4 bg-blue-500/20 blur-2xl rounded-full"
+
+                    <!-- Apple-Style Headline -->
+                    <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-slate-900 leading-[1.08] mb-8">
+                        Education Management Software for <br class="hidden md:block"/>
+                        <span class="bg-gradient-to-r from-blue-600 via-cyan-600 to-indigo-600 bg-clip-text text-transparent">
+                            Kindergarten, Schools, and Madrasah
+                        </span>
+                    </h1>
+
+                    <p class="text-lg md:text-2xl text-slate-600 max-w-3xl mx-auto font-normal leading-relaxed mb-10">
+                        Manage attendance, exams, fees, communication, admissions, and reporting in one unified dashboard. GlobixTech gives administrators, teachers, and guardians dedicated portals to stay organized in real time.
+                    </p>
+
+                    <!-- Hero Call-To-Action -->
+                    <div class="flex flex-wrap justify-center items-center gap-4">
+                        <a
+                            href="/#contact"
+                            class="bg-slate-900 hover:bg-slate-800 text-white px-8 py-4.5 rounded-2xl font-semibold transition-all shadow-xl shadow-slate-900/10 hover:shadow-2xl hover:scale-[1.02] active:scale-[0.98] flex items-center gap-3 text-sm md:text-base"
                         >
-                        </div>
-                        <Image
-                            src={smsMockup}
-                            alt="SMS Mockup"
-                            class="relative z-10 w-full max-w-2xl mx-auto drop-shadow-2xl rounded-2xl border border-white/10"
-                        />
+                            <span>Request a Live Demo</span>
+                            <i class="fas fa-arrow-right text-xs opacity-70"></i>
+                        </a>
+                        <a
+                            href="tel:+8801707568468"
+                            class="bg-white/80 backdrop-blur-xl border border-white/90 hover:bg-white text-slate-800 px-8 py-4.5 rounded-2xl font-semibold transition-all shadow-sm hover:shadow-md flex items-center gap-3 text-sm md:text-base"
+                        >
+                            <i class="fas fa-phone-alt text-cyan-600 text-sm"></i>
+                            <span>Call for Consultation</span>
+                        </a>
                     </div>
                 </div>
+
+                <!-- VIDEO SHOWCASE 1: Interactive Dashboard Platform Showcase -->
+                <div class="relative max-w-5xl mx-auto mt-12">
+                    <div class="absolute -inset-4 bg-gradient-to-r from-cyan-400/20 via-blue-500/20 to-indigo-400/20 rounded-[2.5rem] blur-2xl opacity-70"></div>
+                    
+                    <div class="relative rounded-[2rem] p-3 md:p-5 bg-white/70 backdrop-blur-2xl border border-white/90 shadow-[0_30px_100px_rgba(0,0,0,0.08)]">
+                        <!-- Frame Header Bar -->
+                        <div class="flex items-center justify-between pb-3 px-3 border-b border-slate-100 mb-3">
+                            <div class="flex items-center gap-2">
+                                <span class="w-3 h-3 rounded-full bg-rose-400"></span>
+                                <span class="w-3 h-3 rounded-full bg-amber-400"></span>
+                                <span class="w-3 h-3 rounded-full bg-emerald-400"></span>
+                            </div>
+                            <div class="text-[11px] font-medium text-slate-400 bg-slate-100/80 px-4 py-1 rounded-full border border-slate-200/50">
+                                globixtech.com/solutions/school-management-system
+                            </div>
+                            <div class="w-12"></div>
+                        </div>
+
+                        <!-- Video Player 1 -->
+                        <div class="relative overflow-hidden rounded-2xl bg-slate-900 aspect-video group">
+                            <video 
+                                class="w-full h-full object-cover transform group-hover:scale-[1.01] transition-transform duration-700" 
+                                autoplay loop muted playsinline 
+                                poster={smsMockup.src}
+                            >
+                                <source src="https://assets.mixkit.co/videos/preview/mixkit-online-learning-technology-interface-41582-large.mp4" type="video/mp4" />
+                                <Image src={smsMockup} alt="SMS Dashboard Preview" class="w-full object-cover" />
+                            </video>
+                            
+                            <!-- Video Overlay Badge -->
+                            <div class="absolute bottom-4 left-4 bg-slate-900/80 backdrop-blur-md border border-white/10 px-4 py-2 rounded-xl flex items-center gap-3 text-white text-xs font-medium">
+                                <span class="flex h-2 w-2 rounded-full bg-emerald-400 animate-ping"></span>
+                                Live Platform Engine Overview
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </section>
 
-        <!-- Stats Section -->
-        <section class="py-16 bg-white border-b border-gray-100">
+        <!-- Stats Bar (Frosted Glass Floating Card) -->
+        <section class="py-10 z-10 relative">
             <div class="container mx-auto px-6">
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
-                    <div class="group">
-                        <div
-                            class="text-4xl font-extrabold text-[#0c1b3d] mb-2 group-hover:text-blue-600 transition-colors"
-                        >
+                <div class="max-w-5xl mx-auto rounded-3xl bg-white/70 backdrop-blur-2xl border border-white/90 p-8 shadow-[0_10px_40px_rgba(0,0,0,0.03)] grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x-0 md:divide-x divide-slate-100">
+                    <div class="group px-2">
+                        <div class="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent mb-1 group-hover:scale-105 transition-transform">
                             36+
                         </div>
-                        <div
-                            class="text-sm font-bold text-gray-400 uppercase tracking-widest"
-                        >
+                        <div class="text-xs font-bold text-slate-500 uppercase tracking-widest">
                             Industry Modules
                         </div>
                     </div>
-                    <div class="group">
-                        <div
-                            class="text-4xl font-extrabold text-[#0c1b3d] mb-2 group-hover:text-blue-600 transition-colors"
-                        >
+                    <div class="group px-2">
+                        <div class="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent mb-1 group-hover:scale-105 transition-transform">
                             900+
                         </div>
-                        <div
-                            class="text-sm font-bold text-gray-400 uppercase tracking-widest"
-                        >
+                        <div class="text-xs font-bold text-slate-500 uppercase tracking-widest">
                             Core Features
                         </div>
                     </div>
-                    <div class="group">
-                        <div
-                            class="text-4xl font-extrabold text-[#0c1b3d] mb-2 group-hover:text-blue-600 transition-colors"
-                        >
+                    <div class="group px-2">
+                        <div class="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-cyan-600 to-teal-600 bg-clip-text text-transparent mb-1 group-hover:scale-105 transition-transform">
                             24/7
                         </div>
-                        <div
-                            class="text-sm font-bold text-gray-400 uppercase tracking-widest"
-                        >
+                        <div class="text-xs font-bold text-slate-500 uppercase tracking-widest">
                             Expert Support
                         </div>
                     </div>
-                    <div class="group">
-                        <div
-                            class="text-4xl font-extrabold text-[#0c1b3d] mb-2 group-hover:text-blue-600 transition-colors"
-                        >
+                    <div class="group px-2">
+                        <div class="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent mb-1 group-hover:scale-105 transition-transform">
                             100%
                         </div>
-                        <div
-                            class="text-sm font-bold text-gray-400 uppercase tracking-widest"
-                        >
+                        <div class="text-xs font-bold text-slate-500 uppercase tracking-widest">
                             Cloud Reliable
                         </div>
                     </div>
@@ -148,81 +158,72 @@ import {
             </div>
         </section>
 
-        <!-- Core Features Grid -->
-        <section class="py-24 bg-gray-50">
+        <!-- Core Features Section -->
+        <section class="py-28 z-10 relative">
             <div class="container mx-auto px-6">
-                <div class="text-center mb-16">
-                    <h2
-                        class="text-3xl md:text-5xl font-bold text-[#0c1b3d] mb-4"
-                    >
-                        Core Education Management Features
+                <div class="text-center max-w-3xl mx-auto mb-20">
+                    <h2 class="text-3xl md:text-5xl font-extrabold text-slate-900 tracking-tight mb-5">
+                        Designed for Effortless Academic Excellence
                     </h2>
-                    <p
-                        class="text-gray-600 max-w-2xl mx-auto text-lg leading-relaxed"
-                    >
-                        GlobixTech brings attendance, exams, fees,
-                        communication, admissions, and reporting together so
-                        institutions can run every workflow smoothly.
+                    <p class="text-slate-600 text-lg leading-relaxed">
+                        GlobixTech brings attendance, exams, fees, communication, admissions, and reporting together into a seamless workflow.
                     </p>
                 </div>
-                <div
-                    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-                >
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {
                         [
                             {
                                 title: "Student Attendance",
-                                desc: "Mark attendance by class or subject. Teachers can do it from a mobile and view daily or monthly records instantly.",
+                                desc: "Mark attendance by class or subject. Teachers can do it from mobile and view daily or monthly records instantly.",
                                 icon: "fa-calendar-check",
-                                color: "text-blue-500",
-                                bg: "bg-blue-100",
+                                color: "text-blue-600",
+                                bg: "bg-blue-50 border-blue-100",
                             },
                             {
                                 title: "Student Information",
-                                desc: "Each student has a full profile, including class, contact, guardian, fees, and academic records, all stored digitally.",
+                                desc: "Each student has a full profile, including class, contact, guardian, fees, and academic records stored securely.",
                                 icon: "fa-user-graduate",
-                                color: "text-purple-500",
-                                bg: "bg-purple-100",
+                                color: "text-purple-600",
+                                bg: "bg-purple-50 border-purple-100",
                             },
                             {
                                 title: "Admission & Forms",
                                 desc: "New student data, online forms, and class placements are managed from one screen. Filter by status or batch.",
                                 icon: "fa-file-signature",
-                                color: "text-cyan-500",
-                                bg: "bg-cyan-100",
+                                color: "text-cyan-600",
+                                bg: "bg-cyan-50 border-cyan-100",
                             },
                             {
                                 title: "Academic Activities",
-                                desc: "Manual academic tasks waste time, cause errors, and require extra staff. With GlobixTech, schools can automate routines like exam shifts and seating plans.",
+                                desc: "Automate routine academic chores such as exam shifts, seating plans, and class timetables with zero friction.",
                                 icon: "fa-tasks",
-                                color: "text-orange-500",
-                                bg: "bg-orange-100",
+                                color: "text-amber-600",
+                                bg: "bg-amber-50 border-amber-100",
                             },
                             {
                                 title: "Online Fee Collection",
-                                desc: "Accept payments by bKash, card, or cash. Auto-generate receipts and track who paid and who didn't.",
+                                desc: "Accept payments by bKash, cards, or cash. Auto-generate digital receipts and track real-time dues effortlessly.",
                                 icon: "fa-money-bill-wave",
-                                color: "text-green-500",
-                                bg: "bg-green-100",
+                                color: "text-emerald-600",
+                                bg: "bg-emerald-50 border-emerald-100",
                             },
                             {
                                 title: "Exam & Report Cards",
-                                desc: "Enter marks, auto-calculate GPA, and publish digital report cards. Students and guardians can view online.",
+                                desc: "Enter marks, auto-calculate GPA, and publish digital report cards accessible by students and guardians.",
                                 icon: "fa-poll-h",
-                                color: "text-red-500",
-                                bg: "bg-red-100",
+                                color: "text-rose-600",
+                                bg: "bg-rose-50 border-rose-100",
                             },
                         ].map((f) => (
-                            <div class="bg-white p-10 rounded-3xl border border-gray-100 hover:border-blue-200 hover:shadow-xl transition-all group">
-                                <div
-                                    class={`w-16 h-16 ${f.bg} rounded-2xl flex items-center justify-center ${f.color} text-2xl mb-8 group-hover:scale-110 transition-transform`}
-                                >
+                            <div class="bg-white/80 backdrop-blur-xl p-8 rounded-[2rem] border border-white/90 shadow-[0_10px_30px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] hover:-translate-y-1 transition-all duration-300 group">
+                                <div class={`w-14 h-14 rounded-2xl flex items-center justify-center ${f.bg} border ${f.color} text-2xl mb-6 group-hover:scale-110 transition-transform`}>
                                     <i class={`fas ${f.icon}`} />
                                 </div>
-                                <h3 class="text-2xl font-bold text-[#0c1b3d] mb-4">
+                                <h3 class="text-xl font-bold text-slate-900 mb-3">
                                     {f.title}
                                 </h3>
-                                <p class="text-gray-600 leading-relaxed">
+                                <p class="text-slate-600 leading-relaxed text-sm">
                                     {f.desc}
                                 </p>
                             </div>
@@ -232,47 +233,25 @@ import {
             </div>
         </section>
 
-        <!-- Core Education Management Highlights -->
-        <section class="py-24 bg-white">
+        <!-- VIDEO SHOWCASE 2: Student Lifecycle & Smart Workflows Highlight -->
+        <section class="py-24 bg-white/50 border-y border-slate-200/60 backdrop-blur-lg relative z-10">
             <div class="container mx-auto px-6">
-                <div class="text-center mb-16">
-                    <h2
-                        class="text-3xl md:text-5xl font-bold text-[#0c1b3d] mb-4"
-                    >
-                        Core Education Management Highlights
-                    </h2>
-                    <p
-                        class="text-gray-600 max-w-2xl mx-auto text-lg leading-relaxed"
-                    >
-                        Industry-leading tools designed to streamline
-                        institutional workflows and keep everyone connected.
-                    </p>
-                </div>
-
-                <!-- Student Lifecycle Management Highlight -->
-                <div
-                    class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-32"
-                >
-                    <div class="order-2 lg:order-1">
-                        <div
-                            class="inline-block bg-blue-100 text-blue-600 px-4 py-1.5 rounded-full text-sm font-bold mb-6 uppercase tracking-wider"
-                        >
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    
+                    <!-- Text Content Left -->
+                    <div class="lg:col-span-5">
+                        <div class="inline-flex items-center gap-2 bg-blue-50 border border-blue-100 text-blue-600 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-6">
                             Academic Foundation
                         </div>
-                        <h3
-                            class="text-3xl md:text-4xl font-bold text-[#0c1b3d] mb-6"
-                        >
+                        <h2 class="text-3xl md:text-5xl font-extrabold text-slate-900 tracking-tight mb-6">
                             Student Lifecycle Management
-                        </h3>
-                        <p
-                            class="text-gray-600 mb-8 leading-relaxed text-lg italic border-l-4 border-blue-500 pl-6"
-                        >
-                            "GlobixTech brings attendance, exams, fees,
-                            communication, admissions, and reporting together so
-                            institutions can run every workflow smoothly and
-                            stay fully connected."
+                        </h2>
+                        
+                        <p class="text-slate-600 text-base md:text-lg leading-relaxed mb-8 border-l-4 border-cyan-500 pl-4 bg-slate-50/80 py-3 rounded-r-xl">
+                            "GlobixTech brings attendance, exams, fees, communication, admissions, and reporting together so institutions run every workflow smoothly."
                         </p>
-                        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
+
+                        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 mb-8">
                             {
                                 [
                                     "Admission (online + offline)",
@@ -281,148 +260,151 @@ import {
                                     "Promotion / Detention",
                                     "Alumni management",
                                 ].map((feat) => (
-                                    <li class="flex items-center gap-3 text-gray-700 font-medium">
-                                        <div class="w-8 h-8 bg-blue-50 rounded-lg flex items-center justify-center text-blue-500">
+                                    <li class="flex items-center gap-2.5 text-slate-700 text-sm font-semibold">
+                                        <div class="w-6 h-6 rounded-full bg-cyan-100 text-cyan-700 flex items-center justify-center text-xs">
                                             <i class="fas fa-check" />
                                         </div>
-                                        {feat}
+                                        <span>{feat}</span>
                                     </li>
                                 ))
                             }
                         </ul>
-                        <div
-                            class="p-6 bg-slate-50 rounded-2xl border border-gray-100"
-                        >
-                            <h4
-                                class="font-bold text-[#0c1b3d] mb-2 flex items-center gap-2"
-                            >
-                                <i class="fas fa-mobile-alt text-blue-500"></i> Smart
-                                Attendance Integration
+
+                        <div class="p-5 bg-white/90 rounded-2xl border border-slate-200/80 shadow-sm">
+                            <h4 class="font-bold text-slate-900 mb-1 flex items-center gap-2 text-sm">
+                                <i class="fas fa-mobile-alt text-cyan-600"></i> Smart Attendance Integration
                             </h4>
-                            <p class="text-gray-600 text-sm italic">
-                                Mark attendance by class or subject. Teachers
-                                can do it from a mobile and view daily or
-                                monthly records instantly.
+                            <p class="text-slate-500 text-xs leading-relaxed">
+                                Mark attendance by class or subject. Teachers can do it from mobile and view daily or monthly records instantly.
                             </p>
                         </div>
                     </div>
-                    <div class="order-1 lg:order-2 relative">
-                        <div
-                            class="absolute -inset-10 bg-blue-100/50 blur-3xl rounded-full"
-                        >
-                        </div>
-                        <div
-                            class="relative bg-white p-4 rounded-[40px] shadow-2xl border border-gray-100 transform hover:rotate-2 transition-transform duration-500"
-                        >
-                            <Image
-                                src={studentLifecycle}
-                                alt="Student Lifecycle Management Illustration"
-                                class="w-full rounded-[32px]"
-                            />
+
+                    <!-- Video Container Right (VIDEO 2) -->
+                    <div class="lg:col-span-7 relative">
+                        <div class="absolute -inset-6 bg-gradient-to-r from-blue-400/20 to-indigo-300/20 blur-3xl rounded-[3rem]"></div>
+                        
+                        <div class="relative bg-white/80 backdrop-blur-2xl p-4 md:p-6 rounded-[2.5rem] border border-white/90 shadow-[0_20px_60px_rgba(0,0,0,0.06)]">
+                            <div class="relative overflow-hidden rounded-[1.8rem] bg-slate-900 aspect-[16/10] group">
+                                <video 
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
+                                    autoplay loop muted playsinline 
+                                    poster={studentLifecycle.src}
+                                >
+                                    <source src="https://assets.mixkit.co/videos/preview/mixkit-software-developer-working-on-code-41551-large.mp4" type="video/mp4" />
+                                    <Image src={studentLifecycle} alt="Student Lifecycle Illustration" class="w-full object-cover" />
+                                </video>
+                                <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent"></div>
+                                <div class="absolute bottom-6 left-6 right-6 text-white flex justify-between items-end">
+                                    <div>
+                                        <div class="text-xs font-semibold text-cyan-300 uppercase tracking-widest mb-1">Live Workflow</div>
+                                        <div class="text-lg font-bold">End-To-End Student Automation</div>
+                                    </div>
+                                    <div class="bg-white/20 backdrop-blur-md px-3 py-1.5 rounded-xl border border-white/30 text-xs">
+                                        Active Sync
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </section>
 
-        <!-- Specialized App Portals -->
-        <section class="py-24 bg-gray-50 overflow-hidden">
+        <!-- VIDEO SHOWCASE 3: Specialized App Portals Ecosystem -->
+        <section class="py-28 z-10 relative">
             <div class="container mx-auto px-6">
-                <div
-                    class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center"
-                >
-                    <div>
-                        <h2
-                            class="text-3xl md:text-5xl font-bold text-[#0c1b3d] mb-6"
-                        >
-                            Mobile Apps for Administrators, Teachers, and
-                            Guardians
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+                    
+                    <!-- Video Container Left (VIDEO 3) -->
+                    <div class="lg:col-span-6 order-2 lg:order-1 relative">
+                        <div class="absolute -inset-6 bg-gradient-to-r from-cyan-300/30 to-blue-300/30 blur-3xl rounded-[3rem]"></div>
+                        
+                        <div class="relative bg-white/80 backdrop-blur-2xl p-4 md:p-6 rounded-[2.5rem] border border-white/90 shadow-[0_20px_60px_rgba(0,0,0,0.06)]">
+                            <div class="relative overflow-hidden rounded-[1.8rem] bg-slate-900 aspect-square md:aspect-[4/3] group">
+                                <video 
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
+                                    autoplay loop muted playsinline 
+                                    poster={mobileAppsShowcase.src}
+                                >
+                                    <source src="https://assets.mixkit.co/videos/preview/mixkit-hands-holding-a-smartphone-with-a-green-screen-41533-large.mp4" type="video/mp4" />
+                                    <Image src={mobileAppsShowcase} alt="Mobile Apps Showcase" class="w-full object-cover" />
+                                </video>
+                                <div class="absolute top-4 right-4 bg-slate-900/80 backdrop-blur-md border border-white/20 px-3.5 py-1.5 rounded-full text-white text-xs font-medium">
+                                    iOS & Android Native
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Text Right -->
+                    <div class="lg:col-span-6 order-1 lg:order-2">
+                        <div class="inline-flex items-center gap-2 bg-cyan-50 border border-cyan-100 text-cyan-600 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-6">
+                            Cross-Platform Portals
+                        </div>
+                        
+                        <h2 class="text-3xl md:text-5xl font-extrabold text-slate-900 tracking-tight mb-6">
+                            Mobile Apps for Admins, Teachers, and Guardians
                         </h2>
-                        <p class="text-lg text-gray-600 mb-10 leading-relaxed">
-                            GlobixTech's mobile app gives teachers, admins, and
-                            guardians full access to your institution's
-                            operations. Check attendance, view notices, manage
-                            fees, or track academic updates; everything happens
-                            in real-time.
+                        
+                        <p class="text-slate-600 text-base md:text-lg leading-relaxed mb-8">
+                            GlobixTech's mobile application ecosystem gives teachers, administrators, and guardians full access to institutional operations anytime, anywhere.
                         </p>
 
-                        <div class="space-y-6">
-                            <div
-                                class="p-6 bg-blue-50 rounded-2xl border-l-4 border-blue-500"
-                            >
-                                <h4
-                                    class="text-xl font-bold text-[#0c1b3d] mb-2"
-                                >
-                                    Guardian App
+                        <div class="space-y-4">
+                            <div class="p-6 bg-white/80 backdrop-blur-xl rounded-2xl border border-white/90 shadow-sm hover:shadow-md transition-all">
+                                <h4 class="text-lg font-bold text-slate-900 mb-1 flex items-center gap-2">
+                                    <i class="fas fa-user-shield text-blue-600"></i> Guardian Portal App
                                 </h4>
-                                <p class="text-gray-600">
-                                    Connects schools with parents through a
-                                    smart guardian portal for fee payments,
-                                    attendance, results, and updates.
+                                <p class="text-slate-600 text-sm">
+                                    Connects parents directly with schools for fee payments, live attendance alerts, exam results, and instant announcements.
                                 </p>
                             </div>
-                            <div
-                                class="p-6 hover:bg-gray-50 rounded-2xl transition-colors"
-                            >
-                                <h4
-                                    class="text-xl font-bold text-[#0c1b3d] mb-2"
-                                >
-                                    Teacher App
+
+                            <div class="p-6 bg-white/80 backdrop-blur-xl rounded-2xl border border-white/90 shadow-sm hover:shadow-md transition-all">
+                                <h4 class="text-lg font-bold text-slate-900 mb-1 flex items-center gap-2">
+                                    <i class="fas fa-chalkboard-teacher text-cyan-600"></i> Teacher Portal App
                                 </h4>
-                                <p class="text-gray-600">
-                                    Efficient task management, class scheduling,
-                                    and result entry tools for academic staff.
+                                <p class="text-slate-600 text-sm">
+                                    Empowers academic staff with task management, class routine scheduling, and rapid mark submission tools.
                                 </p>
                             </div>
-                            <div
-                                class="p-6 hover:bg-gray-50 rounded-2xl transition-colors"
-                            >
-                                <h4
-                                    class="text-xl font-bold text-[#0c1b3d] mb-2"
-                                >
-                                    Admin App
+
+                            <div class="p-6 bg-white/80 backdrop-blur-xl rounded-2xl border border-white/90 shadow-sm hover:shadow-md transition-all">
+                                <h4 class="text-lg font-bold text-slate-900 mb-1 flex items-center gap-2">
+                                    <i class="fas fa-user-cog text-indigo-600"></i> Admin Executive App
                                 </h4>
-                                <p class="text-gray-600">
-                                    Complete institutional oversight, financial
-                                    reports, and HR management on the go.
+                                <p class="text-slate-600 text-sm">
+                                    Complete institutional oversight, daily financial health reports, and staff HR administration on the go.
                                 </p>
                             </div>
                         </div>
+
                     </div>
-                    <div class="relative">
-                        <div
-                            class="absolute -inset-10 bg-blue-200/30 blur-3xl rounded-full"
-                        >
-                        </div>
-                        <Image
-                            src={mobileAppsShowcase}
-                            alt="Mobile Apps Showcase"
-                            class="relative z-10 w-full max-w-4xl mx-auto drop-shadow-2xl rounded-2xl"
-                        />
-                    </div>
+
                 </div>
             </div>
         </section>
 
-        <!-- Institution Targeting Section -->
-        <section class="py-24 bg-white overflow-hidden">
+        <!-- Institution Targeting Section (Interactive Apple Glass Switcher) -->
+        <section class="py-28 z-10 relative">
             <div class="container mx-auto px-6">
-                <div class="flex flex-col lg:flex-row justify-between items-start gap-12 mb-12">
+                
+                <div class="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-8 mb-12">
                     <div class="max-w-2xl">
-                        <h2 class="text-3xl md:text-5xl font-extrabold text-[#0c1b3d] mb-6">
-                            Education Management Software for Any Type of Institution
+                        <span class="text-xs font-bold uppercase tracking-widest text-cyan-600 mb-2 block">Tailored Solutions</span>
+                        <h2 class="text-3xl md:text-5xl font-extrabold text-slate-900 tracking-tight">
+                            Built for Any Educational Model
                         </h2>
-                        <p class="text-gray-600 text-lg leading-relaxed">
-                            GlobixTech suits schools, kindergartens, madrasah, and multi-branch institutions. It manages daily academic and administrative tasks in one simple workflow and adjusts easily to different education models around the world.
-                        </p>
                     </div>
                     
-                    <!-- Tabs Navigation -->
-                    <div class="flex flex-wrap gap-2 bg-blue-50/50 p-2 rounded-2xl border border-blue-100">
+                    <!-- Glass Segmented Tab Bar -->
+                    <div class="flex flex-wrap gap-2 bg-white/80 backdrop-blur-2xl p-2 rounded-2xl border border-white/90 shadow-sm">
                         {institutionTypes.map((type, idx) => (
                             <button 
                                 data-tab-id={type.id}
-                                class={`institution-tab px-8 py-4 rounded-xl font-bold text-sm transition-all duration-300 ${idx === 0 ? 'bg-cyan-500 text-white shadow-lg shadow-cyan-500/20' : 'text-gray-500 hover:bg-white hover:text-cyan-600'}`}
+                                class={`institution-tab px-6 py-3 rounded-xl font-bold text-xs md:text-sm transition-all duration-300 ${idx === 0 ? 'bg-slate-900 text-white shadow-md' : 'text-slate-600 hover:bg-slate-100/60'}`}
                             >
                                 {type.label}
                             </button>
@@ -430,154 +412,118 @@ import {
                     </div>
                 </div>
 
-                <div class="bg-[#f8fafc] rounded-[40px] p-8 md:p-16 border border-gray-100 shadow-sm relative">
+                <div class="bg-white/80 backdrop-blur-2xl rounded-[2.5rem] p-8 md:p-14 border border-white/90 shadow-[0_20px_50px_rgba(0,0,0,0.04)] relative">
                     {institutionTypes.map((type, idx) => (
                         <div 
                             id={`tab-content-${type.id}`} 
-                            class={`institution-content grid grid-cols-1 lg:grid-cols-2 gap-16 items-start transition-all duration-500 ${idx === 0 ? 'opacity-100 relative translate-y-0' : 'opacity-0 absolute inset-0 invisible translate-y-8'}`}
+                            class={`institution-content grid grid-cols-1 lg:grid-cols-12 gap-12 items-center transition-all duration-500 ${idx === 0 ? 'opacity-100 relative translate-y-0' : 'opacity-0 absolute inset-0 invisible translate-y-4'}`}
                         >
                             <!-- Feature Grid (Left) -->
-                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 order-2 lg:order-1">
+                            <div class="lg:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-4 order-2 lg:order-1">
                                 {type.features.map(feat => (
-                                    <div class="bg-white p-6 rounded-[24px] shadow-sm border border-gray-50 flex flex-col items-center text-center group hover:shadow-md transition-all hover:-translate-y-1">
-                                        <div class="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-500 text-xl mb-4 group-hover:bg-blue-500 group-hover:text-white transition-colors">
+                                    <div class="bg-slate-50/80 p-5 rounded-2xl border border-slate-100 flex flex-col items-center text-center group hover:bg-white hover:shadow-lg hover:border-white transition-all">
+                                        <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-blue-600 text-lg mb-3 shadow-sm group-hover:bg-blue-600 group-hover:text-white transition-colors">
                                             <i class={`fas ${feat.icon}`}></i>
                                         </div>
-                                        <h4 class="text-sm font-bold text-[#0c1b3d] leading-tight">{feat.name}</h4>
+                                        <h4 class="text-xs font-bold text-slate-800">{feat.name}</h4>
                                     </div>
                                 ))}
                             </div>
 
                             <!-- Description (Right) -->
-                            <div class="order-1 lg:order-2">
-                                <h3 class="text-3xl font-bold text-[#0c1b3d] mb-6 flex items-center gap-3">
-                                    <span class="w-12 h-1 bg-cyan-500 rounded-full"></span>
+                            <div class="lg:col-span-5 order-1 lg:order-2">
+                                <h3 class="text-2xl md:text-3xl font-extrabold text-slate-900 mb-4">
                                     {type.title}
                                 </h3>
-                                <div class="space-y-6">
-                                    <p class="text-gray-600 leading-relaxed text-lg">
-                                        {type.desc}
-                                    </p>
-                                    <div class="flex flex-wrap gap-4 pt-4">
-                                        <a href="/#contact" class="bg-[#0c1b3d] text-white px-8 py-4 rounded-xl font-bold text-sm hover:bg-blue-900 transition-colors shadow-lg shadow-black/10">Get Started</a>
-                                        <a href="#modules" class="border border-gray-200 text-gray-600 px-8 py-4 rounded-xl font-bold text-sm hover:bg-white hover:border-cyan-500 hover:text-cyan-600 transition-all">Explore Modules</a>
-                                    </div>
+                                <p class="text-slate-600 leading-relaxed text-base mb-8">
+                                    {type.desc}
+                                </p>
+                                <div class="flex flex-wrap gap-4">
+                                    <a href="/#contact" class="bg-slate-900 text-white px-7 py-3.5 rounded-xl font-bold text-xs uppercase tracking-wider hover:bg-slate-800 transition-colors shadow-md">
+                                        Get Started
+                                    </a>
+                                    <a href="#modules" class="border border-slate-200 text-slate-700 px-7 py-3.5 rounded-xl font-bold text-xs uppercase tracking-wider hover:bg-white transition-all">
+                                        Explore Modules
+                                    </a>
                                 </div>
                             </div>
                         </div>
                     ))}
                 </div>
+
             </div>
         </section>
 
-        <script>
-            // Tab Switching Logic
-            const tabs = document.querySelectorAll('.institution-tab');
-            const contents = document.querySelectorAll('.institution-content');
-
-            tabs.forEach(tab => {
-                tab.addEventListener('click', () => {
-                    const targetId = (tab as HTMLButtonElement).dataset.tabId;
-
-                    // Update Tab Styles
-                    tabs.forEach(t => {
-                        t.classList.remove('bg-cyan-500', 'text-white', 'shadow-lg', 'shadow-cyan-500/20');
-                        t.classList.add('text-gray-500', 'hover:bg-white', 'hover:text-cyan-600');
-                    });
-                    tab.classList.add('bg-cyan-500', 'text-white', 'shadow-lg', 'shadow-cyan-500/20');
-                    tab.classList.remove('text-gray-500', 'hover:bg-white', 'hover:text-cyan-600');
-
-                    // Update Content Visibility
-                    contents.forEach(content => {
-                        if (content.id === `tab-content-${targetId}`) {
-                            content.classList.remove('opacity-0', 'absolute', 'invisible', 'translate-y-8');
-                            content.classList.add('opacity-100', 'relative', 'translate-y-0');
-                        } else {
-                            content.classList.add('opacity-0', 'absolute', 'invisible', 'translate-y-8');
-                            content.classList.remove('opacity-100', 'relative', 'translate-y-0');
-                        }
-                    });
-                });
-            });
-        </script>
-
-        <!-- Why Choose Us Section -->
-        <section class="py-24 bg-[#f8fafc]">
+        <!-- Why Choose Us Grid -->
+        <section class="py-28 z-10 relative">
             <div class="container mx-auto px-6">
-                <div class="max-w-4xl mb-16">
-                    <h2 class="text-3xl md:text-5xl font-extrabold text-[#0c1b3d] mb-6">
-                        Why GlobixTech Is the Smartest Choice for Educational Institutes
+                <div class="max-w-3xl mb-16">
+                    <span class="text-xs font-bold uppercase tracking-widest text-blue-600 mb-2 block">Unmatched Quality</span>
+                    <h2 class="text-3xl md:text-5xl font-extrabold text-slate-900 tracking-tight mb-6">
+                        Why GlobixTech Is the Smartest Choice
                     </h2>
-                    <p class="text-gray-600 text-lg leading-relaxed">
-                        GlobixTech combines smart education management software, mobile access, and reliable support in one simple system made for schools, colleges, and madrasas. From cloud backup to local training, here's why thousands trust GlobixTech to run their academic operations smoothly.
+                    <p class="text-slate-600 text-lg leading-relaxed">
+                        GlobixTech combines smart education management software, mobile access, and reliable local support in one clean system designed for performance.
                     </p>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                     {[
                         {
                             title: "Cloud-Based Platform",
-                            desc: "No installations or backups needed. Access GlobixTech anytime from mobile, tab, or desktop — everything syncs effortlessly.",
+                            desc: "No installations or local servers needed. Access GlobixTech anytime from mobile, tablet, or web.",
                             icon: "fa-cloud-upload-alt",
-                            color: "text-blue-500",
-                            bg: "bg-blue-50"
+                            color: "text-blue-600",
                         },
                         {
                             title: "Affordable Solution",
-                            desc: "GlobixTech is designed to reduce the monthly digital operation costs for schools, colleges, and madrasas without compromising quality.",
+                            desc: "Designed to reduce monthly digital operation costs without compromising enterprise functionality.",
                             icon: "fa-hand-holding-usd",
-                            color: "text-green-500",
-                            bg: "bg-green-50"
+                            color: "text-emerald-600",
                         },
                         {
-                            title: "Easy to Use",
-                            desc: "Clean dashboard, simple menus, and Bangla-English support. No extensive training required for basic day-to-day use.",
+                            title: "Intuitive UX & UI",
+                            desc: "Clean dashboard, simple navigation, and multi-language support so staff require zero learning curve.",
                             icon: "fa-magic",
-                            color: "text-orange-500",
-                            bg: "bg-orange-50"
+                            color: "text-amber-600",
                         },
                         {
-                            title: "Safe & Secure",
-                            desc: "All user roles are protected with advanced permissions. Only authorized users can access sensitive financial or student data.",
+                            title: "Role-Based Security",
+                            desc: "All user permissions are protected with state-of-the-art encryption and strict administrative boundaries.",
                             icon: "fa-shield-alt",
-                            color: "text-cyan-500",
-                            bg: "bg-cyan-50"
+                            color: "text-cyan-600",
                         },
                         {
-                            title: "Strong Local Support",
-                            desc: "From setup to training, GlobixTech's Bangladesh-based team helps your school stay on track with fast technical assistance.",
+                            title: "Dedicated Local Support",
+                            desc: "From deployment to staff training, our expert team in Bangladesh assists you around the clock.",
                             icon: "fa-headset",
-                            color: "text-pink-500",
-                            bg: "bg-pink-50"
+                            color: "text-rose-600",
                         },
                         {
-                            title: "Instant Updates",
-                            desc: "Get live updates for attendance, payments, results, or notices — even from home. Everyone stays informed in real-time.",
+                            title: "Real-time Live Sync",
+                            desc: "Get instant notification triggers for student attendance, fee collections, exam marks, and notices.",
                             icon: "fa-bolt",
-                            color: "text-yellow-500",
-                            bg: "bg-yellow-50"
+                            color: "text-yellow-600",
                         },
                         {
-                            title: "Verified Data Storage",
-                            desc: "GlobixTech ensures regular data backups and smart storage systems so your institute's academic history stays safe forever.",
+                            title: "Automated Data Backup",
+                            desc: "Encrypted nightly cloud snapshots guarantee your institution's records remain safe permanently.",
                             icon: "fa-database",
-                            color: "text-indigo-500",
-                            bg: "bg-indigo-50"
+                            color: "text-indigo-600",
                         },
                         {
-                            title: "Full Staff Training",
-                            desc: "Teachers and admins get onboarding help, plus video guides and FAQs. Everyone can use GlobixTech effectively from Day 1.",
+                            title: "Complete Staff Training",
+                            desc: "Comprehensive onboarding, video guides, and dedicated support guarantee smooth Day-1 implementation.",
                             icon: "fa-chalkboard-teacher",
-                            color: "text-purple-500",
-                            bg: "bg-purple-50"
+                            color: "text-purple-600",
                         }
                     ].map(item => (
-                        <div class="group">
-                            <div class={`w-14 h-14 ${item.bg} ${item.color} rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                        <div class="bg-white/80 backdrop-blur-xl p-8 rounded-[2rem] border border-white/90 shadow-[0_10px_30px_rgba(0,0,0,0.02)] hover:shadow-lg transition-all group">
+                            <div class={`w-12 h-12 bg-slate-50 rounded-xl flex items-center justify-center text-xl mb-6 ${item.color} group-hover:scale-110 transition-transform`}>
                                 <i class={`fas ${item.icon}`}></i>
                             </div>
-                            <h4 class="text-xl font-bold text-[#0c1b3d] mb-3">{item.title}</h4>
-                            <p class="text-gray-500 text-sm leading-relaxed">
+                            <h4 class="text-lg font-bold text-slate-900 mb-2">{item.title}</h4>
+                            <p class="text-slate-500 text-xs leading-relaxed">
                                 {item.desc}
                             </p>
                         </div>
@@ -586,353 +532,317 @@ import {
             </div>
         </section>
 
-        <!-- Detailed Modules Breakdown -->
-        <section id="modules" class="py-24 bg-white">
+        <!-- Detailed Modules Breakdown (Tabs) -->
+        <section id="modules" class="py-28 bg-white/40 border-t border-slate-200/50 backdrop-blur-md relative z-10">
             <div class="container mx-auto px-6">
-                <div class="text-center mb-12">
-                    <span class="text-blue-600 font-bold uppercase tracking-widest text-sm">Full Capability</span>
-                    <h2 class="text-3xl md:text-5xl font-bold text-[#0c1b3d] mt-2">
-                        Enterprise-Grade Modules
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="text-xs font-bold uppercase tracking-widest text-cyan-600 mb-2 block">Enterprise Capability</span>
+                    <h2 class="text-3xl md:text-5xl font-extrabold text-slate-900 tracking-tight">
+                        Specialized Enterprise Modules
                     </h2>
-                    <p class="text-gray-600 mt-4 max-w-2xl mx-auto">
-                        Our system is divided into 6 specialized categories covering every aspect of educational management.
+                    <p class="text-slate-600 text-lg mt-4">
+                        Structured across 6 comprehensive categories to cover every institutional requirement.
                     </p>
                 </div>
 
-                <!-- Module Category Tabs -->
-                <div class="flex flex-wrap justify-center gap-3 mb-16 overflow-x-auto pb-4 scrollbar-hide">
+                <!-- Category Glass Tabs -->
+                <div class="flex flex-wrap justify-center gap-3 mb-16">
                     {moduleCategories.map((cat, idx) => (
                         <button
                             data-module-tab={idx}
-                            class={`module-tab flex items-center gap-3 px-6 py-3 rounded-full border transition-all duration-300 whitespace-nowrap ${idx === 0 ? 'bg-blue-600 text-white border-blue-600 shadow-lg shadow-blue-500/30' : 'bg-white text-gray-600 border-gray-200 hover:border-blue-300 hover:text-blue-600'}`}
+                            class={`module-tab flex items-center gap-2.5 px-6 py-3.5 rounded-full border text-xs md:text-sm font-bold transition-all duration-300 ${idx === 0 ? 'bg-slate-900 text-white border-slate-900 shadow-md' : 'bg-white/80 text-slate-600 border-white hover:bg-white'}`}
                         >
-                            <i class={`fas ${cat.icon} ${idx === 0 ? 'text-white' : 'text-blue-500'}`}></i>
-                            <span class="font-bold text-sm tracking-wide">{cat.title}</span>
+                            <i class={`fas ${cat.icon} ${idx === 0 ? 'text-cyan-400' : 'text-blue-500'}`}></i>
+                            <span>{cat.title}</span>
                         </button>
                     ))}
                 </div>
 
-                <!-- Module Content Area -->
-                <div class="relative min-h-[600px]">
+                <!-- Module Content Grid -->
+                <div class="relative min-h-[500px]">
                     {moduleCategories.map((cat, idx) => (
                         <div 
-                            class={`module-content absolute inset-0 w-full transition-all duration-500 ${idx === 0 ? 'opacity-100 relative z-10 translate-y-0' : 'opacity-0 invisible z-0 translate-y-8'}`}
+                            class={`module-content absolute inset-0 w-full transition-all duration-500 ${idx === 0 ? 'opacity-100 relative z-10 translate-y-0' : 'opacity-0 invisible z-0 translate-y-4'}`}
                             data-module-content={idx}
                         >
                             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                                 {cat.modules.map((module) => (
-                                    <div class="bg-white p-8 rounded-[2rem] border border-gray-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all group duration-500 h-full flex flex-col">
-                                        <div class="flex justify-between items-center mb-8">
-                                            <div class="w-12 h-12 bg-slate-50 border border-gray-100 rounded-xl flex items-center justify-center text-[#0c1b3d] font-bold">
-                                                {String(module.id).padStart(2, "0")}
-                                            </div>
-                                            <span class="text-[11px] font-extrabold bg-blue-50 text-blue-600 px-3 py-1.5 rounded-full uppercase tracking-widest">
+                                    <div class="bg-white/80 backdrop-blur-2xl p-8 rounded-[2rem] border border-white/90 shadow-[0_10px_30px_rgba(0,0,0,0.03)] hover:shadow-xl transition-all duration-300">
+                                        <div class="flex justify-between items-center mb-6">
+                                            <span class="text-xs font-extrabold bg-blue-50 text-blue-600 px-3 py-1 rounded-full border border-blue-100">
+                                                Module 0{module.id}
+                                            </span>
+                                            <span class="text-[11px] font-bold text-slate-400">
                                                 {module.count}+ Features
                                             </span>
                                         </div>
-                                        <h4 class="text-xl font-bold mb-6 text-[#0c1b3d] group-hover:text-blue-600 transition-colors">
+                                        <h4 class="text-xl font-bold text-slate-900 mb-6">
                                             {module.name}
                                         </h4>
-                                        <ul class="space-y-4 mb-8">
+                                        <ul class="space-y-3">
                                             {module.features.map((feature) => (
-                                                <li class="flex items-start gap-3 text-sm text-gray-600">
-                                                    <i class={`fas fa-check-circle ${cat.title === "CORE ACADEMIC MODULES" ? "text-blue-500" : "text-cyan-500"} mt-1 flex-shrink-0`}></i>
-                                                    <span class="leading-relaxed">{feature}</span>
+                                                <li class="flex items-start gap-2.5 text-xs font-medium text-slate-600">
+                                                    <i class="fas fa-check-circle text-cyan-500 mt-0.5"></i>
+                                                    <span>{feature}</span>
                                                 </li>
                                             ))}
                                         </ul>
-                                        <!-- Removed "Module Details" button to clean up UI as requested features are already visible -->
                                     </div>
                                 ))}
                             </div>
                         </div>
                     ))}
                 </div>
+
             </div>
         </section>
 
-        <script>
-            // Module Tabs Logic
-            const moduleTabs = document.querySelectorAll('.module-tab');
-            const moduleContents = document.querySelectorAll('.module-content');
+        <!-- VIDEO SHOWCASE 4: Real-Time Analytics & High Attraction Spotlight -->
+        <section class="py-24 z-10 relative">
+            <div class="container mx-auto px-6">
+                <div class="max-w-5xl mx-auto bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 rounded-[2.5rem] p-8 md:p-16 text-white shadow-2xl relative overflow-hidden">
+                    <div class="absolute -top-24 -right-24 w-96 h-96 bg-cyan-500/20 rounded-full blur-3xl pointer-events-none"></div>
+                    
+                    <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+                        <div class="lg:col-span-6">
+                            <span class="text-xs font-bold text-cyan-400 uppercase tracking-widest mb-3 block">High Attraction Experience</span>
+                            <h2 class="text-3xl md:text-5xl font-extrabold leading-tight mb-6">
+                                Powering Next-Gen Education Management
+                            </h2>
+                            <p class="text-slate-300 text-sm md:text-base leading-relaxed mb-8">
+                                Experience how our real-time engine handles administrative reports, attendance calculations, fee reconciliation, and immediate SMS dispatching within seconds.
+                            </p>
+                            <a href="/#contact" class="inline-flex items-center gap-3 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold px-8 py-4 rounded-xl transition-all shadow-lg shadow-cyan-500/20 text-sm uppercase tracking-wider">
+                                <span>Schedule Live Platform Walkthrough</span>
+                                <i class="fas fa-arrow-right text-xs"></i>
+                            </a>
+                        </div>
 
-            if (moduleTabs.length > 0) {
-                moduleTabs.forEach(tab => {
-                    tab.addEventListener('click', () => {
-                        const targetIdx = (tab as HTMLButtonElement).dataset.moduleTab;
-
-                        // Update Tabs
-                        moduleTabs.forEach(t => {
-                            const icon = t.querySelector('i');
-                            
-                            t.classList.remove('bg-blue-600', 'text-white', 'border-blue-600', 'shadow-lg', 'shadow-blue-500/30');
-                            t.classList.add('bg-white', 'text-gray-600', 'border-gray-200', 'hover:border-blue-300', 'hover:text-blue-600');
-                            
-                            if(icon) {
-                                icon.classList.remove('text-white');
-                                icon.classList.add('text-blue-500');
-                            }
-                        });
-
-                        tab.classList.remove('bg-white', 'text-gray-600', 'border-gray-200', 'hover:border-blue-300', 'hover:text-blue-600');
-                        tab.classList.add('bg-blue-600', 'text-white', 'border-blue-600', 'shadow-lg', 'shadow-blue-500/30');
-                        
-                        const activeIcon = tab.querySelector('i');
-                        if(activeIcon) {
-                            activeIcon.classList.remove('text-blue-500');
-                            activeIcon.classList.add('text-white');
-                        }
-
-                        // Update Content
-                        moduleContents.forEach(content => {
-                            if ((content as HTMLElement).dataset.moduleContent === targetIdx) {
-                                content.classList.remove('opacity-0', 'invisible', 'translate-y-8', 'z-0');
-                                content.classList.add('opacity-100', 'relative', 'translate-y-0', 'z-10');
-                            } else {
-                                content.classList.add('opacity-0', 'invisible', 'translate-y-8', 'z-0');
-                                content.classList.remove('opacity-100', 'relative', 'translate-y-0', 'z-10');
-                            }
-                        });
-                    });
-                });
-            }
-        </script>
+                        <!-- Video Player 4 -->
+                        <div class="lg:col-span-6">
+                            <div class="relative rounded-2xl overflow-hidden border border-white/20 shadow-2xl aspect-video">
+                                <video 
+                                    class="w-full h-full object-cover" 
+                                    autoplay loop muted playsinline
+                                >
+                                    <source src="https://assets.mixkit.co/videos/preview/mixkit-financial-graphs-and-charts-on-a-screen-41580-large.mp4" type="video/mp4" />
+                                </video>
+                                <div class="absolute inset-0 bg-slate-900/20 pointer-events-none"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <!-- Pricing Plan Section -->
-        <section id="pricing" class="py-24 bg-[#f8fafc]">
+        <section id="pricing" class="py-28 z-10 relative">
             <div class="container mx-auto px-6 text-center">
-                <h2
-                    class="text-3xl md:text-5xl font-extrabold text-[#0c1b3d] mb-4"
-                >
-                    Pricing Plan
+                
+                <span class="text-xs font-bold uppercase tracking-widest text-cyan-600 mb-2 block">Transparent Pricing</span>
+                <h2 class="text-3xl md:text-5xl font-extrabold text-slate-900 tracking-tight mb-4">
+                    Flexible Plans Built to Scale
                 </h2>
-                <p class="text-gray-500 max-w-2xl mx-auto mb-12">
-                    Explore our flexible pricing plans tailored to meet the
-                    needs of your educational institution. Choose from various
-                    options designed to provide maximum value and support for
-                    your academic management.
+                <p class="text-slate-600 max-w-2xl mx-auto mb-12 text-sm md:text-base">
+                    Choose from transparent options designed to deliver maximum administrative value for institutions of any size.
                 </p>
 
-                <!-- Toggle -->
+                <!-- Billing Toggle -->
                 <div class="flex items-center justify-center gap-4 mb-16">
-                    <span class="text-sm font-semibold text-gray-500"
-                        >Monthly</span
-                    >
+                    <span class="text-xs font-bold text-slate-700 uppercase tracking-wider">Monthly Billing</span>
                     <button
                         id="billing-toggle"
-                        class="w-14 h-7 bg-cyan-500 rounded-full relative p-1 transition-all"
+                        class="w-14 h-8 bg-cyan-500 rounded-full relative p-1 transition-all shadow-inner"
                     >
-                        <div
-                            class="w-5 h-5 bg-white rounded-full transition-transform"
-                        >
-                        </div>
+                        <div class="w-6 h-6 bg-white rounded-full transition-transform shadow-md"></div>
                     </button>
-                    <span class="text-sm font-semibold text-gray-400"
-                        >Yearly</span
-                    >
+                    <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Annual Billing (Discounted)</span>
                 </div>
 
-                <div
-                    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-left"
-                >
+                <!-- Pricing Cards Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-left">
                     {
                         pricingPlans.map((plan, planIdx) => (
                             <div
-                                class={`relative bg-white rounded-[32px] p-8 shadow-xl border-2 transition-all hover:shadow-2xl ${plan.recommended ? "border-cyan-500 ring-4 ring-cyan-500/5" : "border-transparent"}`}
+                                class={`relative bg-white/80 backdrop-blur-2xl rounded-[2.5rem] p-8 border transition-all duration-300 flex flex-col justify-between ${plan.recommended ? "border-cyan-500 ring-4 ring-cyan-500/10 shadow-xl" : "border-white/90 shadow-sm hover:shadow-lg"}`}
                             >
                                 {plan.recommended && (
-                                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#0c1b3d] text-white px-4 py-1.5 rounded-full text-xs font-bold flex items-center gap-1.5">
-                                        <i class="fas fa-crown text-[10px] text-yellow-400" />{" "}
-                                        Recommended
+                                    <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-slate-900 text-white px-4 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase flex items-center gap-1.5 shadow-md">
+                                        <i class="fas fa-crown text-amber-400" /> Recommended
                                     </div>
                                 )}
 
-                                <h3 class="text-cyan-600 font-bold mb-6">
-                                    {plan.name}
-                                </h3>
-                                <div class="mb-8">
-                                    <div class="flex items-baseline gap-1">
-                                        <span
-                                            class="text-3xl font-extrabold text-[#0c1b3d]"
-                                            id={`price-${planIdx}`}
-                                        >
-                                            {plan.price ||
-                                                `${plan.monthlyPrice} BDT`}
-                                        </span>
-                                        {plan.monthlyPrice && (
-                                            <span class="text-gray-400 text-sm font-bold">
-                                                /MONTH
+                                <div>
+                                    <h3 class="text-lg font-bold text-slate-900 mb-4">
+                                        {plan.name}
+                                    </h3>
+                                    
+                                    <div class="mb-6">
+                                        <div class="flex items-baseline gap-1">
+                                            <span
+                                                class="text-3xl md:text-4xl font-extrabold text-slate-900"
+                                                id={`price-${planIdx}`}
+                                            >
+                                                {plan.price || `${plan.monthlyPrice} BDT`}
                                             </span>
-                                        )}
-                                    </div>
-                                    {plan.subtitle && (
-                                        <p class="text-gray-400 text-xs font-bold uppercase mt-1 tracking-wider">
-                                            {plan.subtitle}
-                                        </p>
-                                    )}
-                                </div>
-
-                                <div class="flex items-center justify-between mb-8 py-3 border-t border-b border-gray-50">
-                                    <div class="flex items-center gap-2 text-[#0c1b3d] text-[13px] font-bold">
-                                        <i class="fas fa-sync-alt text-cyan-500 text-xs" />
-                                        One Time Charge:{" "}
-                                        <span class="text-cyan-600">
-                                            {plan.oneTimeCharge === "N/A"
-                                                ? "N/A"
-                                                : `${plan.oneTimeCharge}BDT`}
-                                        </span>
-                                    </div>
-                                    <i class="fas fa-info-circle text-cyan-500 text-[11px] cursor-help" />
-                                </div>
-
-                                {plan.ranges ? (
-                                    <div class="mb-8">
-                                        <p class="text-gray-500 text-[13px] mb-4 font-medium">
-                                            Select student range
-                                        </p>
-                                        <div class="space-y-2.5">
-                                            {plan.ranges.map(
-                                                (range, rangeIdx) => (
-                                                    <label class="flex items-center gap-3 p-3 rounded-xl border border-gray-100 bg-gray-50/50 cursor-pointer hover:border-cyan-200 transition-all group has-[:checked]:bg-cyan-50 has-[:checked]:border-cyan-500">
-                                                        <input
-                                                            type="radio"
-                                                            name={`range-${planIdx}`}
-                                                            value={range.price}
-                                                            checked={
-                                                                rangeIdx === 0
-                                                            }
-                                                            data-plan-index={
-                                                                planIdx
-                                                            }
-                                                            class="w-4 h-4 text-cyan-500 border-gray-300 focus:ring-cyan-500 accent-cyan-500"
-                                                        />
-                                                        <span class="text-xs font-bold text-gray-600 group-has-[:checked]:text-cyan-700">
-                                                            {range.range} (৳
-                                                            {range.price})
-                                                        </span>
-                                                    </label>
-                                                ),
+                                            {plan.monthlyPrice && (
+                                                <span class="text-slate-400 text-xs font-bold uppercase">
+                                                    /Mo
+                                                </span>
                                             )}
                                         </div>
+                                        {plan.subtitle && (
+                                            <p class="text-cyan-600 text-[11px] font-bold uppercase mt-1 tracking-wider">
+                                                {plan.subtitle}
+                                            </p>
+                                        )}
                                     </div>
-                                ) : (
-                                    <div class="mb-8 min-h-[460px]">
-                                        <p class="text-gray-500 text-[13px] mb-4 font-medium">
-                                            Custom facilities
-                                        </p>
-                                        <ul class="space-y-4">
-                                            {plan.facilities.map((facility) => (
-                                                <li class="flex items-center gap-3 text-sm font-bold text-gray-600">
-                                                    <div class="w-5 h-5 bg-cyan-100 rounded-full flex items-center justify-center text-cyan-500 text-[10px]">
-                                                        <i class="fas fa-check" />
-                                                    </div>
-                                                    {facility}
+
+                                    <div class="flex items-center justify-between mb-6 py-2.5 border-y border-slate-100 text-xs font-semibold">
+                                        <span class="text-slate-500">One Time Setup Charge:</span>
+                                        <span class="text-slate-900 font-bold">
+                                            {plan.oneTimeCharge === "N/A" ? "N/A" : `${plan.oneTimeCharge} BDT`}
+                                        </span>
+                                    </div>
+
+                                    {plan.ranges ? (
+                                        <div class="mb-8">
+                                            <p class="text-slate-500 text-xs mb-3 font-semibold">
+                                                Select Student Tier:
+                                            </p>
+                                            <div class="space-y-2">
+                                                {plan.ranges.map((r, rIdx) => (
+                                                    <label class="flex items-center justify-between p-2 rounded-xl bg-slate-50 border border-slate-100 text-xs cursor-pointer hover:bg-white transition-colors">
+                                                        <span class="flex items-center gap-2 text-slate-700">
+                                                            <input
+                                                                type="radio"
+                                                                name={`plan-${planIdx}`}
+                                                                value={r.price}
+                                                                checked={rIdx === 0}
+                                                                data-plan-index={planIdx}
+                                                                class="text-cyan-500 focus:ring-cyan-400"
+                                                            />
+                                                            {r.range}
+                                                        </span>
+                                                        <span class="font-bold text-slate-900">{r.price} BDT</span>
+                                                    </label>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    ) : (
+                                        <ul class="space-y-3 mb-8">
+                                            {plan.facilities?.map((f) => (
+                                                <li class="flex items-start gap-2 text-xs font-medium text-slate-600">
+                                                    <i class="fas fa-check text-cyan-500 mt-0.5" />
+                                                    <span>{f}</span>
                                                 </li>
                                             ))}
                                         </ul>
-                                    </div>
-                                )}
+                                    )}
+                                </div>
 
-                                <button
-                                    class={`w-full py-4 rounded-2xl font-extrabold text-sm uppercase tracking-wider transition-all ${plan.recommended ? "bg-gradient-to-r from-cyan-500 to-teal-600 text-white shadow-xl shadow-cyan-500/20 hover:scale-105 hover:shadow-cyan-500/40" : "bg-gray-50 border border-cyan-500 text-cyan-600 hover:bg-cyan-50"}`}
+                                <a
+                                    href="/#contact"
+                                    class={`block w-full text-center py-4 rounded-2xl font-bold text-xs uppercase tracking-wider transition-all ${plan.recommended ? "bg-cyan-500 hover:bg-cyan-400 text-slate-950 shadow-md shadow-cyan-500/20" : "bg-slate-900 hover:bg-slate-800 text-white"}`}
                                 >
-                                    {plan.price === "Custom"
-                                        ? "Request a quote"
-                                        : "Order now"}
-                                </button>
+                                    Select Plan
+                                </a>
                             </div>
                         ))
                     }
                 </div>
 
-                <div
-                    class="mt-12 text-left text-sm font-bold text-gray-500 space-y-2"
-                >
+                <div class="mt-8 text-xs font-semibold text-slate-400 space-y-1">
                     <p>* 5% VAT will be applicable on all fees and charges</p>
                     <p>* Each Add-on has a charge</p>
                 </div>
             </div>
         </section>
 
-        <script>
-            // Pricing Plan Interaction
-            document
-                .querySelectorAll('input[type="radio"]')
-                .forEach((radio) => {
-                    radio.addEventListener("change", (e) => {
-                        const planIdx = (e.target as HTMLInputElement).dataset
-                            .planIndex;
-                        const price = (e.target as HTMLInputElement).value;
-                        const priceDisplay = document.getElementById(
-                            `price-${planIdx}`,
-                        );
-                        if (priceDisplay) {
-                            priceDisplay.textContent = `${price} BDT`;
-                        }
-                    });
-                });
+        <!-- FAQ Section -->
+        <section class="py-24 bg-white/40 border-t border-slate-200/50 backdrop-blur-md z-10 relative">
+            <div class="container mx-auto px-6 max-w-4xl">
+                <div class="text-center mb-16">
+                    <span class="text-xs font-bold uppercase tracking-widest text-cyan-600 mb-2 block">Help Center</span>
+                    <h2 class="text-3xl md:text-5xl font-extrabold text-slate-900 tracking-tight">
+                        Frequently Asked Questions
+                    </h2>
+                </div>
 
-            // Billing Toggle Animation (Visual Only)
-            const toggle = document.getElementById("billing-toggle");
-            if (toggle) {
-                toggle.addEventListener("click", () => {
-                    const dot = toggle.querySelector("div");
-                    dot?.classList.toggle("translate-x-7");
-                    toggle.classList.toggle("bg-gray-300");
-                    toggle.classList.toggle("bg-cyan-500");
-                });
-            }
-        </script>
+                <div class="space-y-4">
+                    {faqs.map((faq) => (
+                        <div class="bg-white/80 backdrop-blur-xl rounded-2xl p-6 border border-white/90 shadow-sm hover:shadow-md transition-all">
+                            <h3 class="font-bold text-slate-900 text-base mb-2 flex items-center gap-3">
+                                <i class="fas fa-question-circle text-cyan-500 text-sm"></i>
+                                <span>{faq.question}</span>
+                            </h3>
+                            <p class="text-slate-600 text-sm leading-relaxed pl-7">
+                                {faq.answer}
+                            </p>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
 
-        <!-- Final CTA -->
-        <section class="py-24 bg-[#0c1b3d] relative overflow-hidden">
-            <div class="absolute inset-0 bg-blue-500/5"></div>
-            <div class="container mx-auto px-6 text-center relative z-10">
-                <h2 class="text-3xl md:text-5xl font-extrabold text-white mb-8">
+        <!-- Final CTA Banner -->
+        <section class="py-24 bg-slate-900 relative overflow-hidden z-10">
+            <div class="absolute inset-0 bg-gradient-to-r from-blue-500/10 via-cyan-500/10 to-transparent pointer-events-none"></div>
+            <div class="container mx-auto px-6 text-center relative z-10 max-w-4xl">
+                <h2 class="text-3xl md:text-5xl font-extrabold text-white mb-6 tracking-tight">
                     Ready to Digitalize Your Institution?
                 </h2>
-                <p
-                    class="text-xl text-gray-400 mb-12 max-w-2xl mx-auto font-light"
-                >
-                    Our experts are ready to provide a custom demonstration
-                    tailored to your school's specific needs. Experience the
-                    future of education management.
+                <p class="text-slate-300 text-base md:text-lg mb-10 font-normal leading-relaxed">
+                    Our experts are ready to provide a custom demonstration tailored to your school's specific needs. Experience the future of education management.
                 </p>
-                <div class="flex flex-col md:flex-row justify-center gap-6">
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
                     <a
                         href="/#contact"
-                        class="bg-cyan-500 hover:bg-cyan-600 transition-all text-white px-10 py-5 rounded-2xl font-bold text-lg shadow-xl shadow-cyan-500/20 uppercase tracking-widest"
+                        class="bg-cyan-500 hover:bg-cyan-400 transition-all text-slate-950 px-9 py-4.5 rounded-2xl font-bold text-sm uppercase tracking-wider shadow-xl shadow-cyan-500/20"
                     >
                         Request a Demo Now
                     </a>
                     <a
                         href="tel:+8801707568468"
-                        class="bg-white/5 border border-white/20 hover:bg-white/10 transition-all text-white px-10 py-5 rounded-2xl font-bold text-lg uppercase tracking-widest"
+                        class="bg-white/10 hover:bg-white/20 border border-white/20 transition-all text-white px-9 py-4.5 rounded-2xl font-bold text-sm uppercase tracking-wider"
                     >
                         Call for Consultation
                     </a>
                 </div>
             </div>
         </section>
+
     </main>
 
     <Footer />
+
+    <script>
+        // Pricing Plan Interaction
+        document
+            .querySelectorAll('input[type="radio"]')
+            .forEach((radio) => {
+                radio.addEventListener("change", (e) => {
+                    const planIdx = (e.target as HTMLInputElement).dataset
+                        .planIndex;
+                    const price = (e.target as HTMLInputElement).value;
+                    const priceDisplay = document.getElementById(
+                        `price-${planIdx}`,
+                    );
+                    if (priceDisplay) {
+                        priceDisplay.textContent = `${price} BDT`;
+                    }
+                });
+            });
+
+        // Billing Toggle Animation
+        const toggle = document.getElementById("billing-toggle");
+        if (toggle) {
+            toggle.addEventListener("click", () => {
+                const dot = toggle.querySelector("div");
+                dot?.classList.toggle("translate-x-7");
+                toggle.classList.toggle("bg-gray-300");
+                toggle.classList.toggle("bg-cyan-500");
+            });
+        }
+    </script>
 </MainLayout>
-
-<style>
-    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap");
-
-    :root {
-        font-family: "Poppins", sans-serif;
-    }
-
-    /* Custom smooth scrolling for the whole page */
-    html {
-        scroll-behavior: smooth;
-    }
-
-    /* Additional styles for premium feel */
-    .font-poppins {
-        font-family: "Poppins", sans-serif;
-    }
-</style>

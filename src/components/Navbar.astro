@@ -1,470 +1,150 @@
 ---
 import { Image } from "astro:assets";
 import logo from "../assets/logo.png";
-import ThemeToggle from "./ThemeToggle.astro";
 ---
 
-<header class="w-full z-50">
-    <!-- Top Bar -->
-    <div
-        class="hidden lg:block bg-dark text-white py-2.5 border-b border-white/5 relative z-50"
-    >
-        <div
-            class="container mx-auto px-6 flex justify-between items-center text-xs"
-        >
-            <div class="flex items-center space-x-6">
-                <a
-                    href="mailto:info@globix.tech"
-                    class="hover:text-primary transition flex items-center gap-2 font-medium"
-                >
-                    <i class="fas fa-envelope text-primary"></i> info@globix.tech
-                </a>
-                <a
-                    href="tel:+8801707568468"
-                    class="hover:text-primary transition flex items-center gap-2 font-medium"
-                >
-                    <i class="fas fa-phone-alt text-primary"></i> +880 1707-568468
-                </a>
-                <span class="flex items-center gap-2 text-gray-400 font-medium">
-                    <i class="fas fa-map-marker-alt text-primary"></i> Uttara, Dhaka,
-                    Bangladesh
-                </span>
-            </div>
-            <div class="flex items-center space-x-5">
-                <div class="flex items-center gap-4">
-                    <ThemeToggle />
-                </div>
-                <div
-                    class="flex items-center space-x-3 border-r border-white/10 pr-5"
-                >
-                    <a
-                        href="https://www.facebook.com/globixtech/"
-                        target="_blank"
-                        rel="noopener
-noreferrer"
-                        class="hover:text-primary transition text-gray-300"
-                        ><i class="fab
-fa-facebook-f text-sm"></i></a
-                    >
-                    <a
-                        href="#"
-                        class="hover:text-primary
-transition text-gray-300"
-                        ><i class="fab fa-twitter text-sm"></i></a
-                    >
-                    <a
-                        href="#"
-                        class="hover:text-primary transition text-gray-300"
-                        ><i class="fab
-fa-linkedin-in text-sm"></i></a
-                    >
-                    <a
-                        href="#"
-                        class="hover:text-primary
-transition text-gray-300"
-                        ><i class="fab fa-instagram text-sm"></i></a
-                    >
-                </div>
-                <div class="flex items-center gap-2">
-                    <i class="fas fa-globe text-[10px]
-text-primary"></i>
-                    <span
-                        class="font-bold tracking-widest uppercase text-[10px]
-text-gray-300"
-                        >Global Support</span
-                    >
-                </div>
-            </div>
-        </div>
-    </div>
-</header>
-<!-- Main
-Navigation -->
-<nav
-    class="w-full bg-white/95 backdrop-blur-md shadow-lg z-50
-transition-all duration-300 sticky top-0"
-    id="main-nav"
->
-    <div class="container
-mx-auto px-6 py-4 flex justify-between items-center">
-        <div class="flex
-items-center">
-            <a href="/" class="flex items-center">
-                <Image src={logo} alt="GlobixTech Logo" class="h-12 w-auto" />
-            </a>
-        </div>
-        <div class="hidden
-lg:flex space-x-6 items-center">
-            <a
-                href="/"
-                class="text-gray-700
-hover:text-primary transition font-medium text-sm whitespace-nowrap"
-                >Home</a
-            >
-            <!-- Software Development Dropdown -->
-            <div class="relative group">
-                <button
-                    class="flex items-center text-gray-700 hover:text-primary transition font-medium
-text-sm focus:outline-none whitespace-nowrap"
-                >
-                    Software Development <i
-                        class="fas fa-chevron-down ml-1 text-[10px] group-hover:rotate-180
-transition-transform"
-                    ></i>
-                </button>
-                <div
-                    class="absolute left-0 mt-2 w-64
-bg-white border border-gray-100 shadow-xl rounded-xl opacity-0 invisible
-group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50
-py-4"
-                >
-                    <a
-                        href="/solutions/pos-system"
-                        class="block px-6 py-2 text-sm text-gray-700
-hover:bg-blue-50 hover:text-primary transition font-semibold"
-                        >POS System <span class="text-[10px] bg-green-100 text-green-600 px-1.5 py-0.5 rounded-full ml-1">Popular</span></a
-                    >
-                    <a
-                        href="/solutions/inventory"
-                        class="block px-6 py-2 text-sm text-gray-700
-hover:bg-blue-50 hover:text-primary transition"
-                        >Inventory</a
-                    >
-                    <a
-                        href="/solutions/ecommerce"
-                        class="block px-6 py-2 text-sm text-gray-700
-hover:bg-blue-50 hover:text-primary transition"
-                        >E-commerce</a
-                    >
-                    <a
-                        href="/solutions/school-management-system"
-                        class="block px-6 py-2 text-sm text-gray-700
-hover:bg-blue-50 hover:text-primary transition"
-                        >Education (SMS)</a
-                    >
-                    <a
-                        href="/solutions/erp-system"
-                        class="block px-6 py-2 text-sm text-gray-700
-hover:bg-blue-50 hover:text-primary transition"
-                        >ERP System <span class="text-[10px] bg-indigo-100 text-indigo-600 px-1.5 py-0.5 rounded-full ml-1">New</span></a
-                    >
-                    <a
-                        href="/solutions/accounting"
-                        class="block px-6 py-2 text-sm text-gray-700
-hover:bg-blue-50 hover:text-primary transition"
-                        >Accounts</a
-                    >
-                    <a
-                        href="/solutions/web-apps"
-                        class="block px-6 py-2 text-sm text-gray-700
-hover:bg-blue-50 hover:text-primary transition"
-                        >Web Apps</a
-                    >
-                    <a
-                        href="/solutions/mobile-app-development"
-                        class="block px-6 py-2 text-sm text-gray-700
-hover:bg-blue-50 hover:text-primary transition"
-                        >Mobile Apps</a
-                    >
-                </div>
-            </div>
-            <!-- AI & Data Intelligence Dropdown -->
-            <div class="relative group">
-                <button
-                    class="flex items-center text-gray-700 hover:text-primary transition font-medium
-text-sm focus:outline-none whitespace-nowrap"
-                >
-                    AI & Data Intelligence <i
-                        class="fas fa-chevron-down ml-1 text-[10px] group-hover:rotate-180
-transition-transform"
-                    ></i>
-                </button>
-                <div
-                    class="absolute left-0 mt-2 w-64
-bg-white border border-gray-100 shadow-xl rounded-xl opacity-0 invisible
-group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50
-py-4"
-                >
-                    <a
-                        href="/solutions/business-ai"
-                        class="block px-6 py-2 text-sm text-gray-700
-hover:bg-blue-50 hover:text-primary transition"
-                        >Business AI</a
-                    >
-                    <a
-                        href="/solutions/data-science"
-                        class="block px-6 py-2 text-sm text-gray-700
-hover:bg-blue-50 hover:text-primary transition"
-                        >Data Science</a
-                    >
-                </div>
-            </div>
-            <!-- Infrastructure & Security Dropdown -->
-            <div class="relative group">
-                <button
-                    class="flex items-center text-gray-700 hover:text-primary transition font-medium
-text-sm focus:outline-none whitespace-nowrap"
-                >
-                    Infrastructure & Security <i
-                        class="fas fa-chevron-down ml-1 text-[10px] group-hover:rotate-180
-transition-transform"
-                    ></i>
-                </button>
-                <div
-                    class="absolute left-0 mt-2 w-64
-bg-white border border-gray-100 shadow-xl rounded-xl opacity-0 invisible
-group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50
-py-4"
-                >
-                    <a
-                        href="/solutions/server-management"
-                        class="block px-6 py-2 text-sm
-text-gray-700 hover:bg-blue-50 hover:text-primary transition"
-                        >Server Mgmt</a
-                    >
-                    <a
-                        href="/solutions/network"
-                        class="block px-6 py-2 text-sm text-gray-700
-hover:bg-blue-50 hover:text-primary transition"
-                        >Network</a
-                    >
-                    <a
-                        href="/solutions/security"
-                        class="block px-6 py-2 text-sm text-gray-700
-hover:bg-blue-50 hover:text-primary transition"
-                        >Security</a
-                    >
-                </div>
-            </div>
-            <a
-                href="/rd-wing"
-                class="text-gray-700 hover:text-primary transition font-medium
-text-sm whitespace-nowrap"
-                >R&D Wing</a
-            >
-            <a
-                href="/portfolio"
-                class="text-gray-700 hover:text-primary transition font-medium text-sm
-whitespace-nowrap"
-                >Portfolio</a
-            >
-            <a
-                href="/about"
-                class="text-gray-700
-hover:text-primary transition font-medium text-sm whitespace-nowrap"
-                >About Us</a
-            >
-            <a
-                href="/blog"
-                class="text-gray-700 hover:text-primary transition
-font-medium text-sm whitespace-nowrap"
-                >Blog</a
-            >
-            <a
-                href="/contact"
-                class="text-gray-700 hover:text-primary transition font-medium text-sm
-whitespace-nowrap"
-                >Contact</a
-            >
-        </div>
-        <div class="hidden xl:flex items-center gap-3">
-            <a
-                href="/test-landing"
-                class="bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-4 py-2 rounded-lg font-bold hover:opacity-90 transition shadow-md text-sm whitespace-nowrap flex items-center gap-1.5"
-            >
-                <i class="fas fa-flask text-xs"></i> Test Page
-            </a>
-            <a
-                href="/contact"
-                class="bg-primary text-white px-5 py-2 rounded-lg font-bold hover:bg-blue-600 transition shadow-lg shadow-blue-200 text-sm whitespace-nowrap"
-            >
-                Get a Quote
-            </a>
-        </div>
-        <button id="menu-btn" class="lg:hidden text-gray-700">
-            <i class="fas fa-bars text-2xl"></i>
-        </button>
-    </div>
-    <!-- Mobile Menu -->
-    <div
-        id="mobile-menu"
-        class="hidden lg:hidden
-bg-white border-t border-gray-100 max-h-[85vh] overflow-y-auto"
-    >
-        <div class="flex flex-col px-6 py-8 space-y-4">
-            <a
-                href="/"
-                class="text-base
-font-bold text-dark hover:text-primary transition"
-                >Home</a
-            >
-            <!-- Mobile
-Software Development -->
-            <div class="space-y-2">
-                <button
-                    class="flex
-items-center justify-between w-full text-base font-bold text-dark
-hover:text-primary transition"
-                    onclick="this.nextElementSibling.classList.toggle('hidden')"
-                >
-                    Software Development <i class="fas fa-chevron-down text-xs"
-                    ></i>
-                </button>
-                <div class="hidden pl-4 space-y-2 border-l-2 border-gray-50">
-                    <a
-                        href="/solutions/pos-system"
-                        class="block text-sm text-gray-600 hover:text-primary transition font-semibold"
-                        >POS System <span class="text-[10px] bg-green-100 text-green-600 px-1.5 py-0.5 rounded-full ml-1">Popular</span></a
-                    >
-                    <a
-                        href="/solutions/inventory"
-                        class="block text-sm text-gray-600 hover:text-primary transition"
-                        >Inventory</a
-                    >
-                    <a
-                        href="/solutions/ecommerce"
-                        class="block text-sm text-gray-600 hover:text-primary transition"
-                        >E-commerce</a
-                    >
-                    <a
-                        href="/solutions/school-management-system"
-                        class="block text-sm text-gray-600 hover:text-primary transition"
-                        >Education (SMS)</a
-                    >
-                    <a
-                        href="/solutions/erp-system"
-                        class="block text-sm text-gray-600 hover:text-primary transition"
-                        >ERP System <span class="text-[10px] bg-indigo-100 text-indigo-600 px-1.5 py-0.5 rounded-full ml-1">New</span></a
-                    >
-                    <a
-                        href="/solutions/accounting"
-                        class="block text-sm text-gray-600 hover:text-primary transition"
-                        >Accounts</a
-                    >
-                    <a
-                        href="/solutions/web-apps"
-                        class="block text-sm text-gray-600 hover:text-primary transition"
-                        >Web Apps</a
-                    >
-                    <a
-                        href="/solutions/mobile-app-development"
-                        class="block text-sm text-gray-600 hover:text-primary transition"
-                        >Mobile Apps</a
-                    >
-                </div>
-            </div>
-            <!-- Mobile AI & Data Intelligence -->
-            <div class="space-y-2">
-                <button
-                    class="flex items-center justify-between w-full text-base font-bold
-text-dark hover:text-primary transition"
-                    onclick="this.nextElementSibling.classList.toggle('hidden')"
-                >
-                    AI & Data Intelligence <i
-                        class="fas fa-chevron-down text-xs"></i>
-                </button>
-                <div class="hidden pl-4 space-y-2 border-l-2 border-gray-50">
-                    <a
-                        href="/solutions/business-ai"
-                        class="block text-sm
-text-gray-600 hover:text-primary transition"
-                        >Business AI</a
-                    >
-                    <a
-                        href="/solutions/data-science"
-                        class="block text-sm text-gray-600
-hover:text-primary transition"
-                        >Data Science</a
-                    >
-                </div>
-            </div>
-            <!-- Mobile
-Infrastructure & Security -->
-            <div class="space-y-2">
-                <button
-                    class="flex
-items-center justify-between w-full text-base font-bold text-dark
-hover:text-primary transition"
-                    onclick="this.nextElementSibling.classList.toggle('hidden')"
-                >
-                    Infrastructure & Security <i
-                        class="fas fa-chevron-down text-xs"></i>
-                </button>
-                <div class="hidden pl-4 space-y-2 border-l-2 border-gray-50">
-                    <a
-                        href="/solutions/server-management"
-                        class="block text-sm text-gray-600
-hover:text-primary transition"
-                        >Server Mgmt</a
-                    >
-                    <a
-                        href="/solutions/network"
-                        class="block text-sm text-gray-600 hover:text-primary transition"
-                        >Network</a
-                    >
-                    <a
-                        href="/solutions/security"
-                        class="block text-sm text-gray-600
-hover:text-primary transition"
-                        >Security</a
-                    >
-                </div>
-            </div>
-            <a
-                href="/rd-wing"
-                class="text-base font-bold text-dark hover:text-primary transition"
-                >R&D Wing</a
-            >
-            <a
-                href="/portfolio"
-                class="text-base font-bold text-dark hover:text-primary
-transition"
-                >Portfolio</a
-            >
-            <a
-                href="/about"
-                class="text-base font-bold
-text-dark hover:text-primary transition"
-                >About Us</a
-            >
-            <a
-                href="/blog"
-                class="text-base font-bold text-dark hover:text-primary transition"
-                >Blog</a
-            >
-            <a
-                href="/contact"
-                class="text-base font-bold text-dark hover:text-primary
-transition"
-                >Contact</a
-            >
-            <a
-                href="/test-landing"
-                class="bg-gradient-to-r from-purple-600 to-indigo-600 text-white text-center py-3 rounded-xl font-bold text-base shadow-lg active:scale-95 transition-transform uppercase tracking-wider flex items-center justify-center gap-2"
-            >
-                <i class="fas fa-flask text-sm"></i> Test Page
-            </a>
-            <a
-                href="/contact"
-                class="bg-primary text-white
-text-center py-3 rounded-xl font-bold text-base shadow-lg active:scale-95
-transition-transform uppercase tracking-wider"
-            >
-                Get a Quote
-            </a>
-        </div>
-    </div>
-</nav>
+<header class="fixed top-0 inset-x-0 z-50 w-full px-4 sm:px-8 py-3 transition-all duration-300">
+    <!-- Floating Glass Navigation Pill -->
+    <nav class="max-w-7xl mx-auto bg-white/80 backdrop-blur-2xl border border-white/90 rounded-full shadow-[0_8px_32px_0_rgba(0,0,0,0.04)] px-6 py-3 flex items-center justify-between transition-all">
+        <a href="/" class="flex items-center gap-2 group">
+            <Image src={logo} alt="GlobixTech Logo" class="h-8 w-auto group-hover:scale-105 transition-transform" />
+        </a>
 
-<script>
-    const menuBtn = document.getElementById("menu-btn");
-    const mobileMenu = document.getElementById("mobile-menu");
-    menuBtn?.addEventListener("click", () => {
-        mobileMenu?.classList.toggle("hidden");
-    });
-    mobileMenu?.querySelectorAll("a").forEach((link) => {
-        link.addEventListener("click", () => {
-            mobileMenu.classList.add("hidden");
-        });
-    });
-</script>
+        <!-- Desktop Links -->
+        <div class="hidden lg:flex items-center gap-7 text-sm font-medium text-[#1d1d1f]">
+            <a href="/" class="hover:text-[#0071e3] transition-colors">Home</a>
+
+            <!-- Comprehensive Solutions Mega Dropdown -->
+            <div class="relative group">
+                <button class="flex items-center gap-1.5 hover:text-[#0071e3] transition-colors py-2 focus:outline-none">
+                    Solutions <i class="fas fa-chevron-down text-[10px] text-[#86868b] group-hover:rotate-180 transition-transform"></i>
+                </button>
+                <div class="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[780px] bg-white/95 backdrop-blur-2xl border border-white/90 shadow-[0_20px_50px_rgba(0,0,0,0.08)] rounded-3xl p-6 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-2 grid grid-cols-3 gap-4">
+                    
+                    <!-- Column 1: Core Software Systems -->
+                    <div class="space-y-1">
+                        <span class="text-[10px] font-extrabold uppercase tracking-widest text-[#86868b] px-3">Software Systems</span>
+                        <a href="/solutions/pos-system" class="flex items-center gap-3 p-2 rounded-2xl hover:bg-[#f5f5f7] transition-colors">
+                            <div class="w-7 h-7 rounded-xl bg-blue-50 flex items-center justify-center text-[#0071e3] text-xs"><i class="fas fa-cash-register"></i></div>
+                            <div>
+                                <div class="font-semibold text-xs text-[#1d1d1f]">POS System</div>
+                                <div class="text-[10px] text-[#86868b]">Retail & Checkout</div>
+                            </div>
+                        </a>
+                        <a href="/solutions/inventory" class="flex items-center gap-3 p-2 rounded-2xl hover:bg-[#f5f5f7] transition-colors">
+                            <div class="w-7 h-7 rounded-xl bg-purple-50 flex items-center justify-center text-purple-600 text-xs"><i class="fas fa-boxes"></i></div>
+                            <div>
+                                <div class="font-semibold text-xs text-[#1d1d1f]">Inventory Control</div>
+                                <div class="text-[10px] text-[#86868b]">Multi-warehouse</div>
+                            </div>
+                        </a>
+                        <a href="/solutions/erp-system" class="flex items-center gap-3 p-2 rounded-2xl hover:bg-[#f5f5f7] transition-colors">
+                            <div class="w-7 h-7 rounded-xl bg-indigo-50 flex items-center justify-center text-indigo-600 text-xs"><i class="fas fa-th-large"></i></div>
+                            <div>
+                                <div class="font-semibold text-xs text-[#1d1d1f]">Enterprise ERP</div>
+                                <div class="text-[10px] text-[#86868b]">Finance & HR</div>
+                            </div>
+                        </a>
+                        <a href="/solutions/school-management-system" class="flex items-center gap-3 p-2 rounded-2xl hover:bg-[#f5f5f7] transition-colors">
+                            <div class="w-7 h-7 rounded-xl bg-emerald-50 flex items-center justify-center text-emerald-600 text-xs"><i class="fas fa-graduation-cap"></i></div>
+                            <div>
+                                <div class="font-semibold text-xs text-[#1d1d1f]">Education (SMS)</div>
+                                <div class="text-[10px] text-[#86868b]">School Ecosystem</div>
+                            </div>
+                        </a>
+                        <a href="/solutions/ecommerce" class="flex items-center gap-3 p-2 rounded-2xl hover:bg-[#f5f5f7] transition-colors">
+                            <div class="w-7 h-7 rounded-xl bg-rose-50 flex items-center justify-center text-rose-500 text-xs"><i class="fas fa-shopping-cart"></i></div>
+                            <div>
+                                <div class="font-semibold text-xs text-[#1d1d1f]">E-commerce</div>
+                                <div class="text-[10px] text-[#86868b]">Multi-vendor retail</div>
+                            </div>
+                        </a>
+                        <a href="/solutions/accounting" class="flex items-center gap-3 p-2 rounded-2xl hover:bg-[#f5f5f7] transition-colors">
+                            <div class="w-7 h-7 rounded-xl bg-amber-50 flex items-center justify-center text-amber-600 text-xs"><i class="fas fa-calculator"></i></div>
+                            <div>
+                                <div class="font-semibold text-xs text-[#1d1d1f]">Accounts & Finance</div>
+                                <div class="text-[10px] text-[#86868b]">Ledger & Invoicing</div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Column 2: Digital Apps & AI -->
+                    <div class="space-y-1">
+                        <span class="text-[10px] font-extrabold uppercase tracking-widest text-[#86868b] px-3">Apps & AI</span>
+                        <a href="/solutions/web-apps" class="flex items-center gap-3 p-2 rounded-2xl hover:bg-[#f5f5f7] transition-colors">
+                            <div class="w-7 h-7 rounded-xl bg-cyan-50 flex items-center justify-center text-cyan-600 text-xs"><i class="fas fa-code"></i></div>
+                            <div>
+                                <div class="font-semibold text-xs text-[#1d1d1f]">Web Apps</div>
+                                <div class="text-[10px] text-[#86868b]">Custom portals</div>
+                            </div>
+                        </a>
+                        <a href="/solutions/mobile-app-development" class="flex items-center gap-3 p-2 rounded-2xl hover:bg-[#f5f5f7] transition-colors">
+                            <div class="w-7 h-7 rounded-xl bg-teal-50 flex items-center justify-center text-teal-600 text-xs"><i class="fas fa-mobile-alt"></i></div>
+                            <div>
+                                <div class="font-semibold text-xs text-[#1d1d1f]">Mobile Apps</div>
+                                <div class="text-[10px] text-[#86868b]">iOS & Android</div>
+                            </div>
+                        </a>
+                        <a href="/solutions/business-ai" class="flex items-center gap-3 p-2 rounded-2xl hover:bg-[#f5f5f7] transition-colors">
+                            <div class="w-7 h-7 rounded-xl bg-violet-50 flex items-center justify-center text-violet-600 text-xs"><i class="fas fa-robot"></i></div>
+                            <div>
+                                <div class="font-semibold text-xs text-[#1d1d1f]">Business AI</div>
+                                <div class="text-[10px] text-[#86868b]">LLMs & Agents</div>
+                            </div>
+                        </a>
+                        <a href="/solutions/data-science" class="flex items-center gap-3 p-2 rounded-2xl hover:bg-[#f5f5f7] transition-colors">
+                            <div class="w-7 h-7 rounded-xl bg-fuchsia-50 flex items-center justify-center text-fuchsia-600 text-xs"><i class="fas fa-chart-line"></i></div>
+                            <div>
+                                <div class="font-semibold text-xs text-[#1d1d1f]">Data Science</div>
+                                <div class="text-[10px] text-[#86868b]">Predictive Models</div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Column 3: Infrastructure & Security -->
+                    <div class="space-y-1">
+                        <span class="text-[10px] font-extrabold uppercase tracking-widest text-[#86868b] px-3">Infrastructure</span>
+                        <a href="/solutions/server-management" class="flex items-center gap-3 p-2 rounded-2xl hover:bg-[#f5f5f7] transition-colors">
+                            <div class="w-7 h-7 rounded-xl bg-slate-100 flex items-center justify-center text-slate-700 text-xs"><i class="fas fa-server"></i></div>
+                            <div>
+                                <div class="font-semibold text-xs text-[#1d1d1f]">Server Mgmt</div>
+                                <div class="text-[10px] text-[#86868b]">Linux & AWS Cloud</div>
+                            </div>
+                        </a>
+                        <a href="/solutions/network" class="flex items-center gap-3 p-2 rounded-2xl hover:bg-[#f5f5f7] transition-colors">
+                            <div class="w-7 h-7 rounded-xl bg-emerald-50 flex items-center justify-center text-emerald-600 text-xs"><i class="fas fa-network-wired"></i></div>
+                            <div>
+                                <div class="font-semibold text-xs text-[#1d1d1f]">Network Services</div>
+                                <div class="text-[10px] text-[#86868b]">ISP & Mikrotik</div>
+                            </div>
+                        </a>
+                        <a href="/solutions/security" class="flex items-center gap-3 p-2 rounded-2xl hover:bg-[#f5f5f7] transition-colors">
+                            <div class="w-7 h-7 rounded-xl bg-red-50 flex items-center justify-center text-red-600 text-xs"><i class="fas fa-shield-halved"></i></div>
+                            <div>
+                                <div class="font-semibold text-xs text-[#1d1d1f]">Security & Audit</div>
+                                <div class="text-[10px] text-[#86868b]">Pentesting</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <a href="/rd-wing" class="hover:text-[#0071e3] transition-colors">R&D Lab</a>
+            <a href="/#featured-products" class="hover:text-[#0071e3] transition-colors">Products</a>
+            <a href="/portfolio" class="hover:text-[#0071e3] transition-colors">Portfolio</a>
+            <a href="/about" class="hover:text-[#0071e3] transition-colors">About Us</a>
+            <a href="/blog" class="hover:text-[#0071e3] transition-colors">Blog</a>
+            <a href="/contact" class="hover:text-[#0071e3] transition-colors">Contact</a>
+        </div>
+
+        <!-- Right Action Pill -->
+        <div class="flex items-center gap-3">
+            <a href="/contact" class="bg-[#0071e3] hover:bg-[#0077ed] text-white text-xs font-semibold px-5 py-2.5 rounded-full shadow-md shadow-blue-500/20 hover:shadow-lg hover:scale-[1.02] active:scale-95 transition-all">
+                Get Free Demo
+            </a>
+            <button id="menu-btn" class="lg:hidden w-8 h-8 flex items-center justify-center rounded-full bg-[#f5f5f7] text-[#1d1d1f]">
+                <i class="fas fa-bars text-sm"></i>
+            </button>
+        </div>
+    </nav>
+</header>

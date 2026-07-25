@@ -1,3 +1,30 @@
+export const inventoryVideos = {
+    hero: {
+        title: "Multi-Warehouse Sync",
+        desc: "Instant stock adjustments across warehouses, retail outlets, and online channels.",
+        src: "https://assets.mixkit.co/videos/preview/mixkit-warehouse-worker-scanning-a-box-41531-large.mp4",
+        poster: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=1200&auto=format&fit=crop"
+    },
+    businessWorkflow: {
+        title: "Adaptive Stock Workflows",
+        desc: "Automated batch/lot tracking, barcode printing, and smart reorder points.",
+        src: "https://assets.mixkit.co/videos/preview/mixkit-worker-organizing-boxes-in-a-warehouse-41536-large.mp4",
+        poster: "https://images.unsplash.com/photo-1553413077-190dd305871c?q=80&w=1200&auto=format&fit=crop"
+    },
+    trackingEngine: {
+        title: "Batch & Expiry Management",
+        desc: "FIFO/LIFO tracking, automated expiration alerts, and multi-location transfers.",
+        src: "https://assets.mixkit.co/videos/preview/mixkit-scanning-products-in-a-logistics-center-41537-large.mp4",
+        poster: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?q=80&w=1200&auto=format&fit=crop"
+    },
+    analyticsShowcase: {
+        title: "Live Stock Intelligence",
+        desc: "Dead stock alerts, valuation reports, and real-time inventory turn metrics.",
+        src: "https://assets.mixkit.co/videos/preview/mixkit-analyzing-financial-graphs-on-a-computer-41535-large.mp4",
+        poster: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop"
+    }
+};
+
 export const pricingPlans = [
     {
         name: "Basic Plan",

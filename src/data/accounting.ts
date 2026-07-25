@@ -1,3 +1,30 @@
+export const accountingVideos = {
+    hero: {
+        title: "Automated Ledger Engine",
+        desc: "Real-time double-entry bookkeeping, automated reconciliations, and tax compliance.",
+        src: "https://assets.mixkit.co/videos/preview/mixkit-hands-typing-on-a-laptop-keyboard-41532-large.mp4",
+        poster: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=1200&auto=format&fit=crop"
+    },
+    businessWorkflow: {
+        title: "Adaptive Financial Workflows",
+        desc: "From small business invoicing to multi-entity enterprise consolidated reporting.",
+        src: "https://assets.mixkit.co/videos/preview/mixkit-financial-charts-on-a-laptop-screen-41533-large.mp4",
+        poster: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop"
+    },
+    auditEngine: {
+        title: "Real-time Audit & Compliance",
+        desc: "Instant ledger verification, automated tax calculation, and encrypted audit trails.",
+        src: "https://assets.mixkit.co/videos/preview/mixkit-business-charts-and-graphs-on-a-screen-41534-large.mp4",
+        poster: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop"
+    },
+    analyticsShowcase: {
+        title: "Live Cash Flow Analytics",
+        desc: "Predictive P&L metrics, balance sheet forecasting, and instant financial health scoring.",
+        src: "https://assets.mixkit.co/videos/preview/mixkit-analyzing-financial-graphs-on-a-computer-41535-large.mp4",
+        poster: "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?q=80&w=1200&auto=format&fit=crop"
+    }
+};
+
 export const pricingPlans = [
     {
         name: "Basic Plan",

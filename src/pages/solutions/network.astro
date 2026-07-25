@@ -1,4 +1,5 @@
 ---
+// Location: frontend/src/pages/solutions/network.astro
 import MainLayout from "../../layouts/MainLayout.astro";
 import Navbar from "../../components/Navbar.astro";
 import Footer from "../../components/Footer.astro";
@@ -7,569 +8,653 @@ import Footer from "../../components/Footer.astro";
 <MainLayout title="Network Solutions - Globix Tech">
     <Navbar />
 
-    <main class="min-h-screen bg-slate-50">
-        <!-- Hero Section -->
-        <section
-            class="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden bg-[#0c1b3d]"
-        >
-            <div
-                class="absolute inset-0 bg-gradient-to-br from-[#0c1b3d] via-[#1a2c5a] to-[#0c1b3d]"
-            >
-            </div>
-            <div
-                class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-cyan-500/10 to-transparent blur-3xl"
-            >
-            </div>
+    <!-- Ambient Glass Background Gradient Blobs -->
+    <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
+        <div class="absolute -top-40 -left-40 w-[600px] h-[600px] bg-cyan-200/30 rounded-full blur-[140px] opacity-70"></div>
+        <div class="absolute top-[35%] -right-40 w-[700px] h-[700px] bg-blue-200/25 rounded-full blur-[160px] opacity-60"></div>
+        <div class="absolute top-[65%] left-1/4 w-[600px] h-[600px] bg-indigo-100/40 rounded-full blur-[150px] opacity-50"></div>
+    </div>
 
-            <div class="container mx-auto px-6 relative z-10 text-center">
-                <div
-                    class="inline-flex items-center gap-2 bg-cyan-500/10 border border-cyan-500/20 px-4 py-2 rounded-full text-cyan-400 text-sm font-semibold mb-6"
-                >
-                    <i class="fas fa-network-wired"></i> Enterprise Networking
-                </div>
-                <h1
-                    class="text-4xl md:text-6xl font-extrabold text-white mb-6 leading-[1.1]"
-                >
-                    Seamless Connectivity, <br />
-                    <span
-                        class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500"
-                        >Robust Security</span
-                    >
-                </h1>
-                <p
-                    class="text-lg md:text-xl text-gray-300 mb-10 max-w-2xl mx-auto leading-relaxed"
-                >
-                    We design, build, and manage scalable network
-                    infrastructures that keep your business connected and
-                    secure.
-                </p>
-                <div class="flex justify-center gap-4">
-                    <a
-                        href="#contact"
-                        class="bg-cyan-600 hover:bg-cyan-700 text-white px-8 py-4 rounded-xl font-bold transition-all shadow-lg shadow-cyan-600/20 flex items-center gap-2"
-                    >
-                        Get Started <i class="fas fa-arrow-right text-sm"></i>
-                    </a>
+    <main class="relative z-10 min-h-screen bg-white text-slate-900 font-sans antialiased selection:bg-cyan-500/20 selection:text-cyan-900">
+        
+        <!-- ================= HERO SECTION ================= -->
+        <section class="relative pt-36 pb-24 md:pt-48 md:pb-36 overflow-hidden bg-gradient-to-r from-cyan-50/80 via-blue-50/60 to-indigo-50/50" animate-slow-gradient">
+            <!-- Bottom Faded Soft Transition Layer -->
+            <div class="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-b from-transparent via-[#FBFBFD]/60 to-[#FBFBFD] pointer-events-none z-10"></div>
+
+            <div class="container mx-auto px-6 max-w-7xl">
+                <div class="grid lg:grid-cols-12 gap-12 items-center">
+                    
+                    <!-- Left Hero Content -->
+                    <div class="lg:col-span-7 space-y-8 text-left">
+                        <!-- Apple-style Badge -->
+                        <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-white/80 border border-slate-200/80 shadow-[0_2px_10px_rgba(0,0,0,0.03)] backdrop-blur-xl">
+                            <span class="flex h-2 w-2 rounded-full bg-cyan-500 animate-pulse"></span>
+                            <span class="text-xs font-semibold uppercase tracking-wider text-slate-700">
+                                Enterprise Networking
+                            </span>
+                        </div>
+
+                        <!-- Main Headline -->
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 leading-[1.08]">
+                            Seamless Connectivity, <br />
+                            <span class="bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-600 bg-clip-text text-transparent">
+                                Robust Security.
+                            </span>
+                        </h1>
+
+                        <!-- Lead Text -->
+                        <p class="text-lg sm:text-xl text-slate-600 max-w-2xl font-normal leading-relaxed">
+                            We design, build, and manage scalable network infrastructures that keep your business connected and secure.
+                        </p>
+
+                        <!-- CTA Actions -->
+                        <div class="pt-2 flex flex-wrap items-center gap-4">
+                            <a
+                                href="#contact"
+                                class="inline-flex items-center justify-center gap-3 bg-slate-900 hover:bg-slate-800 text-white px-8 py-4 rounded-2xl font-semibold transition-all duration-300 shadow-[0_10px_25px_rgba(15,23,42,0.15)] hover:shadow-[0_15px_30px_rgba(15,23,42,0.25)] hover:-translate-y-0.5"
+                            >
+                                Get Started 
+                                <i class="fas fa-arrow-right text-xs transition-transform group-hover:translate-x-1"></i>
+                            </a>
+                            <a
+                                href="#pricing"
+                                class="inline-flex items-center justify-center gap-2 bg-white/80 hover:bg-white text-slate-700 border border-slate-200/80 px-7 py-4 rounded-2xl font-semibold backdrop-blur-xl transition-all duration-300 shadow-sm hover:shadow-md"
+                            >
+                                View Packages
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Right Hero Animation (VIDEO ANIMATION 1) -->
+                    <div class="lg:col-span-5">
+                        <div class="relative group mx-auto max-w-md lg:max-w-none">
+                            <div class="absolute -inset-1 bg-gradient-to-r from-cyan-400/30 to-blue-500/30 rounded-[2.5rem] blur-2xl opacity-50 group-hover:opacity-75 transition duration-1000"></div>
+                            
+                            <!-- Glass Frame Video Wrapper -->
+                            <div class="relative rounded-[2rem] p-3 bg-white/70 border border-white/80 shadow-[0_20px_50px_rgba(0,0,0,0.06)] backdrop-blur-2xl overflow-hidden">
+                                <div class="relative rounded-[1.5rem] overflow-hidden aspect-[4/3] bg-slate-900">
+                                    <video 
+                                        autoplay 
+                                        loop 
+                                        muted 
+                                        playsinline 
+                                        class="w-full h-full object-cover opacity-90 scale-105"
+                                    >
+                                        <source src="https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-screens-and-data-41564-large.mp4" type="video/mp4" />
+                                        Your browser does not support the video tag.
+                                    </video>
+                                    
+                                    <!-- Video Overlay Glass Pill -->
+                                    <div class="absolute bottom-4 left-4 right-4 p-4 rounded-xl bg-white/80 border border-white/60 backdrop-blur-md shadow-lg flex items-center justify-between">
+                                        <div class="flex items-center gap-3">
+                                            <div class="w-10 h-10 rounded-lg bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-600">
+                                                <i class="fas fa-network-wired text-sm"></i>
+                                            </div>
+                                            <div>
+                                                <div class="text-xs font-bold text-slate-900">Core Network Status</div>
+                                                <div class="text-[11px] text-slate-500">99.99% Uptime Active</div>
+                                            </div>
+                                        </div>
+                                        <span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-emerald-500/10 text-emerald-600 border border-emerald-500/20">Live</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </section>
 
-        <!-- Services Overview -->
-        <section class="py-24 bg-white">
-            <div class="container mx-auto px-6">
-                <!-- Corporate Services -->
-                <div class="text-center mb-16">
-                    <h2
-                        class="text-3xl md:text-5xl font-bold text-[#0c1b3d] mb-4"
-                    >
+
+        <!-- ================= CORPORATE & OFFICE SOLUTIONS ================= -->
+        <section class="py-28 relative">
+            <div class="container mx-auto px-6 max-w-7xl">
+                
+                <!-- Section Header -->
+                <div class="text-center max-w-3xl mx-auto mb-20 space-y-4">
+                    <span class="text-xs font-bold uppercase tracking-widest text-cyan-600 bg-cyan-50 px-3.5 py-1.5 rounded-full border border-cyan-100">
+                        Enterprise Grade Infrastructure
+                    </span>
+                    <h2 class="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
                         Corporate & Office Solutions
                     </h2>
-                    <p class="text-gray-600 max-w-3xl mx-auto">
-                        Reliable, scalable, and secure network solutions for
-                        modern businesses.
+                    <p class="text-slate-600 text-lg">
+                        Reliable, scalable, and secure network solutions tailored for modern businesses.
                     </p>
                 </div>
 
-                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-24">
-                    <!-- Service 1 -->
-                    <div
-                        class="bg-slate-50 p-8 rounded-2xl hover:bg-white hover:shadow-xl transition-all border border-slate-100 group"
-                    >
-                        <div
-                            class="w-14 h-14 bg-cyan-100 rounded-xl flex items-center justify-center text-cyan-600 text-2xl mb-6 group-hover:scale-110 transition-transform"
-                        >
-                            <i class="fas fa-building"></i>
+                <!-- Video Showcase & Feature Grid Hybrid -->
+                <div class="grid lg:grid-cols-12 gap-8 items-stretch">
+                    
+                    <!-- Feature Highlight Video Banner (VIDEO ANIMATION 2) -->
+                    <div class="lg:col-span-12 mb-4">
+                        <div class="relative rounded-3xl overflow-hidden bg-white/80 border border-white/80 shadow-[0_15px_35px_rgba(0,0,0,0.03)] backdrop-blur-2xl p-2">
+                            <div class="grid md:grid-cols-12 gap-6 items-center">
+                                <div class="md:col-span-7 relative h-64 md:h-80 rounded-2xl overflow-hidden">
+                                    <video autoplay loop muted playsinline class="w-full h-full object-cover">
+                                        <source src="https://assets.mixkit.co/videos/preview/mixkit-view-of-a-server-room-with-cables-and-lights-42861-large.mp4" type="video/mp4" />
+                                    </video>
+                                    <div class="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-white/90 hidden md:block"></div>
+                                </div>
+                                <div class="md:col-span-5 p-6 md:p-8 space-y-4">
+                                    <div class="w-12 h-12 rounded-2xl bg-cyan-50 border border-cyan-100 flex items-center justify-center text-cyan-600 text-xl font-bold">
+                                        <i class="fas fa-microchip"></i>
+                                    </div>
+                                    <h3 class="text-2xl font-bold text-slate-900">Precision Infrastructure Engineering</h3>
+                                    <p class="text-slate-600 text-sm leading-relaxed">
+                                        We integrate high-density cabling, automated failover routing, and zero-trust perimeter firewalls into a single glass panel workflow.
+                                    </p>
+                                </div>
+                            </div>
                         </div>
-                        <h3 class="text-xl font-bold text-[#0c1b3d] mb-3">
-                            Office Network Setup
-                        </h3>
-                        <p class="text-gray-600">
-                            Complete office network planning & deployment. From
-                            small startups to large corporate environments, we
-                            ensure secure internet access and internal
-                            segmentation.
-                        </p>
                     </div>
 
-                    <!-- Service 2 -->
-                    <div
-                        class="bg-slate-50 p-8 rounded-2xl hover:bg-white hover:shadow-xl transition-all border border-slate-100 group"
-                    >
-                        <div
-                            class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center text-blue-600 text-2xl mb-6 group-hover:scale-110 transition-transform"
-                        >
-                            <i class="fas fa-network-wired"></i>
+                    <!-- Service Cards (4 Original Services) -->
+                    <div class="lg:col-span-3 md:col-span-6">
+                        <div class="h-full p-8 rounded-3xl bg-white/70 hover:bg-white border border-slate-200/70 hover:border-cyan-300 shadow-[0_10px_30px_rgba(0,0,0,0.02)] hover:shadow-[0_20px_40px_rgba(6,182,212,0.08)] transition-all duration-300 backdrop-blur-xl group flex flex-col justify-between">
+                            <div>
+                                <div class="w-14 h-14 rounded-2xl bg-cyan-50 border border-cyan-100/80 flex items-center justify-center text-cyan-600 text-2xl mb-6 group-hover:scale-110 transition-transform duration-300">
+                                    <i class="fas fa-building"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-slate-900 mb-3">Office Network Setup</h3>
+                                <p class="text-slate-600 text-sm leading-relaxed">
+                                    Complete office network planning & deployment. From small startups to large corporate environments, we ensure secure internet access and internal segmentation.
+                                </p>
+                            </div>
                         </div>
-                        <h3 class="text-xl font-bold text-[#0c1b3d] mb-3">
-                            LAN Support Services
-                        </h3>
-                        <p class="text-gray-600">
-                            Expert switch configuration, structured cabling
-                            guidance, and rapid troubleshooting for end-user
-                            network issues.
-                        </p>
                     </div>
 
-                    <!-- Service 3 -->
-                    <div
-                        class="bg-slate-50 p-8 rounded-2xl hover:bg-white hover:shadow-xl transition-all border border-slate-100 group"
-                    >
-                        <div
-                            class="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center text-purple-600 text-2xl mb-6 group-hover:scale-110 transition-transform"
-                        >
-                            <i class="fas fa-wifi"></i>
+                    <div class="lg:col-span-3 md:col-span-6">
+                        <div class="h-full p-8 rounded-3xl bg-white/70 hover:bg-white border border-slate-200/70 hover:border-blue-300 shadow-[0_10px_30px_rgba(0,0,0,0.02)] hover:shadow-[0_20px_40px_rgba(59,130,246,0.08)] transition-all duration-300 backdrop-blur-xl group flex flex-col justify-between">
+                            <div>
+                                <div class="w-14 h-14 rounded-2xl bg-blue-50 border border-blue-100/80 flex items-center justify-center text-blue-600 text-2xl mb-6 group-hover:scale-110 transition-transform duration-300">
+                                    <i class="fas fa-network-wired"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-slate-900 mb-3">LAN Support Services</h3>
+                                <p class="text-slate-600 text-sm leading-relaxed">
+                                    Expert switch configuration, structured cabling guidance, and rapid troubleshooting for end-user network issues.
+                                </p>
+                            </div>
                         </div>
-                        <h3 class="text-xl font-bold text-[#0c1b3d] mb-3">
-                            Wireless Solutions
-                        </h3>
-                        <p class="text-gray-600">
-                            Enterprise-grade Wi-Fi deployment with heat mapping,
-                            seamless roaming, and secure guest access
-                            management.
-                        </p>
                     </div>
 
-                    <!-- Service 4 -->
-                    <div
-                        class="bg-slate-50 p-8 rounded-2xl hover:bg-white hover:shadow-xl transition-all border border-slate-100 group"
-                    >
-                        <div
-                            class="w-14 h-14 bg-red-100 rounded-xl flex items-center justify-center text-red-600 text-2xl mb-6 group-hover:scale-110 transition-transform"
-                        >
-                            <i class="fas fa-shield-alt"></i>
+                    <div class="lg:col-span-3 md:col-span-6">
+                        <div class="h-full p-8 rounded-3xl bg-white/70 hover:bg-white border border-slate-200/70 hover:border-purple-300 shadow-[0_10px_30px_rgba(0,0,0,0.02)] hover:shadow-[0_20px_40px_rgba(168,85,247,0.08)] transition-all duration-300 backdrop-blur-xl group flex flex-col justify-between">
+                            <div>
+                                <div class="w-14 h-14 rounded-2xl bg-purple-50 border border-purple-100/80 flex items-center justify-center text-purple-600 text-2xl mb-6 group-hover:scale-110 transition-transform duration-300">
+                                    <i class="fas fa-wifi"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-slate-900 mb-3">Wireless Solutions</h3>
+                                <p class="text-slate-600 text-sm leading-relaxed">
+                                    Enterprise-grade Wi-Fi deployment with heat mapping, seamless roaming, and secure guest access management.
+                                </p>
+                            </div>
                         </div>
-                        <h3 class="text-xl font-bold text-[#0c1b3d] mb-3">
-                            Secure Connectivity
-                        </h3>
-                        <p class="text-gray-600">
-                            Implementation of VLANs, VPNs for inter-branch
-                            connectivity, and QoS policies to prioritize
-                            critical business traffic.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- ISP Solutions -->
-                <div class="text-center mb-16">
-                    <h2
-                        class="text-3xl md:text-5xl font-bold text-[#0c1b3d] mb-4"
-                    >
-                        ISP & Telecom Solutions
-                    </h2>
-                    <p class="text-gray-600 max-w-3xl mx-auto">
-                        Core network design and optimization for Internet
-                        Service Providers.
-                    </p>
-                </div>
-
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- ISP Service 1 -->
-                    <div
-                        class="bg-[#0c1b3d] p-8 rounded-2xl text-white group hover:-translate-y-2 transition-transform duration-300"
-                    >
-                        <div
-                            class="w-14 h-14 bg-white/10 rounded-xl flex items-center justify-center text-cyan-400 text-2xl mb-6"
-                        >
-                            <i class="fas fa-globe"></i>
-                        </div>
-                        <h3 class="text-xl font-bold mb-3">
-                            ISP Routing & Core Network
-                        </h3>
-                        <ul class="space-y-2 text-gray-300 text-sm">
-                            <li>
-                                <i class="fas fa-check text-cyan-400 mr-2"
-                                ></i>Full ISP network design (Core,
-                                Distribution, Access)
-                            </li>
-                            <li>
-                                <i class="fas fa-check text-cyan-400 mr-2"
-                                ></i>BGP routing & Traffic Engineering
-                            </li>
-                            <li>
-                                <i class="fas fa-check text-cyan-400 mr-2"
-                                ></i>IPv6 Deployment & Redundancy
-                            </li>
-                        </ul>
                     </div>
 
-                    <!-- ISP Service 2 -->
-                    <div
-                        class="bg-[#0c1b3d] p-8 rounded-2xl text-white group hover:-translate-y-2 transition-transform duration-300"
-                    >
-                        <div
-                            class="w-14 h-14 bg-white/10 rounded-xl flex items-center justify-center text-cyan-400 text-2xl mb-6"
-                        >
-                            <i class="fas fa-sitemap"></i>
+                    <div class="lg:col-span-3 md:col-span-6">
+                        <div class="h-full p-8 rounded-3xl bg-white/70 hover:bg-white border border-slate-200/70 hover:border-emerald-300 shadow-[0_10px_30px_rgba(0,0,0,0.02)] hover:shadow-[0_20px_40px_rgba(16,185,129,0.08)] transition-all duration-300 backdrop-blur-xl group flex flex-col justify-between">
+                            <div>
+                                <div class="w-14 h-14 rounded-2xl bg-emerald-50 border border-emerald-100/80 flex items-center justify-center text-emerald-600 text-2xl mb-6 group-hover:scale-110 transition-transform duration-300">
+                                    <i class="fas fa-shield-alt"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-slate-900 mb-3">Secure Connectivity</h3>
+                                <p class="text-slate-600 text-sm leading-relaxed">
+                                    Implementation of VLANs, VPNs for inter-branch connectivity, and QoS policies to prioritize critical business traffic.
+                                </p>
+                            </div>
                         </div>
-                        <h3 class="text-xl font-bold mb-3">
-                            OLT Expertise (Global Standard)
-                        </h3>
-                        <ul class="space-y-2 text-gray-300 text-sm">
-                            <li>
-                                <i class="fas fa-check text-cyan-400 mr-2"
-                                ></i>EPON / GPON Architecture
-                            </li>
-                            <li>
-                                <i class="fas fa-check text-cyan-400 mr-2"
-                                ></i>OLT Configuration & Optimization
-                            </li>
-                            <li>
-                                <i class="fas fa-check text-cyan-400 mr-2"
-                                ></i>Vendor-neutral (Huawei, ZTE, V-SOL, etc.)
-                            </li>
-                        </ul>
                     </div>
 
-                    <!-- ISP Service 3 -->
-                    <div
-                        class="bg-[#0c1b3d] p-8 rounded-2xl text-white group hover:-translate-y-2 transition-transform duration-300"
-                    >
-                        <div
-                            class="w-14 h-14 bg-white/10 rounded-xl flex items-center justify-center text-cyan-400 text-2xl mb-6"
-                        >
-                            <i class="fas fa-tools"></i>
-                        </div>
-                        <h3 class="text-xl font-bold mb-3">
-                            Advanced Support & troubleshooting
-                        </h3>
-                        <ul class="space-y-2 text-gray-300 text-sm">
-                            <li>
-                                <i class="fas fa-check text-cyan-400 mr-2"
-                                ></i>Fault diagnosis and rapid resolution
-                            </li>
-                            <li>
-                                <i class="fas fa-check text-cyan-400 mr-2"
-                                ></i>End-to-end performance tuning
-                            </li>
-                            <li>
-                                <i class="fas fa-check text-cyan-400 mr-2"
-                                ></i>Support for both ISP and enterprise
-                                networks
-                            </li>
-                        </ul>
-                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Training Section -->
-        <section class="py-24 bg-slate-100">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-16">
-                    <span
-                        class="text-cyan-600 font-bold tracking-wider uppercase text-sm"
-                        >Globix Academy</span
-                    >
-                    <h2
-                        class="text-3xl md:text-5xl font-bold text-[#0c1b3d] mt-2 mb-4"
-                    >
-                        Training Programs
+
+        <!-- ================= ISP & TELECOM SOLUTIONS ================= -->
+        <section class="py-28 relative">
+            <div class="container mx-auto px-6 max-w-7xl">
+                
+                <div class="text-center max-w-3xl mx-auto mb-20 space-y-4">
+                    <span class="text-xs font-bold uppercase tracking-widest text-blue-600 bg-blue-50 px-3.5 py-1.5 rounded-full border border-blue-100">
+                        Carrier-Grade Architecture
+                    </span>
+                    <h2 class="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
+                        ISP & Telecom Solutions
                     </h2>
-                    <p class="text-gray-600 max-w-3xl mx-auto">
-                        Industry-oriented, real-world technical training
-                        delivered by active core network engineers.
+                    <p class="text-slate-600 text-lg">
+                        Core network design and optimization for Internet Service Providers.
                     </p>
                 </div>
 
+                <div class="grid lg:grid-cols-12 gap-8 items-center">
+                    
+                    <!-- ISP Video Showcase Feature (VIDEO ANIMATION 3) -->
+                    <div class="lg:col-span-5">
+                        <div class="relative rounded-3xl p-3 bg-white/80 border border-white/90 shadow-[0_20px_45px_rgba(0,0,0,0.04)] backdrop-blur-2xl">
+                            <div class="relative rounded-2xl overflow-hidden aspect-[4/5]">
+                                <video autoplay loop muted playsinline class="w-full h-full object-cover">
+                                    <source src="https://assets.mixkit.co/videos/preview/mixkit-close-up-of-a-fiber-optic-cable-42860-large.mp4" type="video/mp4" />
+                                </video>
+                                <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent"></div>
+                                <div class="absolute bottom-6 left-6 right-6 text-white space-y-2">
+                                    <div class="text-xs font-bold uppercase tracking-widest text-cyan-400">High Speed Fiber Core</div>
+                                    <div class="text-xl font-bold">Ultra-low Latency BGP Peering</div>
+                                    <p class="text-xs text-slate-300">Optimized traffic routing for Tier-1, Tier-2, and regional ISPs.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3 ISP Service Cards (Original Text Data) -->
+                    <div class="lg:col-span-7 space-y-6">
+                        
+                        <!-- ISP 1 -->
+                        <div class="p-8 rounded-3xl bg-white/80 hover:bg-white border border-slate-200/80 hover:border-cyan-400 shadow-[0_10px_30px_rgba(0,0,0,0.02)] transition-all duration-300 backdrop-blur-xl group">
+                            <div class="flex items-start gap-5">
+                                <div class="w-12 h-12 rounded-2xl bg-cyan-50 border border-cyan-100 flex items-center justify-center text-cyan-600 text-xl font-bold shrink-0">
+                                    <i class="fas fa-globe"></i>
+                                </div>
+                                <div class="space-y-3">
+                                    <h3 class="text-xl font-bold text-slate-900">ISP Routing & Core Network</h3>
+                                    <ul class="space-y-2.5 text-slate-600 text-sm">
+                                        <li class="flex items-center gap-2.5">
+                                            <i class="fas fa-check-circle text-cyan-500 text-base"></i>
+                                            <span>Full ISP network design (Core, Distribution, Access)</span>
+                                        </li>
+                                        <li class="flex items-center gap-2.5">
+                                            <i class="fas fa-check-circle text-cyan-500 text-base"></i>
+                                            <span>BGP routing & Traffic Engineering</span>
+                                        </li>
+                                        <li class="flex items-center gap-2.5">
+                                            <i class="fas fa-check-circle text-cyan-500 text-base"></i>
+                                            <span>IPv6 Deployment & Redundancy</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ISP 2 -->
+                        <div class="p-8 rounded-3xl bg-white/80 hover:bg-white border border-slate-200/80 hover:border-cyan-400 shadow-[0_10px_30px_rgba(0,0,0,0.02)] transition-all duration-300 backdrop-blur-xl group">
+                            <div class="flex items-start gap-5">
+                                <div class="w-12 h-12 rounded-2xl bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-600 text-xl font-bold shrink-0">
+                                    <i class="fas fa-sitemap"></i>
+                                </div>
+                                <div class="space-y-3">
+                                    <h3 class="text-xl font-bold text-slate-900">OLT Expertise (Global Standard)</h3>
+                                    <ul class="space-y-2.5 text-slate-600 text-sm">
+                                        <li class="flex items-center gap-2.5">
+                                            <i class="fas fa-check-circle text-cyan-500 text-base"></i>
+                                            <span>EPON / GPON Architecture</span>
+                                        </li>
+                                        <li class="flex items-center gap-2.5">
+                                            <i class="fas fa-check-circle text-cyan-500 text-base"></i>
+                                            <span>OLT Configuration & Optimization</span>
+                                        </li>
+                                        <li class="flex items-center gap-2.5">
+                                            <i class="fas fa-check-circle text-cyan-500 text-base"></i>
+                                            <span>Vendor-neutral (Huawei, ZTE, V-SOL, etc.)</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ISP 3 -->
+                        <div class="p-8 rounded-3xl bg-white/80 hover:bg-white border border-slate-200/80 hover:border-cyan-400 shadow-[0_10px_30px_rgba(0,0,0,0.02)] transition-all duration-300 backdrop-blur-xl group">
+                            <div class="flex items-start gap-5">
+                                <div class="w-12 h-12 rounded-2xl bg-indigo-50 border border-indigo-100 flex items-center justify-center text-indigo-600 text-xl font-bold shrink-0">
+                                    <i class="fas fa-tools"></i>
+                                </div>
+                                <div class="space-y-3">
+                                    <h3 class="text-xl font-bold text-slate-900">Advanced Support & Troubleshooting</h3>
+                                    <ul class="space-y-2.5 text-slate-600 text-sm">
+                                        <li class="flex items-center gap-2.5">
+                                            <i class="fas fa-check-circle text-cyan-500 text-base"></i>
+                                            <span>Fault diagnosis and rapid resolution</span>
+                                        </li>
+                                        <li class="flex items-center gap-2.5">
+                                            <i class="fas fa-check-circle text-cyan-500 text-base"></i>
+                                            <span>End-to-end performance tuning</span>
+                                        </li>
+                                        <li class="flex items-center gap-2.5">
+                                            <i class="fas fa-check-circle text-cyan-500 text-base"></i>
+                                            <span>Support for both ISP and enterprise networks</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= TRAINING SECTION (GLOBIX ACADEMY) ================= -->
+        <section class="py-28 relative">
+            <div class="container mx-auto px-6 max-w-7xl">
+                
+                <!-- Section Title Header -->
+                <div class="text-center max-w-3xl mx-auto mb-20 space-y-4">
+                    <span class="text-xs font-bold uppercase tracking-widest text-indigo-600 bg-indigo-50 px-4 py-1.5 rounded-full border border-indigo-100">
+                        Globix Academy
+                    </span>
+                    <h2 class="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
+                        Training Programs
+                    </h2>
+                    <p class="text-slate-600 text-lg">
+                        Industry-oriented, real-world technical training delivered by active core network engineers.
+                    </p>
+                </div>
+
+                <!-- Academy Interactive Visual Banner (VIDEO ANIMATION 4) -->
+                <div class="mb-12 rounded-3xl p-3 bg-white/80 border border-white/90 shadow-[0_15px_35px_rgba(0,0,0,0.03)] backdrop-blur-2xl">
+                    <div class="relative rounded-2xl h-48 sm:h-64 overflow-hidden">
+                        <video autoplay loop muted playsinline class="w-full h-full object-cover">
+                            <source src="https://assets.mixkit.co/videos/preview/mixkit-hands-typing-on-a-laptop-keyboard-41559-large.mp4" type="video/mp4" />
+                        </video>
+                        <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-[2px] flex items-center justify-between p-8 sm:p-12">
+                            <div class="max-w-xl text-white space-y-2">
+                                <h3 class="text-2xl font-bold">Hands-on Laboratory Environment</h3>
+                                <p class="text-sm text-slate-200">Practice live RouterOS, Cisco IOS, Junos CLI commands, and OLT provisioning on real physical racks.</p>
+                            </div>
+                            <div class="hidden md:block">
+                                <a href="#contact" class="px-6 py-3 rounded-xl bg-white text-slate-900 font-bold text-sm hover:bg-slate-100 transition-colors shadow-lg">
+                                    Enroll Today
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6 Original Course Cards -->
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    
                     <!-- Training 1 -->
-                    <div
-                        class="bg-white p-6 rounded-xl border-l-4 border-orange-500 shadow-sm hover:shadow-md transition-shadow"
-                    >
-                        <h3 class="text-lg font-bold text-[#0c1b3d] mb-2">
-                            MikroTik for ISP Operations
-                        </h3>
-                        <p class="text-sm text-gray-600 mb-4">
-                            Master ISP-grade RouterOS configuration, BGP, OSPF,
-                            MPLS, and bandwidth management with real production
-                            scenarios.
-                        </p>
+                    <div class="p-7 rounded-3xl bg-white/70 hover:bg-white border border-slate-200/80 hover:border-orange-400/80 shadow-[0_8px_25px_rgba(0,0,0,0.02)] hover:shadow-xl transition-all duration-300 backdrop-blur-xl relative overflow-hidden group">
+                        <div class="w-1.5 h-12 bg-orange-500 rounded-full absolute left-0 top-7"></div>
+                        <div class="pl-4">
+                            <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-orange-600 transition-colors">
+                                MikroTik for ISP Operations
+                            </h3>
+                            <p class="text-xs text-slate-600 leading-relaxed">
+                                Master ISP-grade RouterOS configuration, BGP, OSPF, MPLS, and bandwidth management with real production scenarios.
+                            </p>
+                        </div>
                     </div>
 
                     <!-- Training 2 -->
-                    <div
-                        class="bg-white p-6 rounded-xl border-l-4 border-blue-500 shadow-sm hover:shadow-md transition-shadow"
-                    >
-                        <h3 class="text-lg font-bold text-[#0c1b3d] mb-2">
-                            MikroTik for Corporate
-                        </h3>
-                        <p class="text-sm text-gray-600 mb-4">
-                            Learn Enterprise LAN/WAN design, VLAN, VPN, and
-                            firewall configuration for secure office networks.
-                        </p>
+                    <div class="p-7 rounded-3xl bg-white/70 hover:bg-white border border-slate-200/80 hover:border-blue-400/80 shadow-[0_8px_25px_rgba(0,0,0,0.02)] hover:shadow-xl transition-all duration-300 backdrop-blur-xl relative overflow-hidden group">
+                        <div class="w-1.5 h-12 bg-blue-500 rounded-full absolute left-0 top-7"></div>
+                        <div class="pl-4">
+                            <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">
+                                MikroTik for Corporate
+                            </h3>
+                            <p class="text-xs text-slate-600 leading-relaxed">
+                                Learn Enterprise LAN/WAN design, VLAN, VPN, and firewall configuration for secure office networks.
+                            </p>
+                        </div>
                     </div>
 
                     <!-- Training 3 -->
-                    <div
-                        class="bg-white p-6 rounded-xl border-l-4 border-green-500 shadow-sm hover:shadow-md transition-shadow"
-                    >
-                        <h3 class="text-lg font-bold text-[#0c1b3d] mb-2">
-                            OLT Expertise
-                        </h3>
-                        <p class="text-sm text-gray-600 mb-4">
-                            Hands-on training on EPON/GPON architecture, OLT
-                            configuration, and ONU provisioning using real
-                            devices.
-                        </p>
+                    <div class="p-7 rounded-3xl bg-white/70 hover:bg-white border border-slate-200/80 hover:border-emerald-400/80 shadow-[0_8px_25px_rgba(0,0,0,0.02)] hover:shadow-xl transition-all duration-300 backdrop-blur-xl relative overflow-hidden group">
+                        <div class="w-1.5 h-12 bg-emerald-500 rounded-full absolute left-0 top-7"></div>
+                        <div class="pl-4">
+                            <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-emerald-600 transition-colors">
+                                OLT Expertise
+                            </h3>
+                            <p class="text-xs text-slate-600 leading-relaxed">
+                                Hands-on training on EPON/GPON architecture, OLT configuration, and ONU provisioning using real devices.
+                            </p>
+                        </div>
                     </div>
 
                     <!-- Training 4 -->
-                    <div
-                        class="bg-white p-6 rounded-xl border-l-4 border-cyan-500 shadow-sm hover:shadow-md transition-shadow"
-                    >
-                        <h3 class="text-lg font-bold text-[#0c1b3d] mb-2">
-                            CCNA (Cisco)
-                        </h3>
-                        <p class="text-sm text-gray-600 mb-4">
-                            Networking fundamentals, switching, routing, and IP
-                            services. Exam-focused curriculum with practical
-                            knowledge.
-                        </p>
+                    <div class="p-7 rounded-3xl bg-white/70 hover:bg-white border border-slate-200/80 hover:border-cyan-400/80 shadow-[0_8px_25px_rgba(0,0,0,0.02)] hover:shadow-xl transition-all duration-300 backdrop-blur-xl relative overflow-hidden group">
+                        <div class="w-1.5 h-12 bg-cyan-500 rounded-full absolute left-0 top-7"></div>
+                        <div class="pl-4">
+                            <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-cyan-600 transition-colors">
+                                CCNA (Cisco)
+                            </h3>
+                            <p class="text-xs text-slate-600 leading-relaxed">
+                                Networking fundamentals, switching, routing, and IP services. Exam-focused curriculum with practical knowledge.
+                            </p>
+                        </div>
                     </div>
 
                     <!-- Training 5 -->
-                    <div
-                        class="bg-white p-6 rounded-xl border-l-4 border-purple-500 shadow-sm hover:shadow-md transition-shadow"
-                    >
-                        <h3 class="text-lg font-bold text-[#0c1b3d] mb-2">
-                            JNCIA-Junos (Juniper)
-                        </h3>
-                        <p class="text-sm text-gray-600 mb-4">
-                            Junos OS fundamentals, routing concepts, policy
-                            configuration, and ISP-oriented use cases.
-                        </p>
+                    <div class="p-7 rounded-3xl bg-white/70 hover:bg-white border border-slate-200/80 hover:border-purple-400/80 shadow-[0_8px_25px_rgba(0,0,0,0.02)] hover:shadow-xl transition-all duration-300 backdrop-blur-xl relative overflow-hidden group">
+                        <div class="w-1.5 h-12 bg-purple-500 rounded-full absolute left-0 top-7"></div>
+                        <div class="pl-4">
+                            <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-purple-600 transition-colors">
+                                JNCIA-Junos (Juniper)
+                            </h3>
+                            <p class="text-xs text-slate-600 leading-relaxed">
+                                Junos OS fundamentals, routing concepts, policy configuration, and ISP-oriented use cases.
+                            </p>
+                        </div>
                     </div>
 
                     <!-- Training 6 -->
-                    <div
-                        class="bg-white p-6 rounded-xl border-l-4 border-red-500 shadow-sm hover:shadow-md transition-shadow"
-                    >
-                        <h3 class="text-lg font-bold text-[#0c1b3d] mb-2">
-                            ICT for HSC Students
-                        </h3>
-                        <p class="text-sm text-gray-600 mb-4">
-                            Comprehensive syllabus coverage with concept-based
-                            learning and practical examples for students.
-                        </p>
+                    <div class="p-7 rounded-3xl bg-white/70 hover:bg-white border border-slate-200/80 hover:border-rose-400/80 shadow-[0_8px_25px_rgba(0,0,0,0.02)] hover:shadow-xl transition-all duration-300 backdrop-blur-xl relative overflow-hidden group">
+                        <div class="w-1.5 h-12 bg-rose-500 rounded-full absolute left-0 top-7"></div>
+                        <div class="pl-4">
+                            <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-rose-600 transition-colors">
+                                ICT for HSC Students
+                            </h3>
+                            <p class="text-xs text-slate-600 leading-relaxed">
+                                Comprehensive syllabus coverage with concept-based learning and practical examples for students.
+                            </p>
+                        </div>
                     </div>
+
                 </div>
 
-                <div class="mt-12 text-center">
+                <div class="mt-14 text-center">
                     <a
                         href="#contact"
-                        class="inline-flex items-center gap-2 text-[#0c1b3d] font-bold hover:text-cyan-600 transition-colors"
+                        class="inline-flex items-center gap-3 bg-white/90 hover:bg-white text-slate-800 border border-slate-200 px-8 py-4 rounded-2xl font-bold text-sm shadow-sm hover:shadow-md transition-all duration-300 backdrop-blur-xl group"
                     >
-                        Download Course Outline <i class="fas fa-download"></i>
+                        <span>Download Course Outline</span>
+                        <i class="fas fa-download text-xs text-cyan-600 transition-transform group-hover:translate-y-0.5"></i>
                     </a>
                 </div>
+
             </div>
         </section>
 
-        <!-- Pricing Section -->
-        <section class="py-24 bg-slate-50" id="pricing">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-16">
-                    <h2
-                        class="text-3xl md:text-5xl font-bold text-[#0c1b3d] mb-4"
-                    >
+
+        <!-- ================= PRICING / DEPLOYMENT PACKAGES ================= -->
+        <section class="py-28 relative" id="pricing">
+            <div class="container mx-auto px-6 max-w-7xl">
+                
+                <div class="text-center max-w-3xl mx-auto mb-20 space-y-4">
+                    <span class="text-xs font-bold uppercase tracking-widest text-cyan-600 bg-cyan-50 px-4 py-1.5 rounded-full border border-cyan-100">
+                        Transparent Tiering
+                    </span>
+                    <h2 class="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
                         Deployment Packages
                     </h2>
-                    <p class="text-gray-600 max-w-3xl mx-auto">
+                    <p class="text-slate-600 text-lg">
                         Scalable solutions for businesses of all sizes.
                     </p>
                 </div>
 
-                <div class="overflow-x-auto pb-8">
-                    <table
-                        class="w-full min-w-[1000px] border-collapse border border-gray-200 bg-white shadow-sm"
-                    >
-                        <thead>
-                            <tr class="bg-gray-50">
-                                <th
-                                    class="p-6 text-left border border-gray-200 w-1/4"
-                                    >Features</th
-                                >
-                                <th
-                                    class="p-6 text-center border border-gray-200 w-1/4 bg-blue-50/50"
-                                >
-                                    <div
-                                        class="font-bold text-[#0c1b3d] text-xl mb-1"
-                                    >
-                                        Small Office
-                                    </div>
-                                    <div class="text-sm text-gray-500">
-                                        Up to 20 Users
-                                    </div>
-                                </th>
-                                <th
-                                    class="p-6 text-center border border-gray-200 w-1/4 bg-cyan-50/50"
-                                >
-                                    <div
-                                        class="font-bold text-[#0c1b3d] text-xl mb-1"
-                                    >
-                                        Corporate
-                                    </div>
-                                    <div class="text-sm text-gray-500">
-                                        Up to 100 Users
-                                    </div>
-                                </th>
-                                <th
-                                    class="p-6 text-center border border-gray-200 w-1/4 bg-purple-50/50"
-                                >
-                                    <div
-                                        class="font-bold text-[#0c1b3d] text-xl mb-1"
-                                    >
-                                        Enterprise
-                                    </div>
-                                    <div class="text-sm text-gray-500">
-                                        Unlimited Users
-                                    </div>
-                                </th>
-                            </tr>
-                            <tr>
-                                <th
-                                    class="p-4 text-left border border-gray-200 font-bold text-gray-700"
-                                    >Setup Cost</th
-                                >
-                                <th
-                                    class="p-4 text-center border border-gray-200 font-bold text-xl text-blue-600"
-                                    >Starts @ ৳ 25,000</th
-                                >
-                                <th
-                                    class="p-4 text-center border border-gray-200 font-bold text-xl text-cyan-600"
-                                    >Starts @ ৳ 80,000</th
-                                >
-                                <th
-                                    class="p-4 text-center border border-gray-200 font-bold text-xl text-purple-600"
-                                    >Custom Quote</th
-                                >
-                            </tr>
-                        </thead>
-                        <tbody class="text-sm">
-                            {
-                                [
-                                    {
-                                        name: "LAN Setup",
-                                        vals: [
-                                            "Basic",
-                                            "Advanced (VLANs)",
-                                            "Complex (Multi-site)",
-                                        ],
-                                    },
-                                    {
-                                        name: "Wi-Fi Coverage",
-                                        vals: [
-                                            "Single Point",
-                                            "Mesh System",
-                                            "Campus Wide",
-                                        ],
-                                    },
-                                    {
-                                        name: "Firewall Configuration",
-                                        vals: [
-                                            "Basic Router",
-                                            "Business Grade",
-                                            "Next-Gen Firewall",
-                                        ],
-                                    },
-                                    {
-                                        name: "Cable Management",
-                                        vals: [true, true, true],
-                                    },
-                                    {
-                                        name: "Guest Network",
-                                        vals: [true, true, true],
-                                    },
-                                    {
-                                        name: "VPN Setup",
-                                        vals: [false, true, true],
-                                    },
-                                    {
-                                        name: "Network Monitoring",
-                                        vals: [false, "Standard", "24/7 NOC"],
-                                    },
-                                    {
-                                        name: "Support Duration",
-                                        vals: ["1 Month", "3 Months", "1 Year"],
-                                    },
-                                ].map((row, idx) => (
-                                    <tr
-                                        class={
-                                            idx % 2 === 0
-                                                ? "bg-white"
-                                                : "bg-gray-50/50"
-                                        }
-                                    >
-                                        <td class="p-4 border border-gray-200 font-medium text-gray-700">
-                                            {row.name}
-                                        </td>
-                                        {row.vals.map((val) => (
-                                            <td class="p-4 border border-gray-200 text-center text-gray-600">
-                                                {typeof val === "boolean" ? (
-                                                    val ? (
-                                                        <i class="fas fa-check text-cyan-500 text-lg" />
-                                                    ) : (
-                                                        <i class="fas fa-times text-gray-300 text-lg" />
-                                                    )
-                                                ) : (
-                                                    val
-                                                )}
-                                            </td>
-                                        ))}
-                                    </tr>
-                                ))
-                            }
-                            <tr class="bg-white">
-                                <td class="p-4 border border-gray-200"></td>
+                <!-- Glass Pricing Table Frame -->
+                <div class="rounded-[2.5rem] bg-white/80 border border-white/90 shadow-[0_20px_50px_rgba(0,0,0,0.03)] backdrop-blur-2xl overflow-hidden p-3 sm:p-6">
+                    <div class="overflow-x-auto">
+                        <table class="w-full min-w-[900px] border-separate border-spacing-x-3 border-spacing-y-0 text-left">
+                            <thead>
+                                <tr>
+                                    <th class="p-6 text-slate-900 font-bold text-base w-1/4">Features</th>
+                                    
+                                    <!-- Small Office Tier -->
+                                    <th class="p-6 text-center w-1/4 bg-blue-50/40 rounded-3xl border border-blue-100/60">
+                                        <div class="font-extrabold text-slate-900 text-xl">Small Office</div>
+                                        <div class="text-xs font-medium text-slate-500 mt-1">Up to 20 Users</div>
+                                        <div class="mt-4 text-xl font-black text-blue-600">Starts @ ৳ 25,000</div>
+                                    </th>
+                                    
+                                    <!-- Corporate Tier (Highlighted) -->
+                                    <th class="p-6 text-center w-1/4 bg-cyan-50/80 rounded-3xl relative border-2 border-cyan-400/80 shadow-md">
+                                        <div class="inline-block bg-gradient-to-r from-cyan-600 to-blue-600 text-white text-[10px] font-extrabold uppercase tracking-wider px-3.5 py-1 rounded-full shadow-md mb-2">
+                                            <i class="fas fa-star text-[9px] mr-1 text-amber-300"></i> Popular
+                                        </div>
+                                        <div class="font-extrabold text-slate-900 text-xl">Corporate</div>
+                                        <div class="text-xs font-medium text-slate-500 mt-1">Up to 100 Users</div>
+                                        <div class="mt-4 text-xl font-black text-cyan-600">Starts @ ৳ 80,000</div>
+                                    </th>
+                                    
+                                    <!-- Enterprise Tier -->
+                                    <th class="p-6 text-center w-1/4 bg-purple-50/40 rounded-3xl border border-purple-100/60">
+                                        <div class="font-extrabold text-slate-900 text-xl">Enterprise</div>
+                                        <div class="text-xs font-medium text-slate-500 mt-1">Unlimited Users</div>
+                                        <div class="mt-4 text-xl font-black text-purple-600">Custom Quote</div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            
+                            <tbody class="divide-y divide-slate-100 text-sm">
                                 {
                                     [
-                                        "Get Started",
-                                        "Get Corporate",
-                                        "Contact Us",
-                                    ].map((btn, i) => (
-                                        <td class="p-4 border border-gray-200 text-center">
-                                            <a
-                                                href="#contact"
-                                                class={`inline-block px-6 py-2 rounded text-sm font-bold transition-colors text-white ${
-                                                    i === 0
-                                                        ? "bg-blue-500 hover:bg-blue-600"
-                                                        : i === 1
-                                                          ? "bg-cyan-500 hover:bg-cyan-600"
-                                                          : "bg-purple-600 hover:bg-purple-700"
-                                                }`}
-                                            >
-                                                {btn}
-                                            </a>
-                                        </td>
+                                        {
+                                            name: "LAN Setup",
+                                            vals: [
+                                                "Basic",
+                                                "Advanced (VLANs)",
+                                                "Complex (Multi-site)",
+                                            ],
+                                        },
+                                        {
+                                            name: "Wi-Fi Coverage",
+                                            vals: [
+                                                "Single Point",
+                                                "Mesh System",
+                                                "Campus Wide",
+                                            ],
+                                        },
+                                        {
+                                            name: "Firewall Configuration",
+                                            vals: [
+                                                "Basic Router",
+                                                "Business Grade",
+                                                "Next-Gen Firewall",
+                                            ],
+                                        },
+                                        {
+                                            name: "Cable Management",
+                                            vals: [true, true, true],
+                                        },
+                                        {
+                                            name: "Guest Network",
+                                            vals: [true, true, true],
+                                        },
+                                        {
+                                            name: "VPN Setup",
+                                            vals: [false, true, true],
+                                        },
+                                        {
+                                            name: "Network Monitoring",
+                                            vals: [false, "Standard", "24/7 NOC"],
+                                        },
+                                        {
+                                            name: "Support Duration",
+                                            vals: ["1 Month", "3 Months", "1 Year"],
+                                        },
+                                    ].map((row) => (
+                                        <tr class="hover:bg-slate-50/50 transition-colors">
+                                            <td class="p-5 font-semibold text-slate-800">
+                                                {row.name}
+                                            </td>
+                                            {row.vals.map((val) => (
+                                                <td class="p-5 text-center text-slate-600 font-medium">
+                                                    {typeof val === "boolean" ? (
+                                                        val ? (
+                                                            <div class="w-7 h-7 rounded-full bg-emerald-100 text-emerald-600 inline-flex items-center justify-center text-xs">
+                                                                <i class="fas fa-check" />
+                                                            </div>
+                                                        ) : (
+                                                            <div class="w-7 h-7 rounded-full bg-slate-100 text-slate-300 inline-flex items-center justify-center text-xs">
+                                                                <i class="fas fa-times" />
+                                                            </div>
+                                                        )
+                                                    ) : (
+                                                        val
+                                                    )}
+                                                </td>
+                                            ))}
+                                        </tr>
                                     ))
                                 }
-                            </tr>
-                        </tbody>
-                    </table>
+                                <tr>
+                                    <td class="p-5"></td>
+                                    {
+                                        [
+                                            { label: "Get Started", color: "bg-slate-900 hover:bg-slate-800 text-white" },
+                                            { label: "Get Corporate", color: "bg-cyan-600 hover:bg-cyan-700 text-white" },
+                                            { label: "Contact Us", color: "bg-purple-600 hover:bg-purple-700 text-white" },
+                                        ].map((btn) => (
+                                            <td class="p-5 text-center">
+                                                <a
+                                                    href="#contact"
+                                                    class={`inline-block w-full py-3 px-4 rounded-xl font-bold text-xs transition-all duration-300 shadow-sm hover:shadow-md ${btn.label === "Get Started" ? "bg-slate-900 hover:bg-slate-800 text-white" : btn.label === "Get Corporate" ? "bg-cyan-600 hover:bg-cyan-700 text-white" : "bg-purple-600 hover:bg-purple-700 text-white"}`}
+                                                >
+                                                    {btn.label}
+                                                </a>
+                                            </td>
+                                        ))
+                                    }
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ================= FINAL CTA SECTION ================= -->
+        <section class="py-24 relative overflow-hidden" id="contact">
+            <div class="container mx-auto px-6 max-w-5xl">
+                <div class="relative rounded-[3rem] p-10 sm:p-16 bg-white/80 border border-white/90 shadow-[0_30px_70px_rgba(0,0,0,0.05)] backdrop-blur-2xl text-center space-y-8 overflow-hidden">
+                    
+                    <!-- Ambient Glow Circles -->
+                    <div class="absolute -top-24 -left-24 w-64 h-64 bg-cyan-300/30 rounded-full blur-3xl pointer-events-none"></div>
+                    <div class="absolute -bottom-24 -right-24 w-64 h-64 bg-indigo-300/30 rounded-full blur-3xl pointer-events-none"></div>
+
+                    <div class="relative z-10 space-y-4 max-w-2xl mx-auto">
+                        <span class="text-xs font-bold uppercase tracking-widest text-cyan-600 bg-cyan-50 px-4 py-1.5 rounded-full border border-cyan-100">
+                            Turnkey IT Deployment
+                        </span>
+                        <h2 class="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
+                            Building a New Office?
+                        </h2>
+                        <p class="text-slate-600 text-base sm:text-lg leading-relaxed">
+                            Let us handle your entire IT infrastructure planning and deployment.
+                        </p>
+                    </div>
+
+                    <div class="relative z-10 pt-2">
+                        <a
+                            href="/#contact"
+                            class="inline-flex items-center gap-3 bg-slate-900 hover:bg-slate-800 text-white px-10 py-4 rounded-2xl font-bold text-sm transition-all duration-300 shadow-xl hover:shadow-2xl hover:-translate-y-0.5"
+                        >
+                            <span>Consult with Experts</span>
+                            <i class="fas fa-arrow-right text-xs"></i>
+                        </a>
+                    </div>
+
                 </div>
             </div>
         </section>
 
-        <!-- Final CTA -->
-        <section class="py-20 bg-[#0c1b3d] relative overflow-hidden">
-            <div class="absolute inset-0 bg-[url('/grid.svg')] opacity-10">
-            </div>
-            <div class="container mx-auto px-6 relative z-10 text-center">
-                <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
-                    Building a New Office?
-                </h2>
-                <p class="text-cyan-200 mb-10 max-w-2xl mx-auto">
-                    Let us handle your entire IT infrastructure planning and
-                    deployment.
-                </p>
-                <a
-                    href="#contact"
-                    class="bg-white text-[#0c1b3d] px-10 py-4 rounded-full font-bold hover:bg-gray-100 transition-colors inline-flex items-center gap-2"
-                >
-                    Consult with Experts <i class="fas fa-arrow-right"></i>
-                </a>
-            </div>
-        </section>
     </main>
 
     <Footer />

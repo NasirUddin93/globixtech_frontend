@@ -24,7 +24,7 @@ const uniqueId = `vbg-${Math.random().toString(36).slice(2, 8)}`;
 
 <div 
   class={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 overflow-hidden z-0 pointer-events-none rounded-3xl ${className}`}
-  style={`width: ${width}; height: ${height}; -webkit-mask-image: radial-gradient(ellipse 85% 85% at 50% 50%, black 40%, transparent 100%); mask-image: radial-gradient(ellipse 85% 85% at 50% 50%, black 40%, transparent 100%);`}
+  style={`width: ${width}; height: ${height}; -webkit-mask-image: radial-gradient(ellipse 75% 75% at 50% 50%, black 30%, transparent 95%); mask-image: radial-gradient(ellipse 75% 75% at 50% 50%, black 30%, transparent 95%);`}
 >
   <!-- Video Element: JS controls the seamless loop to skip baked-in fade-out -->
   <video
@@ -46,10 +46,10 @@ const uniqueId = `vbg-${Math.random().toString(36).slice(2, 8)}`;
   
   {overlay !== "none" && (
     <>
-      <div class="absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-white/70 to-transparent"></div>
-      <div class="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-white/70 to-transparent"></div>
-      <div class="absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-white/70 to-transparent"></div>
-      <div class="absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-white/70 to-transparent"></div>
+      <div class="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-white via-white/80 to-transparent"></div>
+      <div class="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-white via-white/80 to-transparent"></div>
+      <div class="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-white via-white/80 to-transparent"></div>
+      <div class="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-white via-white/80 to-transparent"></div>
     </>
   )}
   

@@ -1,3 +1,33 @@
+// Location: frontend/src/data/pos.ts
+
+export const posVideos = {
+    hero: {
+        title: "Speed at Scale",
+        desc: "Under 3-second checkouts with instant barcode scanning and multi-payment routing.",
+        // Placeholder royalty-free tech/POS video stream
+        src: "https://assets.mixkit.co/videos/preview/mixkit-cashier-scanning-items-at-a-supermarket-checkout-41528-large.mp4",
+        poster: "https://images.unsplash.com/photo-1556742049-0a670f4a4591?q=80&w=1200&auto=format&fit=crop"
+    },
+    businessWorkflow: {
+        title: "Tailored Operations",
+        desc: "Watch how our POS adapts seamlessly from busy restaurants to high-SKU retail environments.",
+        src: "https://assets.mixkit.co/videos/preview/mixkit-waiter-taking-an-order-on-a-tablet-41530-large.mp4",
+        poster: "https://images.unsplash.com/photo-1556740758-90de374c12ad?q=80&w=1200&auto=format&fit=crop"
+    },
+    inventoryEngine: {
+        title: "Real-time Sync Engine",
+        desc: "Instant stock adjustments across multi-branch locations without operational lag.",
+        src: "https://assets.mixkit.co/videos/preview/mixkit-warehouse-worker-scanning-a-box-41531-large.mp4",
+        poster: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=1200&auto=format&fit=crop"
+    },
+    analyticsShowcase: {
+        title: "Live Business Intelligence",
+        desc: "Real-time revenue stream tracking, shift breakdowns, and stock forecast metrics.",
+        src: "https://assets.mixkit.co/videos/preview/mixkit-hands-typing-on-a-laptop-keyboard-41532-large.mp4",
+        poster: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop"
+    }
+};
+
 export const pricingPlans = [
     {
         name: "Basic Plan",
@@ -110,8 +140,8 @@ export const moduleCategories = [
     {
         title: "SALES & TRANSACTIONS",
         icon: "fa-cash-register",
-        color: "text-blue-600",
-        bg: "bg-blue-50",
+        color: "text-emerald-600",
+        bg: "bg-emerald-50/80",
         modules: [
             {
                 id: 1,
@@ -162,8 +192,8 @@ export const moduleCategories = [
     {
         title: "PRODUCT & INVENTORY",
         icon: "fa-boxes",
-        color: "text-purple-600",
-        bg: "bg-purple-50",
+        color: "text-blue-600",
+        bg: "bg-blue-50/80",
         modules: [
             {
                 id: 5,
@@ -214,8 +244,8 @@ export const moduleCategories = [
     {
         title: "CUSTOMER MANAGEMENT",
         icon: "fa-users",
-        color: "text-green-600",
-        bg: "bg-green-50",
+        color: "text-indigo-600",
+        bg: "bg-indigo-50/80",
         modules: [
             {
                 id: 9,
@@ -255,8 +285,8 @@ export const moduleCategories = [
     {
         title: "REPORTING & ANALYTICS",
         icon: "fa-chart-bar",
-        color: "text-orange-600",
-        bg: "bg-orange-50",
+        color: "text-teal-600",
+        bg: "bg-teal-50/80",
         modules: [
             {
                 id: 12,
@@ -307,8 +337,8 @@ export const moduleCategories = [
     {
         title: "HARDWARE & INTEGRATIONS",
         icon: "fa-plug",
-        color: "text-red-600",
-        bg: "bg-red-50",
+        color: "text-violet-600",
+        bg: "bg-violet-50/80",
         modules: [
             {
                 id: 16,
@@ -351,7 +381,7 @@ export const stats = [
     { label: "POS Deployed", value: "500+" },
     { label: "Daily Transactions", value: "50k+" },
     { label: "Active Terminals", value: "1000+" },
-    { label: "Uptime", value: "99.9%" },
+    { label: "System Uptime", value: "99.9%" },
 ];
 
 export const coreFeatures = [
@@ -359,43 +389,43 @@ export const coreFeatures = [
         title: "Lightning-Fast Checkout",
         desc: "Process sales in under 3 seconds with barcode scanning and quick-button interfaces. Reduce queue wait times and keep customers happy.",
         icon: "fa-bolt",
-        color: "text-blue-500",
-        bg: "bg-blue-100",
+        color: "text-emerald-600",
+        bg: "bg-emerald-50/80",
     },
     {
         title: "Multi-Payment Support",
         desc: "Accept cash, cards, bKash, Nagad, Rocket, and digital wallets. Split payments and handle any payment method your customers prefer.",
         icon: "fa-credit-card",
-        color: "text-purple-500",
-        bg: "bg-purple-100",
+        color: "text-blue-600",
+        bg: "bg-blue-50/80",
     },
     {
         title: "Real-Time Inventory Sync",
         desc: "Every sale automatically updates stock levels across all locations. Never oversell or run out of popular items with instant alerts.",
         icon: "fa-sync",
-        color: "text-green-500",
-        bg: "bg-green-100",
+        color: "text-teal-600",
+        bg: "bg-teal-50/80",
     },
     {
         title: "Detailed Sales Reports",
         desc: "Track daily sales, hourly trends, top products, and employee performance. Make data-driven decisions with real-time dashboards.",
         icon: "fa-chart-pie",
-        color: "text-orange-500",
-        bg: "bg-orange-100",
+        color: "text-indigo-600",
+        bg: "bg-indigo-50/80",
     },
     {
         title: "Customer Loyalty Program",
         desc: "Build customer loyalty with points, rewards, and personalized offers. Increase repeat purchases and customer lifetime value.",
         icon: "fa-star",
-        color: "text-cyan-500",
-        bg: "bg-cyan-100",
+        color: "text-amber-600",
+        bg: "bg-amber-50/80",
     },
     {
-        title: "Offline Mode",
-        desc: "Keep selling even without internet. Our POS works offline and auto-syncs when connection is restored. Never lose a sale.",
+        title: "Offline Mode Engine",
+        desc: "Keep selling even without internet. Our POS works offline and auto-syncs when connection is restored. Never lose a single sale.",
         icon: "fa-wifi",
-        color: "text-red-500",
-        bg: "bg-red-100",
+        color: "text-rose-600",
+        bg: "bg-rose-50/80",
     },
 ];
 

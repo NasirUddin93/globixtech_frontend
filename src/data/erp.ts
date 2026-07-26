@@ -1,24 +1,24 @@
 export const erpVideos = {
     hero: {
-        url: "https://assets.mixkit.co/videos/preview/mixkit-financial-charts-on-a-computer-screen-43224-large.mp4",
+        url: "/videos/erp-system/Enterprise_Resource_Planning_f.mp4",
         poster: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop",
         badge: "Live ERP Interface v4.2",
         title: "Real-time Operational Command Center"
     },
     automation: {
-        url: "https://assets.mixkit.co/videos/preview/mixkit-software-developer-working-on-code-screen-close-up-34366-large.mp4",
+        url: "/videos/erp-system/Autonomous_Decision_Workflow.mp4",
         poster: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop",
         badge: "AI Workflow Engine",
         title: "Autonomous Decision Processing"
     },
     industry: {
-        url: "https://assets.mixkit.co/videos/preview/mixkit-robotic-arm-working-in-a-factory-42991-large.mp4",
+        url: "/videos/erp-system/ERP_for_Manufacturing_Manufact.mp4",
         poster: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=1200&auto=format&fit=crop",
         badge: "Industry 4.0 Sync",
         title: "Smart Supply & Factory Floor Integration"
     },
     ecosystem: {
-        url: "https://assets.mixkit.co/videos/preview/mixkit-hands-of-a-man-typing-on-a-keyboard-42827-large.mp4",
+        url: "/videos/erp-system/Ecosystem_ArchitectureSeamless.mp4",
         poster: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=1200&auto=format&fit=crop",
         badge: "Unified Ecosystem",
         title: "500+ Features Synced via Low-Latency Bus"

@@ -11,7 +11,7 @@ const modules = [
         title: "Dynamic Dashboard",
         description:
             "Get a bird's-eye view of your entire business. The dynamic dashboard provides real-time analytics on sales, orders, and customer activity, helping you make data-driven decisions instantly.",
-        image: "/sms_mockup.png",
+        image: "/images/ecommerce/dashboard.jpg",
         link: "#",
     },
     {
@@ -19,7 +19,7 @@ const modules = [
         title: "E-commerce POS System",
         description:
             "Unify your online and offline sales with our integrated POS system. Manage inventory, process transactions, and sync customer data seamlessly across all your physical and digital storefronts.",
-        image: "/sms_mockup.png",
+        image: "/images/ecommerce/pos.jpg",
         link: "#",
     },
     {
@@ -27,7 +27,7 @@ const modules = [
         title: "Order Management System",
         description:
             "Streamline your order processing from checkout to delivery. Automate status updates, track shipments, and manage returns efficiently to ensure high customer satisfaction.",
-        image: "/sms_mockup.png",
+        image: "/images/ecommerce/order-management.jpg",
         link: "#",
     },
     {
@@ -35,7 +35,7 @@ const modules = [
         title: "Product Management System",
         description:
             "Easily organize your catalog with advanced product management tools. Handle variants, categories, inventory levels, and bulk updates with an intuitive interface designed for growth.",
-        image: "/sms_mockup.png",
+        image: "/images/ecommerce/product-management.jpg",
         link: "#",
     },
     {
@@ -43,7 +43,7 @@ const modules = [
         title: "Attractive Photo Management",
         description:
             "Showcase your products in the best light. Our photo management system allows for high-quality image uploads, galleries, and optimization to ensure fast loading and stunning visuals.",
-        image: "/sms_mockup.png",
+        image: "/images/ecommerce/photo-management.jpg",
         link: "#",
     },
     {
@@ -51,7 +51,7 @@ const modules = [
         title: "Customers Management System",
         description:
             "Build lasting relationships with a dedicated CRM module. Track customer history, preferences, and engagement to deliver personalized experiences and reliable support.",
-        image: "/sms_mockup.png",
+        image: "/images/ecommerce/customer-management.jpg",
         link: "#",
     },
     {
@@ -59,7 +59,7 @@ const modules = [
         title: "Suppliers Management System",
         description:
             "Manage your supply chain effectively. Keep track of supplier details, purchase orders, and lead times to ensure you never run out of stock and maintain healthy vendor relationships.",
-        image: "/sms_mockup.png",
+        image: "/images/ecommerce/supplier-management.jpg",
         link: "#",
     },
 ];
@@ -331,7 +331,7 @@ const portfolio = [
                                         playsinline
                                         class="w-full h-full object-cover rounded-[24px] transform group-hover:scale-[1.03] transition-transform duration-700 ease-out"
                                     >
-                                        <source src="https://assets.mixkit.co/videos/preview/mixkit-shopping-online-with-a-tablet-and-credit-card-42862-large.mp4" type="video/mp4" />
+                                        <source src="/videos/ecommerce/Professional_E_commerce_Websit.mp4" type="video/mp4" />
                                         Your browser does not support the video tag.
                                     </video>
                                     
@@ -471,7 +471,7 @@ const portfolio = [
                                     playsinline
                                     class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
                                 >
-                                    <source src="https://assets.mixkit.co/videos/preview/mixkit-hands-holding-a-smartphone-over-a-laptop-42998-large.mp4" type="video/mp4" />
+                                    <source src="/videos/ecommerce/Everything_You_Need_to_Scale_O.mp4" type="video/mp4" />
                                 </video>
                                 <div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent"></div>
                                 <div class="absolute bottom-6 left-6 right-6 flex items-center justify-between text-white">
@@ -524,43 +524,49 @@ const portfolio = [
                         </div>
 
                         <!-- Module Content Display -->
-                        <div class="lg:col-span-8 relative min-h-[420px] bg-white/80 rounded-3xl p-8 border border-white/90 shadow-inner">
+                        <div class="lg:col-span-8 relative min-h-[480px] md:min-h-[520px] bg-white/80 rounded-3xl p-8 border border-white/90 shadow-inner">
                             {
                                 modules.map((module, index) => (
                                     <div
                                         id={`content-${module.id}`}
-                                        class={`module-content transition-all duration-500 absolute inset-0 p-8
-                    ${index === 0 ? "opacity-100 z-10 translate-y-0" : "opacity-0 -z-10 translate-y-4"}`}
+                                        class={`module-content transition-all duration-500 ease-out transform absolute inset-0 p-8 ${
+                                            index === 0
+                                                ? "opacity-100 z-10 translate-y-0 scale-100"
+                                                : "opacity-0 -z-10 translate-y-6 scale-95"
+                                        }`}
                                     >
-                                        <div class="flex flex-col h-full justify-between">
-                                            <div>
-                                                <div class="inline-block bg-blue-50 text-blue-600 text-xs font-bold px-3 py-1 rounded-md mb-4 uppercase tracking-wider">
-                                                    Module Showcase
-                                                </div>
-                                                <h3 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mb-4">
-                                                    {module.title}
-                                                </h3>
-                                                <p class="text-slate-600 leading-relaxed text-base mb-8">
-                                                    {module.description}
-                                                </p>
+                                        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center h-full">
+                                            <!-- Image Box Display (Alternating order) -->
+                                            <div class={`md:col-span-6 rounded-2xl overflow-hidden border border-slate-200/60 shadow-lg bg-slate-900 aspect-4/3 relative group ${index % 2 === 0 ? "md:order-1" : "md:order-2"}`}>
+                                                <img
+                                                    src={module.image}
+                                                    alt={module.title}
+                                                    class="w-full h-full object-cover scale-105 group-hover:scale-100 transition-transform duration-700"
+                                                />
+                                                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/30 via-transparent to-transparent"></div>
                                             </div>
 
-                                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 items-center pt-4 border-t border-slate-100">
+                                            <!-- Text Content (Alternating order) -->
+                                            <div class={`md:col-span-6 flex flex-col justify-between ${index % 2 === 0 ? "md:order-2" : "md:order-1"}`}>
+                                                <div>
+                                                    <div class="inline-block bg-blue-50 text-blue-600 text-xs font-bold px-3 py-1 rounded-md mb-3 uppercase tracking-wider">
+                                                        Module Showcase
+                                                    </div>
+                                                    <h3 class="text-2xl md:text-3xl font-extrabold text-slate-900 mb-3 tracking-tight">
+                                                        {module.title}
+                                                    </h3>
+                                                    <p class="text-slate-600 leading-relaxed text-sm md:text-base font-light mb-6">
+                                                        {module.description}
+                                                    </p>
+                                                </div>
+
                                                 <a
                                                     href={module.link}
-                                                    class="inline-flex items-center justify-center bg-slate-900 hover:bg-slate-800 text-white px-6 py-3.5 rounded-xl font-bold transition-all text-sm shadow-md"
+                                                    class="inline-flex items-center justify-center gap-2 bg-slate-900 hover:bg-slate-800 text-white px-6 py-3.5 rounded-xl font-bold transition-all text-sm shadow-md self-start"
                                                 >
                                                     <span>See Live Module Demo</span>
-                                                    <i class="fas fa-external-link-alt ml-2 text-xs"></i>
+                                                    <i class="fas fa-external-link-alt text-xs"></i>
                                                 </a>
-
-                                                <div class="rounded-xl overflow-hidden border border-slate-200/60 shadow-sm bg-slate-50 p-2">
-                                                    <img
-                                                        src={module.image}
-                                                        alt={module.title}
-                                                        class="rounded-lg w-full h-28 object-cover"
-                                                    />
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -641,7 +647,7 @@ const portfolio = [
                                     playsinline
                                     class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
                                 >
-                                    <source src="https://assets.mixkit.co/videos/preview/mixkit-man-holding-a-credit-card-and-using-a-laptop-42861-large.mp4" type="video/mp4" />
+                                    <source src="/videos/ecommerce/Instant_Payment_Express_Disp.mp4" type="video/mp4" />
                                 </video>
                             </div>
                         </div>
@@ -825,7 +831,7 @@ const portfolio = [
                                     playsinline
                                     class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
                                 >
-                                    <source src="https://assets.mixkit.co/videos/preview/mixkit-woman-shopping-online-using-a-smartphone-42860-large.mp4" type="video/mp4" />
+                                    <source src="/videos/ecommerce/Designed_for_High_Mobile_Conve.mp4" type="video/mp4" />
                                 </video>
                             </div>
                         </div>
@@ -1075,11 +1081,13 @@ const portfolio = [
                             "opacity-100",
                             "z-10",
                             "translate-y-0",
+                            "scale-100",
                         );
                         content.classList.add(
                             "opacity-0",
                             "-z-10",
-                            "translate-y-4",
+                            "translate-y-6",
+                            "scale-95",
                         );
                     });
 
@@ -1087,16 +1095,20 @@ const portfolio = [
                         `content-${targetId}`,
                     );
                     if (activeContent) {
-                        activeContent.classList.remove(
-                            "opacity-0",
-                            "-z-10",
-                            "translate-y-4",
-                        );
-                        activeContent.classList.add(
-                            "opacity-100",
-                            "z-10",
-                            "translate-y-0",
-                        );
+                        setTimeout(() => {
+                            activeContent.classList.remove(
+                                "opacity-0",
+                                "-z-10",
+                                "translate-y-6",
+                                "scale-95",
+                            );
+                            activeContent.classList.add(
+                                "opacity-100",
+                                "z-10",
+                                "translate-y-0",
+                                "scale-100",
+                            );
+                        }, 20);
                     }
                 });
             });

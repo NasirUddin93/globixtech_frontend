@@ -5,7 +5,7 @@ import logo from "../assets/logo.png";
 
 <header class="fixed top-0 inset-x-0 z-50 w-full px-4 sm:px-8 py-3 transition-all duration-300">
     <!-- Floating Glass Navigation Pill -->
-    <nav class="max-w-7xl mx-auto bg-white/80 backdrop-blur-2xl border border-white/90 rounded-full shadow-[0_8px_32px_0_rgba(0,0,0,0.04)] px-6 py-3 flex items-center justify-between transition-all">
+    <nav class="max-w-7xl mx-auto bg-white/80 backdrop-blur-2xl border border-white/90 rounded-full shadow-[0_8px_32px_0_rgba(0,0,0,0.04)] px-6 py-3 flex items-center justify-between transition-all transform-gpu backface-hidden overflow-hidden" style="-webkit-backdrop-filter: blur(40px);">
         <a href="/" class="flex items-center gap-2 group">
             <Image src={logo} alt="GlobixTech Logo" class="h-8 w-auto group-hover:scale-105 transition-transform" />
         </a>

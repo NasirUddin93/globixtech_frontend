@@ -5,7 +5,21 @@ import Navbar from "./Navbar.astro";
 
 <section id="home" class="relative pb-20 md:pb-32 overflow-hidden">
     <!-- Top-most Background Video with 100% Crisp Visibility & Edge Fade -->
-    <VideoBackground mp4="/videos/mmm.mp4" overlay="none" width="90rem" height="40rem" />
+    <div class="absolute inset-x-0 top-0 w-full h-[75%] overflow-hidden z-0 pointer-events-none"
+         style="-webkit-mask-image: linear-gradient(to bottom, black 0%, black 35%, rgba(0,0,0,0.5) 65%, transparent 100%); mask-image: linear-gradient(to bottom, black 0%, black 35%, rgba(0,0,0,0.5) 65%, transparent 100%);">
+        <video 
+            id="hero-bg-video" 
+            autoplay 
+            loop 
+            muted 
+            playsinline 
+            preload="auto" 
+            class="w-full h-full object-cover scale-[1.01]"
+            style="filter: blur(1px) contrast(1.12) brightness(1.04) saturate(1.15); image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges;"
+        >
+            <source src="/videos/Globix Tech.mp4" type="video/mp4" />
+        </video>
+    </div>
 
     <!-- Header Navbar inside Hero Container -->
     <Navbar />

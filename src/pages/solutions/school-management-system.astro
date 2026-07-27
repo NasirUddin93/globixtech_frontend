@@ -8,6 +8,7 @@ import smsMockup from "../../assets/sms_mockup.png";
 import studentLifecycle from "../../assets/student_lifecycle.png";
 import mobileAppsShowcase from "../../assets/mobile_apps_showcase.png";
 import Footer from "../../components/Footer.astro";
+import VideoBackground from "../../components/landing/VideoBackground.astro";
 
 import {
     pricingPlans,
@@ -24,19 +25,32 @@ import {
 
     <main class="min-h-screen bg-[#fafafa] text-slate-900 font-sans selection:bg-cyan-500 selection:text-white">
         
-        <!-- Ambient Background Light Effects -->
-        <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-            <div class="absolute -top-[20%] -left-[10%] w-[50%] h-[50%] bg-gradient-to-br from-blue-200/40 via-cyan-100/30 to-transparent blur-[140px] rounded-full"></div>
-            <div class="absolute top-[30%] -right-[15%] w-[55%] h-[55%] bg-gradient-to-tl from-indigo-100/40 via-purple-100/20 to-transparent blur-[160px] rounded-full"></div>
-            <div class="absolute bottom-[10%] left-[20%] w-[45%] h-[45%] bg-gradient-to-tr from-sky-100/40 via-teal-100/20 to-transparent blur-[140px] rounded-full"></div>
-        </div>
+
 
         <!-- Hero Section (Apple Ultra-Light Glass Aesthetic) -->
-        <section class="relative pt-36 pb-24 md:pt-48 md:pb-36 overflow-hidden z-10 bg-gradient-to-r from-blue-50/80 via-cyan-50/60 to-indigo-50/50" animate-slow-gradient">
-            <!-- Bottom Faded Soft Transition Layer -->
-            <div class="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-b from-transparent via-[#FBFBFD]/60 to-[#FBFBFD] pointer-events-none z-10"></div>
+        <section class="relative pt-36 pb-24 md:pt-48 md:pb-36 overflow-hidden z-10 bg-gradient-to-r from-blue-100/80 via-cyan-100/70 to-indigo-100/60">
+            <!-- Background Video with Top-Half Height Fade Cut -->
+            <div class="absolute inset-0 pointer-events-none">
+                <video
+                    autoplay
+                    loop
+                    muted
+                    playsinline
+                    class="w-full h-full object-cover scale-105 opacity-50"
+                    style="-webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 10%, rgba(0,0,0,0) 38%); mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 10%, rgba(0,0,0,0) 38%);"
+                >
+                    <source src="/videos/school-management-system/Powering_Next_Gen_Education_Ma.mp4" type="video/mp4" />
+                </video>
+                <div class="absolute inset-0 bg-gradient-to-r from-blue-500/25 via-cyan-500/25 to-indigo-500/25"></div>
+                <div class="absolute inset-0 bg-gradient-to-b from-transparent via-blue-50/20 to-[#FBFBFD]"></div>
+            </div>
 
-            <div class="container mx-auto px-6 relative">
+            <!-- Bottom Faded Soft Transition Layer -->
+            <div class="absolute bottom-0 inset-x-0 h-60 bg-gradient-to-b from-transparent via-[#FBFBFD]/90 to-[#FBFBFD] pointer-events-none z-10"></div>
+            <!-- Soft Faded Bottom Border Line -->
+            <div class="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-slate-200/30 to-transparent pointer-events-none z-20"></div>
+
+            <div class="container mx-auto px-6 relative z-10">
                 <div class="max-w-4xl mx-auto text-center mb-16">
                     
                     <!-- Glass Badge -->
@@ -159,8 +173,9 @@ import {
         </section>
 
         <!-- Core Features Section -->
-        <section class="py-28 z-10 relative">
-            <div class="container mx-auto px-6">
+        <section class="py-28 z-10 relative overflow-hidden">
+            <VideoBackground mp4="/videos/rd-wing/generate_a_white_background_wi.mp4" />
+            <div class="container mx-auto px-6 relative z-10">
                 <div class="text-center max-w-3xl mx-auto mb-20">
                     <h2 class="text-3xl md:text-5xl font-extrabold text-slate-900 tracking-tight mb-5">
                         Designed for Effortless Academic Excellence
@@ -533,8 +548,9 @@ import {
         </section>
 
         <!-- Detailed Modules Breakdown (Tabs) -->
-        <section id="modules" class="py-28 bg-white/40 border-t border-slate-200/50 backdrop-blur-md relative z-10">
-            <div class="container mx-auto px-6">
+        <section id="modules" class="py-28 bg-white/40 border-t border-slate-200/50 backdrop-blur-md relative z-10 overflow-hidden">
+            
+            <div class="container mx-auto px-6 relative z-10">
                 <div class="text-center max-w-3xl mx-auto mb-16">
                     <span class="text-xs font-bold uppercase tracking-widest text-cyan-600 mb-2 block">Enterprise Capability</span>
                     <h2 class="text-3xl md:text-5xl font-extrabold text-slate-900 tracking-tight">
@@ -636,8 +652,9 @@ import {
         </section>
 
         <!-- Pricing Plan Section -->
-        <section id="pricing" class="py-28 z-10 relative">
-            <div class="container mx-auto px-6 text-center">
+        <section id="pricing" class="py-28 z-10 relative overflow-hidden">
+            <VideoBackground mp4="/videos/generated_video_july_24.mp4" />
+            <div class="container mx-auto px-6 text-center relative z-10">
                 
                 <span class="text-xs font-bold uppercase tracking-widest text-cyan-600 mb-2 block">Transparent Pricing</span>
                 <h2 class="text-3xl md:text-5xl font-extrabold text-slate-900 tracking-tight mb-4">
@@ -760,8 +777,9 @@ import {
         </section>
 
         <!-- FAQ Section -->
-        <section class="py-24 bg-white/40 border-t border-slate-200/50 backdrop-blur-md z-10 relative">
-            <div class="container mx-auto px-6 max-w-4xl">
+        <section class="py-24 bg-white/40 border-t border-slate-200/50 backdrop-blur-md z-10 relative overflow-hidden">
+            
+            <div class="container mx-auto px-6 max-w-4xl relative z-10">
                 <div class="text-center mb-16">
                     <span class="text-xs font-bold uppercase tracking-widest text-cyan-600 mb-2 block">Help Center</span>
                     <h2 class="text-3xl md:text-5xl font-extrabold text-slate-900 tracking-tight">

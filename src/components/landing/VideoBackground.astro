@@ -4,9 +4,15 @@ interface Props {
   webm?: string;
   poster?: string;
   overlay?: "light" | "dark" | "none";
+  overlayOpacityClass?: string;
+  fadeColor?: string;
   class?: string;
   width?: string;
   height?: string;
+  maskCut?: boolean;
+  blur?: boolean;
+  double?: boolean;
+  triple?: boolean;
 }
 
 const {
@@ -14,75 +20,237 @@ const {
   webm,
   poster,
   overlay = "light",
+  overlayOpacityClass = "bg-white/70",
+  fadeColor = "#F5F5F7",
   class: className = "",
   width = "100%",
   height = "100%",
+  maskCut = false,
+  blur = false,
+  double: doubleVideo = false,
+  triple: tripleVideo = false,
 } = Astro.props;
 
 const uniqueId = `vbg-${Math.random().toString(36).slice(2, 8)}`;
+const uniqueId2 = `vbg-${Math.random().toString(36).slice(2, 8)}`;
+const uniqueId3 = `vbg-${Math.random().toString(36).slice(2, 8)}`;
 ---
 
-<div 
-  class={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 overflow-hidden z-0 pointer-events-none rounded-3xl ${className}`}
-  style={`width: ${width}; height: ${height}; -webkit-mask-image: radial-gradient(ellipse 75% 75% at 50% 50%, black 30%, transparent 95%); mask-image: radial-gradient(ellipse 75% 75% at 50% 50%, black 30%, transparent 95%);`}
->
-  <!-- Video Element: JS controls the seamless loop to skip baked-in fade-out -->
-  <video
-    id={uniqueId}
-    autoplay
-    muted
-    playsinline
-    preload="auto"
-    poster={poster}
-    class="w-full h-full object-cover"
+{tripleVideo ? (
+  /* ── TRIPLE LAYOUT (top + bottom video with middle gap) ── */
+  <div 
+    class={`absolute inset-0 w-full h-full overflow-hidden z-0 pointer-events-none flex flex-col justify-between py-4 gap-6 ${className}`}
   >
-    {webm && <source src={webm} type="video/webm" />}
-    {mp4 && <source src={mp4} type="video/mp4" />}
-  </video>
-  
-  {overlay === "light" && (
-    <div class="absolute inset-0 bg-white/55"></div>
-  )}
-  
-  {overlay !== "none" && (
-    <>
-      <div class="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-white via-white/80 to-transparent"></div>
-      <div class="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-white via-white/80 to-transparent"></div>
-      <div class="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-white via-white/80 to-transparent"></div>
-      <div class="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-white via-white/80 to-transparent"></div>
-    </>
-  )}
-  
-  {overlay === "dark" && (
-    <div class="absolute inset-0 bg-gradient-to-b from-[#0f172a]/30 via-[#0f172a]/50 to-[#0f172a]/80"></div>
-  )}
+    {/* TOP video — top & bottom faded */}
+    <div 
+      class="relative w-full h-[32%] overflow-hidden z-0"
+      style="-webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%); mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);"
+    >
+      <video
+        id={uniqueId}
+        autoplay
+        muted
+        playsinline
+        preload="auto"
+        poster={poster}
+        class={`w-full h-full object-cover ${blur ? 'blur-[2px] scale-105' : ''}`}
+      >
+        {webm && <source src={webm} type="video/webm" />}
+        {mp4 && <source src={mp4} type="video/mp4" />}
+      </video>
+      {overlay === "light" && <div class={`absolute inset-0 ${overlayOpacityClass}`}></div>}
+      {overlay === "dark" && <div class="absolute inset-0 bg-gradient-to-b from-[#0f172a]/30 to-[#0f172a]/80"></div>}
+    </div>
 
-</div>
+    {/* MIDDLE GAP — empty spacer */}
+    <div class="relative w-full h-[32%] pointer-events-none"></div>
 
-<!-- is:inline ensures this runs per-instance, not deduplicated across components -->
+    {/* BOTTOM video — top & bottom faded */}
+    <div 
+      class="relative w-full h-[32%] overflow-hidden z-0"
+      style="-webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%); mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);"
+    >
+      <video
+        id={uniqueId3}
+        autoplay
+        muted
+        playsinline
+        preload="auto"
+        poster={poster}
+        class={`w-full h-full object-cover ${blur ? 'blur-[2px] scale-105' : ''}`}
+        style="transform: scaleY(-1);"
+      >
+        {webm && <source src={webm} type="video/webm" />}
+        {mp4 && <source src={mp4} type="video/mp4" />}
+      </video>
+      {overlay === "light" && <div class={`absolute inset-0 ${overlayOpacityClass}`}></div>}
+      {overlay === "dark" && <div class="absolute inset-0 bg-gradient-to-b from-[#0f172a]/30 to-[#0f172a]/80"></div>}
+    </div>
+
+    {overlay !== "none" && (
+      <>
+        <div 
+          class="absolute inset-x-0 top-0 h-64 z-10 pointer-events-none" 
+          style={`background: linear-gradient(to bottom, ${fadeColor} 0%, ${fadeColor}cc 40%, transparent 100%);`}
+        ></div>
+        <div 
+          class="absolute inset-x-0 bottom-0 h-64 z-10 pointer-events-none" 
+          style={`background: linear-gradient(to top, ${fadeColor} 0%, ${fadeColor}cc 40%, transparent 100%);`}
+        ></div>
+      </>
+    )}
+  </div>
+) : doubleVideo ? (
+  /* ── DOUBLE VIDEO (top + bottom with gap and faded frame edges) ── */
+  <div 
+    class={`absolute inset-0 w-full h-full overflow-hidden z-0 pointer-events-none flex flex-col justify-between py-4 gap-6 ${className}`}
+  >
+    {/* TOP video — top & bottom faded */}
+    <div 
+      class="relative w-full h-[48%] overflow-hidden z-0"
+      style="-webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%); mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);"
+    >
+      <video
+        id={uniqueId}
+        autoplay
+        muted
+        playsinline
+        preload="auto"
+        poster={poster}
+        class={`w-full h-full object-cover ${blur ? 'blur-[2px] scale-105' : ''}`}
+      >
+        {webm && <source src={webm} type="video/webm" />}
+        {mp4 && <source src={mp4} type="video/mp4" />}
+      </video>
+      {overlay === "light" && <div class={`absolute inset-0 ${overlayOpacityClass}`}></div>}
+      {overlay === "dark" && <div class="absolute inset-0 bg-gradient-to-b from-[#0f172a]/30 to-[#0f172a]/80"></div>}
+    </div>
+
+    {/* BOTTOM video — top & bottom faded (flipped) */}
+    <div 
+      class="relative w-full h-[48%] overflow-hidden z-0"
+      style="-webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%); mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);"
+    >
+      <video
+        id={uniqueId2}
+        autoplay
+        muted
+        playsinline
+        preload="auto"
+        poster={poster}
+        class={`w-full h-full object-cover ${blur ? 'blur-[2px] scale-105' : ''}`}
+        style="transform: scaleY(-1);"
+      >
+        {webm && <source src={webm} type="video/webm" />}
+        {mp4 && <source src={mp4} type="video/mp4" />}
+      </video>
+      {overlay === "light" && <div class={`absolute inset-0 ${overlayOpacityClass}`}></div>}
+      {overlay === "dark" && <div class="absolute inset-0 bg-gradient-to-b from-[#0f172a]/30 to-[#0f172a]/80"></div>}
+    </div>
+
+    {overlay !== "none" && (
+      <>
+        <div 
+          class="absolute inset-x-0 top-0 h-64 z-10 pointer-events-none" 
+          style={`background: linear-gradient(to bottom, ${fadeColor} 0%, ${fadeColor}cc 40%, transparent 100%);`}
+        ></div>
+        <div 
+          class="absolute inset-x-0 bottom-0 h-64 z-10 pointer-events-none" 
+          style={`background: linear-gradient(to top, ${fadeColor} 0%, ${fadeColor}cc 40%, transparent 100%);`}
+        ></div>
+      </>
+    )}
+  </div>
+) : (
+  /* ── SINGLE VIDEO (default) ── */
+  <div 
+    class={`absolute inset-0 w-full h-full overflow-hidden z-0 pointer-events-none ${className}`}
+    style="-webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%); mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);"
+  >
+    <video
+      id={uniqueId}
+      autoplay
+      muted
+      playsinline
+      preload="auto"
+      poster={poster}
+      class={`w-full h-full object-cover ${blur ? 'blur-[2px] scale-105' : ''}`}
+    >
+      {webm && <source src={webm} type="video/webm" />}
+      {mp4 && <source src={mp4} type="video/mp4" />}
+    </video>
+    
+    {overlay === "light" && (
+      <div class={`absolute inset-0 ${overlayOpacityClass}`}></div>
+    )}
+    
+    {overlay !== "none" && (
+      <>
+        <div 
+          class="absolute inset-x-0 top-0 h-64 z-10 pointer-events-none" 
+          style={`background: linear-gradient(to bottom, ${fadeColor} 0%, ${fadeColor}cc 40%, transparent 100%);`}
+        ></div>
+        <div 
+          class="absolute inset-x-0 bottom-0 h-64 z-10 pointer-events-none" 
+          style={`background: linear-gradient(to top, ${fadeColor} 0%, ${fadeColor}cc 40%, transparent 100%);`}
+        ></div>
+      </>
+    )}
+    
+    {overlay === "dark" && (
+      <div class="absolute inset-0 bg-gradient-to-b from-[#0f172a]/30 via-[#0f172a]/50 to-[#0f172a]/80"></div>
+    )}
+  </div>
+)}
+
+<!-- Seamless loop scripts — one per video instance -->
 <script is:inline define:vars={{ uniqueId }}>
 (function () {
-  const SKIP_TAIL = 1.5; // seconds to cut from the end (baked-in fade-out)
-
+  const SKIP_TAIL = 1.5;
   function attachLoop(video) {
-    video.addEventListener('timeupdate', function onTimeUpdate() {
+    video.addEventListener('timeupdate', function () {
       if (video.duration && video.currentTime >= video.duration - SKIP_TAIL) {
         video.currentTime = 0;
       }
     });
   }
-
   const video = document.getElementById(uniqueId);
   if (!video) return;
+  if (video.readyState >= 1) attachLoop(video);
+  else video.addEventListener('loadedmetadata', () => attachLoop(video), { once: true });
+})();
+</script>
 
-  if (video.readyState >= 1) {
-    // Metadata already loaded — attach immediately
-    attachLoop(video);
-  } else {
-    // Wait for metadata then attach
-    video.addEventListener('loadedmetadata', function () {
-      attachLoop(video);
-    }, { once: true });
+<script is:inline define:vars={{ uniqueId2 }}>
+(function () {
+  const SKIP_TAIL = 1.5;
+  function attachLoop(video) {
+    video.addEventListener('timeupdate', function () {
+      if (video.duration && video.currentTime >= video.duration - SKIP_TAIL) {
+        video.currentTime = 0;
+      }
+    });
   }
+  const video = document.getElementById(uniqueId2);
+  if (!video) return;
+  if (video.readyState >= 1) attachLoop(video);
+  else video.addEventListener('loadedmetadata', () => attachLoop(video), { once: true });
+})();
+</script>
+
+<script is:inline define:vars={{ uniqueId3 }}>
+(function () {
+  const SKIP_TAIL = 1.5;
+  function attachLoop(video) {
+    video.addEventListener('timeupdate', function () {
+      if (video.duration && video.currentTime >= video.duration - SKIP_TAIL) {
+        video.currentTime = 0;
+      }
+    });
+  }
+  const video = document.getElementById(uniqueId3);
+  if (!video) return;
+  if (video.readyState >= 1) attachLoop(video);
+  else video.addEventListener('loadedmetadata', () => attachLoop(video), { once: true });
 })();
 </script>

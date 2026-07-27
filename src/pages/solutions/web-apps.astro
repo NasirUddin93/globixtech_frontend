@@ -3,6 +3,7 @@
 import MainLayout from "../../layouts/MainLayout.astro";
 import Navbar from "../../components/Navbar.astro";
 import Footer from "../../components/Footer.astro";
+import VideoBackground from "../../components/landing/VideoBackground.astro";
 import { webPackages } from "../../data/webApps";
 ---
 
@@ -11,16 +12,30 @@ import { webPackages } from "../../data/webApps";
 
     <main class="min-h-screen bg-white text-slate-900 selection:bg-cyan-500 selection:text-white relative overflow-hidden font-sans">
         
-        <!-- Ambient Glowing Lights (Apple-style Subtle Canvas Backdrop) -->
-        <div class="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[600px] overflow-hidden -z-10 opacity-70">
-            <div class="absolute -top-40 left-1/4 w-[500px] h-[500px] bg-cyan-200/40 rounded-full blur-[140px]"></div>
-            <div class="absolute top-20 right-1/4 w-[450px] h-[450px] bg-blue-200/30 rounded-full blur-[160px]"></div>
-        </div>
+
 
         <!-- HERO SECTION -->
-        <section class="relative pt-36 pb-24 md:pt-48 md:pb-36 overflow-hidden bg-gradient-to-r from-cyan-50/80 via-blue-50/60 to-indigo-50/50" animate-slow-gradient">
+        <section class="relative pt-36 pb-24 md:pt-48 md:pb-36 overflow-hidden bg-gradient-to-r from-cyan-100/80 via-blue-100/70 to-indigo-100/60">
+            <!-- Background Video with Top-Half Height Fade Cut -->
+            <div class="absolute inset-0 pointer-events-none">
+                <video
+                    autoplay
+                    loop
+                    muted
+                    playsinline
+                    class="w-full h-full object-cover scale-105 opacity-50"
+                    style="-webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 10%, rgba(0,0,0,0) 38%); mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 10%, rgba(0,0,0,0) 38%);"
+                >
+                    <source src="/videos/web-apps/Enterprise_Grade_Security_An.mp4" type="video/mp4" />
+                </video>
+                <div class="absolute inset-0 bg-gradient-to-r from-cyan-500/25 via-blue-500/25 to-indigo-500/25"></div>
+                <div class="absolute inset-0 bg-gradient-to-b from-transparent via-cyan-50/20 to-[#FBFBFD]"></div>
+            </div>
+
             <!-- Bottom Faded Soft Transition Layer -->
-            <div class="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-b from-transparent via-[#FBFBFD]/60 to-[#FBFBFD] pointer-events-none z-10"></div>
+            <div class="absolute bottom-0 inset-x-0 h-60 bg-gradient-to-b from-transparent via-[#FBFBFD]/90 to-[#FBFBFD] pointer-events-none z-10"></div>
+            <!-- Soft Faded Bottom Border Line -->
+            <div class="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-slate-200/30 to-transparent pointer-events-none z-20"></div>
 
             <div class="container mx-auto px-6 relative z-10 text-center">
                 
@@ -172,9 +187,9 @@ import { webPackages } from "../../data/webApps";
 
 
         <!-- PRICING SECTION (Apple Style Glass Comparison Matrix) -->
-        <section class="py-24 relative" id="pricing">
-            
-            <div class="container mx-auto px-6">
+        <section class="py-24 relative overflow-hidden" id="pricing">
+            <VideoBackground mp4="/videos/rd-wing/generate_a_white_background_wi.mp4" />
+            <div class="container mx-auto px-6 relative z-10">
                 
                 <div class="text-center max-w-3xl mx-auto mb-16">
                     <h2 class="text-3xl md:text-5xl font-bold tracking-tight text-slate-900 mb-4">
@@ -329,7 +344,18 @@ import { webPackages } from "../../data/webApps";
         <section class="py-24 relative overflow-hidden" id="contact">
             <div class="container mx-auto px-6 relative z-10">
                 <div class="relative rounded-3xl overflow-hidden backdrop-blur-2xl bg-white/70 border border-slate-200/80 p-12 md:p-20 text-center shadow-[0_20px_70px_rgba(0,0,0,0.06)]">
-                    
+                    <!-- Video Background -->
+                    <video
+                        autoplay
+                        loop
+                        muted
+                        playsinline
+                        class="absolute inset-0 w-full h-full object-cover opacity-20"
+                        style="-webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%); mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);"
+                    >
+                        <source src="/videos/rd-wing/create_a_loop_bg_video_with_th.mp4" type="video/mp4" />
+                    </video>
+
                     <!-- Ambient Inner Lighting -->
                     <div class="pointer-events-none absolute -top-20 -right-20 w-80 h-80 bg-cyan-200/50 rounded-full blur-3xl"></div>
                     <div class="pointer-events-none absolute -bottom-20 -left-20 w-80 h-80 bg-blue-200/50 rounded-full blur-3xl"></div>

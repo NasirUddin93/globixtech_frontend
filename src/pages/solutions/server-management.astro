@@ -161,8 +161,16 @@ import Footer from "../../components/Footer.astro";
         </section>
 
         <!-- HIGH TECH SHOWCASE SECTION WITH 3 ANIMATION VIDEOS -->
-        <section class="py-24 relative z-10 bg-gradient-to-b from-transparent via-slate-100/50 to-transparent">
-            <div class="container mx-auto px-6 max-w-7xl">
+        <section class="py-24 relative z-10 bg-gradient-to-b from-transparent via-slate-100/50 to-transparent overflow-hidden">
+            <div class="absolute inset-0 pointer-events-none">
+                <video autoplay loop muted playsinline class="w-full h-full object-cover opacity-30"
+                    style="-webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%); mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);">
+                    <source src="/videos/generated_video_july_24.mp4" type="video/mp4" />
+                </video>
+            </div>
+            <div class="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-slate-300/40 to-transparent pointer-events-none z-20"></div>
+            <div class="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-slate-300/40 to-transparent pointer-events-none z-20"></div>
+            <div class="container mx-auto px-6 max-w-7xl relative z-10">
                 <div class="text-center max-w-3xl mx-auto mb-16">
                     <span class="text-emerald-600 text-xs font-bold uppercase tracking-widest bg-emerald-50 border border-emerald-200/60 px-3.5 py-1.5 rounded-full inline-block mb-4">Interactive Intelligence</span>
                     <h2 class="text-3xl md:text-5xl font-bold text-slate-900 tracking-tight">
@@ -386,6 +394,11 @@ import Footer from "../../components/Footer.astro";
         <section class="py-24 relative z-10" id="contact">
             <div class="container mx-auto px-6 max-w-5xl">
                 <div class="relative rounded-3xl p-12 md:p-16 bg-gradient-to-br from-white via-slate-50 to-emerald-50/30 border border-white/90 shadow-[0_30px_70px_rgba(0,0,0,0.06)] text-center overflow-hidden">
+                    <div class="absolute inset-0 pointer-events-none">
+                        <video autoplay loop muted playsinline class="w-full h-full object-cover opacity-20">
+                            <source src="/videos/rd-wing/create_a_loop_bg_video_with_th.mp4" type="video/mp4" />
+                        </video>
+                    </div>
                     <div class="absolute -top-24 -right-24 w-72 h-72 rounded-full bg-emerald-200/40 blur-3xl pointer-events-none"></div>
                     <div class="absolute -bottom-24 -left-24 w-72 h-72 rounded-full bg-cyan-200/40 blur-3xl pointer-events-none"></div>
 

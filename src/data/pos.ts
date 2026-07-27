@@ -4,26 +4,25 @@ export const posVideos = {
     hero: {
         title: "Speed at Scale",
         desc: "Under 3-second checkouts with instant barcode scanning and multi-payment routing.",
-        // Placeholder royalty-free tech/POS video stream
-        src: "https://assets.mixkit.co/videos/preview/mixkit-cashier-scanning-items-at-a-supermarket-checkout-41528-large.mp4",
+        src: "/videos/pos-system/POS 1.mp4",
         poster: "https://images.unsplash.com/photo-1556742049-0a670f4a4591?q=80&w=1200&auto=format&fit=crop"
     },
     businessWorkflow: {
         title: "Tailored Operations",
         desc: "Watch how our POS adapts seamlessly from busy restaurants to high-SKU retail environments.",
-        src: "https://assets.mixkit.co/videos/preview/mixkit-waiter-taking-an-order-on-a-tablet-41530-large.mp4",
+        src: "/videos/inventory/People_working_with_Tailored_O.mp4",
         poster: "https://images.unsplash.com/photo-1556740758-90de374c12ad?q=80&w=1200&auto=format&fit=crop"
     },
     inventoryEngine: {
         title: "Real-time Sync Engine",
         desc: "Instant stock adjustments across multi-branch locations without operational lag.",
-        src: "https://assets.mixkit.co/videos/preview/mixkit-warehouse-worker-scanning-a-box-41531-large.mp4",
+        src: "/videos/inventory/People_working_with_Real_time.mp4",
         poster: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=1200&auto=format&fit=crop"
     },
     analyticsShowcase: {
         title: "Live Business Intelligence",
         desc: "Real-time revenue stream tracking, shift breakdowns, and stock forecast metrics.",
-        src: "https://assets.mixkit.co/videos/preview/mixkit-hands-typing-on-a-laptop-keyboard-41532-large.mp4",
+        src: "/videos/pos-system/bg POS.mp4",
         poster: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop"
     }
 };

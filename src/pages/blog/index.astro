@@ -19,7 +19,7 @@ posts.sort(
     <main class="min-h-screen bg-[#f5f5f7]">
         <!-- Hero Header Section with Ambient Video Background -->
         <section class="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden">
-            <VideoBackground mp4="/videos/generate_a_white_background_wi.mp4" overlay="light" />
+            <VideoBackground mp4="/videos/rd-wing/generate_a_white_background_wi.mp4" overlay="light" />
 
             <div class="max-w-7xl mx-auto px-6 relative z-10 text-center max-w-3xl mx-auto">
                 <span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#0071e3] bg-blue-50/90 backdrop-blur-md px-4 py-1.5 rounded-full border border-blue-100 shadow-xs mb-6">
@@ -47,64 +47,66 @@ posts.sort(
         </section>
 
         <!-- Blog Posts Grid -->
-        <section class="py-20 bg-white/40 backdrop-blur-md">
-            <div class="max-w-7xl mx-auto px-6">
-                <div
-                    id="posts-grid"
-                    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-                >
-                    {
-                        posts.map((post) => (
-                            <a
-                                href={post.url}
-                                class="group blog-post-item"
-                                data-title={post.frontmatter.title}
-                                data-category={post.frontmatter.category}
-                            >
-                                <article class="bg-white/80 backdrop-blur-2xl rounded-[2.5rem] p-6 border border-white shadow-[0_10px_30px_rgba(0,0,0,0.02)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.06)] hover:-translate-y-1.5 transition-all duration-300 h-full flex flex-col justify-between">
-                                    <div>
-                                        <div class="relative h-56 rounded-2xl overflow-hidden mb-6 bg-gray-100">
-                                            <img
-                                                src={
-post.frontmatter.image ||
-                                                         "https://placehold.co/600x400/e2e8f0/1e293b?text=Blog+Post"
-                                                 }
-                                                alt={post.frontmatter.title}
-                                                class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
-                                            />
-                                            <div class="absolute top-4 left-4 z-20">
-                                                <span class="bg-white/90 backdrop-blur-md px-3.5 py-1 rounded-full text-[11px] font-bold text-[#1d1d1f] shadow-xs">
-                                                    {post.frontmatter.category || "Technology"}
+        <section class="py-20 relative overflow-hidden">
+            <VideoBackground mp4="/videos/generated_video_july_24.mp4" double={true} />
+
+            <div class="max-w-7xl mx-auto px-6 relative z-10">
+                <div class="bg-white/70 backdrop-blur-2xl rounded-[2.5rem] border border-white/90 shadow-[0_20px_60px_rgba(0,0,0,0.06)] p-6 md:p-10">
+                    <div
+                        id="posts-grid"
+                        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+                    >
+                        {
+                            posts.map((post) => (
+                                <a
+                                    href={post.url}
+                                    class="group blog-post-item"
+                                    data-title={post.frontmatter.title}
+                                    data-category={post.frontmatter.category}
+                                >
+                                    <article class="bg-white/90 backdrop-blur-2xl rounded-[2rem] p-6 border border-slate-100 shadow-[0_10px_30px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.08)] hover:-translate-y-1.5 transition-all duration-300 h-full flex flex-col justify-between">
+                                        <div>
+                                            <div class="relative h-56 rounded-2xl overflow-hidden mb-6 bg-gray-100">
+                                                <img
+                                                    src={post.frontmatter.image}
+                                                    alt={post.frontmatter.title}
+                                                    class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+                                                />
+                                                <div class="absolute top-4 left-4 z-20">
+                                                    <span class="bg-white/90 backdrop-blur-md px-3.5 py-1 rounded-full text-[11px] font-bold text-[#1d1d1f] shadow-xs">
+                                                        {post.frontmatter.category}
+                                                    </span>
+                                                </div>
+                                            </div>
+
+                                            <div class="flex items-center gap-3 text-xs font-bold text-[#86868b] mb-3">
+                                                <span class="flex items-center gap-1.5">
+                                                    <i class="far fa-calendar text-[#0071e3]"></i>
+                                                    {post.frontmatter.date}
+                                                </span>
+                                                <span>•</span>
+                                                <span class="text-[#0071e3]">
+                                                    {post.frontmatter.readTime || "5 min read"}
                                                 </span>
                                             </div>
+
+                                            <h2 class="text-xl font-extrabold text-[#1d1d1f] mb-3 group-hover:text-[#0071e3] transition-colors leading-snug line-clamp-2">
+                                                {post.frontmatter.title}
+                                            </h2>
+
+                                            <p class="text-[#86868b] text-sm leading-relaxed line-clamp-3 mb-6">
+                                                {post.frontmatter.description}
+                                            </p>
                                         </div>
 
-                                        <div class="flex items-center gap-3 text-xs font-bold text-[#86868b] mb-3">
-                                            <span class="flex items-center gap-1.5">
-                                                <i class="far fa-calendar text-[#0071e3]"></i>
-                                                {post.frontmatter.publishDate}
-                                            </span>
-                                            <span>&bull;</span>
-                                            <span class="text-[#0071e3]">
-                                                {post.frontmatter.readTime || "5 min read"}
-                                            </span>
+                                        <div class="pt-4 border-t border-gray-100/80 flex items-center text-[#0071e3] font-bold text-xs group-hover:translate-x-1 transition-transform">
+                                            Read Full Article <i class="fas fa-chevron-right ml-1.5 text-[10px]"></i>
                                         </div>
-
-                                        <h2 class="text-xl font-extrabold text-[#1d1d1f] mb-3 group-hover:text-[#0071e3] transition-colors leading-snug line-clamp-2">
-                                            {post.frontmatter.title}
-                                        </h2>
-                                        <p class="text-[#86868b] text-sm leading-relaxed line-clamp-3 mb-6">
-                                            {post.frontmatter.description}
-                                        </p>
-                                    </div>
-
-                                    <div class="pt-4 border-t border-gray-100/80 flex items-center text-[#0071e3] font-bold text-xs group-hover:translate-x-1 transition-transform">
-                                        Read Full Article <i class="fas fa-chevron-right ml-1.5 text-[10px]"></i>
-                                    </div>
-                                </article>
-                            </a>
-                        ))
-                    }
+                                    </article>
+                                </a>
+                            ))
+                        }
+                    </div>
                 </div>
 
                 {

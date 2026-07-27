@@ -3,6 +3,7 @@
 import MainLayout from "../../layouts/MainLayout.astro";
 import Navbar from "../../components/Navbar.astro";
 import Footer from "../../components/Footer.astro";
+import VideoBackground from "../../components/landing/VideoBackground.astro";
 ---
 
 <MainLayout title="Cybersecurity Solutions - Globix Tech">
@@ -12,14 +13,27 @@ import Footer from "../../components/Footer.astro";
         
         <!-- ============================================ -->
         <!-- HERO SECTION (Full Glowing Red Aesthetic + Video 1) -->
-        <!-- ============================================ -->
-        <section class="relative pt-36 pb-24 md:pt-52 md:pb-36 overflow-hidden bg-gradient-to-r from-red-100/80 via-rose-100/60 to-orange-50/60 animate-slow-gradient">
-            <!-- Intense Red Ambient Backdrop Lighting Glows -->
-            <div class="absolute -top-40 left-1/2 -translate-x-1/2 w-[1200px] h-[650px] bg-gradient-to-tr from-red-500/35 via-rose-500/45 to-orange-500/30 blur-[140px] rounded-full pointer-events-none -z-10 animate-pulse"></div>
-            <div class="absolute top-1/4 -right-20 w-96 h-96 bg-red-500/40 blur-[120px] rounded-full pointer-events-none -z-10"></div>
-            <div class="absolute top-1/4 -left-20 w-96 h-96 bg-rose-600/35 blur-[120px] rounded-full pointer-events-none -z-10"></div>
+        <section class="relative pt-36 pb-24 md:pt-52 md:pb-36 overflow-hidden bg-gradient-to-r from-red-200/90 via-rose-200/80 to-orange-100/70">
+            <!-- Background Video with Top-Half Height Fade Cut -->
+            <div class="absolute inset-0 pointer-events-none">
+                <video
+                    autoplay
+                    loop
+                    muted
+                    playsinline
+                    class="w-full h-full object-cover scale-105 opacity-50"
+                    style="-webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 10%, rgba(0,0,0,0) 38%); mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 10%, rgba(0,0,0,0) 38%);"
+                >
+                    <source src="/videos/network/Training_Programs_Industry_ori.mp4" type="video/mp4" />
+                </video>
+                <div class="absolute inset-0 bg-gradient-to-r from-red-600/30 via-rose-600/30 to-orange-500/25"></div>
+                <div class="absolute inset-0 bg-gradient-to-b from-transparent via-red-50/20 to-[#FBFBFD]"></div>
+            </div>
+
             <!-- Bottom Faded Soft Transition Layer -->
-            <div class="absolute bottom-0 inset-x-0 h-36 bg-gradient-to-b from-transparent via-[#FBFBFD]/60 to-[#FBFBFD] pointer-events-none z-10"></div>
+            <div class="absolute bottom-0 inset-x-0 h-60 bg-gradient-to-b from-transparent via-[#FBFBFD]/90 to-[#FBFBFD] pointer-events-none z-10"></div>
+            <!-- Soft Faded Bottom Border Line -->
+            <div class="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-slate-200/30 to-transparent pointer-events-none z-20"></div>
 
             <div class="container mx-auto px-6 max-w-7xl relative z-20">
                 <div class="grid lg:grid-cols-12 gap-12 items-center">
@@ -34,7 +48,7 @@ import Footer from "../../components/Footer.astro";
                         <!-- Main Heading -->
                         <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.08]">
                             Protect Your Business, <br />
-                            <span class="bg-gradient-to-r from-red-600 via-rose-600 to-red-500 bg-clip-text text-transparent">
+                            <span class="bg-gradient-to-r from-red-600 via-rose-600 to-orange-500 bg-clip-text text-transparent">
                                 Data, and Reputation
                             </span>
                         </h1>
@@ -75,7 +89,7 @@ import Footer from "../../components/Footer.astro";
                                     playsinline
                                     poster="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1600&q=80"
                                 >
-                                    <source src="https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-screens-41481-large.mp4" type="video/mp4" />
+                                    <source src="/videos/security/Advanced_Cybersecurity_EngineP.mp4" type="video/mp4" />
                                 </video>
 
                                 <!-- Glowing Red Glass Overlay Badge on Video -->
@@ -113,27 +127,30 @@ import Footer from "../../components/Footer.astro";
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
 
                     <!-- CARD 1: VAPT Services (Large Card with Red Tint & VIDEO 2) -->
-                    <div class="lg:col-span-7 bg-gradient-to-br from-red-50/90 via-rose-50/50 to-white/80 backdrop-blur-2xl rounded-3xl p-8 md:p-10 border border-red-200/80 shadow-[0_10px_35px_rgba(239,68,68,0.08)] hover:shadow-[0_20px_50px_rgba(239,68,68,0.15)] transition-all duration-500 flex flex-col justify-between group">
-                        <div class="mb-8">
-                            <div class="w-14 h-14 bg-red-500 text-white rounded-2xl flex items-center justify-center text-2xl mb-6 shadow-md shadow-red-500/30 group-hover:scale-110 transition-transform duration-300">
-                                <i class="fas fa-bug"></i>
-                            </div>
-                            <h3 class="text-2xl md:text-3xl font-bold text-slate-900 mb-4 tracking-tight">
-                                VAPT Services
-                            </h3>
-                            <p class="text-slate-600 leading-relaxed text-base md:text-lg max-w-xl">
-                                Vulnerability Assessment & Penetration Testing to identify and fix weaknesses in your web, mobile, and network infrastructure.
-                            </p>
-                        </div>
-
+                    <div class="lg:col-span-7 bg-gradient-to-br from-red-50/90 via-rose-50/50 to-white/80 backdrop-blur-2xl rounded-3xl p-3 md:p-4 border border-red-200/80 shadow-[0_10px_35px_rgba(239,68,68,0.08)] hover:shadow-[0_20px_50px_rgba(239,68,68,0.15)] transition-all duration-500 flex flex-col justify-between group">
                         <!-- VIDEO 2: VAPT Scanning Animation -->
-                        <div class="rounded-2xl overflow-hidden border border-red-200/70 bg-slate-900 aspect-[16/9] relative shadow-md">
-                            <video class="w-full h-full object-cover opacity-90" autoplay loop muted playsinline>
-                                <source src="https://assets.mixkit.co/videos/preview/mixkit-security-camera-recording-a-hallway-41538-large.mp4" type="video/mp4" />
+                        <div class="rounded-2xl overflow-hidden border border-red-200/70 bg-slate-900 aspect-[16/9] md:aspect-[16/10] relative shadow-md min-h-[340px]">
+                            <video class="w-full h-full object-cover opacity-85" autoplay loop muted playsinline>
+                                <source src="/videos/security/VAPT_Services_Vulnerability_As.mp4" type="video/mp4" />
                             </video>
-                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent"></div>
-                            <div class="absolute top-4 right-4 bg-slate-900/80 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-mono text-red-400 border border-red-500/20">
-                                SCANNING_CORE_v2.4
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent flex flex-col justify-between p-6 md:p-8">
+                                <div class="flex items-center justify-between">
+                                    <div class="w-12 h-12 bg-red-500 text-white rounded-2xl flex items-center justify-center text-xl shadow-md shadow-red-500/30 group-hover:scale-110 transition-transform duration-300">
+                                        <i class="fas fa-bug"></i>
+                                    </div>
+                                    <div class="bg-slate-900/80 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-mono text-red-400 border border-red-500/20">
+                                        SCANNING_CORE_v2.4
+                                    </div>
+                                </div>
+
+                                <div class="text-white max-w-xl">
+                                    <h3 class="text-2xl md:text-3xl font-extrabold mb-2 tracking-tight text-white">
+                                        VAPT Services
+                                    </h3>
+                                    <p class="text-slate-200 text-sm md:text-base leading-relaxed font-light">
+                                        Vulnerability Assessment & Penetration Testing to identify and fix weaknesses in your web, mobile, and network infrastructure.
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -155,7 +172,7 @@ import Footer from "../../components/Footer.astro";
                         <!-- VIDEO: Security Audit Compliance Scanning -->
                         <div class="rounded-2xl overflow-hidden border border-slate-200/70 bg-slate-900 aspect-video relative my-6">
                             <video class="w-full h-full object-cover opacity-90" autoplay loop muted playsinline>
-                                <source src="https://assets.mixkit.co/videos/preview/mixkit-hand-typing-on-a-computer-keyboard-41561-large.mp4" type="video/mp4" />
+                                <source src="/videos/security/Security_Audits_Comprehensive.mp4" type="video/mp4" />
                             </video>
                             <div class="absolute inset-0 bg-slate-950/20"></div>
                             <div class="absolute bottom-3 left-3 bg-white/90 backdrop-blur-md px-3 py-1 rounded-lg text-xs font-semibold text-slate-800">
@@ -188,7 +205,7 @@ import Footer from "../../components/Footer.astro";
                         <!-- VIDEO 3: Managed SOC Monitoring Video -->
                         <div class="rounded-2xl overflow-hidden border border-slate-200/70 bg-slate-900 aspect-video relative">
                             <video class="w-full h-full object-cover opacity-90" autoplay loop muted playsinline>
-                                <source src="https://assets.mixkit.co/videos/preview/mixkit-cyber-security-network-code-31804-large.mp4" type="video/mp4" />
+                                <source src="/videos/web-apps/Enterprise_Grade_Security_An.mp4" type="video/mp4" />
                             </video>
                             <div class="absolute inset-0 bg-slate-950/20"></div>
                             <div class="absolute bottom-3 left-3 bg-white/90 backdrop-blur-md px-3 py-1 rounded-lg text-xs font-semibold text-slate-800">
@@ -198,27 +215,29 @@ import Footer from "../../components/Footer.astro";
                     </div>
 
                     <!-- CARD 4: Employee Training (With VIDEO 4 Integration) -->
-                    <div class="lg:col-span-7 bg-white/70 backdrop-blur-2xl rounded-3xl p-8 md:p-10 border border-slate-200/80 shadow-[0_10px_30px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.08)] transition-all duration-500 flex flex-col justify-between group">
-                        <div class="grid md:grid-cols-2 gap-8 items-center">
-                            <div>
-                                <div class="w-14 h-14 bg-amber-50 border border-amber-100 rounded-2xl flex items-center justify-center text-amber-600 text-2xl mb-6 shadow-sm group-hover:scale-110 transition-transform duration-300">
-                                    <i class="fas fa-user-graduate"></i>
+                    <div class="lg:col-span-7 bg-white/70 backdrop-blur-2xl rounded-3xl p-3 md:p-4 border border-slate-200/80 shadow-[0_10px_30px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.08)] transition-all duration-500 flex flex-col justify-between group">
+                        <!-- VIDEO 4: Phishing Simulation Video -->
+                        <div class="rounded-2xl overflow-hidden border border-amber-200/70 bg-slate-900 aspect-[16/9] md:aspect-[16/10] relative shadow-md min-h-[340px] w-full">
+                            <video class="w-full h-full object-cover opacity-85" autoplay loop muted playsinline>
+                                <source src="/videos/network/Training_Programs_Industry_ori.mp4" type="video/mp4" />
+                            </video>
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent flex flex-col justify-between p-6 md:p-8">
+                                <div class="flex items-center justify-between">
+                                    <div class="w-12 h-12 bg-amber-500 text-white rounded-2xl flex items-center justify-center text-xl shadow-md shadow-amber-500/30 group-hover:scale-110 transition-transform duration-300">
+                                        <i class="fas fa-user-graduate"></i>
+                                    </div>
+                                    <div class="bg-amber-500 text-white font-bold text-[10px] uppercase px-3 py-1 rounded-full tracking-wider shadow-sm">
+                                        Human Firewall
+                                    </div>
                                 </div>
-                                <h3 class="text-2xl md:text-3xl font-bold text-slate-900 mb-4 tracking-tight">
-                                    Employee Training
-                                </h3>
-                                <p class="text-slate-600 leading-relaxed text-base md:text-lg">
-                                    Phishing simulations and cybersecurity awareness training to strengthen your human firewall.
-                                </p>
-                            </div>
 
-                            <!-- VIDEO 4: Phishing Simulation Video -->
-                            <div class="rounded-2xl overflow-hidden border border-slate-200/70 bg-slate-900 aspect-square relative shadow-md">
-                                <video class="w-full h-full object-cover opacity-85" autoplay loop muted playsinline>
-                                    <source src="https://assets.mixkit.co/videos/preview/mixkit-futuristic-robotic-arm-working-in-a-laboratory-42898-large.mp4" type="video/mp4" />
-                                </video>
-                                <div class="absolute top-3 left-3 bg-amber-500 text-white font-bold text-[10px] uppercase px-2.5 py-1 rounded-md tracking-wider">
-                                    Human Firewall
+                                <div class="text-white max-w-xl">
+                                    <h3 class="text-2xl md:text-3xl font-extrabold mb-2 tracking-tight text-white">
+                                        Employee Training
+                                    </h3>
+                                    <p class="text-slate-200 text-sm md:text-base leading-relaxed font-light">
+                                        Phishing simulations and cybersecurity awareness training to strengthen your human firewall.
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -228,11 +247,11 @@ import Footer from "../../components/Footer.astro";
             </div>
         </section>
 
-        <!-- ============================================ -->
         <!-- PRICING SECTION (Glassmorphic Table) -->
         <!-- ============================================ -->
-        <section class="py-28 relative" id="pricing">
-            <div class="container mx-auto px-6">
+        <section class="py-28 relative overflow-hidden" id="pricing">
+            <VideoBackground mp4="/videos/rd-wing/generate_a_white_background_wi.mp4" />
+            <div class="container mx-auto px-6 relative z-10">
                 <!-- Section Header -->
                 <div class="text-center max-w-3xl mx-auto mb-20">
                     <h2 class="text-4xl md:text-6xl font-extrabold text-slate-900 tracking-tight mb-4">
@@ -376,7 +395,18 @@ import Footer from "../../components/Footer.astro";
         <!-- ============================================ -->
         <section class="py-28 relative" id="contact">
             <div class="container mx-auto px-6">
-                <div class="max-w-5xl mx-auto rounded-3xl p-12 md:p-20 bg-gradient-to-br from-red-50/90 via-rose-50/70 to-orange-50/50 backdrop-blur-2xl border border-red-200/90 shadow-[0_30px_70px_rgba(239,68,68,0.12)] text-center relative overflow-hidden">
+                <div class="max-w-5xl mx-auto rounded-3xl p-12 md:p-20 bg-gradient-to-br from-red-50/90 via-rose-50/70 to-orange-50/50 border border-red-200/90 shadow-[0_30px_70px_rgba(239,68,68,0.12)] text-center relative overflow-hidden">
+                    <!-- Video Background -->
+                    <video
+                        autoplay
+                        loop
+                        muted
+                        playsinline
+                        class="absolute inset-0 w-full h-full object-cover opacity-10"
+                        style="-webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%); mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);"
+                    >
+                        <source src="/videos/rd-wing/create_a_loop_bg_video_with_th (1).mp4" type="video/mp4" />
+                    </video>
                     <!-- Subtle Ambient Light Glow inside CTA -->
                     <div class="absolute -top-24 left-1/2 -translate-x-1/2 w-96 h-96 bg-red-300/40 blur-[90px] rounded-full pointer-events-none"></div>
 

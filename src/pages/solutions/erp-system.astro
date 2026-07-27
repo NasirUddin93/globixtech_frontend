@@ -3,6 +3,7 @@
 import MainLayout from "../../layouts/MainLayout.astro";
 import Navbar from "../../components/Navbar.astro";
 import Footer from "../../components/Footer.astro";
+import VideoBackground from "../../components/landing/VideoBackground.astro";
 import { Image } from "astro:assets";
 import smsMockup from "../../assets/sms_mockup.png";
 
@@ -22,19 +23,30 @@ import {
 
     <main class="min-h-screen bg-[#FAFBFD] text-slate-900 font-sans selection:bg-indigo-500 selection:text-white relative overflow-hidden">
         
-        <!-- Ambient Apple-style Background Glows -->
-        <div class="pointer-events-none fixed inset-0 z-0 overflow-hidden">
-            <div class="absolute -top-40 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-gradient-to-tr from-indigo-200/40 via-purple-100/30 to-pink-100/20 blur-[130px] rounded-full"></div>
-            <div class="absolute top-[35%] -left-40 w-[600px] h-[600px] bg-cyan-100/30 blur-[140px] rounded-full"></div>
-            <div class="absolute top-[65%] -right-40 w-[600px] h-[600px] bg-indigo-100/30 blur-[140px] rounded-full"></div>
-        </div>
+
 
         <!-- HERO SECTION -->
-        <section class="relative pt-36 pb-20 md:pt-48 md:pb-32 z-10 bg-gradient-to-r from-indigo-50/80 via-indigo-50/60 to-violet-50/50" animate-slow-gradient">
-            <!-- Bottom Faded Soft Transition Layer -->
-            <div class="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-b from-transparent via-[#FBFBFD]/60 to-[#FBFBFD] pointer-events-none z-10"></div>
+        <section class="relative pt-36 pb-20 md:pt-48 md:pb-32 z-10 overflow-hidden bg-gradient-to-r from-indigo-100/80 via-indigo-100/70 to-violet-100/60">
+            <!-- Background Video with Top-Half Height Fade Cut -->
+            <div class="absolute inset-0 pointer-events-none">
+                <video
+                    autoplay
+                    loop
+                    muted
+                    playsinline
+                    class="w-full h-full object-cover scale-105 opacity-50"
+                    style="-webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 10%, rgba(0,0,0,0) 38%); mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 10%, rgba(0,0,0,0) 38%);"
+                >
+                    <source src={erpVideos.ecosystem.url} type="video/mp4" />
+                </video>
+                <div class="absolute inset-0 bg-gradient-to-r from-indigo-500/25 via-indigo-500/25 to-violet-500/25"></div>
+                <div class="absolute inset-0 bg-gradient-to-b from-transparent via-indigo-50/20 to-[#FAFBFD]"></div>
+            </div>
 
-            <div class="container mx-auto px-6">
+            <!-- Bottom Faded Soft Transition Layer -->
+            <div class="absolute bottom-0 inset-x-0 h-72 bg-gradient-to-b from-transparent via-[#FAFBFD]/80 to-[#FAFBFD] pointer-events-none z-10"></div>
+
+            <div class="container mx-auto px-6 relative z-10">
                 <div class="max-w-4xl mx-auto text-center mb-16">
                     <!-- Apple Glass Badge -->
                     <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-white/70 backdrop-blur-xl border border-slate-200/80 shadow-[0_4px_20px_rgba(0,0,0,0.03)] text-slate-800 text-xs md:text-sm font-semibold mb-8 hover:scale-[1.02] transition-transform">
@@ -220,8 +232,9 @@ import {
         </section>
 
         <!-- INDUSTRY TYPES SECTION (WITH VIDEO 3) -->
-        <section class="py-24 relative z-10">
-            <div class="container mx-auto px-6">
+        <section class="py-24 relative z-10 overflow-hidden">
+            <VideoBackground mp4="/videos/rd-wing/generate_a_white_background_wi.mp4" />
+            <div class="container mx-auto px-6 relative z-10">
                 <div class="text-center max-w-3xl mx-auto mb-16">
                     <h2 class="text-3xl md:text-5xl font-extrabold text-slate-900 tracking-tight mb-4">
                         ERP Solutions for Every Industry
@@ -324,31 +337,16 @@ import {
 
                 <!-- VIDEO 4: Connected Ecosystem Banner -->
                 <div class="max-w-7xl mx-auto mb-12">
-                    <div class="bg-white/70 backdrop-blur-2xl border border-slate-200/80 rounded-3xl p-8 md:p-10 shadow-[0_15px_40px_rgba(0,0,0,0.03)] grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-                        <div class="lg:col-span-5">
-                            <div class="relative rounded-2xl overflow-hidden aspect-video bg-slate-900 border border-slate-200/60 shadow-lg">
-                                <video 
-                                    class="w-full h-full object-cover opacity-85" 
-                                    autoplay 
-                                    loop 
-                                    muted 
-                                    playsinline
-                                    poster={erpVideos.ecosystem.poster}
-                                >
-                                    <source src={erpVideos.ecosystem.url} type="video/mp4" />
-                                </video>
-                                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent"></div>
-                                <div class="absolute bottom-3 left-3 text-white font-mono text-[11px] bg-slate-900/80 px-3 py-1 rounded-lg backdrop-blur-md">
-                                    {erpVideos.ecosystem.badge}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="lg:col-span-7">
-                            <span class="text-indigo-600 text-xs font-extrabold tracking-widest uppercase">Ecosystem Architecture</span>
-                            <h3 class="text-2xl md:text-3xl font-extrabold text-slate-900 mt-1 mb-3">
+                    <div class="bg-slate-900 rounded-3xl py-20 md:py-28 px-8 md:px-10 text-white shadow-2xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative overflow-hidden">
+                        <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover opacity-20 pointer-events-none" style="mask-image: linear-gradient(to right, black 0%, black 30%, transparent 100%); -webkit-mask-image: linear-gradient(to right, black 0%, black 30%, transparent 100%);">
+                            <source src={erpVideos.ecosystem.url} type="video/mp4" />
+                        </video>
+                        <div class="lg:col-span-12 relative z-10">
+                            <span class="text-indigo-300 text-xs font-extrabold tracking-widest uppercase">Ecosystem Architecture</span>
+                            <h3 class="text-2xl md:text-3xl font-extrabold text-white mt-1 mb-3">
                                 Seamless Data Flow Across All Modules
                             </h3>
-                            <p class="text-slate-600 leading-relaxed text-sm md:text-base">
+                            <p class="text-slate-300 leading-relaxed text-sm md:text-base">
                                 Every transaction in Finance updates Inventory, HR payroll, and Sales CRM live without batch delays or manual synchronization.
                             </p>
                         </div>
@@ -399,8 +397,9 @@ import {
         </section>
 
         <!-- PRICING SECTION -->
-        <section class="py-24 relative z-10">
-            <div class="container mx-auto px-6">
+        <section class="py-24 relative z-10 overflow-hidden">
+            <VideoBackground mp4="/videos/generated_video_july_24.mp4" />
+            <div class="container mx-auto px-6 relative z-10">
                 <div class="text-center max-w-3xl mx-auto mb-16">
                     <h2 class="text-3xl md:text-5xl font-extrabold text-slate-900 tracking-tight mb-4">
                         Flexible Pricing Plans
@@ -494,8 +493,9 @@ import {
         </section>
 
         <!-- FAQ SECTION -->
-        <section class="py-24 relative z-10">
-            <div class="container mx-auto px-6 max-w-4xl">
+        <section class="py-24 relative z-10 overflow-hidden">
+            <VideoBackground mp4="/videos/rd-wing/generate_a_white_background_wi.mp4" />
+            <div class="container mx-auto px-6 max-w-4xl relative z-10">
                 <div class="text-center mb-16">
                     <h2 class="text-3xl md:text-5xl font-extrabold text-slate-900 tracking-tight mb-4">
                         Frequently Asked Questions
@@ -527,6 +527,15 @@ import {
         <section class="py-24 relative z-10">
             <div class="container mx-auto px-6 max-w-6xl">
                 <div class="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 rounded-[2.5rem] p-10 md:p-16 text-white shadow-2xl relative overflow-hidden text-center">
+                    <video
+                        autoplay
+                        loop
+                        muted
+                        playsinline
+                        class="absolute inset-0 w-full h-full object-cover opacity-10 pointer-events-none"
+                    >
+                        <source src="/videos/rd-wing/create_a_loop_bg_video_with_th.mp4" type="video/mp4" />
+                    </video>
                     <div class="absolute -top-24 -left-24 w-80 h-80 bg-indigo-500/20 rounded-full blur-3xl pointer-events-none"></div>
                     <div class="absolute -bottom-24 -right-24 w-80 h-80 bg-purple-500/20 rounded-full blur-3xl pointer-events-none"></div>
 

@@ -3,6 +3,7 @@
 import MainLayout from "../../layouts/MainLayout.astro";
 import Navbar from "../../components/Navbar.astro";
 import Footer from "../../components/Footer.astro";
+import VideoBackground from "../../components/landing/VideoBackground.astro";
 
 const stats = [
     { label: "Time Saved", value: "80%" },
@@ -96,8 +97,7 @@ const useCases = [
         title: "Sales Forecasting AI",
         description:
             "Predict future sales trends with machine learning models trained on your historical data. Understand seasonal patterns, identify growth opportunities, and optimize inventory levels. Get accurate forecasts for revenue planning and resource allocation.",
-        image: "/sms_mockup.png",
-        video: "https://assets.mixkit.co/videos/preview/mixkit-financial-charts-and-graphics-animating-41550-large.mp4",
+        image: "/images/business-ai/sales-forecasting.jpg",
         link: "#",
     },
     {
@@ -105,8 +105,7 @@ const useCases = [
         title: "Customer Behavior Analytics",
         description:
             "Understand your customers like never before. AI analyzes purchase patterns, predicts churn risk, segments customers automatically, and personalizes marketing campaigns. Increase retention and maximize customer lifetime value.",
-        image: "/sms_mockup.png",
-        video: "https://assets.mixkit.co/videos/preview/mixkit-hud-interface-system-analyzing-data-42774-large.mp4",
+        image: "/images/business-ai/customer-analytics.jpg",
         link: "#",
     },
     {
@@ -114,8 +113,7 @@ const useCases = [
         title: "Document Processing AI",
         description:
             "Extract data from invoices, receipts, contracts, and forms automatically. AI reads and processes documents 100x faster than manual entry with 99%+ accuracy. Eliminate data entry errors and save countless hours of manual work.",
-        image: "/sms_mockup.png",
-        video: "https://assets.mixkit.co/videos/preview/mixkit-digital-animation-screens-and-data-lines-41549-large.mp4",
+        image: "/images/business-ai/document-processing.jpg",
         link: "#",
     },
     {
@@ -123,8 +121,7 @@ const useCases = [
         title: "Inventory Optimization",
         description:
             "Smart stock management powered by AI. Predict demand, optimize reorder points, prevent stockouts and overstock situations. Reduce carrying costs while ensuring product availability when customers need it.",
-        image: "/sms_mockup.png",
-        video: "https://assets.mixkit.co/videos/preview/mixkit-futuristic-robotic-arm-in-a-factory-41537-large.mp4",
+        image: "/images/business-ai/inventory-optimization.jpg",
         link: "#",
     },
     {
@@ -132,8 +129,7 @@ const useCases = [
         title: "HR & Recruitment AI",
         description:
             "Automate resume screening, match candidates to job requirements, predict employee performance, and analyze workforce trends. Reduce time-to-hire by 60% and improve hiring quality with data-driven decisions.",
-        image: "/sms_mockup.png",
-        video: "https://assets.mixkit.co/videos/preview/mixkit-woman-working-with-futuristic-hologram-interface-41553-large.mp4",
+        image: "/images/business-ai/hr-recruitment.jpg",
         link: "#",
     },
     {
@@ -141,8 +137,7 @@ const useCases = [
         title: "Financial Analysis AI",
         description:
             "Track expenses automatically, detect fraudulent transactions, optimize budgets, and forecast cash flow. AI monitors financial health 24/7 and alerts you to anomalies before they become problems.",
-        image: "/sms_mockup.png",
-        video: "https://assets.mixkit.co/videos/preview/mixkit-data-center-server-room-41551-large.mp4",
+        image: "/images/business-ai/financial-analysis.jpg",
         link: "#",
     },
 ];
@@ -367,14 +362,30 @@ const faqs = [
     <Navbar />
 
     <main class="min-h-screen bg-white text-slate-900 selection:bg-purple-500 selection:text-white relative overflow-hidden font-sans">
-        <!-- Ambient Background Glows (Apple Light Aura Style) -->
-        <div class="fixed top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-gradient-to-tr from-purple-200/40 via-sky-200/30 to-indigo-100/40 blur-[130px] rounded-full pointer-events-none -z-10"></div>
-        <div class="fixed top-[40%] right-[-10%] w-[600px] h-[600px] bg-gradient-to-bl from-purple-300/20 via-pink-100/30 to-blue-200/30 blur-[140px] rounded-full pointer-events-none -z-10"></div>
+
 
         <!-- 1. HERO SECTION WITH VIDEO ANIMATION #1 -->
-        <section class="relative pt-36 pb-24 lg:pt-48 lg:pb-36 overflow-hidden bg-gradient-to-r from-purple-50/80 via-indigo-50/60 to-blue-50/50" animate-slow-gradient">
+        <section class="relative pt-36 pb-24 lg:pt-48 lg:pb-36 overflow-hidden bg-gradient-to-r from-purple-100/80 via-indigo-100/70 to-blue-100/60">
+            <!-- Background Video with Top-Half Height Fade Cut -->
+            <div class="absolute inset-0 pointer-events-none">
+                <video
+                    autoplay
+                    loop
+                    muted
+                    playsinline
+                    class="w-full h-full object-cover scale-105 opacity-50"
+                    style="-webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 10%, rgba(0,0,0,0) 38%); mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 10%, rgba(0,0,0,0) 38%);"
+                >
+                    <source src="/videos/business-ai/High_Precision_AI_Engine_in_Ac (1).mp4" type="video/mp4" />
+                </video>
+                <div class="absolute inset-0 bg-gradient-to-r from-purple-500/25 via-indigo-500/25 to-blue-500/25"></div>
+                <div class="absolute inset-0 bg-gradient-to-b from-transparent via-purple-50/20 to-[#FBFBFD]"></div>
+            </div>
+
             <!-- Bottom Faded Soft Transition Layer -->
-            <div class="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-b from-transparent via-[#FBFBFD]/60 to-[#FBFBFD] pointer-events-none z-10"></div>
+            <div class="absolute bottom-0 inset-x-0 h-60 bg-gradient-to-b from-transparent via-[#FBFBFD]/90 to-[#FBFBFD] pointer-events-none z-10"></div>
+            <!-- Soft Faded Bottom Border Line -->
+            <div class="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-slate-200/30 to-transparent pointer-events-none z-20"></div>
 
             <div class="container mx-auto px-6 relative z-10">
                 <div class="max-w-4xl mx-auto text-center mb-16">
@@ -425,7 +436,7 @@ const faqs = [
                                 muted
                                 playsinline
                             >
-                                <source src="https://assets.mixkit.co/videos/preview/mixkit-digital-animation-screens-and-data-lines-41549-large.mp4" type="video/mp4" />
+                                <source src="/videos/business-ai/Transform_Your_Business_with_A (1).mp4" type="video/mp4" />
                             </video>
                             <div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent"></div>
                             
@@ -474,8 +485,9 @@ const faqs = [
         </section>
 
         <!-- 3. TARGET AUDIENCE SECTION -->
-        <section class="py-24 relative">
-            <div class="container mx-auto px-6">
+        <section class="py-24 relative overflow-hidden">
+            <VideoBackground mp4="/videos/rd-wing/generate_a_white_background_wi.mp4" />
+            <div class="container mx-auto px-6 relative z-10">
                 <div class="text-center max-w-2xl mx-auto mb-16">
                     <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight mb-4">
                         Who Needs Business AI?
@@ -567,7 +579,7 @@ const faqs = [
                                 muted
                                 playsinline
                             >
-                                <source src="https://assets.mixkit.co/videos/preview/mixkit-hud-interface-system-analyzing-data-42774-large.mp4" type="video/mp4" />
+                                <source src="/videos/business-ai/High_Precision_AI_Engine_in_Ac (1).mp4" type="video/mp4" />
                             </video>
                             <div class="absolute inset-0 bg-gradient-to-r from-slate-900 via-transparent to-transparent lg:block hidden"></div>
                         </div>
@@ -616,8 +628,9 @@ const faqs = [
         </section>
 
         <!-- 7. INTERACTIVE USE CASES WITH VIDEO ANIMATION #3 -->
-        <section class="py-24 bg-slate-50/60 backdrop-blur-3xl border-y border-slate-200/60" id="use-cases">
-            <div class="container mx-auto px-6">
+        <section class="py-24 bg-slate-50/60 backdrop-blur-3xl border-y border-slate-200/60 relative overflow-hidden" id="use-cases">
+            <VideoBackground mp4="/videos/rd-wing/generate_a_white_background_wi.mp4" />
+            <div class="container mx-auto px-6 relative z-10">
                 <div class="text-center max-w-3xl mx-auto mb-20">
                     <h2 class="text-3xl md:text-5xl font-extrabold text-slate-900 tracking-tight mb-4">
                         AI Solutions That Drive Results
@@ -651,11 +664,15 @@ const faqs = [
                                 useCases.map((useCase, index) => (
                                     <div
                                         id={`content-${useCase.id}`}
-                                        class={`module-content transition-all duration-500 
-                                        ${index === 0 ? "block opacity-100 translate-y-0" : "hidden opacity-0 translate-y-4"}`}
+                                        class={`module-content transition-all duration-500 transform ease-out ${
+                                            index === 0
+                                                ? "block opacity-100 translate-y-0 scale-100"
+                                                : "hidden opacity-0 translate-y-6 scale-95"
+                                        }`}
                                     >
                                         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                                            <div>
+                                            <!-- Text Block (Alternating order) -->
+                                            <div class={index % 2 === 0 ? "md:order-1" : "md:order-2"}>
                                                 <h3 class="text-2xl md:text-3xl font-extrabold text-slate-900 mb-4 border-l-4 border-purple-600 pl-4">
                                                     {useCase.title}
                                                 </h3>
@@ -670,17 +687,13 @@ const faqs = [
                                                 </a>
                                             </div>
 
-                                            <!-- Video Box Display -->
-                                            <div class="relative rounded-2xl overflow-hidden shadow-2xl bg-slate-900 border border-slate-200/50 aspect-4/3 group">
-                                                <video
-                                                    class="module-video-player w-full h-full object-cover scale-105 group-hover:scale-100 transition-transform duration-700"
-                                                    autoplay
-                                                    loop
-                                                    muted
-                                                    playsinline
-                                                >
-                                                    <source src={useCase.video} type="video/mp4" />
-                                                </video>
+                                            <!-- Image Box Display (Alternating order) -->
+                                            <div class={`relative rounded-2xl overflow-hidden shadow-2xl bg-slate-900 border border-slate-200/50 aspect-4/3 group ${index % 2 === 0 ? "md:order-2" : "md:order-1"}`}>
+                                                <img
+                                                    src={useCase.image}
+                                                    alt={useCase.title}
+                                                    class="w-full h-full object-cover scale-105 group-hover:scale-100 transition-transform duration-700"
+                                                />
                                                 <div class="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent"></div>
                                                 <div class="absolute bottom-4 left-4 right-4 bg-white/20 backdrop-blur-md px-4 py-2.5 rounded-xl border border-white/20 text-white text-xs font-medium flex items-center justify-between">
                                                     <span>Live Interactive Model</span>
@@ -737,8 +750,9 @@ const faqs = [
         </section>
 
         <!-- 9. PRICING PACKAGES & ADD-ONS -->
-        <section class="py-24 bg-slate-50/50 backdrop-blur-3xl border-t border-slate-200/50">
-            <div class="container mx-auto px-6">
+        <section class="py-24 bg-slate-50/50 backdrop-blur-3xl border-t border-slate-200/50 relative overflow-hidden">
+            <VideoBackground mp4="/videos/rd-wing/generate_a_white_background_wi.mp4" />
+            <div class="container mx-auto px-6 relative z-10">
                 <div class="text-center max-w-3xl mx-auto mb-20">
                     <h2 class="text-3xl md:text-5xl font-extrabold text-slate-900 tracking-tight mb-4">
                         AI Solutions for Every Business Size
@@ -872,7 +886,7 @@ const faqs = [
                 </div>
 
                 <!-- Video Showcase Banner #4 -->
-                <div class="max-w-6xl mx-auto mb-16 rounded-3xl overflow-hidden shadow-2xl relative bg-slate-900 aspect-21/9 md:aspect-25/9">
+                <div class="max-w-6xl mx-auto mb-16 rounded-3xl overflow-hidden shadow-2xl relative bg-slate-900 h-44 md:h-56 min-h-[160px]">
                     <video
                         class="w-full h-full object-cover opacity-80"
                         autoplay
@@ -880,13 +894,13 @@ const faqs = [
                         muted
                         playsinline
                     >
-                        <source src="https://assets.mixkit.co/videos/preview/mixkit-data-center-server-room-41551-large.mp4" type="video/mp4" />
+                        <source src="/videos/business-ai/Automating_Global_Scale_Operat.mp4" type="video/mp4" />
                     </video>
-                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent flex items-end p-8 md:p-12">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent flex items-end p-5 md:p-8">
                         <div class="text-white max-w-2xl">
-                            <span class="inline-block px-3 py-1 bg-purple-500/30 border border-purple-400/30 rounded-full text-xs font-mono uppercase mb-3">Enterprise Deployment</span>
-                            <h3 class="text-2xl md:text-4xl font-extrabold mb-2">Automating Global Scale Operations</h3>
-                            <p class="text-slate-300 text-sm md:text-base font-light">From high-frequency manufacturing lines to digital logistics grids, AI drives frictionless execution.</p>
+                            <span class="inline-block px-3 py-1 bg-purple-500/30 border border-purple-400/30 rounded-full text-xs font-mono uppercase mb-2">Enterprise Deployment</span>
+                            <h3 class="text-2xl md:text-3xl font-extrabold mb-1.5 leading-tight">Automating Global Scale Operations</h3>
+                            <p class="text-slate-200 text-sm md:text-base font-normal">From high-frequency manufacturing lines to digital logistics grids, AI drives frictionless execution.</p>
                         </div>
                     </div>
                 </div>
@@ -919,8 +933,9 @@ const faqs = [
         </section>
 
         <!-- 11. AI VS TRADITIONAL COMPARISON MATRIX -->
-        <section class="py-24 bg-slate-50/50 backdrop-blur-3xl border-t border-slate-200/50">
-            <div class="container mx-auto px-6">
+        <section class="py-24 bg-slate-50/50 backdrop-blur-3xl border-t border-slate-200/50 relative overflow-hidden">
+            <VideoBackground mp4="/videos/generated_video_july_24.mp4" />
+            <div class="container mx-auto px-6 relative z-10">
                 <div class="text-center max-w-3xl mx-auto mb-20">
                     <h2 class="text-3xl md:text-5xl font-extrabold text-slate-900 tracking-tight mb-4">
                         AI vs. Traditional Operations
@@ -1009,8 +1024,9 @@ const faqs = [
         </section>
 
         <!-- 13. FAQ ACCORDION -->
-        <section class="py-24 bg-slate-50/50 backdrop-blur-3xl border-t border-slate-200/50">
-            <div class="container mx-auto px-6 max-w-4xl">
+        <section class="py-24 bg-slate-50/50 backdrop-blur-3xl border-t border-slate-200/50 relative overflow-hidden">
+            <VideoBackground mp4="/videos/rd-wing/generate_a_white_background_wi.mp4" />
+            <div class="container mx-auto px-6 max-w-4xl relative z-10">
                 <div class="text-center max-w-3xl mx-auto mb-16">
                     <h2 class="text-3xl md:text-5xl font-extrabold text-slate-900 tracking-tight mb-4">
                         Frequently Asked Questions
@@ -1042,6 +1058,9 @@ const faqs = [
         <section class="py-24 bg-white" id="contact">
             <div class="container mx-auto px-6 max-w-6xl">
                 <div class="bg-gradient-to-r from-slate-900 via-purple-950 to-slate-900 rounded-[2.5rem] p-10 md:p-16 text-white shadow-2xl relative overflow-hidden text-center">
+                    <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover opacity-10 pointer-events-none rounded-[2.5rem]" style="mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);">
+                        <source src="/videos/rd-wing/create_a_loop_bg_video_with_th.mp4" type="video/mp4" />
+                    </video>
                     <div class="absolute -top-24 -left-24 w-80 h-80 bg-purple-500/20 rounded-full blur-3xl pointer-events-none"></div>
                     <div class="absolute -bottom-24 -right-24 w-80 h-80 bg-indigo-500/20 rounded-full blur-3xl pointer-events-none"></div>
 
@@ -1108,14 +1127,17 @@ const faqs = [
                     }
 
                     moduleContents.forEach((content) => {
-                        content.classList.remove("block", "opacity-100", "translate-y-0");
-                        content.classList.add("hidden", "opacity-0", "translate-y-4");
+                        content.classList.remove("block", "opacity-100", "translate-y-0", "scale-100");
+                        content.classList.add("hidden", "opacity-0", "translate-y-6", "scale-95");
                     });
 
                     const targetContent = document.getElementById(`content-${targetId}`);
                     if (targetContent) {
-                        targetContent.classList.remove("hidden", "opacity-0", "translate-y-4");
-                        targetContent.classList.add("block", "opacity-100", "translate-y-0");
+                        targetContent.classList.remove("hidden");
+                        setTimeout(() => {
+                            targetContent.classList.remove("opacity-0", "translate-y-6", "scale-95");
+                            targetContent.classList.add("block", "opacity-100", "translate-y-0", "scale-100");
+                        }, 20);
                     }
                 });
             });

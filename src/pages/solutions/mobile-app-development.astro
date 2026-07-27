@@ -3,6 +3,7 @@
 import MainLayout from "../../layouts/MainLayout.astro";
 import Navbar from "../../components/Navbar.astro";
 import Footer from "../../components/Footer.astro";
+import VideoBackground from "../../components/landing/VideoBackground.astro";
 import Button from "../../components/Button.astro";
 
 const coreServices = [
@@ -109,17 +110,32 @@ const emiFeatures = [
     <!-- Pure White Apple-Style Theme Wrapper -->
     <div class="relative bg-white text-slate-900 font-sans selection:bg-blue-500 selection:text-white overflow-hidden">
         
-        <!-- Ambient Glass Glow Elements (Background) -->
-        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-gradient-to-tr from-blue-200/40 via-cyan-100/30 to-purple-200/30 blur-[130px] rounded-full pointer-events-none -z-10"></div>
-        <div class="absolute top-[35%] right-0 w-[600px] h-[600px] bg-blue-100/40 blur-[140px] rounded-full pointer-events-none -z-10"></div>
-        <div class="absolute top-[70%] left-0 w-[600px] h-[600px] bg-orange-100/40 blur-[140px] rounded-full pointer-events-none -z-10"></div>
+
 
         <!-- HERO SECTION with Video Animation #1 -->
-        <section class="relative pt-32 pb-20 md:pt-44 md:pb-32 w-full overflow-hidden bg-gradient-to-r from-blue-50/80 via-indigo-50/60 to-cyan-50/50" animate-slow-gradient">
-            <!-- Bottom Faded Soft Transition Layer -->
-            <div class="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-b from-transparent via-[#FBFBFD]/60 to-[#FBFBFD] pointer-events-none z-10"></div>
+        <section class="relative pt-32 pb-20 md:pt-44 md:pb-32 w-full overflow-hidden bg-gradient-to-r from-blue-100/80 via-indigo-100/70 to-cyan-100/60">
+            <!-- Background Video with Top-Half Height Fade Cut -->
+            <div class="absolute inset-0 pointer-events-none">
+                <video
+                    autoplay
+                    loop
+                    muted
+                    playsinline
+                    class="w-full h-full object-cover scale-105 opacity-50"
+                    style="-webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 10%, rgba(0,0,0,0) 38%); mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 10%, rgba(0,0,0,0) 38%);"
+                >
+                    <source src="/videos/mobile-app-development/Globix_Secure_Locker__Beyond_E.mp4" type="video/mp4" />
+                </video>
+                <div class="absolute inset-0 bg-gradient-to-r from-blue-500/25 via-indigo-500/25 to-cyan-500/25"></div>
+                <div class="absolute inset-0 bg-gradient-to-b from-transparent via-blue-50/20 to-[#FBFBFD]"></div>
+            </div>
 
-            <div class="container mx-auto px-6 max-w-7xl">
+            <!-- Bottom Faded Soft Transition Layer -->
+            <div class="absolute bottom-0 inset-x-0 h-60 bg-gradient-to-b from-transparent via-[#FBFBFD]/90 to-[#FBFBFD] pointer-events-none z-10"></div>
+            <!-- Soft Faded Bottom Border Line -->
+            <div class="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-slate-200/30 to-transparent pointer-events-none z-20"></div>
+
+            <div class="container mx-auto px-6 max-w-7xl relative z-10">
                 <div class="text-center max-w-4xl mx-auto space-y-6">
                 <!-- Apple-style Floating Badge -->
                 <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-slate-100/80 backdrop-blur-xl border border-slate-200/60 shadow-sm">
@@ -161,7 +177,7 @@ const emiFeatures = [
                             playsinline 
                             class="w-full h-full object-cover opacity-90 scale-105 group-hover:scale-100 transition-transform duration-1000 ease-out"
                         >
-                            <source src="https://assets.mixkit.co/videos/preview/mixkit-hands-holding-a-smartphone-with-green-screen-41558-large.mp4" type="video/mp4" />
+                            <source src="/videos/mobile-app-development/Mobile_App_Development_At_Glob.mp4" type="video/mp4" />
                             Your browser does not support the video tag.
                         </video>
                         
@@ -220,16 +236,17 @@ const emiFeatures = [
 
                 <!-- Right: VIDEO ANIMATION 2 Showcase Card -->
                 <div class="lg:col-span-5 rounded-3xl p-6 bg-slate-900 text-white relative overflow-hidden flex flex-col justify-between shadow-2xl">
-                    <div class="absolute inset-0 opacity-40 mix-blend-overlay">
+                    <div class="absolute inset-0">
                         <video 
                             autoplay 
                             loop 
                             muted 
                             playsinline 
-                            class="w-full h-full object-cover scale-125"
+                            class="w-full h-full object-cover"
                         >
-                            <source src="https://assets.mixkit.co/videos/preview/mixkit-software-developer-working-on-code-screen-41552-large.mp4" type="video/mp4" />
+                            <source src="/videos/mobile-app-development/Next_Gen_App_Experience_Engine.mp4" type="video/mp4" />
                         </video>
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/30 to-transparent"></div>
                     </div>
 
                     <div class="relative z-10 space-y-4">
@@ -257,8 +274,8 @@ const emiFeatures = [
         </section>
 
         <!-- SECTION 02: Globix Secure-Locker (MDM) with VIDEO ANIMATION 3 -->
-        <section class="py-24 px-6 max-w-7xl mx-auto">
-            <div class="rounded-[2.5rem] bg-gradient-to-b from-slate-50 via-white to-slate-50 border border-slate-200/80 p-8 md:p-16 shadow-[0_20px_50px_rgba(0,0,0,0.04)] relative overflow-hidden">
+        <section class="py-24 px-6 max-w-7xl mx-auto overflow-hidden relative">
+            <div class="rounded-[2.5rem] bg-gradient-to-b from-slate-50 via-white to-slate-50 border border-slate-200/80 p-8 md:p-16 shadow-[0_20px_50px_rgba(0,0,0,0.04)] relative overflow-hidden z-10">
                 
                 <!-- Background Glass Glow -->
                 <div class="absolute top-0 right-0 w-96 h-96 bg-blue-200/30 blur-[100px] rounded-full pointer-events-none"></div>
@@ -289,7 +306,7 @@ const emiFeatures = [
                                     playsinline 
                                     class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700"
                                 >
-                                    <source src="https://assets.mixkit.co/videos/preview/mixkit-cyber-security-system-animation-43407-large.mp4" type="video/mp4" />
+                                    <source src="/videos/mobile-app-development/Globix_Secure_Locker__Beyond_E.mp4" type="video/mp4" />
                                 </video>
                                 <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
                                 <div class="absolute bottom-6 left-6 right-6 text-white space-y-1">
@@ -339,7 +356,7 @@ const emiFeatures = [
                         playsinline 
                         class="w-full h-full object-cover opacity-75"
                     >
-                        <source src="https://assets.mixkit.co/videos/preview/mixkit-hands-holding-a-smartphone-over-a-laptop-41279-large.mp4" type="video/mp4" />
+                        <source src="/videos/mobile-app-development/Automated_Default_Locking_Ma.mp4" type="video/mp4" />
                     </video>
                     <div class="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/60 to-transparent flex items-center p-8 md:p-12">
                         <div class="max-w-xl text-white space-y-3">
@@ -451,8 +468,19 @@ const emiFeatures = [
         </section>
 
         <!-- SECTION 04: iOS Security Research -->
-        <section class="py-24 px-6 max-w-7xl mx-auto">
-            <div class="p-8 md:p-16 rounded-[2.5rem] bg-slate-900 text-white relative overflow-hidden shadow-2xl">
+        <section class="py-24 px-6 max-w-7xl mx-auto overflow-hidden relative">
+            <div class="p-8 md:p-16 rounded-[2.5rem] bg-slate-900 text-white relative overflow-hidden shadow-2xl z-10">
+                <!-- Video Background -->
+                <video
+                    autoplay
+                    loop
+                    muted
+                    playsinline
+                    class="absolute inset-0 w-full h-full object-cover opacity-10"
+                    style="-webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%); mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);"
+                >
+                    <source src="/videos/rd-wing/create_a_loop_bg_video_with_th (1).mp4" type="video/mp4" />
+                </video>
                 <!-- Background Apple Glow -->
                 <div class="absolute -top-24 -right-24 w-96 h-96 bg-blue-500/20 blur-[120px] rounded-full pointer-events-none"></div>
 
@@ -514,8 +542,19 @@ const emiFeatures = [
         <!-- CTA SECTION: Apple-like Frosted Glass Banner -->
         <section class="py-20 px-6 max-w-7xl mx-auto mb-20" id="contact">
             <div class="p-12 md:p-16 rounded-[2.5rem] bg-gradient-to-br from-blue-500 via-indigo-600 to-cyan-600 text-white text-center relative overflow-hidden shadow-2xl">
+                <!-- Video Background -->
+                <video
+                    autoplay
+                    loop
+                    muted
+                    playsinline
+                    class="absolute inset-0 w-full h-full object-cover opacity-40"
+                    style="-webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%); mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);"
+                >
+                    <source src="/videos/rd-wing/create_a_loop_bg_video_with_th.mp4" type="video/mp4" />
+                </video>
                 <!-- Inner Glass Overlay -->
-                <div class="absolute inset-0 bg-white/10 backdrop-blur-3xl"></div>
+                <div class="absolute inset-0 bg-white/10"></div>
 
                 <div class="relative z-10 max-w-3xl mx-auto space-y-6">
                     <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight">

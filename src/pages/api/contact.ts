@@ -5,13 +5,12 @@ export const prerender = false;
 export const POST: APIRoute = async ({ request }) => {
     try {
         const formData = await request.formData();
-        const name = formData.get('name');
-        const email = formData.get('email');
-        const phone = formData.get('phone');
-        const service = formData.get('service');
-        const message = formData.get('message');
+        const name = formData.get('name')?.toString() || '';
+        const email = formData.get('email')?.toString() || '';
+        const phone = formData.get('phone')?.toString() || '';
+        const service = formData.get('service')?.toString() || '';
+        const message = formData.get('message')?.toString() || '';
 
-        // Validation
         if (!name || !email || !message) {
             return new Response(JSON.stringify({
                 success: false,
@@ -19,57 +18,31 @@ export const POST: APIRoute = async ({ request }) => {
             }), { status: 400 });
         }
 
-        // SAVE TO FILE
-        try {
-            const fs = await import('node:fs/promises');
-            const path = await import('node:path');
-            const filePath = path.join(process.cwd(), 'submissions.json');
-
-            let submissions = [];
-            try {
-                const data = await fs.readFile(filePath, 'utf-8');
-                submissions = JSON.parse(data);
-            } catch (e) {
-                // File doesn't exist yet
-            }
-
-            const newSubmission = {
-                id: Date.now().toString(),
-                name,
-                email,
-                phone,
-                service,
-                message,
-                timestamp: new Date().toISOString()
-            };
-
-            submissions.unshift(newSubmission); // Newest first
-            await fs.writeFile(filePath, JSON.stringify(submissions, null, 2));
-            console.log("AI Chat: Submission saved to submissions.json");
-        } catch (e) {
-            console.error("AI Chat: Failed to save submission:", e);
-        }
-
-        // LOGGING DATA (This is how the owner sees it in production logs)
         console.log("--- New Contact Form Submission ---");
         console.log(`From: ${name} (${email})`);
+        console.log(`Phone: ${phone || 'N/A'}`);
         console.log(`Service: ${service || 'None specified'}`);
         console.log(`Message: ${message}`);
         console.log("-----------------------------------");
 
-        /* 
-        DEVELOPER NOTE: To send an email instead of just logging, 
-        you can use services like Resend or Nodemailer here.
-        
-        Example with Resend:
-        const resend = new Resend(process.env.RESEND_API_KEY);
-        await resend.emails.send({
-            from: 'Globix Website <onboarding@resend.dev>',
-            to: process.env.CONTACT_EMAIL || 'info@globix.tech',
-            subject: `New Lead: ${name} - ${service}`,
-            text: `Name: ${name}\nEmail: ${email}\nService: ${service}\n\nMessage:\n${message}`
-        });
-        */
+        const resendApiKey = import.meta.env.RESEND_API_KEY;
+        const contactEmail = import.meta.env.CONTACT_EMAIL || 'info@globix.tech';
+
+        if (resendApiKey) {
+            try {
+                const { Resend } = await import('resend');
+                const resend = new Resend(resendApiKey);
+                await resend.emails.send({
+                    from: 'Globix Website <onboarding@resend.dev>',
+                    to: contactEmail,
+                    subject: `New Lead: ${name} - ${service || 'General'}`,
+                    text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone || 'N/A'}\nService: ${service || 'General'}\n\nMessage:\n${message}`
+                });
+                console.log("Email notification sent successfully");
+            } catch (e) {
+                console.error("Failed to send email notification:", e);
+            }
+        }
 
         return new Response(JSON.stringify({
             success: true,

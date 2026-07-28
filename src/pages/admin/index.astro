@@ -2,16 +2,10 @@
 import MainLayout from "../../layouts/MainLayout.astro";
 import Navbar from "../../components/Navbar.astro";
 import Footer from "../../components/Footer.astro";
-import fs from "node:fs/promises";
-import path from "node:path";
 
 export const prerender = false;
 
-// Use fallback for environment variables
-// @ts-ignore
-const ADMIN_PASSWORD =
-    import.meta.env.ADMIN_PASSWORD ||
-    (typeof process !== "undefined" ? process.env.ADMIN_PASSWORD : undefined);
+const ADMIN_PASSWORD = import.meta.env.ADMIN_PASSWORD;
 
 // Handle logout
 if (Astro.url.searchParams.get("logout") === "true") {
@@ -62,14 +56,15 @@ if (Astro.request.method === "POST") {
     }
 }
 
-// Load submissions if authenticated
+// Load submissions if authenticated (from env for Vercel compatibility)
 if (isAuthenticated) {
-    try {
-        const filePath = path.join(process.cwd(), "submissions.json");
-        const data = await fs.readFile(filePath, "utf-8");
-        submissions = JSON.parse(data) as Submission[];
-    } catch (e) {
-        submissions = [];
+    const submissionsJson = import.meta.env.SUBMISSIONS_DATA;
+    if (submissionsJson) {
+        try {
+            submissions = JSON.parse(submissionsJson) as Submission[];
+        } catch (e) {
+            submissions = [];
+        }
     }
 }
 ---

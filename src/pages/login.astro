@@ -25,10 +25,12 @@ if (Astro.request.method === "POST") {
     let shouldRedirect = false;
     
     try {
-        const formData = await Astro.request.formData();
-        const email = formData.get("email")?.toString().trim();
-        const password = formData.get("password")?.toString();
-        const loginType = formData.get("login_type")?.toString() || "admin";
+        const contentType = Astro.request.headers.get("content-type") || "";
+        if (contentType.includes("multipart/form-data") || contentType.includes("application/x-www-form-urlencoded")) {
+            const formData = await Astro.request.formData();
+            const email = formData.get("email")?.toString().trim();
+            const password = formData.get("password")?.toString();
+            const loginType = formData.get("login_type")?.toString() || "admin";
 
         if (loginType === "admin") {
             // Admin password verification (check password or email/password combo)
@@ -51,7 +53,8 @@ if (Astro.request.method === "POST") {
                 error = "Please provide a valid email and password (min 6 characters).";
             }
         }
-    } catch (e) {
+    }
+} catch (e) {
         console.error("Login Form Error:", e);
         error = "Could not process form request. Please try again.";
     }
@@ -225,13 +228,29 @@ if (Astro.request.method === "POST") {
             loginForm.addEventListener("submit", (e) => {
                 const loginType = loginTypeInput ? loginTypeInput.value : "admin";
                 const pass = passwordInput ? passwordInput.value.trim() : "";
+                let alertContainer = document.getElementById("login-feedback-alert");
+
+                if (!alertContainer) {
+                    alertContainer = document.createElement("div");
+                    alertContainer.id = "login-feedback-alert";
+                    alertContainer.className = "mb-6 p-4 rounded-2xl text-xs font-semibold flex items-center gap-3";
+                    loginForm.parentNode?.insertBefore(alertContainer, loginForm);
+                }
 
                 if (loginType === "admin") {
                     if (pass === "admin123" || pass === "globixadmin123") {
                         e.preventDefault();
-                        // Set cookie client-side and redirect instantly
+                        alertContainer.className = "mb-6 p-4 rounded-2xl bg-emerald-50/90 border border-emerald-200 text-emerald-700 text-xs font-semibold flex items-center gap-3";
+                        alertContainer.innerHTML = '<i class="fas fa-circle-check text-base text-emerald-600"></i><span>Authentication successful! Redirecting to Admin Dashboard...</span>';
+
                         document.cookie = "admin_auth=" + encodeURIComponent(pass) + "; path=/; max-age=86400; SameSite=Lax";
-                        window.location.href = "/admin";
+                        setTimeout(() => {
+                            window.location.href = "/admin";
+                        }, 450);
+                    } else {
+                        e.preventDefault();
+                        alertContainer.className = "mb-6 p-4 rounded-2xl bg-red-50/90 border border-red-200 text-red-600 text-xs font-semibold flex items-center gap-3 animate-shake";
+                        alertContainer.innerHTML = '<i class="fas fa-circle-xmark text-base text-red-600"></i><span>Invalid credentials! Use admin@gmail.com / admin123</span>';
                     }
                 }
             });

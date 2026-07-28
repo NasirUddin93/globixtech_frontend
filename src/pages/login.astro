@@ -5,18 +5,14 @@ import Footer from "../components/Footer.astro";
 
 export const prerender = false;
 
-// Fallback for environment variables
-const ADMIN_PASSWORD =
-    import.meta.env.ADMIN_PASSWORD ||
-    (typeof process !== "undefined" ? process.env.ADMIN_PASSWORD : undefined) ||
-    "admin123";
+const ADMIN_PASSWORD = import.meta.env.ADMIN_PASSWORD;
 
 let error: string | null = null;
 let successMessage: string | null = null;
 
 // Check if already authenticated
 const authCookie = Astro.cookies.get("admin_auth");
-if (authCookie && (authCookie.value === ADMIN_PASSWORD || authCookie.value === "globixadmin123" || authCookie.value === "admin123")) {
+if (authCookie && ADMIN_PASSWORD && authCookie.value === ADMIN_PASSWORD) {
     return Astro.redirect("/admin");
 }
 
@@ -31,17 +27,17 @@ if (Astro.request.method === "POST") {
         const loginType = formData.get("login_type")?.toString() || "admin";
 
         if (loginType === "admin") {
-            // Admin password verification (check password or email/password combo)
-            if (password === ADMIN_PASSWORD || password === "admin123" || password === "globixadmin123" || (email === "admin@gmail.com" && password === "admin123")) {
-                Astro.cookies.set("admin_auth", (password || "admin123") as string, {
+            // Admin password verification
+            if (ADMIN_PASSWORD && password === ADMIN_PASSWORD) {
+                Astro.cookies.set("admin_auth", password as string, {
                     path: "/",
                     httpOnly: true,
                     sameSite: "strict",
-                    maxAge: 60 * 60 * 24, // 24 hours
+                    maxAge: 60 * 60 * 24,
                 });
                 shouldRedirect = true;
             } else {
-                error = "Invalid credentials. Use admin@gmail.com / admin123";
+                error = "Invalid credentials.";
             }
         } else {
             // Client portal authentication
@@ -177,7 +173,7 @@ if (Astro.request.method === "POST") {
                         <a href="/contact" class="text-[#0071e3] font-semibold hover:underline">Contact System Admin</a>
                     </p>
                     <div class="bg-blue-50/60 p-2.5 rounded-xl text-[10px] text-blue-700 font-mono inline-block border border-blue-100">
-                        Default Admin: <span class="font-bold">admin@gmail.com</span> / <span class="font-bold">admin123</span>
+                        <i class="fas fa-info-circle mr-1"></i> Use the password set in environment variables
                     </div>
                 </div>
 
@@ -222,19 +218,7 @@ if (Astro.request.method === "POST") {
         }
 
         if (loginForm) {
-            loginForm.addEventListener("submit", (e) => {
-                const loginType = loginTypeInput ? loginTypeInput.value : "admin";
-                const pass = passwordInput ? passwordInput.value.trim() : "";
-
-                if (loginType === "admin") {
-                    if (pass === "admin123" || pass === "globixadmin123") {
-                        e.preventDefault();
-                        // Set cookie client-side and redirect instantly
-                        document.cookie = "admin_auth=" + encodeURIComponent(pass) + "; path=/; max-age=86400; SameSite=Lax";
-                        window.location.href = "/admin";
-                    }
-                }
-            });
+            // Client-side bypass removed for security — all auth handled server-side
         }
     });
 </script>

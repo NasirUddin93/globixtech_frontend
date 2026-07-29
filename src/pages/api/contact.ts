@@ -110,19 +110,24 @@ export const POST: APIRoute = async ({ request }) => {
         console.log(`Message: ${message}`);
         console.log("-----------------------------------");
 
-        /* 
-        DEVELOPER NOTE: To send an email instead of just logging, 
-        you can use services like Resend or Nodemailer here.
-        
-        Example with Resend:
-        const resend = new Resend(process.env.RESEND_API_KEY);
-        await resend.emails.send({
-            from: 'Globix Website <onboarding@resend.dev>',
-            to: process.env.CONTACT_EMAIL || 'info@globix.tech',
-            subject: `New Lead: ${name} - ${service}`,
-            text: `Name: ${name}\nEmail: ${email}\nService: ${service}\n\nMessage:\n${message}`
-        });
-        */
+        const resendApiKey = import.meta.env.RESEND_API_KEY;
+        const contactEmail = import.meta.env.CONTACT_EMAIL || 'info@globix.tech';
+
+        if (resendApiKey) {
+            try {
+                const { Resend } = await import('resend');
+                const resend = new Resend(resendApiKey);
+                await resend.emails.send({
+                    from: 'Globix Website <onboarding@resend.dev>',
+                    to: contactEmail,
+                    subject: `New Lead: ${name} - ${service || 'General'}`,
+                    text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone || 'N/A'}\nService: ${service || 'General'}\n\nMessage:\n${message}`
+                });
+                console.log("Email notification sent successfully");
+            } catch (e) {
+                console.error("Failed to send email notification:", e);
+            }
+        }
 
         return new Response(JSON.stringify({
             success: true,

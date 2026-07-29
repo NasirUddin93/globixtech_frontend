@@ -19,7 +19,7 @@ import logo from "../assets/logo.png";
                 <button class="flex items-center gap-1.5 hover:text-[#0071e3] transition-colors py-2 focus:outline-none">
                     Solutions <i class="fas fa-chevron-down text-[10px] text-[#86868b] group-hover:rotate-180 transition-transform"></i>
                 </button>
-                <div class="absolute top-full left-1/2 -translate-x-1/2 -mt-1 w-[780px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-1 z-50 pointer-events-none group-hover:pointer-events-auto">
+                <div class="absolute top-full left-1/2 -translate-x-1/2 -mt-1 w-[780px] max-h-[80vh] overflow-y-auto opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-1 z-50 pointer-events-none group-hover:pointer-events-auto custom-scrollbar">
                     <div class="bg-white/95 backdrop-blur-3xl border border-white/90 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.12)] rounded-3xl p-6 grid grid-cols-3 gap-4">
                     
                     <!-- Column 1: Core Software Systems -->
@@ -104,7 +104,7 @@ import logo from "../assets/logo.png";
 
                     <!-- Column 3: Infrastructure & Security -->
                     <div class="space-y-1">
-                        <span class="text-[10px] font-extrabold uppercase tracking-widest text-[#86868b] px-3">Infrastructure</span>
+                        <span class="text-[10px] font-extrabold uppercase tracking-widest text-[#86868b] px-3">Infrastructure & Custom</span>
                         <a href="/solutions/server-management" class="flex items-center gap-3 p-2 rounded-2xl hover:bg-[#f5f5f7] transition-colors">
                             <div class="w-7 h-7 rounded-xl bg-slate-100 flex items-center justify-center text-slate-700 text-xs"><i class="fas fa-server"></i></div>
                             <div>
@@ -124,6 +124,13 @@ import logo from "../assets/logo.png";
                             <div>
                                 <div class="font-semibold text-xs text-[#1d1d1f]">Security & Audit</div>
                                 <div class="text-[10px] text-[#86868b]">Pentesting</div>
+                            </div>
+                        </a>
+                        <a href="/contact?service=other" class="flex items-center gap-3 p-2 rounded-2xl hover:bg-[#f5f5f7] transition-colors border border-dashed border-gray-200">
+                            <div class="w-7 h-7 rounded-xl bg-orange-50 flex items-center justify-center text-orange-600 text-xs"><i class="fas fa-ellipsis"></i></div>
+                            <div>
+                                <div class="font-semibold text-xs text-[#1d1d1f]">Other (Optional)</div>
+                                <div class="text-[10px] text-[#86868b]">Custom Request</div>
                             </div>
                         </a>
                     </div>

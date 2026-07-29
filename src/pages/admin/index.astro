@@ -1,484 +1,139 @@
 ---
-import MainLayout from "../../layouts/MainLayout.astro";
-import Navbar from "../../components/Navbar.astro";
-import Footer from "../../components/Footer.astro";
-import fs from "node:fs/promises";
-import path from "node:path";
-
 export const prerender = false;
 
-// Use fallback for environment variables
-// @ts-ignore
-const ADMIN_PASSWORD =
-    import.meta.env.ADMIN_PASSWORD ||
-    (typeof process !== "undefined" ? process.env.ADMIN_PASSWORD : undefined);
+import Sidebar from "../../components/admin/Sidebar.astro";
+import Topbar from "../../components/admin/Topbar.astro";
+import OverviewSection from "../../components/admin/OverviewSection.astro";
+import ContactsSection from "../../components/admin/ContactsSection.astro";
+import AdminModals from "../../components/admin/AdminModals.astro";
+
+const API_BASE = "http://127.0.0.1:8000/api";
 
 // Handle logout
 if (Astro.url.searchParams.get("logout") === "true") {
-    Astro.cookies.delete("admin_auth", { path: "/" });
-    return Astro.redirect("/admin");
+    const token = Astro.cookies.get("admin_token")?.value;
+    if (token) {
+        try {
+            await fetch(`${API_BASE}/admin/logout`, {
+                method:  "POST",
+                headers: { Authorization: `Bearer ${token}`, Accept: "application/json" },
+            });
+        } catch (_) {}
+    }
+    Astro.cookies.delete("admin_token", { path: "/" });
+    Astro.cookies.delete("admin_name",  { path: "/" });
+    return Astro.redirect("/login");
 }
 
-interface Submission {
-    id: string;
+// Auth check
+const token     = Astro.cookies.get("admin_token")?.value;
+const adminName = Astro.cookies.get("admin_name")?.value ?? "Admin";
+
+if (!token) {
+    return Astro.redirect("/login");
+}
+
+interface Contact {
+    id: number;
     name: string;
     email: string;
-    phone?: string;
-    service: string;
+    phone: string | null;
+    company: string | null;
+    service: string | null;
     message: string;
-    timestamp: string;
+    status: string;
+    admin_note: string | null;
+    completed_at: string | null;
+    created_at: string;
 }
 
-let submissions: Submission[] = [];
-let error: string | null = null;
-let isAuthenticated = false;
+let contacts: Contact[]   = [];
+let totalContacts         = 0;
+let newContacts           = 0;
+let fetchError: string | null = null;
 
-// Check password from cookie
-const authCookie = Astro.cookies.get("admin_auth");
-const validPasswords = [ADMIN_PASSWORD, "admin123", "globixadmin123"].filter(Boolean);
-if (authCookie && validPasswords.includes(authCookie.value)) {
-    isAuthenticated = true;
-}
+const headers = { Authorization: `Bearer ${token}`, Accept: "application/json" };
 
-// Handle login
-if (Astro.request.method === "POST") {
-    try {
-        const contentType = Astro.request.headers.get("content-type") || "";
-        if (contentType.includes("multipart/form-data") || contentType.includes("application/x-www-form-urlencoded")) {
-            const formData = await Astro.request.formData();
-            const password = formData.get("password")?.toString();
+try {
+    const [cRes, statsRes] = await Promise.all([
+        fetch(`${API_BASE}/admin/contacts`, { headers }),
+        fetch(`${API_BASE}/admin/stats`,    { headers }),
+    ]);
 
-            if (ADMIN_PASSWORD && (password === ADMIN_PASSWORD || password === "admin123" || password === "globixadmin123")) {
-                Astro.cookies.set("admin_auth", (password || "admin123") as string, {
-                    path: "/",
-                    httpOnly: true,
-                    sameSite: "strict",
-                    maxAge: 60 * 60 * 24, // 24 hours
-                });
-                return Astro.redirect("/admin");
-            } else {
-                error = "Invalid password. Use admin123";
-            }
-        }
-    } catch (e) {
-        console.error("Admin POST error:", e);
+    if (cRes.ok) {
+        const data = await cRes.json();
+        const rawContacts = data.contacts ?? data.data ?? data;
+        contacts = Array.isArray(rawContacts) ? rawContacts : [];
+    } else {
+        fetchError = `Failed to load contacts (HTTP ${cRes.status})`;
     }
+
+    if (statsRes.ok) {
+        const stats = await statsRes.json();
+        totalContacts = stats.total_contacts ?? contacts.length;
+        newContacts   = stats.new_contacts   ?? contacts.filter(c => c.status === 'new').length;
+    } else {
+        totalContacts = contacts.length;
+        newContacts   = contacts.filter(c => c.status === 'new').length;
+    }
+} catch (err: any) {
+    fetchError = `Backend connection error: ${err.message ?? err}`;
 }
 
-// Load submissions if authenticated
-if (isAuthenticated) {
-    try {
-        const filePath = path.join(process.cwd(), "submissions.json");
-        const data = await fs.readFile(filePath, "utf-8");
-        submissions = JSON.parse(data) as Submission[];
-    } catch (e) {
-        submissions = [];
-    }
+function timeAgo(dateStr: string): string {
+    const diff = Math.floor((Date.now() - new Date(dateStr).getTime()) / 1000);
+    if (diff < 60) return "just now";
+    const m = Math.floor(diff / 60);
+    if (m < 60) return `${m}m ago`;
+    const h = Math.floor(m / 60);
+    if (h < 24) return `${h}h ago`;
+    return `${Math.floor(h / 24)}d ago`;
 }
 ---
 
-<MainLayout title="Admin Dashboard - Globix Tech">
-    <Navbar />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard — Globix Tech</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/src/styles/admin.css" />
+    <script is:inline src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
 
-    <div class="min-h-screen bg-gray-50 py-24">
-        <div class="container mx-auto px-6">
-            {
-                !isAuthenticated ? (
-                    <div class="max-w-md mx-auto bg-white p-8 rounded-[2rem] shadow-xl border border-gray-100">
-                        <div class="text-center mb-8">
-                            <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                                <i class="fas fa-lock text-3xl" />
-                            </div>
-                            <h1 class="text-2xl font-bold text-[#0c1b3d]">
-                                Admin Login
-                            </h1>
-                            <p class="text-gray-500 text-sm mt-2">
-                                Enter your password to view submissions
-                            </p>
-                        </div>
+<div class="layout">
+    <!-- Sidebar -->
+    <Sidebar adminName={adminName} newContacts={newContacts} />
 
-                        <div id="admin-login-alert" class="hidden mb-4 p-3.5 rounded-xl text-xs font-semibold"></div>
+    <!-- Main Container -->
+    <div class="main">
+        <!-- Topbar -->
+        <Topbar />
 
-                        <form id="admin-login-form" method="POST" class="space-y-4">
-                            <div>
-                                <input
-                                    type="password"
-                                    id="admin-password-input"
-                                    name="password"
-                                    placeholder="Enter Password"
-                                    class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all font-mono text-black font-extrabold placeholder:font-normal placeholder:text-gray-400"
-                                    style="color: #000000; -webkit-text-fill-color: #000000;"
-                                    required
-                                />
-                            </div>
-                            {error && (
-                                <div class="p-3 rounded-xl bg-red-50 text-red-600 text-xs font-semibold flex items-center gap-2">
-                                    <i class="fas fa-circle-exclamation text-sm"></i>
-                                    <span>{error}</span>
-                                </div>
-                            )}
-                            <button
-                                type="submit"
-                                class="w-full bg-[#0c1b3d] text-white py-4 rounded-xl font-bold hover:bg-blue-900 transition-all shadow-lg flex items-center justify-center gap-2"
-                            >
-                                <span>Access Dashboard</span>
-                                <i class="fas fa-arrow-right text-xs"></i>
-                            </button>
-                        </form>
-                    </div>
+        <!-- Content Area -->
+        <main class="content">
+            {fetchError && (
+                <div class="error-banner">
+                    <i class="fas fa-triangle-exclamation"></i>
+                    {fetchError}
+                </div>
+            )}
 
-                    <script>
-                        document.addEventListener("DOMContentLoaded", () => {
-                            const loginForm = document.getElementById("admin-login-form") as HTMLFormElement;
-                            const passwordInput = document.getElementById("admin-password-input") as HTMLInputElement;
-                            const alertBox = document.getElementById("admin-login-alert");
+            <!-- Overview Section -->
+            <OverviewSection contacts={contacts} totalContacts={totalContacts} newContacts={newContacts} timeAgo={timeAgo} />
 
-                            if (loginForm && passwordInput && alertBox) {
-                                loginForm.addEventListener("submit", (e) => {
-                                    const val = passwordInput.value.trim();
-                                    if (val === "admin123" || val === "globixadmin123") {
-                                        e.preventDefault();
-                                        alertBox.className = "mb-4 p-3.5 rounded-xl text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200 flex items-center gap-2";
-                                        alertBox.innerHTML = '<i class="fas fa-circle-check text-sm"></i><span>Login successful! Loading dashboard...</span>';
-                                        
-                                        document.cookie = "admin_auth=" + encodeURIComponent(val) + "; path=/; max-age=86400; SameSite=Lax";
-                                        setTimeout(() => {
-                                            window.location.reload();
-                                        }, 400);
-                                    } else {
-                                        e.preventDefault();
-                                        alertBox.className = "mb-4 p-3.5 rounded-xl text-xs font-semibold bg-red-50 text-red-600 border border-red-200 flex items-center gap-2 animate-shake";
-                                        alertBox.innerHTML = '<i class="fas fa-circle-xmark text-sm"></i><span>Invalid password! Default password is admin123</span>';
-                                    }
-                                });
-                            }
-                        });
-                    </script>
-                ) : (
-                    <div class="space-y-8">
-                        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-                            <div>
-                                <h1 class="text-3xl font-bold text-[#0c1b3d]">
-                                    Contact Submissions
-                                </h1>
-                                <p class="text-gray-500">
-                                    Manage and view leads from your website.
-                                </p>
-                            </div>
-                            <div class="flex items-center gap-4">
-                                <span class="bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-bold">
-                                    {submissions.length} Total Leads
-                                </span>
-                                <div
-                                    class="relative inline-block text-left"
-                                    id="export-dropdown"
-                                >
-                                    <button
-                                        type="button"
-                                        class="bg-white border border-gray-200 text-[#0c1b3d] px-4 py-2 rounded-xl text-sm font-bold flex items-center gap-2 hover:bg-gray-50 transition-all shadow-sm"
-                                        id="export-btn"
-                                    >
-                                        <i class="fas fa-download" />
-                                        <span>Export Leads</span>
-                                        <i class="fas fa-chevron-down text-[10px]" />
-                                    </button>
-                                    <div
-                                        class="hidden absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-xl border border-gray-100 z-50 py-2"
-                                        id="export-menu"
-                                    >
-                                        <button
-                                            class="w-full text-left px-4 py-2 text-sm hover:bg-blue-50 text-gray-700 flex items-center gap-2"
-                                            id="export-excel"
-                                        >
-                                            <i class="fas fa-file-excel text-green-600 w-4" />{" "}
-                                            Excel (XLSX)
-                                        </button>
-                                        <button
-                                            class="w-full text-left px-4 py-2 text-sm hover:bg-blue-50 text-gray-700 flex items-center gap-2"
-                                            id="export-pdf"
-                                        >
-                                            <i class="fas fa-file-pdf text-red-600 w-4" />{" "}
-                                            PDF Document
-                                        </button>
-                                        <button
-                                            class="w-full text-left px-4 py-2 text-sm hover:bg-blue-50 text-gray-700 flex items-center gap-2"
-                                            id="export-word"
-                                        >
-                                            <i class="fas fa-file-word text-blue-600 w-4" />{" "}
-                                            Word Document
-                                        </button>
-                                    </div>
-                                </div>
-                                <a
-                                    href="/admin?logout=true"
-                                    class="text-gray-500 hover:text-red-500 transition-colors text-sm font-bold flex items-center gap-2"
-                                >
-                                    <i class="fas fa-sign-out-alt" />
-                                    <span>Logout</span>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="bg-white rounded-[2rem] shadow-sm border border-gray-100 overflow-hidden">
-                            <div class="overflow-x-auto">
-                                <table class="w-full text-left">
-                                    <thead class="bg-gray-50 border-b border-gray-100">
-                                        <tr>
-                                            <th class="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-wider">
-                                                Date
-                                            </th>
-                                            <th class="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-wider">
-                                                Contact
-                                            </th>
-                                            <th class="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-wider">
-                                                Phone
-                                            </th>
-                                            <th class="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-wider">
-                                                Service
-                                            </th>
-                                            <th class="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-wider">
-                                                Message
-                                            </th>
-                                        </tr>
-                                    </thead>
-                                    <tbody class="divide-y divide-gray-50">
-                                        {submissions.length === 0 ? (
-                                            <tr>
-                                                <td
-                                                    colspan="5"
-                                                    class="px-6 py-20 text-center"
-                                                >
-                                                    <div class="flex flex-col items-center gap-3 text-gray-400">
-                                                        <i class="far fa-folder-open text-4xl" />
-                                                        <p class="font-medium text-lg">
-                                                            No submissions yet.
-                                                        </p>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        ) : (
-                                            submissions.map((sub) => (
-                                                <tr class="hover:bg-gray-50/50 transition-colors">
-                                                    <td class="px-6 py-4 whitespace-nowrap">
-                                                        <div class="text-sm font-medium text-gray-900">
-                                                            {new Date(
-                                                                sub.timestamp,
-                                                            ).toLocaleDateString()}
-                                                        </div>
-                                                        <div class="text-xs text-gray-500">
-                                                            {new Date(
-                                                                sub.timestamp,
-                                                            ).toLocaleTimeString(
-                                                                [],
-                                                                {
-                                                                    hour: "2-digit",
-                                                                    minute: "2-digit",
-                                                                },
-                                                            )}
-                                                        </div>
-                                                    </td>
-                                                    <td class="px-6 py-4">
-                                                        <div class="text-sm font-bold text-[#0c1b3d]">
-                                                            {sub.name}
-                                                        </div>
-                                                        <div class="text-xs text-blue-600 font-medium">
-                                                            {sub.email}
-                                                        </div>
-                                                    </td>
-                                                    <td class="px-6 py-4 whitespace-nowrap">
-                                                        <div class="text-sm text-gray-600">
-                                                            {sub.phone || (
-                                                                <span class="text-gray-300 italic text-xs">
-                                                                    Not provided
-                                                                </span>
-                                                            )}
-                                                        </div>
-                                                    </td>
-                                                    <td class="px-6 py-4 whitespace-nowrap">
-                                                        <span class="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-[10px] font-bold uppercase tracking-wider">
-                                                            {sub.service ||
-                                                                "General"}
-                                                        </span>
-                                                    </td>
-                                                    <td class="px-6 py-4">
-                                                        <p
-                                                            class="text-sm text-gray-600 line-clamp-2 max-w-md"
-                                                            title={sub.message}
-                                                        >
-                                                            {sub.message}
-                                                        </p>
-                                                    </td>
-                                                </tr>
-                                            ))
-                                        )}
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                )
-            }
-        </div>
+            <!-- Contacts Submissions Section -->
+            <ContactsSection contacts={contacts} totalContacts={totalContacts} />
+        </main>
     </div>
+</div>
 
-    <Footer />
-</MainLayout>
+<!-- All Modal Popups (Done, Confirmation, Success, View Detail) -->
+<AdminModals contactName="" />
 
-<style>
-    /* Custom scrollbar for table */
-    ::-webkit-scrollbar {
-        height: 6px;
-        width: 6px;
-    }
-    ::-webkit-scrollbar-track {
-        background: transparent;
-    }
-    ::-webkit-scrollbar-thumb {
-        background: #e2e8f0;
-        border-radius: 10px;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-        background: #cbd5e1;
-    }
-</style>
-
-<script
-    is:inline
-    src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"
-></script>
-<script
-    is:inline
-    src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"
-></script>
-<script
-    is:inline
-    src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"
-></script>
-
-<script define:vars={{ submissions }}>
-    // Dropdown Logic
-    const exportBtn = document.getElementById("export-btn");
-    const exportMenu = document.getElementById("export-menu");
-
-    if (exportBtn && exportMenu) {
-        exportBtn.addEventListener("click", (e) => {
-            e.stopPropagation();
-            exportMenu.classList.toggle("hidden");
-        });
-
-        document.addEventListener("click", () => {
-            exportMenu.classList.add("hidden");
-        });
-    }
-
-    // Export Logic
-    document.getElementById("export-excel")?.addEventListener("click", () => {
-        if (!submissions || submissions.length === 0) {
-            alert("No data to export");
-            return;
-        }
-        const data = submissions.map((s) => ({
-            Date: new Date(s.timestamp).toLocaleDateString(),
-            Name: s.name,
-            Email: s.email,
-            Phone: s.phone || "N/A",
-            Service: s.service || "General",
-            Message: s.message,
-        }));
-
-        const ws = XLSX.utils.json_to_sheet(data);
-        const wb = XLSX.utils.book_new();
-        XLSX.utils.book_append_sheet(wb, ws, "Submissions");
-        XLSX.writeFile(
-            wb,
-            `Globix_Leads_${new Date().toISOString().split("T")[0]}.xlsx`,
-        );
-    });
-
-    document.getElementById("export-pdf")?.addEventListener("click", () => {
-        if (!submissions || submissions.length === 0) {
-            alert("No data to export");
-            return;
-        }
-        const { jsPDF } = window.jspdf;
-        const doc = new jsPDF();
-
-        doc.setFontSize(18);
-        doc.text("Globix Tech - Contact Submissions", 14, 22);
-        doc.setFontSize(11);
-        doc.setTextColor(100);
-        doc.text(`Generated on: ${new Date().toLocaleString()}`, 14, 30);
-
-        const head = [["Date", "Contact", "Phone", "Service", "Message"]];
-        const body = submissions.map((s) => [
-            new Date(s.timestamp).toLocaleDateString(),
-            `${s.name}\n${s.email}`,
-            s.phone || "N/A",
-            s.service || "General",
-            s.message,
-        ]);
-
-        doc.autoTable({
-            head: head,
-            body: body,
-            startY: 40,
-            theme: "striped",
-            headStyles: { fillColor: [12, 27, 61] },
-            styles: { fontSize: 8, cellPadding: 3 },
-        });
-
-        doc.save(`Globix_Leads_${new Date().toISOString().split("T")[0]}.pdf`);
-    });
-
-    document.getElementById("export-word")?.addEventListener("click", () => {
-        if (!submissions || submissions.length === 0) {
-            alert("No data to export");
-            return;
-        }
-        let content = `
-            <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
-            <head><meta charset='utf-8'><title>Contact Leads</title></head>
-            <body>
-                <h1>Globix Tech - Contact Leads</h1>
-                <p>Generated: ${new Date().toLocaleString()}</p>
-                <table border='1' cellspacing='0' cellpadding='5'>
-                    <tr style='background-color: #0c1b3d; color: white;'>
-                        <th>Date</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Phone</th>
-                        <th>Service</th>
-                        <th>Message</th>
-                    </tr>
-                    ${submissions
-                        .map(
-                            (s) => `
-                        <tr>
-                            <td>${new Date(s.timestamp).toLocaleDateString()}</td>
-                            <td>${s.name}</td>
-                            <td>${s.email}</td>
-                            <td>${s.phone || "N/A"}</td>
-                            <td>${s.service || "General"}</td>
-                            <td>${s.message}</td>
-                        </tr>
-                    `,
-                        )
-                        .join("")}
-                </table>
-            </body>
-            </html>
-        `;
-
-        const blob = new Blob(["\ufeff", content], {
-            type: "application/msword",
-        });
-
-        const url = URL.createObjectURL(blob);
-        const link = document.createElement("a");
-        link.href = url;
-        link.download = `Globix_Leads_${new Date().toISOString().split("T")[0]}.doc`;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-    });
-</script>
+<script src="../../scripts/admin.ts"></script>
+</body>
+</html>

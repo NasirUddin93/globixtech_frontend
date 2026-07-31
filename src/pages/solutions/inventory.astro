@@ -132,7 +132,7 @@ import {
                         {
                             stats.map((stat, idx) => (
                                 <div class={`pt-4 md:pt-0 ${idx !== 0 ? 'md:pl-6' : ''}`}>
-                                    <div class="text-3xl md:text-5xl font-extrabold text-[#1D1D1F] tracking-tight mb-1">
+                                    <div class="text-3xl md:text-5xl font-extrabold text-[#1D1D1F] tracking-tight mb-1" data-counter={stat.value}>
                                         {stat.value}
                                     </div>
                                     <div class="text-xs font-semibold text-slate-400 uppercase tracking-widest mt-1">
@@ -469,7 +469,7 @@ import {
                                 </div>
 
                                 <a
-                                    href="/#contact"
+                                    href="/contact"
                                     class={`block w-full text-center py-4 rounded-2xl font-bold text-xs transition-all duration-300 ${
                                         plan.recommended 
                                             ? "bg-emerald-600 hover:bg-emerald-700 text-white shadow-md hover:shadow-lg" 

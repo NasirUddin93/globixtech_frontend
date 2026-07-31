@@ -10,14 +10,14 @@
     "astro": "astro"
   },
   "engines": {
-    "node": "24.x"
+    "node": "20.x"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.0",
     "@astrojs/tailwind": "^6.0.2",
     "@astrojs/vercel": "^7.8.2",
     "@fontsource/poppins": "^5.2.7",
-    "astro": "^4.0.0",
+    "astro": "^4.16.19",
     "caniuse-lite": "^1.0.30001806",
     "jspdf": "^4.0.0",
     "jspdf-autotable": "^5.0.7",

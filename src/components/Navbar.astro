@@ -155,14 +155,17 @@ import logo from "../assets/logo.png";
             <a href="/contact" class="hidden sm:inline-block bg-[#0071e3] hover:bg-[#0077ed] text-white text-xs font-semibold px-5 py-2.5 rounded-full shadow-md shadow-blue-500/20 hover:shadow-lg hover:scale-[1.02] active:scale-95 transition-all">
                 Get Free Demo
             </a>
-            <button id="menu-btn" aria-label="Toggle navigation menu" class="lg:hidden w-9 h-9 flex items-center justify-center rounded-full bg-[#f5f5f7] hover:bg-[#e8e8ed] text-[#1d1d1f] transition-all focus:outline-none">
+            <button id="menu-btn" aria-label="Toggle navigation menu" class="lg:hidden w-10 h-10 flex items-center justify-center rounded-full bg-[#f5f5f7] hover:bg-[#e8e8ed] text-[#1d1d1f] active:scale-95 transition-all focus:outline-none">
                 <i id="menu-icon" class="fas fa-bars text-sm transition-transform duration-300"></i>
             </button>
         </div>
     </nav>
 
+    <!-- Mobile Drawer Backdrop Overlay -->
+    <div id="mobile-backdrop" class="fixed inset-0 bg-black/20 backdrop-blur-xs z-30 lg:hidden hidden transition-opacity duration-300 opacity-0"></div>
+
     <!-- Mobile Drawer Overlay -->
-    <div id="mobile-menu" class="fixed inset-x-4 top-20 z-40 bg-white/95 backdrop-blur-3xl border border-white/90 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.15)] rounded-3xl p-6 lg:hidden hidden transition-all duration-300 transform scale-95 opacity-0 origin-top max-h-[85vh] overflow-y-auto custom-scrollbar" style="-webkit-backdrop-filter: blur(40px);">
+    <div id="mobile-menu" class="fixed inset-x-3 sm:inset-x-6 top-[68px] z-40 bg-white/95 backdrop-blur-3xl border border-white/90 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.18)] rounded-3xl p-5 sm:p-6 lg:hidden hidden transition-all duration-300 transform scale-95 opacity-0 origin-top max-h-[calc(100dvh-80px)] overflow-y-auto custom-scrollbar" style="-webkit-backdrop-filter: blur(40px);">
         <div class="flex flex-col gap-3 text-sm font-medium text-[#1d1d1f]">
             <a href="/" class="px-4 py-2.5 rounded-2xl hover:bg-[#f5f5f7] transition-colors flex items-center justify-between">
                 <span>Home</span>
@@ -293,6 +296,7 @@ import logo from "../assets/logo.png";
         const menuBtn = document.getElementById('menu-btn');
         const menuIcon = document.getElementById('menu-icon');
         const mobileMenu = document.getElementById('mobile-menu');
+        const mobileBackdrop = document.getElementById('mobile-backdrop');
 
         const solutionsBtn = document.getElementById('mobile-solutions-btn');
         const solutionsContent = document.getElementById('mobile-solutions-content');
@@ -302,11 +306,16 @@ import logo from "../assets/logo.png";
             if (!mobileMenu || !menuIcon) return;
             mobileMenu.classList.remove('scale-100', 'opacity-100');
             mobileMenu.classList.add('scale-95', 'opacity-0');
+            if (mobileBackdrop) {
+                mobileBackdrop.classList.remove('opacity-100');
+                mobileBackdrop.classList.add('opacity-0');
+            }
             menuIcon.classList.remove('fa-times');
             menuIcon.classList.add('fa-bars');
             document.body.classList.remove('overflow-hidden');
             setTimeout(() => {
                 mobileMenu.classList.add('hidden');
+                if (mobileBackdrop) mobileBackdrop.classList.add('hidden');
             }, 300);
         };
 
@@ -316,10 +325,17 @@ import logo from "../assets/logo.png";
                 
                 if (isHidden) {
                     mobileMenu.classList.remove('hidden');
+                    if (mobileBackdrop) {
+                        mobileBackdrop.classList.remove('hidden');
+                    }
                     document.body.classList.add('overflow-hidden');
                     setTimeout(() => {
                         mobileMenu.classList.remove('scale-95', 'opacity-0');
                         mobileMenu.classList.add('scale-100', 'opacity-100');
+                        if (mobileBackdrop) {
+                            mobileBackdrop.classList.remove('opacity-0');
+                            mobileBackdrop.classList.add('opacity-100');
+                        }
                     }, 10);
                     menuIcon.classList.remove('fa-bars');
                     menuIcon.classList.add('fa-times');
@@ -327,6 +343,12 @@ import logo from "../assets/logo.png";
                     closeMobileMenu();
                 }
             });
+
+            if (mobileBackdrop) {
+                mobileBackdrop.addEventListener('click', () => {
+                    closeMobileMenu();
+                });
+            }
 
             // Close mobile menu when clicking any nav link inside it
             const navLinks = mobileMenu.querySelectorAll('a');

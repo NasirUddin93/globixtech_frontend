@@ -19,13 +19,13 @@ const { title = "Test Landing Page - Globix Tech" } = Astro.props;
 		<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 	</head>
 	<body
-		class="font-['Plus_Jakarta_Sans',sans-serif] bg-[#fbfbfd] text-[#1d1d1f] antialiased selection:bg-[#0071e3]/10 selection:text-[#0071e3] overflow-x-hidden"
+		class="font-['Plus_Jakarta_Sans',sans-serif] bg-[#fbfbfd] text-[#1d1d1f] antialiased selection:bg-[#0071e3]/10 selection:text-[#0071e3] overflow-x-hidden min-h-[100dvh]"
 	>
 		<!-- Apple Glass Background Blur Gradients -->
 		<div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-			<div class="absolute -top-[20%] -left-[10%] w-[50vw] h-[50vw] bg-gradient-to-br from-blue-200/30 to-purple-200/20 rounded-full blur-[120px]"></div>
-			<div class="absolute top-[40%] -right-[10%] w-[45vw] h-[45vw] bg-gradient-to-br from-sky-200/30 to-indigo-100/20 rounded-full blur-[140px]"></div>
-			<div class="absolute -bottom-[10%] left-[20%] w-[40vw] h-[40vw] bg-gradient-to-tr from-blue-100/40 to-emerald-100/30 rounded-full blur-[130px]"></div>
+			<div class="absolute -top-[20%] -left-[10%] w-[80vw] sm:w-[50vw] h-[80vw] sm:h-[50vw] bg-gradient-to-br from-blue-200/20 sm:from-blue-200/30 to-purple-200/10 sm:to-purple-200/20 rounded-full blur-[70px] sm:blur-[120px]"></div>
+			<div class="absolute top-[40%] -right-[10%] w-[75vw] sm:w-[45vw] h-[75vw] sm:h-[45vw] bg-gradient-to-br from-sky-200/20 sm:from-sky-200/30 to-indigo-100/10 sm:to-indigo-100/20 rounded-full blur-[80px] sm:blur-[140px]"></div>
+			<div class="absolute -bottom-[10%] left-[20%] w-[70vw] sm:w-[40vw] h-[70vw] sm:h-[40vw] bg-gradient-to-tr from-blue-100/30 sm:from-blue-100/40 to-emerald-100/20 sm:to-emerald-100/30 rounded-full blur-[75px] sm:blur-[130px]"></div>
 		</div>
 
 		<div class="relative z-10">

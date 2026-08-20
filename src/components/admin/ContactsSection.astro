@@ -1,0 +1,680 @@
+---
+interface Contact {
+    id: number;
+    name: string;
+    email: string;
+    phone: string | null;
+    company: string | null;
+    service: string | null;
+    message: string;
+    status: string;
+    admin_note: string | null;
+    completed_at: string | null;
+    created_at: string;
+}
+
+interface Props {
+    contacts: Contact[];
+    totalContacts: number;
+}
+
+const serviceMap: Record<string, string> = {
+    'pos-system': 'POS System',
+    'inventory': 'Inventory Control',
+    'erp-system': 'Enterprise ERP',
+    'school-management-system': 'School Management System',
+    'ecommerce': 'E-commerce Solutions',
+    'accounting': 'Accounts & Finance',
+    'web-apps': 'Web Applications',
+    'mobile-app-development': 'Mobile Apps',
+    'business-ai': 'Business AI',
+    'data-science': 'Data Science',
+    'server-management': 'Server Management',
+    'network': 'Network Services',
+    'security': 'Security & Audit',
+    'other': 'Other (General Inquiry)'
+};
+
+function formatService(raw: string | null): string {
+    if (!raw || raw === '—') return 'General Inquiry';
+    return serviceMap[raw] || raw.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+}
+
+const { contacts = [], totalContacts = 0 } = Astro.props;
+const contactList = Array.isArray(contacts) ? contacts : [];
+---
+
+<section id="tab-contacts" class="tab-panel contacts-panel">
+    <div class="glass-card">
+        <header class="card-hdr">
+            <div class="hdr-left">
+                <div class="hdr-title-row">
+                    <h2 class="card-title">All Contact Submissions</h2>
+                    <span class="hdr-count-badge">{totalContacts} messages</span>
+                </div>
+                <p class="card-sub">Real-time incoming customer inquiries and project requests</p>
+            </div>
+            
+            <div class="filter-bar">
+                <div class="search-wrapper">
+                    <i class="fas fa-magnifying-glass search-icon"></i>
+                    <input type="text" id="contact-search" placeholder="Search by name, email…" autocomplete="off" />
+                </div>
+                
+                <div class="segmented-control">
+                    <button id="sort-newest" class="seg-btn active" data-direction="desc">
+                        <i class="fas fa-arrow-down-wide-short"></i> Newest
+                    </button>
+                    <button id="sort-oldest" class="seg-btn" data-direction="asc">
+                        <i class="fas fa-arrow-up-wide-short"></i> Oldest
+                    </button>
+                </div>
+
+                <div class="select-group">
+                    <div class="select-wrapper">
+                        <i class="fas fa-filter select-icon"></i>
+                        <select id="filter-status" class="glass-select">
+                            <option value="" selected>All Status</option>
+                            <option value="new">Pending</option>
+                            <option value="replied">Done</option>
+                        </select>
+                    </div>
+                    <div class="select-wrapper select-wrapper-sm">
+                        <i class="fas fa-list-ol select-icon"></i>
+                        <select id="per-page-select" class="glass-select glass-select-sm">
+                            <option value="10">10 / page</option>
+                            <option value="25" selected>25 / page</option>
+                            <option value="50">50 / page</option>
+                            <option value="100">100 / page</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="tbl-wrap">
+            {contactList.length === 0 ? (
+                <div class="empty-state">
+                    <div class="empty-icon"><i class="far fa-envelope-open"></i></div>
+                    <h3>No contact submissions yet</h3>
+                    <p>Incoming messages will appear here in real time.</p>
+                </div>
+            ) : (
+                <table id="contacts-table" class="apple-table">
+                    <thead>
+                        <tr>
+                            <th data-sort="id" class="th-id">#</th>
+                            <th data-sort="name">Name <span class="sort-indicator"></span></th>
+                            <th data-sort="email">Email <span class="sort-indicator"></span></th>
+                            <th>Phone</th>
+                            <th>Message</th>
+                            <th data-sort="service">Service <span class="sort-indicator"></span></th>
+                            <th data-sort="created_at">Date <span class="sort-indicator"></span></th>
+                            <th class="th-action">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {contactList.map((c, i) => (
+                            <tr data-id={c.id} data-status={c.status}>
+                                <td class="cell-id">{i + 1}</td>
+                                <td class="cell-name">
+                                    <div class="user-info">
+                                        <div class={`avatar ${c.status === 'replied' || c.status === 'closed' ? 'avatar-green' : 'avatar-orange'}`}>
+                                            {c.name.charAt(0).toUpperCase()}
+                                        </div>
+                                        <span>{c.name}</span>
+                                    </div>
+                                </td>
+                                <td class="cell-email"><a href={`mailto:${c.email}`}>{c.email}</a></td>
+                                <td class="cell-phone">{c.phone ?? <span class="dash">—</span>}</td>
+                                <td class="cell-msg">
+                                    <div class="msg-cell" title={c.message}>{c.message}</div>
+                                </td>
+                                <td class="cell-service">
+                                    <span class="service-badge">{formatService(c.service)}</span>
+                                </td>
+                                <td class="cell-date">
+                                    {new Date(c.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                                </td>
+                                <td class="cell-action">
+                                    <div class="action-group">
+                                        <button class="btn-view" 
+                                                data-id={c.id} data-name={c.name} data-email={c.email} 
+                                                data-phone={c.phone ?? ''} data-message={c.message} 
+                                                data-note={c.admin_note ?? ''} data-date={c.created_at}>
+                                            <i class="fas fa-eye"></i> View
+                                        </button>
+                                        {c.status === 'replied' || c.status === 'closed' ? (
+                                            <span class="status-done"><i class="fas fa-circle-check"></i> Done</span>
+                                        ) : (
+                                            <button class="status-pending btn-done" data-id={c.id} data-name={c.name}>
+                                                <i class="fas fa-circle-exclamation"></i> Pending
+                                            </button>
+                                        )}
+                                    </div>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            )}
+        </div>
+
+        <footer id="pagination-controls" class="pagination-ftr">
+            <div id="pagination-info" class="page-info">Showing 1-{contactList.length} of {totalContacts}</div>
+            <div class="page-nav">
+                <button id="pagination-prev" class="page-btn">
+                    <i class="fas fa-chevron-left"></i> Prev
+                </button>
+                <span id="pagination-pages" class="page-numbers"></span>
+                <button id="pagination-next" class="page-btn">
+                    Next <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </footer>
+    </div>
+</section>
+
+<style>
+    /* Apple-inspired Base & Typography */
+    .contacts-panel {
+        font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        color: #1d1d1f;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Premium 3D Glass Card with Thick Beveled Border */
+    .glass-card {
+        background: linear-gradient(160deg, rgba(255, 255, 255, 0.95) 0%, rgba(246, 248, 252, 0.88) 100%);
+        backdrop-filter: saturate(180%) blur(24px);
+        -webkit-backdrop-filter: saturate(180%) blur(24px);
+        border: 4px solid rgba(255, 255, 255, 0.95);
+        border-radius: 30px;
+        box-shadow: 
+            0 20px 50px -10px rgba(0, 113, 227, 0.12),
+            0 8px 24px rgba(0, 0, 0, 0.06),
+            inset 0 2px 2px 0 rgba(255, 255, 255, 1),
+            inset 0 0 0 1.5px rgba(0, 113, 227, 0.18),
+            inset 0 -3px 8px 0 rgba(0, 0, 0, 0.05);
+        overflow: hidden;
+    }
+
+    /* Premium Apple Card Header */
+    .card-hdr {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 30px 36px 26px;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.6) 0%, rgba(248, 250, 255, 0.2) 100%);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    @media (min-width: 992px) {
+        .card-hdr {
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+        }
+    }
+
+    .hdr-left { display: flex; flex-direction: column; gap: 4px; }
+
+    .hdr-title-row {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .hdr-text .card-title, .hdr-title-row .card-title {
+        font-size: 22px;
+        font-weight: 700;
+        letter-spacing: -0.025em;
+        margin: 0;
+        color: #1d1d1f;
+    }
+
+    .hdr-count-badge {
+        display: inline-flex;
+        align-items: center;
+        background: rgba(0, 113, 227, 0.1);
+        color: #0071e3;
+        font-size: 12px;
+        font-weight: 600;
+        padding: 3px 10px;
+        border-radius: 100px;
+        border: 1px solid rgba(0, 113, 227, 0.15);
+    }
+
+    .card-sub {
+        font-size: 13px;
+        color: #86868b;
+        margin: 0;
+    }
+
+    /* Filter Bar Toolbar */
+    .filter-bar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        align-items: center;
+    }
+
+    .search-wrapper {
+        position: relative;
+        flex: 1;
+        min-width: 220px;
+    }
+
+    .search-icon {
+        position: absolute;
+        left: 14px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #86868b;
+        font-size: 13px;
+    }
+
+    #contact-search {
+        width: 100%;
+        background: rgba(255, 255, 255, 0.85);
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        border-radius: 12px;
+        padding: 9.5px 14px 9.5px 38px;
+        font-size: 13.5px;
+        color: #1d1d1f;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+        transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+        outline: none;
+        font-family: inherit;
+    }
+
+    #contact-search:focus {
+        background: #ffffff;
+        border-color: #0071e3;
+        box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.14), 0 4px 14px rgba(0, 0, 0, 0.05);
+    }
+
+    #contact-search::placeholder { color: #86868b; }
+
+    /* Segmented Control (macOS style) */
+    .segmented-control {
+        display: inline-flex;
+        background: rgba(118, 118, 128, 0.12);
+        border-radius: 12px;
+        padding: 3px;
+        gap: 2px;
+        border: 1px solid rgba(0, 0, 0, 0.04);
+    }
+
+    .seg-btn {
+        background: transparent;
+        border: none;
+        padding: 7px 16px;
+        border-radius: 9px;
+        font-size: 12.5px;
+        font-weight: 600;
+        color: #6e6e73;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        font-family: inherit;
+    }
+
+    .seg-btn.active {
+        background: #ffffff;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);
+        color: #0071e3;
+    }
+
+    .seg-btn:not(.active):hover {
+        color: #1d1d1f;
+        background: rgba(255, 255, 255, 0.4);
+    }
+
+    /* Select Wrapper Group */
+    .select-group { display: flex; gap: 10px; }
+
+    .select-wrapper {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+    }
+
+    .select-icon {
+        position: absolute;
+        left: 12px;
+        color: #86868b;
+        font-size: 11px;
+        pointer-events: none;
+        z-index: 1;
+    }
+
+    .glass-select {
+        background: rgba(255, 255, 255, 0.85);
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        border-radius: 12px;
+        padding: 9px 34px 9px 32px;
+        font-size: 13px;
+        font-weight: 600;
+        color: #1d1d1f;
+        appearance: none;
+        -webkit-appearance: none;
+        background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2386868b' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+        background-repeat: no-repeat;
+        background-position: right 10px center;
+        background-size: 12px;
+        cursor: pointer;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+        transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+        outline: none;
+        font-family: inherit;
+    }
+
+    .glass-select:hover {
+        background-color: #ffffff;
+        border-color: rgba(0, 0, 0, 0.15);
+    }
+
+    .glass-select:focus {
+        border-color: #0071e3;
+        box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.14);
+    }
+
+    .select-wrapper-sm .glass-select-sm { padding-right: 32px; }
+
+    /* Table Wrapper */
+    .tbl-wrap {
+        overflow-x: auto;
+        padding-bottom: 4px;
+    }
+
+    /* Apple System Table Header */
+    .apple-table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+    }
+
+    .apple-table thead tr {
+        background: linear-gradient(180deg, rgba(245, 247, 250, 0.75) 0%, rgba(238, 242, 246, 0.6) 100%);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+    }
+
+    .apple-table thead th {
+        text-align: left;
+        font-size: 11.5px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #6e6e73;
+        padding: 15px 18px;
+        border-top: 1px solid rgba(255, 255, 255, 0.8);
+        border-bottom: 1.5px solid rgba(0, 0, 0, 0.07);
+        white-space: nowrap;
+        user-select: none;
+        transition: all 0.2s ease;
+    }
+
+    .apple-table thead th[data-sort] {
+        cursor: pointer;
+    }
+
+    .apple-table thead th[data-sort]:hover {
+        color: #0071e3;
+        background: rgba(0, 113, 227, 0.05);
+    }
+
+    .apple-table thead th.sort-asc,
+    .apple-table thead th.sort-desc {
+        color: #0071e3;
+        font-weight: 800;
+        background: rgba(0, 113, 227, 0.08);
+    }
+
+    .apple-table tbody tr {
+        transition: background 0.15s ease;
+    }
+
+    .apple-table tbody tr:hover {
+        background: rgba(0, 113, 227, 0.035);
+    }
+
+    .apple-table tbody td {
+        padding: 16px 18px;
+        font-size: 14px;
+        color: #1d1d1f;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+        vertical-align: middle;
+    }
+
+    .apple-table tbody tr:last-child td { border-bottom: none; }
+
+    /* Specific Cells & Center Aligned Action Column */
+    .th-id, .cell-id { width: 40px; text-align: center; color: #c7c7cc; font-size: 12px; }
+    .th-action, .cell-action { text-align: center !important; }
+    
+    .user-info { display: flex; align-items: center; gap: 12px; }
+    
+    .avatar {
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-size: 13px;
+        font-weight: 600;
+        flex-shrink: 0;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .avatar-green { background: linear-gradient(135deg, #30d158, #28b24c); }
+    .avatar-orange { background: linear-gradient(135deg, #ff9f0a, #ff6b00); }
+
+    .cell-name { font-weight: 500; white-space: nowrap; }
+    .cell-email a { color: #0071e3; text-decoration: none; font-size: 13px; }
+    .cell-email a:hover { text-decoration: underline; }
+    .cell-phone { white-space: nowrap; color: #86868b; font-size: 13px; }
+    .dash { color: #c7c7cc; }
+    .cell-date { white-space: nowrap; color: #86868b; font-size: 12.5px; }
+
+    .cell-msg { max-width: 260px; }
+    .msg-cell {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        color: #86868b;
+        font-size: 13.5px;
+        max-width: 100%;
+    }
+
+    /* Badges */
+    .service-badge {
+        display: inline-block;
+        background: rgba(0, 113, 227, 0.08);
+        color: #0071e3;
+        padding: 4px 10px;
+        border-radius: 8px;
+        font-size: 12px;
+        font-weight: 500;
+        white-space: nowrap;
+    }
+
+    /* Action Buttons (Perfectly Centered & Aligned) */
+    .action-group {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        justify-content: center;
+        margin: 0 auto;
+    }
+
+    .btn-view {
+        background: rgba(0, 0, 0, 0.05);
+        border: none;
+        color: #1d1d1f;
+        font-size: 12.5px;
+        font-weight: 500;
+        padding: 7px 14px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        font-family: inherit;
+        min-width: 72px;
+    }
+
+    .btn-view:hover {
+        background: #0071e3;
+        color: #fff;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(0, 113, 227, 0.25);
+    }
+
+    .status-done {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        background: rgba(48, 209, 88, 0.1);
+        color: #248a3d;
+        padding: 7px 14px;
+        border-radius: 8px;
+        font-size: 12.5px;
+        font-weight: 500;
+        min-width: 86px;
+    }
+
+    .status-pending {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        background: rgba(255, 149, 0, 0.1);
+        color: #c93400;
+        border: none;
+        padding: 7px 14px;
+        border-radius: 8px;
+        font-size: 12.5px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        font-family: inherit;
+        min-width: 86px;
+    }
+
+    .status-pending:hover {
+        background: #ff9f0a;
+        color: #fff;
+    }
+
+    /* Empty State */
+    .empty-state {
+        text-align: center;
+        padding: 80px 20px;
+    }
+
+    .empty-icon {
+        font-size: 32px;
+        color: #c7c7cc;
+        margin-bottom: 16px;
+    }
+
+    .empty-state h3 {
+        font-size: 17px;
+        font-weight: 600;
+        color: #1d1d1f;
+        margin: 0 0 6px;
+    }
+
+    .empty-state p {
+        font-size: 14px;
+        color: #86868b;
+        margin: 0;
+    }
+
+    /* Pagination Footer */
+    .pagination-ftr {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 18px 32px;
+        border-top: 1px solid rgba(0, 0, 0, 0.06);
+        background: rgba(255, 255, 255, 0.3);
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .page-info {
+        font-size: 13px;
+        color: #86868b;
+        font-weight: 500;
+    }
+
+    .page-nav {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .page-btn {
+        background: rgba(118, 118, 128, 0.08);
+        border: 1px solid transparent;
+        border-radius: 9px;
+        padding: 7px 14px;
+        font-size: 13px;
+        font-weight: 500;
+        color: #1d1d1f;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-family: inherit;
+    }
+
+    .page-btn:hover {
+        background: rgba(118, 118, 128, 0.16);
+    }
+    
+    .page-btn:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+    }
+
+    .page-numbers {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+    }
+
+    /* Sort Indicators */
+    .sort-indicator {
+        display: inline-block;
+        width: 10px;
+        margin-left: 4px;
+        opacity: 0.3;
+    }
+
+    th[data-sort].sorted-asc .sort-indicator::after { content: "↑"; opacity: 1; color: #0071e3; }
+    th[data-sort].sorted-desc .sort-indicator::after { content: "↓"; opacity: 1; color: #0071e3; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .card-hdr { padding: 20px; }
+        .filter-bar { flex-direction: column; align-items: stretch; }
+        .segmented-control, .select-group { width: 100%; justify-content: space-between; }
+        .seg-btn { flex: 1; justify-content: center; }
+        .glass-select { flex: 1; }
+        .pagination-ftr { padding: 16px 20px; flex-direction: column; }
+        .cell-msg { max-width: 140px; }
+    }
+</style>

@@ -8,36 +8,36 @@ const { title, description, publishDate, author, image } = Astro.props;
 
 <TestMainLayout title={`${title} | Globix Tech Blog`}>
     <Navbar />
-    <main class="pt-32 pb-24 bg-[#f5f5f7] min-h-screen">
-        <div class="max-w-4xl mx-auto px-6">
+    <main class="pt-28 pb-14 sm:pt-32 sm:pb-24 bg-[#f5f5f7] min-h-screen">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6">
             <!-- Article Header -->
-            <div class="mb-12 text-center">
-                <div class="flex items-center justify-center gap-3 text-xs font-bold text-[#86868b] mb-4">
-                    <span class="bg-blue-50 text-[#0071e3] px-3.5 py-1 rounded-full border border-blue-100 uppercase tracking-widest text-[10px]">
+            <div class="mb-8 sm:mb-12 text-center space-y-3 sm:space-y-4">
+                <div class="flex items-center justify-center gap-2 sm:gap-3 text-xs font-bold text-[#86868b]">
+                    <span class="bg-blue-50 text-[#0071e3] px-3 sm:px-3.5 py-0.5 sm:py-1 rounded-full border border-blue-100 uppercase tracking-widest text-[9px] sm:text-[10px]">
                         Engineering Article
                     </span>
                     <span>&bull;</span>
-                    <time class="flex items-center gap-1"><i class="far fa-calendar text-[#0071e3]"></i> {publishDate}</time>
+                    <time class="flex items-center gap-1 text-[11px] sm:text-xs"><i class="far fa-calendar text-[#0071e3]"></i> {publishDate}</time>
                 </div>
-                <h1 class="text-3xl md:text-5xl font-extrabold text-[#1d1d1f] mb-6 leading-tight tracking-tight">
+                <h1 class="text-2xl sm:text-3xl md:text-5xl font-extrabold text-[#1d1d1f] leading-tight tracking-tight">
                     {title}
                 </h1>
                 {
                     description && (
-                        <p class="text-lg md:text-xl text-[#86868b] mb-8 max-w-2xl mx-auto leading-relaxed font-medium">
+                        <p class="text-sm sm:text-lg md:text-xl text-[#86868b] max-w-2xl mx-auto leading-relaxed font-medium">
                             {description}
                         </p>
                     )
                 }
-                <div class="flex items-center justify-center gap-3">
-                    <div class="w-10 h-10 bg-blue-50 text-[#0071e3] rounded-full flex items-center justify-center font-bold text-sm">
+                <div class="pt-2 flex items-center justify-center gap-3">
+                    <div class="w-8 h-8 sm:w-10 sm:h-10 bg-blue-50 text-[#0071e3] rounded-full flex items-center justify-center font-bold text-xs sm:text-sm shrink-0">
                         <i class="fas fa-user"></i>
                     </div>
                     <div class="text-left">
-                        <p class="font-bold text-[#1d1d1f] text-sm">
+                        <p class="font-bold text-[#1d1d1f] text-xs sm:text-sm">
                             {author || "GlobixTech Team"}
                         </p>
-                        <p class="text-xs text-[#86868b]">Software Engineer & Editor</p>
+                        <p class="text-[10px] sm:text-xs text-[#86868b]">Software Engineer & Editor</p>
                     </div>
                 </div>
             </div>
@@ -45,7 +45,7 @@ const { title, description, publishDate, author, image } = Astro.props;
             <!-- Featured Image -->
             {
                 image && (
-                    <div class="rounded-[2.5rem] overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.04)] mb-12 border border-white">
+                    <div class="rounded-2xl sm:rounded-[2.5rem] overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.04)] mb-8 sm:mb-12 border border-white">
                         <img
                             src={image}
                             alt={title}
@@ -56,15 +56,15 @@ const { title, description, publishDate, author, image } = Astro.props;
             }
 
             <!-- Content -->
-            <article class="prose prose-lg prose-blue mx-auto bg-white/80 backdrop-blur-2xl p-8 md:p-14 rounded-[2.5rem] shadow-[0_10px_30px_rgba(0,0,0,0.02)] border border-white text-[#1d1d1f]">
+            <article class="prose prose-sm sm:prose-base md:prose-lg prose-blue mx-auto bg-white/80 backdrop-blur-2xl p-4 sm:p-8 md:p-14 rounded-2xl sm:rounded-[2.5rem] shadow-[0_10px_30px_rgba(0,0,0,0.02)] border border-white text-[#1d1d1f]">
                 <slot />
             </article>
 
             <!-- Back Link -->
-            <div class="mt-12 text-center">
+            <div class="mt-8 sm:mt-12 text-center">
                 <a
                     href="/blog"
-                    class="inline-flex items-center gap-2 text-[#0071e3] hover:text-[#0077ed] font-bold transition-all text-sm bg-white/80 backdrop-blur-md px-6 py-3 rounded-full border border-white shadow-xs"
+                    class="inline-flex items-center gap-2 text-[#0071e3] hover:text-[#0077ed] font-bold transition-all text-xs sm:text-sm bg-white/80 backdrop-blur-md px-5 sm:px-6 py-2.5 sm:py-3 rounded-full border border-white shadow-xs"
                 >
                     <i class="fas fa-arrow-left text-xs"></i> Back to All Articles
                 </a>

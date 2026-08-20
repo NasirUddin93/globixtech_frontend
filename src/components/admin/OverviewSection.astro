@@ -1,0 +1,742 @@
+---
+interface Contact {
+    id: number;
+    name: string;
+    email: string;
+    phone: string | null;
+    company: string | null;
+    service: string | null;
+    message: string;
+    status: string;
+    admin_note: string | null;
+    completed_at: string | null;
+    created_at: string;
+}
+
+interface Props {
+    contacts: Contact[];
+    totalContacts: number;
+    newContacts: number;
+    timeAgo: (dateStr: string) => string;
+}
+
+const { contacts = [], totalContacts = 0, newContacts = 0, timeAgo } = Astro.props;
+const contactList = Array.isArray(contacts) ? contacts : [];
+const readContacts = totalContacts - newContacts;
+const completionRate = totalContacts ? Math.round((readContacts / totalContacts) * 100) : 0;
+---
+
+<section id="tab-overview" class="tab-panel overview">
+    <!-- Page Header -->
+    <header class="ovw-head">
+        <div class="ovw-head-text">
+            <h1 class="ovw-title">Dashboard Overview</h1>
+            <p class="ovw-sub">Track lead velocity, monitor engagement, and review recent activity in real time.</p>
+        </div>
+        <div class="ovw-meta">
+            <span class="live-dot"></span>
+            <span class="ovw-meta-text">Live data</span>
+            <span class="ovw-divider"></span>
+            <span class="ovw-meta-time">Updated just now</span>
+        </div>
+    </header>
+
+    <!-- Stats Row -->
+    <div class="stats-row">
+        <article class="stat-card">
+            <div class="stat-top">
+                <div class="stat-icon stat-icon-blue">
+                    <i class="fas fa-inbox"></i>
+                </div>
+                <span class="stat-trend stat-trend-up">
+                    <i class="fas fa-arrow-trend-up"></i> Active
+                </span>
+            </div>
+            <div class="stat-val" data-target={totalContacts}>{totalContacts}</div>
+            <div class="stat-label">Total Submissions</div>
+            <div class="stat-spark">
+                <span style="--h:30%"></span>
+                <span style="--h:45%"></span>
+                <span style="--h:38%"></span>
+                <span style="--h:62%"></span>
+                <span style="--h:55%"></span>
+                <span style="--h:78%"></span>
+                <span style="--h:90%"></span>
+            </div>
+        </article>
+
+        <article class="stat-card">
+            <div class="stat-top">
+                <div class="stat-icon stat-icon-amber">
+                    <i class="fas fa-bell"></i>
+                </div>
+                <span class="stat-trend stat-trend-warn">
+                    <i class="fas fa-bolt"></i> Action needed
+                </span>
+            </div>
+            <div class="stat-val" data-target={newContacts}>{newContacts}</div>
+            <div class="stat-label">Unread / New</div>
+            <div class="stat-bar">
+                <span style="width: 65%"></span>
+            </div>
+        </article>
+
+        <article class="stat-card">
+            <div class="stat-top">
+                <div class="stat-icon stat-icon-green">
+                    <i class="fas fa-circle-check"></i>
+                </div>
+                <span class="stat-trend stat-trend-up">
+                    <i class="fas fa-check"></i> {completionRate}% resolved
+                </span>
+            </div>
+            <div class="stat-val" data-target={readContacts}>{readContacts}</div>
+            <div class="stat-label">Read / Replied</div>
+            <div class="stat-bar">
+                <span style={`width: ${completionRate}%`}></span>
+            </div>
+        </article>
+    </div>
+
+    <!-- Charts Row: Growth + Doughnut -->
+    <div class="charts-row">
+        <article class="card chart-card chart-card-lg">
+            <header class="card-hdr">
+                <div>
+                    <h3 class="card-title">Submissions Growth &amp; Activity</h3>
+                    <p class="card-sub">Daily lead velocity and contact volume over time</p>
+                </div>
+                <span class="badge-live"><span class="badge-dot"></span> Live</span>
+            </header>
+            <div class="chart-canvas chart-canvas-tall"><canvas id="growthChart"></canvas></div>
+        </article>
+
+        <article class="card chart-card chart-card-sm">
+            <header class="card-hdr">
+                <div>
+                    <h3 class="card-title">Status Breakdown</h3>
+                    <p class="card-sub">Pending vs completed ratio</p>
+                </div>
+            </header>
+            <div class="chart-canvas chart-canvas-tall chart-canvas-center"><canvas id="statusChart"></canvas></div>
+        </article>
+    </div>
+
+    <!-- Services Bar Chart -->
+    <article class="card chart-card-wide">
+        <header class="card-hdr">
+            <div>
+                <h3 class="card-title">Software Solutions Demand</h3>
+                <p class="card-sub">Most requested services by incoming lead volume</p>
+            </div>
+            <div class="chart-legend">
+                <span class="legend-item"><span class="legend-dot legend-dot-blue"></span> Requests</span>
+            </div>
+        </header>
+        <div class="chart-canvas chart-canvas-bar"><canvas id="servicesChart"></canvas></div>
+    </article>
+
+    <!-- Recent Submissions Table -->
+    <article class="card table-card">
+        <header class="card-hdr">
+            <div>
+                <h3 class="card-title">Recent Submissions</h3>
+                <p class="card-sub">Latest 5 contact messages</p>
+            </div>
+            <a href="#" data-tab="contacts" class="tab-link view-all">
+                View all <i class="fas fa-arrow-right"></i>
+            </a>
+        </header>
+        <div class="tbl-wrap">
+            {contactList.length === 0 ? (
+                <div class="empty">
+                    <div class="empty-icon"><i class="far fa-envelope"></i></div>
+                    <p class="empty-title">No submissions yet</p>
+                    <p class="empty-text">Incoming contact messages will appear here once received.</p>
+                </div>
+            ) : (
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Message</th>
+                            <th>Received</th>
+                            <th style="text-align:center;">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {contactList.slice(0, 5).map(c => (
+                            <tr data-id={c.id} data-status={c.status}>
+                                <td>
+                                    <div class="cell-user">
+                                        <div class="avatar" data-letter={c.name.charAt(0).toUpperCase()}>
+                                            {c.name.charAt(0).toUpperCase()}
+                                        </div>
+                                        <span class="cell-name">{c.name}</span>
+                                    </div>
+                                </td>
+                                <td><a href={`mailto:${c.email}`} class="cell-email">{c.email}</a></td>
+                                <td class="cell-phone">
+                                    {c.phone ?? <span class="cell-dash">—</span>}
+                                </td>
+                                <td>
+                                    <div class="msg-cell" title={c.message}>{c.message}</div>
+                                </td>
+                                <td><span class="cell-time">{timeAgo(c.created_at)}</span></td>
+                                <td>
+                                    <div class="cell-actions">
+                                        <button class="btn-view"
+                                                data-id={c.id}
+                                                data-name={c.name}
+                                                data-email={c.email}
+                                                data-phone={c.phone ?? ''}
+                                                data-message={c.message}
+                                                data-note={c.admin_note ?? ''}
+                                                data-date={c.created_at}>
+                                            <i class="fas fa-eye"></i> View
+                                        </button>
+                                        {c.status === 'replied' || c.status === 'closed' ? (
+                                            <span class="btn-status-done">
+                                                <i class="fas fa-circle-check"></i> Done
+                                            </span>
+                                        ) : (
+                                            <button class="btn-status-pending btn-done" data-id={c.id} data-name={c.name}>
+                                                <i class="fas fa-circle-exclamation"></i> Pending
+                                            </button>
+                                        )}
+                                    </div>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            )}
+        </div>
+    </article>
+</section>
+
+<style>
+    .overview {
+        --bg: #ffffff;
+        --bg-soft: #f7f8fb;
+        --bg-elevated: #ffffff;
+        --border: #eef0f4;
+        --border-strong: #e3e7ee;
+        --text: #0c1322;
+        --text-soft: #5b6478;
+        --text-muted: #9aa3b5;
+        --accent: #2f6bff;
+        padding-top: 8px;
+        padding-bottom: 24px;
+        --accent-soft: #eaf1ff;
+        --green: #15a06b;
+        --green-soft: #e6f6ee;
+        --amber: #b8700a;
+        --amber-soft: #fdf3e0;
+        --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04);
+        --shadow-md: 0 4px 14px rgba(15, 23, 42, 0.05);
+        --shadow-lg: 0 14px 40px rgba(15, 23, 42, 0.06);
+        --radius: 16px;
+        --radius-sm: 10px;
+
+        display: flex;
+        flex-direction: column;
+        gap: 36px;
+        color: var(--text);
+    }
+
+    /* Header */
+    .ovw-head {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 20px;
+        padding-bottom: 4px;
+    }
+    .ovw-title {
+        font-size: 24px;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        color: var(--text);
+        margin: 0 0 6px;
+    }
+    .ovw-sub {
+        font-size: 13px;
+        color: var(--text-soft);
+        margin: 0;
+        line-height: 1.5;
+    }
+    .ovw-meta {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 8px 14px;
+        background: var(--bg-soft);
+        border: 1px solid var(--border);
+        border-radius: 100px;
+        font-size: 12px;
+        color: var(--text-soft);
+        font-weight: 500;
+        white-space: nowrap;
+    }
+    .live-dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--green);
+        position: relative;
+        flex-shrink: 0;
+    }
+    .live-dot::before {
+        content: '';
+        position: absolute;
+        inset: -3px;
+        border-radius: 50%;
+        background: var(--green);
+        opacity: 0.3;
+        animation: pulse 1.8s ease-in-out infinite;
+    }
+    @keyframes pulse {
+        0%, 100% { transform: scale(1); opacity: 0.3; }
+        50% { transform: scale(1.6); opacity: 0; }
+    }
+    .ovw-divider {
+        width: 3px;
+        height: 3px;
+        border-radius: 50%;
+        background: var(--text-muted);
+        opacity: 0.5;
+    }
+    .ovw-meta-time { color: var(--text-muted); }
+
+    /* Stats Row */
+    .stats-row {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+    }
+    .stat-card {
+        background: var(--bg-elevated);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 22px;
+        position: relative;
+        overflow: hidden;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+    }
+    .stat-card::after {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, var(--accent-soft), transparent);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    .stat-card:hover {
+        border-color: var(--border-strong);
+        box-shadow: var(--shadow-md);
+        transform: translateY(-2px);
+    }
+    .stat-card:hover::after { opacity: 1; }
+
+    .stat-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 18px;
+    }
+    .stat-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 12px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 15px;
+    }
+    .stat-icon-blue { background: var(--accent-soft); color: var(--accent); }
+    .stat-icon-amber { background: var(--amber-soft); color: var(--amber); }
+    .stat-icon-green { background: var(--green-soft); color: var(--green); }
+
+    .stat-trend {
+        font-size: 11px;
+        font-weight: 600;
+        padding: 5px 9px;
+        border-radius: 100px;
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+    }
+    .stat-trend-up { background: var(--green-soft); color: var(--green); }
+    .stat-trend-warn { background: var(--amber-soft); color: var(--amber); }
+
+    .stat-val {
+        font-size: 32px;
+        font-weight: 700;
+        letter-spacing: -0.025em;
+        color: var(--text);
+        line-height: 1.1;
+    }
+    .stat-label {
+        font-size: 13px;
+        color: var(--text-soft);
+        margin-top: 4px;
+        margin-bottom: 16px;
+    }
+
+    .stat-bar {
+        height: 5px;
+        background: var(--bg-soft);
+        border-radius: 100px;
+        overflow: hidden;
+    }
+    .stat-bar span {
+        display: block;
+        height: 100%;
+        background: linear-gradient(90deg, var(--accent), #5b8bff);
+        border-radius: 100px;
+        transition: width 0.6s ease;
+    }
+    .stat-card:nth-child(2) .stat-bar span {
+        background: linear-gradient(90deg, var(--amber), #e0a93b);
+    }
+    .stat-card:nth-child(3) .stat-bar span {
+        background: linear-gradient(90deg, var(--green), #3ec18a);
+    }
+
+    .stat-spark {
+        display: flex;
+        align-items: flex-end;
+        gap: 4px;
+        height: 28px;
+        margin-top: 2px;
+    }
+    .stat-spark span {
+        flex: 1;
+        height: var(--h, 40%);
+        background: linear-gradient(180deg, var(--accent), var(--accent-soft));
+        border-radius: 3px 3px 1px 1px;
+        opacity: 0.85;
+        transition: opacity 0.2s ease;
+    }
+    .stat-card:hover .stat-spark span { opacity: 1; }
+
+    /* Card Base */
+    .card {
+        background: var(--bg-elevated);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow-sm);
+        transition: box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+    .card:hover { box-shadow: var(--shadow-md); border-color: var(--border-strong); }
+
+    .card-hdr {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 22px 24px 16px;
+        border-bottom: 1px solid var(--border);
+    }
+    .card-title {
+        font-size: 15px;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+        color: var(--text);
+        margin: 0 0 4px;
+    }
+    .card-sub {
+        font-size: 12px;
+        color: var(--text-muted);
+        margin: 0;
+    }
+
+    /* Badge Live */
+    .badge-live {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        font-size: 11px;
+        font-weight: 600;
+        color: var(--accent);
+        background: var(--accent-soft);
+        padding: 5px 10px;
+        border-radius: 100px;
+        white-space: nowrap;
+    }
+    .badge-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--accent);
+        animation: pulse-badge 1.6s ease-in-out infinite;
+    }
+    @keyframes pulse-badge {
+        0%, 100% { box-shadow: 0 0 0 0 rgba(47, 107, 255, 0.4); }
+        50% { box-shadow: 0 0 0 5px rgba(47, 107, 255, 0); }
+    }
+
+    /* Charts */
+    .charts-row {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 20px;
+    }
+    .chart-canvas {
+        height: 280px;
+        padding: 18px 24px 24px;
+        position: relative;
+    }
+    .chart-canvas-tall { height: 280px; }
+    .chart-canvas-bar { height: 260px; }
+    .chart-canvas-center {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .chart-legend {
+        display: inline-flex;
+        align-items: center;
+        gap: 14px;
+    }
+    .legend-item {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        font-size: 12px;
+        color: var(--text-soft);
+        font-weight: 500;
+    }
+    .legend-dot {
+        width: 9px;
+        height: 9px;
+        border-radius: 3px;
+    }
+    .legend-dot-blue { background: linear-gradient(180deg, var(--accent), #5b8bff); }
+
+    /* Table Card */
+    .table-card .tbl-wrap {
+        padding: 4px 8px 8px;
+        overflow-x: auto;
+    }
+    .data-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 13px;
+    }
+    .data-table thead th {
+        text-align: left;
+        font-size: 11px;
+        font-weight: 600;
+        color: var(--text-muted);
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        padding: 14px 16px;
+        border-bottom: 1px solid var(--border);
+        background: transparent;
+    }
+    .data-table tbody tr {
+        transition: background 0.15s ease;
+    }
+    .data-table tbody tr:hover {
+        background: var(--bg-soft);
+    }
+    .data-table tbody td {
+        padding: 14px 16px;
+        border-bottom: 1px solid var(--border);
+        vertical-align: middle;
+        color: var(--text-soft);
+    }
+    .data-table tbody tr:last-child td { border-bottom: none; }
+
+    .cell-user {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    .avatar {
+        width: 32px;
+        height: 32px;
+        border-radius: 9px;
+        background: linear-gradient(135deg, var(--accent), #5b8bff);
+        color: #fff;
+        font-size: 12px;
+        font-weight: 700;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        box-shadow: 0 2px 6px rgba(47, 107, 255, 0.25);
+    }
+    .cell-name {
+        font-weight: 600;
+        color: var(--text);
+        white-space: nowrap;
+    }
+    .cell-email {
+        color: var(--accent);
+        font-size: 12px;
+        text-decoration: none;
+        font-weight: 500;
+        transition: text-decoration 0.15s ease;
+    }
+    .cell-email:hover { text-decoration: underline; }
+    .cell-phone {
+        white-space: nowrap;
+        color: var(--text-soft);
+        font-size: 12px;
+    }
+    .cell-dash { color: var(--text-muted); opacity: 0.6; }
+    .cell-time {
+        white-space: nowrap;
+        font-size: 11px;
+        color: var(--text-muted);
+        background: var(--bg-soft);
+        padding: 4px 9px;
+        border-radius: 6px;
+        font-weight: 500;
+    }
+    .msg-cell {
+        max-width: 240px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        color: var(--text-soft);
+        font-size: 12.5px;
+        line-height: 1.4;
+    }
+    .cell-actions {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        white-space: nowrap;
+    }
+
+    /* Buttons */
+    .btn-view {
+        background: var(--bg-soft);
+        border: 1px solid var(--border-strong);
+        color: var(--text);
+        font-size: 11.5px;
+        font-weight: 600;
+        padding: 6px 11px;
+        border-radius: 8px;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        transition: all 0.18s ease;
+        min-width: 66px;
+    }
+    .btn-view:hover {
+        background: var(--accent);
+        color: #fff;
+        border-color: var(--accent);
+        box-shadow: 0 4px 10px rgba(47, 107, 255, 0.2);
+    }
+    .btn-status-done {
+        background: var(--green-soft);
+        color: var(--green);
+        font-size: 11.5px;
+        font-weight: 600;
+        padding: 6px 11px;
+        border-radius: 8px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        min-width: 78px;
+    }
+    .btn-status-pending {
+        background: var(--amber-soft);
+        color: var(--amber);
+        border: none;
+        font-size: 11.5px;
+        font-weight: 600;
+        padding: 6px 11px;
+        border-radius: 8px;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        transition: all 0.18s ease;
+        min-width: 78px;
+    }
+    .btn-status-pending:hover {
+        background: var(--amber);
+        color: #fff;
+    }
+
+    .view-all {
+        font-size: 12px;
+        color: var(--accent);
+        font-weight: 600;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 7px 12px;
+        border-radius: 8px;
+        background: var(--accent-soft);
+        transition: all 0.18s ease;
+    }
+    .view-all:hover {
+        background: var(--accent);
+        color: #fff;
+    }
+    .view-all i { font-size: 10px; transition: transform 0.18s ease; }
+    .view-all:hover i { transform: translateX(2px); }
+
+    /* Empty State */
+    .empty {
+        text-align: center;
+        padding: 60px 20px;
+        color: var(--text-muted);
+    }
+    .empty-icon {
+        width: 56px;
+        height: 56px;
+        margin: 0 auto 14px;
+        border-radius: 14px;
+        background: var(--bg-soft);
+        border: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        color: var(--text-muted);
+    }
+    .empty-title {
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--text);
+        margin: 0 0 4px;
+    }
+    .empty-text {
+        font-size: 12.5px;
+        color: var(--text-muted);
+        margin: 0;
+    }
+
+    /* Responsive */
+    @media (max-width: 980px) {
+        .charts-row { grid-template-columns: 1fr; }
+        .stats-row { grid-template-columns: 1fr; }
+        .ovw-head { flex-direction: column; align-items: flex-start; }
+        .msg-cell { max-width: 160px; }
+    }
+    @media (max-width: 640px) {
+        .overview { gap: 16px; }
+        .ovw-title { font-size: 20px; }
+        .stat-val { font-size: 26px; }
+        .card-hdr { padding: 18px 18px 14px; }
+        .chart-canvas, .chart-canvas-bar { padding: 14px 14px 18px; }
+    }
+</style>

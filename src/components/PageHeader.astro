@@ -11,7 +11,7 @@ const { title, spanTitle, description, badge, badgeIcon } = Astro.props;
 ---
 
 <section
-    class="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden bg-[#0c1b3d]"
+    class="relative pt-28 pb-14 sm:pt-36 sm:pb-20 md:pt-48 md:pb-32 overflow-hidden bg-[#0c1b3d]"
 >
     <div
         class="absolute inset-0 bg-gradient-to-br from-[#0c1b3d] via-[#1a2c5a] to-[#0c1b3d]"
@@ -22,17 +22,17 @@ const { title, spanTitle, description, badge, badgeIcon } = Astro.props;
     >
     </div>
 
-    <div class="container mx-auto px-6 relative z-10 text-center">
+    <div class="container mx-auto px-4 sm:px-6 relative z-10 text-center max-w-5xl">
         {
             badge && (
-                <div class="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 px-4 py-2 rounded-full text-blue-400 text-sm font-semibold mb-6">
+                <div class="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full text-blue-400 text-xs sm:text-sm font-semibold mb-4 sm:mb-6">
                     {badgeIcon && <i class={`fas ${badgeIcon}`} />}
                     {badge}
                 </div>
             )
         }
         <h1
-            class="text-4xl md:text-6xl font-extrabold text-white mb-6 leading-[1.2]"
+            class="text-3xl sm:text-4xl md:text-6xl font-extrabold text-white mb-3 sm:mb-6 leading-[1.15]"
         >
             {title}
             {
@@ -44,11 +44,11 @@ const { title, spanTitle, description, badge, badgeIcon } = Astro.props;
             }
         </h1>
         <p
-            class="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed"
+            class="text-xs sm:text-lg md:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed"
         >
             {description}
         </p>
-        <div class="mt-10">
+        <div class="mt-6 sm:mt-10">
             <slot />
         </div>
     </div>

@@ -106,6 +106,7 @@ export const POST: APIRoute = async ({ request }) => {
 
         console.log("--- New Contact Form Submission ---");
         console.log(`From: ${name} (${email})`);
+        console.log(`Phone: ${phone || 'N/A'}`);
         console.log(`Service: ${service || 'None specified'}`);
         console.log(`Message: ${message}`);
         console.log("-----------------------------------");

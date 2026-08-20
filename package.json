@@ -28,5 +28,12 @@
   },
   "devDependencies": {
     "@astrojs/node": "^8.3.4"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "sharp",
+      "core-js"
+    ]
   }
 }
